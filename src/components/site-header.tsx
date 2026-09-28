@@ -9,7 +9,7 @@ import { CoveMark, MtMark, MtWordmark, Wordmark } from "@/components/brand";
 import { InstallButton } from "@/components/install-button";
 import { isRangePath } from "@/components/route-tone";
 import { useWaitlist } from "@/components/waitlist";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { cn } from "cn";
 
 export function SiteHeader() {
@@ -77,9 +77,12 @@ export function SiteHeader() {
         <div className="ml-auto flex items-center gap-1">
           {range ? null : <InstallButton />}
           {range ? (
-            <Button render={<Link href={`${site.range.path}#enquire`} />} className="h-9 rounded-md px-3.5 text-sm">
+            <Link
+              href={`${site.range.path}#enquire`}
+              className={cn(buttonVariants(), "h-9 rounded-md px-3.5 text-sm")}
+            >
               Enquire
-            </Button>
+            </Link>
           ) : (
             <Button type="button" onClick={() => openWaitlist()} className="h-9 rounded-md px-3.5 text-sm">
               Join
@@ -131,9 +134,9 @@ export function MobileJoinBar() {
           <span className="block text-foreground">{range ? "The range." : "Private beta for Mac."}</span>
         </p>
         {range ? (
-          <Button render={<Link href={`${site.range.path}#enquire`} />} className="h-11 rounded-md px-4">
+          <Link href={`${site.range.path}#enquire`} className={cn(buttonVariants(), "h-11 rounded-md px-4")}>
             Enquire
-          </Button>
+          </Link>
         ) : (
           <Button type="button" onClick={() => openWaitlist()} className="h-11 rounded-md px-4">
             {site.campaign.cta}
