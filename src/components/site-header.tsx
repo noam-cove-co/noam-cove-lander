@@ -32,31 +32,27 @@ export function SiteHeader() {
   }, [open]);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-40 px-3 pt-[max(0.75rem,env(safe-area-inset-top))] sm:px-5">
-      <div
-        className={cn(
-          "glass mx-auto flex max-w-6xl items-center gap-2 rounded-full px-2.5 py-2 sm:px-3",
-          scrolled && "shadow-[0_16px_40px_-24px_rgba(18,36,29,0.45)]",
-        )}
-      >
-        <Link href="/" className="flex items-center gap-2 rounded-full py-1 pr-2 pl-1.5" aria-label="Cove, home">
-          <CoveMark className="size-7 text-cove" />
-          <Wordmark className="text-[1.45rem]" />
+    <header
+      className={cn(
+        "sticky top-0 z-40 border-b border-foreground/10 bg-background/90 backdrop-blur-md",
+        scrolled && "bg-background/95",
+      )}
+    >
+      <div className="mx-auto flex h-16 max-w-6xl items-center gap-3 px-4 sm:px-6">
+        <Link href="/" className="flex items-center gap-2" aria-label="Cove, home">
+          <CoveMark className="size-6 text-cove" />
+          <Wordmark className="text-[1.55rem]" />
         </Link>
-        <nav className="ml-4 hidden items-center gap-5 md:flex" aria-label="Primary">
+        <nav className="ml-6 hidden items-center gap-5 md:flex" aria-label="Primary">
           {site.nav.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="text-sm text-foreground/80 transition-colors hover:text-foreground"
-            >
+            <Link key={item.href} href={item.href} className="text-sm text-foreground/75 hover:text-foreground">
               {item.label}
             </Link>
           ))}
         </nav>
         <div className="ml-auto flex items-center gap-1">
           <InstallButton />
-          <Button type="button" onClick={() => openWaitlist()} className="h-10 rounded-full px-4 text-sm">
+          <Button type="button" onClick={() => openWaitlist()} className="h-9 rounded-md px-3.5 text-sm">
             Join
           </Button>
           <Button
@@ -73,20 +69,18 @@ export function SiteHeader() {
         </div>
       </div>
       {open ? (
-        <div className="glass mx-auto mt-2 max-w-6xl rounded-3xl p-4 md:hidden">
-          <nav className="grid gap-1" aria-label="Mobile">
-            {site.nav.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setOpen(false)}
-                className="rounded-2xl px-3 py-3 font-serif text-2xl tracking-tight"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-        </div>
+        <nav className="border-t border-foreground/10 px-4 py-2 md:hidden" aria-label="Mobile">
+          {site.nav.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              onClick={() => setOpen(false)}
+              className="block py-3 text-lg"
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
       ) : null}
     </header>
   );
@@ -101,7 +95,7 @@ export function MobileJoinBar() {
           Your cloud drive.
           <span className="block text-foreground">Private beta for Mac.</span>
         </p>
-        <Button type="button" onClick={() => openWaitlist()} className="h-11 rounded-full px-4">
+        <Button type="button" onClick={() => openWaitlist()} className="h-11 rounded-md px-4">
           {site.campaign.cta}
         </Button>
       </div>

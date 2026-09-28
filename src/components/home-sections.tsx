@@ -24,8 +24,8 @@ export function PlainWords() {
       <div className="mt-8 grid gap-4 md:grid-cols-3">
         {site.beats.map((beat, index) => (
           <Reveal key={beat.title} delay={index * 0.05}>
-            <article className="glass h-full rounded-[28px] p-6">
-              <p className="font-serif text-sm text-cove">0{index + 1}</p>
+            <article className="glass h-full rounded-md p-6">
+              <p className="font-semibold tracking-[-0.03em] text-sm text-cove">0{index + 1}</p>
               <h3 className="mt-4 font-serif text-3xl tracking-tight">{beat.title}</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{beat.body}</p>
             </article>
@@ -48,7 +48,7 @@ export function Problem() {
       <div className="mt-8 grid gap-4 md:grid-cols-3">
         {site.problem.items.map((item) => (
           <Reveal key={item.title}>
-            <article className="h-full rounded-[28px] bg-white/45 p-6 ring-1 ring-white/70">
+            <article className="h-full rounded-md bg-white/45 p-6 ring-1 ring-white/70">
               <h3 className="font-serif text-2xl tracking-tight">{item.title}</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.body}</p>
             </article>
@@ -70,8 +70,8 @@ export function Workflow() {
         <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">{site.workflow.caption}</p>
       </Reveal>
       <Reveal>
-        <div className="glass relative mt-8 rounded-[32px] p-5 sm:p-8">
-          <div className="mx-auto flex max-w-sm flex-col items-center rounded-[24px] bg-pine px-5 py-5 text-center text-paper">
+        <div className="glass relative mt-8 rounded-md p-5 sm:p-8">
+          <div className="mx-auto flex max-w-sm flex-col items-center rounded-md bg-pine px-5 py-5 text-center text-paper">
             <CoveMark className="size-8 text-mist" />
             <p className="mt-2 font-serif text-3xl tracking-tight">Your cloud drive</p>
             <p className="mt-1 text-sm text-white/70">Shows up on your Mac. Lives in the cloud.</p>
@@ -82,12 +82,12 @@ export function Workflow() {
           </div>
           <div className="mt-4 grid gap-3 md:grid-cols-3">
             {site.workflow.lanes.map((lane) => (
-              <article key={lane.desk} className="rounded-[24px] bg-white/60 p-4 ring-1 ring-white/80">
+              <article key={lane.desk} className="rounded-md bg-white/60 p-4 ring-1 ring-white/80">
                 <p className="text-xs tracking-[0.16em] text-cove uppercase">{lane.desk}</p>
                 <ol className="mt-3 grid gap-2">
                   {lane.items.map((item, index) => (
                     <li key={item} className="flex items-center gap-3 rounded-xl bg-background/70 px-3 py-2 text-sm">
-                      <span className="font-serif text-cove">0{index + 1}</span>
+                      <span className="font-semibold tracking-[-0.03em] text-cove">0{index + 1}</span>
                       {item}
                     </li>
                   ))}
@@ -106,18 +106,18 @@ export function Platforms() {
     <Section className="py-10 sm:py-14">
       <h2 className="font-serif text-4xl tracking-tight sm:text-5xl">{site.platforms.title}</h2>
       <div className="mt-8 grid gap-4 md:grid-cols-2">
-        <article className="glass rounded-[28px] p-6">
+        <article className="glass rounded-md p-6">
           <p className="text-xs tracking-[0.18em] text-cove uppercase">{site.platforms.macos.status}</p>
           <h3 className="mt-3 font-serif text-4xl">{site.platforms.macos.name}</h3>
           <p className="mt-3 max-w-sm text-sm leading-relaxed text-muted-foreground">{site.platforms.macos.detail}</p>
           <Button
-            className="mt-6 h-11 rounded-full px-5"
+            className="mt-6 h-11 rounded-md px-5"
             render={<Link href="/download" />}
           >
             Join the Mac beta
           </Button>
         </article>
-        <article className="rounded-[28px] bg-white/40 p-6 ring-1 ring-foreground/10">
+        <article className="rounded-md bg-white/40 p-6 ring-1 ring-foreground/10">
           <p className="text-xs tracking-[0.18em] text-muted-foreground uppercase">{site.platforms.ios.status}</p>
           <h3 className="mt-3 font-serif text-4xl text-foreground/80">{site.platforms.ios.name}</h3>
           <p className="mt-3 max-w-sm text-sm leading-relaxed text-muted-foreground">{site.platforms.ios.detail}</p>
@@ -153,7 +153,7 @@ export function Faq() {
 export function Close() {
   return (
     <Section className="pb-16">
-      <div className="glass rounded-[32px] px-6 py-12 text-center sm:px-12 sm:py-16">
+      <div className="glass rounded-md px-6 py-12 text-center sm:px-12 sm:py-16">
         <h2 className="font-serif text-4xl tracking-tight text-balance sm:text-6xl">{site.close.title}</h2>
         <p className="mx-auto mt-4 max-w-md text-base leading-relaxed text-muted-foreground">{site.close.body}</p>
         <div className="mt-8 flex justify-center">
@@ -170,7 +170,7 @@ export function Marquee() {
     <div className="overflow-hidden border-y border-foreground/10 py-4">
       <div className="marquee-track flex w-max gap-8 pr-8">
         {items.map((item, index) => (
-          <span key={`${item}-${index}`} className="flex items-center gap-8 font-serif text-2xl tracking-tight text-foreground/70">
+          <span key={`${item}-${index}`} className="font-serif flex items-center gap-8 text-[1.85rem] leading-none text-foreground/80">
             {item}
             <span className="size-1.5 rounded-full bg-cove" />
           </span>

@@ -24,8 +24,8 @@ export default function TeamPage() {
       </h1>
       <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">{site.team.body}</p>
 
-      <article className="glass mt-10 grid gap-8 rounded-[32px] p-6 sm:p-10 lg:grid-cols-[180px_1fr] lg:gap-12">
-        <div className="grid size-28 place-items-center rounded-[28px] bg-pine text-paper sm:size-36">
+      <article className="glass mt-10 grid gap-8 rounded-md p-6 sm:p-10 lg:grid-cols-[180px_1fr] lg:gap-12">
+        <div className="grid size-28 place-items-center rounded-md bg-pine text-paper sm:size-36">
           <NoamSeal className="size-16 sm:size-20" />
         </div>
         <div>
@@ -41,7 +41,7 @@ export default function TeamPage() {
 
       <div className="mt-6 grid gap-4 md:grid-cols-3">
         {site.team.principles.map((principle) => (
-          <article key={principle.title} className="rounded-[28px] bg-white/50 p-6 ring-1 ring-white/80">
+          <article key={principle.title} className="rounded-md bg-white/50 p-6 ring-1 ring-white/80">
             <h2 className="font-serif text-3xl tracking-tight">{principle.title}</h2>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{principle.body}</p>
           </article>
@@ -56,7 +56,7 @@ export default function TeamPage() {
         <ul className="mt-8 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:grid-cols-5">
           {desks.map((desk) => (
             <li key={desk.name}>
-              <div className="grid aspect-square place-items-center rounded-[28px] bg-[#efe8dc]">
+              <div className="grid aspect-square place-items-center rounded-md bg-[#efe8dc]">
                 <span className="font-serif text-4xl tracking-tight text-pine/70 sm:text-5xl">{desk.initials}</span>
               </div>
               <p className="mt-4 font-medium">{desk.name}</p>

@@ -48,7 +48,7 @@ export function Journey() {
               }}
               className="border-t border-foreground/10 py-8 lg:min-h-[48vh]"
             >
-              <p className={cn("font-serif text-sm", index === active ? "text-cove" : "text-muted-foreground")}>
+              <p className={cn("font-semibold tracking-[-0.03em] text-sm", index === active ? "text-cove" : "text-muted-foreground")}>
                 {step.index}
               </p>
               <h3 className="mt-2 font-serif text-3xl tracking-tight">{step.title}</h3>
@@ -80,7 +80,7 @@ export function Journey() {
 function Stage({ index }: { index: number }) {
   if (index === 0) {
     return (
-      <div className="glass rounded-[28px] p-6">
+      <div className="glass rounded-md p-6">
         <p className="text-xs tracking-[0.18em] text-muted-foreground uppercase">New drive</p>
         <p className="mt-4 font-serif text-4xl tracking-tight">Family</p>
         <div className="mt-6 flex flex-wrap gap-2">
@@ -88,7 +88,7 @@ function Stage({ index }: { index: number }) {
             <span
               key={size}
               className={cn(
-                "rounded-full px-3 py-1.5 text-sm",
+                "rounded-md px-3 py-1.5 text-sm",
                 sizeIndex === 1 ? "bg-pine text-paper" : "bg-white/70 ring-1 ring-foreground/10",
               )}
             >
@@ -103,7 +103,7 @@ function Stage({ index }: { index: number }) {
 
   if (index === 1) {
     return (
-      <div className="glass rounded-[28px] p-6">
+      <div className="glass rounded-md p-6">
         <p className="text-xs tracking-[0.18em] text-muted-foreground uppercase">Locations</p>
         <div className="mt-4 grid gap-2">
           <div className="rounded-2xl bg-white/50 px-4 py-3 text-sm text-muted-foreground">Macintosh HD</div>
@@ -120,7 +120,7 @@ function Stage({ index }: { index: number }) {
 
   if (index === 2) {
     return (
-      <div className="glass rounded-[28px] p-6">
+      <div className="glass rounded-md p-6">
         <p className="text-xs tracking-[0.18em] text-muted-foreground uppercase">Opens with</p>
         <div className="mt-4 flex flex-wrap gap-2">
           {apps.map((app) => (
@@ -135,7 +135,7 @@ function Stage({ index }: { index: number }) {
   }
 
   return (
-    <div className="glass rounded-[28px] p-6">
+    <div className="glass rounded-md p-6">
       <p className="text-xs tracking-[0.18em] text-muted-foreground uppercase">Family</p>
       <p className="mt-3 font-serif text-4xl tracking-tight">2.4 TB</p>
       <p className="mt-2 text-sm text-muted-foreground">of photos and videos, kept in the cloud.</p>

@@ -105,6 +105,7 @@ export const site = {
 
   nav: [
     { href: "/#product", label: "Product" },
+    { href: "/why", label: "Why Cove?" },
     { href: "/#audiences", label: "Who it’s for" },
     { href: "/#reviews", label: "Notes" },
     { href: "/team", label: "Studio" },
@@ -115,7 +116,7 @@ export const site = {
     eyebrow: "Private beta for Mac",
     sub: "Click once and Cove appears on your Mac, next to your other drives. Photos, videos, a campaign, or a whole project open in the apps you already have. The files themselves stay in the cloud.",
     secondaryCta: "See it on a Mac",
-    platforms: "For Mac today. iPhone, when it is ready.",
+    platforms: "On the Mac today. iPhone, when it’s ready.",
   },
 
   beats: [
@@ -431,7 +432,7 @@ export const site = {
     principles: [
       {
         title: "Monogram",
-        body: "Traditional on the outside. A seal, a paper colour, a rose kept quiet in the footer.",
+        body: "Traditional on the outside. A seal, a quiet colour, a rose kept in the footer.",
       },
       {
         title: "A real drive",
@@ -442,6 +443,55 @@ export const site = {
         body: "Families hear photos and videos. Teams hear a campaign. Agent developers hear a repo. Same click.",
       },
     ],
+  },
+
+  why: {
+    kicker: "Why Cove?",
+    title: "A drive. Not a brick, a cupboard, or a server.",
+    lede: "There are plenty of places to put a file. Very few of them are a drive on your Mac.",
+    chapters: [
+      {
+        index: "01",
+        name: "The external SSD",
+        headline: "Fast. Also losable.",
+        lines: [
+          "An external drive is a marvellous bit of kit.",
+          "It is also a thing you can leave in the other bag, the other city, the other person’s shoot.",
+          "It fills up. It fails. It does not come with you on the train unless you remembered it.",
+          "Cove is the drive, without the brick.",
+        ],
+      },
+      {
+        index: "02",
+        name: "iCloud",
+        headline: "A library is not a drive.",
+        lines: [
+          "iCloud is a fine cupboard for the photos and documents Apple already understands.",
+          "It is not a volume Premiere, Logic, Capture One, or an agent can simply open.",
+          "Sync keeps a copy. Cove is the place.",
+        ],
+      },
+      {
+        index: "03",
+        name: "Drive, OneDrive, and a VPS",
+        headline: "Useful. Not a drive.",
+        lines: [
+          "Google Drive, OneDrive, Dropbox: lovely for a document, a shared folder, a link.",
+          "A bit hopeless when the work is a film, a session, or a repo an agent is writing into.",
+          "A VPS is the other road. You can mount one. You are then minding a computer.",
+          "Cove is one click. The files stay in the cloud. The Mac just sees a drive.",
+        ],
+      },
+    ],
+    columns: ["", "External SSD", "iCloud", "Drive & OneDrive", "A VPS", "Cove"],
+    rows: [
+      ["Where it lives", "In your bag", "In Apple’s cloud", "In their cloud", "On a server you rent", "In your cloud drive"],
+      ["On the Mac", "If you brought it", "As a library", "As a sync folder", "If you set it up", "One click"],
+      ["Opens in your apps", "Yes", "Sometimes", "Sometimes", "Yes, after a faff", "Yes"],
+      ["You carry it", "Yes", "No", "No", "No", "No"],
+      ["Someone else, same work", "Hand it over", "A shared album", "A shared folder", "Share the machine", "They mount it too"],
+    ],
+    close: ["Cove.", "Your own cloud drive.", "On your Mac."],
   },
 
   footer: {

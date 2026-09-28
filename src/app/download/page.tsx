@@ -20,7 +20,7 @@ export default function DownloadPage() {
       <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">{site.download.body}</p>
 
       <div className="mt-10 grid gap-4 lg:grid-cols-[1fr_1fr]">
-        <article className="glass rounded-[28px] p-6">
+        <article className="glass rounded-md p-6">
           <p className="text-xs tracking-[0.18em] text-cove uppercase">{site.platforms.macos.status}</p>
           <h2 className="mt-3 font-serif text-4xl">Mac</h2>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{site.platforms.macos.detail}</p>
@@ -33,7 +33,7 @@ export default function DownloadPage() {
             ))}
           </ul>
         </article>
-        <article className="rounded-[28px] bg-white/45 p-6 ring-1 ring-foreground/10">
+        <article className="rounded-md bg-white/45 p-6 ring-1 ring-foreground/10">
           <p className="text-xs tracking-[0.18em] text-muted-foreground uppercase">{site.platforms.ios.status}</p>
           <h2 className="mt-3 font-serif text-4xl">iPhone</h2>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{site.platforms.ios.detail}</p>
@@ -43,7 +43,7 @@ export default function DownloadPage() {
         </article>
       </div>
 
-      <div id="waitlist" className="glass mt-6 rounded-[28px] p-6 sm:p-8">
+      <div id="waitlist" className="glass mt-6 rounded-md p-6 sm:p-8">
         <h2 className="font-serif text-3xl tracking-tight">Ask for a seat</h2>
         <p className="mt-2 max-w-lg text-sm leading-relaxed text-muted-foreground">
           Tell us whether the drive is for family photos, a marketing team, a studio, or a project you are building with an agent.
@@ -53,7 +53,7 @@ export default function DownloadPage() {
         </div>
       </div>
 
-      <section className="mt-6 rounded-[28px] bg-pine px-6 py-8 text-paper sm:px-8">
+      <section className="mt-6 rounded-md bg-pine px-6 py-8 text-paper sm:px-8">
         <h2 className="font-serif text-3xl tracking-tight">Keep this page on your home screen</h2>
         <p className="mt-2 max-w-lg text-sm leading-relaxed text-white/75">
           The Mac app is private for now. Add Cove to your home screen and the beta stays a tap away.
