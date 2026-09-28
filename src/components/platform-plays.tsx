@@ -7,7 +7,6 @@ import { CoveMark } from "@/components/brand";
 import { HdIcon, MacWindow } from "@/components/mac-window";
 import { JoinButton } from "@/components/join-button";
 import { Button } from "@/components/ui/button";
-import { cn } from "cn";
 
 const pocket = ["Family", "Spring campaign", "florist-shop"];
 
@@ -125,7 +124,7 @@ function PhonePeek() {
           ) : (
             <span className="grid min-h-52 place-items-center px-6 pb-8 text-center">
               <span>
-                <CoveMark className={cn("mx-auto size-10 text-cove/40")} />
+                <CoveMark className="mx-auto size-10 opacity-40" />
                 <span className="mt-3 block font-serif text-2xl">Coming soon</span>
                 <span className="mt-2 block text-[12px] text-[#6e6e73]">Tap to peek at the drive.</span>
               </span>

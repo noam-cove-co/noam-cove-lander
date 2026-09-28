@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { site } from "@/config/site";
-import { Wordmark } from "@/components/brand";
+import { CoveSeal, Wordmark } from "@/components/brand";
 import { JoinButton } from "@/components/join-button";
 
 export const metadata: Metadata = {
@@ -76,7 +76,10 @@ export default function WhyPage() {
 
       <section className="border-t border-foreground/10">
         <div className="mx-auto flex w-full max-w-3xl flex-col gap-8 px-4 py-20 sm:px-6 sm:py-28">
-          <Wordmark className="text-6xl sm:text-7xl" />
+          <div className="flex items-end justify-between gap-6">
+            <Wordmark className="text-6xl sm:text-7xl" />
+            <CoveSeal className="mb-1 size-14 -rotate-6 text-cove sm:size-16" />
+          </div>
           <div className="font-serif text-3xl leading-tight tracking-[-0.03em] sm:text-4xl">
             {why.close.slice(1).map((line) => (
               <p key={line}>{line}</p>

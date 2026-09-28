@@ -1,20 +1,35 @@
+import Image from "next/image";
 import { cn } from "cn";
 
-export function CoveMark({ className }: { className?: string }) {
+export function CoveMark({ className, priority = false }: { className?: string; priority?: boolean }) {
   return (
-    <svg
-      viewBox="0 0 32 32"
-      className={cn("size-8", className)}
-      aria-hidden="true"
-      fill="none"
-    >
-      <path
-        d="M23.2 7.2a10.2 10.2 0 1 0 0 17.6"
-        stroke="currentColor"
-        strokeWidth="2.35"
-        strokeLinecap="round"
+    <span className={cn("relative inline-block size-8 shrink-0", className)} aria-hidden="true">
+      <Image
+        src="/brand/cove-mark.png"
+        alt=""
+        fill
+        sizes="128px"
+        className="object-contain"
+        {...(priority ? { priority: true } : { loading: "eager" })}
       />
-      <circle cx="15.2" cy="16" r="1.7" fill="currentColor" />
+    </span>
+  );
+}
+
+/** The earlier arc-and-dot monogram, kept as a formal imprint. */
+export function CoveSeal({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 32 32" className={cn("size-8", className)} aria-hidden="true" fill="none">
+      <circle cx="16" cy="16" r="14.35" stroke="currentColor" strokeWidth="0.9" />
+      <g transform="translate(16 16) scale(0.72) translate(-16 -16)">
+        <path
+          d="M23.2 7.2a10.2 10.2 0 1 0 0 17.6"
+          stroke="currentColor"
+          strokeWidth="2.35"
+          strokeLinecap="round"
+        />
+        <circle cx="15.2" cy="16" r="1.7" fill="currentColor" />
+      </g>
     </svg>
   );
 }

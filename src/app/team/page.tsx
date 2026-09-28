@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { site } from "@/config/site";
-import { CraftLine, NoamSeal } from "@/components/brand";
+import { CoveSeal, CraftLine, NoamSeal } from "@/components/brand";
 
 export const metadata: Metadata = {
   title: "Studio",
@@ -34,8 +34,13 @@ export default function TeamPage() {
               {paragraph}
             </p>
           ))}
-          <p className="mt-6 font-serif text-2xl italic">{site.team.sign}</p>
-          <p className="text-sm text-muted-foreground">{site.team.role}</p>
+          <div className="mt-8 flex items-end justify-between gap-6">
+            <div>
+              <p className="font-serif text-2xl italic">{site.team.sign}</p>
+              <p className="text-sm text-muted-foreground">{site.team.role}</p>
+            </div>
+            <CoveSeal className="size-14 -rotate-6 text-cove sm:size-16" />
+          </div>
         </div>
       </article>
 

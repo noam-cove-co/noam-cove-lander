@@ -44,7 +44,7 @@ export function SiteHeader() {
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center gap-3 px-4 sm:px-6">
         <Link href="/" className="flex items-center gap-2" aria-label="Cove, home">
-          <CoveMark className={cn("size-6", range ? "text-primary" : "text-cove")} />
+          <CoveMark priority className="size-6" />
           <Wordmark className="text-[1.55rem]" />
         </Link>
         <nav className="ml-6 hidden items-center gap-5 md:flex" aria-label="Primary">
