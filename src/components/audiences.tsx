@@ -40,8 +40,8 @@ export function Audiences() {
             aria-selected={item.id === desk.id}
             onClick={() => setId(item.id)}
             className={cn(
-              "shrink-0 rounded-full px-4 py-2 text-sm",
-              item.id === desk.id ? "bg-pine text-paper" : "bg-white/70 ring-1 ring-foreground/10",
+              "shrink-0 border-b-2 px-1 py-2 text-sm",
+              item.id === desk.id ? "border-cove text-foreground" : "border-transparent text-muted-foreground",
             )}
           >
             {item.label}
@@ -60,7 +60,7 @@ export function Audiences() {
           transition={{ duration: 0.35 }}
           className="mt-4 grid gap-4 lg:grid-cols-[1.15fr_0.85fr]"
         >
-          <article className="glass rounded-[28px] p-6 sm:p-8">
+          <article className="glass rounded-md p-6 sm:p-8">
             <p className="text-xs tracking-[0.18em] text-cove uppercase">In plain words, still</p>
             <p className="mt-3 text-sm text-muted-foreground">
               Your own cloud drive. It lives in the cloud. It shows up on your Mac.
@@ -70,7 +70,7 @@ export function Audiences() {
             <p className="mt-6 font-serif text-xl leading-snug italic text-pine">{desk.say}</p>
             <p className="mt-6 font-mono text-xs text-muted-foreground">Cove / {desk.volume}</p>
           </article>
-          <article className="rounded-[28px] bg-pine p-6 text-paper sm:p-8">
+          <article className="rounded-md bg-pine p-6 text-paper sm:p-8">
             <p className="text-xs tracking-[0.18em] text-white/60 uppercase">What we call it here</p>
             <ul className="mt-5 grid gap-5">
               {desk.terms.map((term) => (
@@ -89,7 +89,7 @@ export function Audiences() {
 
 function Compare({ label, text }: { label: string; text: string }) {
   return (
-    <div className="rounded-[24px] bg-white/55 p-5 ring-1 ring-white/80">
+    <div className="rounded-md bg-white/55 p-5 ring-1 ring-white/80">
       <p className="text-xs tracking-[0.18em] text-cove uppercase">{label}</p>
       <p className="mt-2 text-base leading-relaxed">{text}</p>
     </div>

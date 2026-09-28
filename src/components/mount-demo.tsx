@@ -46,8 +46,8 @@ export function MountDemo() {
               aria-selected={item.id === desk.id}
               onClick={() => setDeskId(item.id)}
               className={cn(
-                "shrink-0 rounded-full px-3 py-1.5 text-sm",
-                item.id === desk.id ? "bg-pine text-paper" : "bg-white/70 text-foreground ring-1 ring-foreground/10",
+                "shrink-0 border-b-2 px-1 py-1.5 text-sm",
+                item.id === desk.id ? "border-cove text-foreground" : "border-transparent text-muted-foreground",
               )}
             >
               {item.label}
@@ -61,7 +61,7 @@ export function MountDemo() {
           aria-hidden
           className="pointer-events-none absolute -inset-8 -z-10 rounded-full bg-[radial-gradient(closest-side,rgba(26,154,120,0.28),transparent)] blur-2xl"
         />
-        <div className="overflow-hidden rounded-[22px] bg-white/75 shadow-[0_30px_80px_-36px_rgba(18,36,29,0.5)] ring-1 ring-white/80 backdrop-blur-xl">
+        <div className="overflow-hidden rounded-md bg-white/75 shadow-[0_30px_80px_-36px_rgba(18,36,29,0.5)] ring-1 ring-white/80 backdrop-blur-xl">
           <div className="flex items-center gap-3 border-b border-black/5 px-3 py-3 sm:px-4">
             <span className="flex gap-1.5" aria-hidden>
               <i className="size-2.5 rounded-full bg-[#ff5f57]" />
@@ -73,7 +73,7 @@ export function MountDemo() {
               type="button"
               onClick={showOnMac}
               className={cn(
-                "ml-auto shrink-0 rounded-full px-3 py-1.5 text-sm font-medium",
+                "ml-auto shrink-0 rounded-md px-3 py-1.5 text-sm font-medium",
                 mounted ? "bg-mist text-pine" : "bg-cove text-paper",
               )}
             >

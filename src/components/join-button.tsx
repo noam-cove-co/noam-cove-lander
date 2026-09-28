@@ -22,7 +22,7 @@ export function JoinButton({
       type="button"
       variant={variant}
       onClick={() => openWaitlist(ios ? { ios: true } : undefined)}
-      className={cn("h-12 rounded-full px-6 text-[15px]", className)}
+      className={cn("h-12 rounded-md px-6 text-[15px]", className)}
     >
       {label}
     </Button>

@@ -21,7 +21,7 @@ export default function AppleIcon() {
             width: 104,
             height: 104,
             borderRadius: 52,
-            border: "10px solid #f3efe6",
+            border: "10px solid #f5f6f8",
             borderRightColor: "transparent",
             display: "flex",
             alignItems: "center",
@@ -33,7 +33,7 @@ export default function AppleIcon() {
               width: 16,
               height: 16,
               borderRadius: 8,
-              background: "#f3efe6",
+              background: "#f5f6f8",
               marginRight: 16,
             }}
           />

@@ -83,7 +83,7 @@ export function InstallButton({
         type="button"
         variant="ghost"
         onClick={onClick}
-        className={cn("h-10 rounded-full px-3 text-sm", className)}
+        className={cn("h-10 rounded-md px-3 text-sm", className)}
       >
         <Share />
         <span className="hidden sm:inline">{label}</span>

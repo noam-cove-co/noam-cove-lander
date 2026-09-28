@@ -151,7 +151,7 @@ export function WaitlistForm({
               aria-pressed={role === item.id}
               onClick={() => setRole(item.id)}
               className={cn(
-                "rounded-full px-3 py-1.5 text-sm ring-1 ring-foreground/10",
+                "rounded-md px-3 py-1.5 text-sm ring-1 ring-foreground/10",
                 role === item.id ? "bg-pine text-paper" : "bg-white/70 text-foreground",
               )}
             >
@@ -170,7 +170,7 @@ export function WaitlistForm({
               aria-pressed={mac === item.id}
               onClick={() => setMac(item.id)}
               className={cn(
-                "rounded-full px-3 py-1.5 text-sm ring-1 ring-foreground/10",
+                "rounded-md px-3 py-1.5 text-sm ring-1 ring-foreground/10",
                 mac === item.id ? "bg-pine text-paper" : "bg-white/70 text-foreground",
               )}
             >
@@ -201,7 +201,7 @@ export function WaitlistForm({
           {message}
         </p>
       ) : null}
-      <Button type="submit" disabled={status === "sending" || !role} className="h-12 rounded-full text-[15px]">
+      <Button type="submit" disabled={status === "sending" || !role} className="h-11 rounded-md text-[15px]">
         {status === "sending" ? "Adding you…" : site.campaign.cta}
       </Button>
       <p className="text-xs text-muted-foreground">One letter, when a seat opens. No newsletter.</p>
