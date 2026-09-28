@@ -226,12 +226,142 @@ html[data-tone="range"] ::selection {
   }
 }
 
+.try-mac-frame {
+  display: inline-flex;
+  border-radius: 14px;
+  padding: 3px;
+  background: linear-gradient(160deg, rgba(191, 219, 254, 0.95), rgba(37, 99, 235, 0.45) 55%, rgba(29, 78, 216, 0.2));
+  animation: try-frame 2.4s ease-in-out infinite;
+}
+
+.try-mac {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 11px;
+  background: linear-gradient(180deg, #7eb6ff 0%, #3b82f6 38%, #1d4ed8 100%);
+  color: #f8fbff;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.65),
+    inset 0 -12px 16px rgba(15, 40, 120, 0.28);
+}
+
+.try-mac::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 32%, rgba(255, 255, 255, 0.62) 50%, transparent 68%);
+  transform: translateX(-130%);
+  animation: try-shine 2.8s ease-in-out infinite;
+}
+
+.stream-dash {
+  stroke-dasharray: 7 12;
+  animation: stream-dash 1.5s linear infinite;
+}
+
+.stream-dash-reverse {
+  animation-direction: reverse;
+}
+
+.stream-rise,
+.stream-fall {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  opacity: 0;
+}
+
+.stream-rise {
+  bottom: 24%;
+  background: linear-gradient(180deg, #dbeafe, #2563eb);
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.45);
+  animation: stream-rise 3.4s linear infinite;
+}
+
+.stream-fall {
+  top: 24%;
+  background: linear-gradient(180deg, #bbf7d0, #0e6b56);
+  box-shadow: 0 0 8px rgba(14, 107, 86, 0.35);
+  animation: stream-fall 3.6s linear infinite;
+}
+
+@keyframes try-frame {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+  }
+  50% {
+    box-shadow: 0 0 0 5px rgba(59, 130, 246, 0.16);
+  }
+}
+
+@keyframes try-shine {
+  0%,
+  58% {
+    transform: translateX(-130%);
+  }
+  100% {
+    transform: translateX(130%);
+  }
+}
+
+@keyframes stream-dash {
+  to {
+    stroke-dashoffset: -38;
+  }
+}
+
+@keyframes stream-rise {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  14% {
+    opacity: 0.95;
+  }
+  86% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-132px);
+    opacity: 0;
+  }
+}
+
+@keyframes stream-fall {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  14% {
+    opacity: 0.95;
+  }
+  86% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(132px);
+    opacity: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
   .marquee-track,
-  .travel-dot {
+  .travel-dot,
+  .try-mac-frame,
+  .try-mac::after,
+  .stream-dash,
+  .stream-rise,
+  .stream-fall {
     animation: none;
+  }
+  .stream-rise,
+  .stream-fall {
+    opacity: 0.7;
   }
 }

@@ -5,6 +5,7 @@ import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { site } from "@/config/site";
 import { track } from "@/lib/analytics";
+import { CoveMark } from "@/components/brand";
 import { FileArt, SidebarGlyph, ViewIcon } from "@/components/finder-icons";
 import { cn } from "cn";
 
@@ -105,16 +106,21 @@ export function MountDemo() {
               </button>
             ))}
           </div>
-          <button
-            type="button"
-            onClick={showOnMac}
-            className={cn(
-              "shrink-0 rounded-md px-3 py-1.5 text-sm font-medium",
-              mounted ? "bg-mist text-pine" : "bg-cove text-paper",
-            )}
-          >
-            {busy ? "Showing…" : mounted ? "Remove" : "Show on this Mac"}
-          </button>
+          {mounted ? (
+            <button
+              type="button"
+              onClick={showOnMac}
+              className="shrink-0 rounded-md bg-mist px-3 py-1.5 text-sm font-medium text-pine"
+            >
+              Remove
+            </button>
+          ) : (
+            <span className="try-mac-frame shrink-0">
+              <button type="button" onClick={showOnMac} className="try-mac px-4 py-1.5 text-sm font-medium">
+                {busy ? "Showing…" : "Try on this Mac"}
+              </button>
+            </span>
+          )}
         </div>
       </div>
 
@@ -162,9 +168,13 @@ export function MountDemo() {
               </div>
               <div className="flex min-w-0 flex-1 justify-center px-2">
                 <p className="flex max-w-full items-center gap-1.5 truncate text-[13px] font-semibold">
-                  <span className="relative block size-4 shrink-0">
-                    <Image src="/media/hdd.png" alt="" fill sizes="16px" className="object-contain" />
-                  </span>
+                  {place === "volume" && mounted ? (
+                    <CoveMark className="size-4 shrink-0 text-cove" />
+                  ) : (
+                    <span className="relative block size-4 shrink-0">
+                      <Image src="/media/hdd.png" alt="" fill sizes="16px" className="object-contain" />
+                    </span>
+                  )}
                   <span className="truncate">{busy ? "Connecting…" : title}</span>
                 </p>
               </div>
@@ -263,7 +273,8 @@ export function MountDemo() {
           <DockTile label="Photos" src="/media/photos.png" />
           <DockTile label="Premiere" src="/media/premiere.png" />
           <DockTile label="Logic" src="/media/logic.png" />
-          <DockTile label="Cursor" src="/media/cursor.png" />
+          <DockTile label="OpenClaw" src="/media/openclaw.png" />
+          <DockTile label="Copilot" src="/media/copilot.png" />
         </div>
       </div>
       <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
@@ -297,7 +308,11 @@ function SidebarRow({
   );
   const body = (
     <>
-      <SidebarGlyph name={icon} />
+      {icon === "volume" ? (
+        <CoveMark className={cn("size-[18px] shrink-0", selected ? "text-white" : "text-cove")} />
+      ) : (
+        <SidebarGlyph name={icon} />
+      )}
       <span className="truncate">{label}</span>
     </>
   );
@@ -502,7 +517,9 @@ function GetInfo({
       </div>
       <div className="bg-white px-4 py-4">
         <div className="grid justify-items-center text-center">
-          {!file ? (
+          {showingVolume ? (
+            <CoveMark className="size-16 text-cove" />
+          ) : !file ? (
             <span className="relative block size-16">
               <Image src="/media/hdd.png" alt="" fill sizes="64px" className="object-contain" />
             </span>
