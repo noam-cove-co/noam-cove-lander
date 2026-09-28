@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist_Mono, Instrument_Sans, Instrument_Serif } from "next/font/google";
+import { Caveat, Geist_Mono, Instrument_Sans, Instrument_Serif } from "next/font/google";
 import { site } from "@/config/site";
 import { MobileJoinBar, SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -23,6 +23,13 @@ const serif = Instrument_Serif({
 const mono = Geist_Mono({
   subsets: ["latin"],
   variable: "--font-geist-mono",
+  display: "swap",
+});
+
+const script = Caveat({
+  subsets: ["latin"],
+  weight: "600",
+  variable: "--font-caveat",
   display: "swap",
 });
 
@@ -76,7 +83,7 @@ const jsonLd = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en-GB" className={`${sans.variable} ${serif.variable} ${mono.variable} h-full antialiased`}>
+    <html lang="en-GB" className={`${sans.variable} ${serif.variable} ${mono.variable} ${script.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col">
         <a
           href="#content"

@@ -9,6 +9,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
   --font-serif: var(--font-serif);
+  --font-script: var(--font-caveat);
   --font-mono: var(--font-geist-mono);
   --font-heading: var(--font-serif);
   --color-cove: #0e6b56;
