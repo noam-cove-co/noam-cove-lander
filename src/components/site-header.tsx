@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { site } from "@/config/site";
-import { CoveMark, MtMark, MtWordmark, Wordmark } from "@/components/brand";
+import { CoveMark, Wordmark } from "@/components/brand";
 import { InstallButton } from "@/components/install-button";
 import { isRangePath } from "@/components/route-tone";
 import { useWaitlist } from "@/components/waitlist";
@@ -43,22 +43,9 @@ export function SiteHeader() {
       )}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center gap-3 px-4 sm:px-6">
-        <Link
-          href={range ? site.range.path : "/"}
-          className="flex items-center gap-2"
-          aria-label={range ? "Mt. Mtn., home" : "Cove, home"}
-        >
-          {range ? (
-            <>
-              <MtMark className="size-6 text-primary" />
-              <MtWordmark className="text-[1.45rem]" />
-            </>
-          ) : (
-            <>
-              <CoveMark className="size-6 text-cove" />
-              <Wordmark className="text-[1.55rem]" />
-            </>
-          )}
+        <Link href="/" className="flex items-center gap-2" aria-label="Cove, home">
+          <CoveMark className={cn("size-6", range ? "text-primary" : "text-cove")} />
+          <Wordmark className="text-[1.55rem]" />
         </Link>
         <nav className="ml-6 hidden items-center gap-5 md:flex" aria-label="Primary">
           {site.nav.map((item) => (
@@ -130,8 +117,8 @@ export function MobileJoinBar() {
     <div className="fixed inset-x-0 bottom-0 z-40 border-t border-foreground/10 bg-background/95 p-3 backdrop-blur-md md:hidden">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 pb-[env(safe-area-inset-bottom)]">
         <p className="text-sm leading-tight text-muted-foreground">
-          {range ? "Mt. Mtn." : "Your cloud drive."}
-          <span className="block text-foreground">{range ? "The range." : "Private beta for Mac."}</span>
+          {range ? "Cove" : "Your cloud drive."}
+          <span className="block text-foreground">{range ? "The mountain mount." : "Private beta for Mac."}</span>
         </p>
         {range ? (
           <Link href={`${site.range.path}#enquire`} className={cn(buttonVariants(), "h-11 rounded-md px-4")}>

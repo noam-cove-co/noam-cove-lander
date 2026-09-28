@@ -148,28 +148,28 @@
 
 html[data-tone="range"] {
   color-scheme: dark;
-  --background: #070d18;
-  --foreground: #f3f5f7;
-  --card: #0c1628;
-  --card-foreground: #f3f5f7;
-  --popover: #0c1628;
-  --popover-foreground: #f3f5f7;
+  --background: #0a2760;
+  --foreground: #f4f7fb;
+  --card: #0e3274;
+  --card-foreground: #f4f7fb;
+  --popover: #0e3274;
+  --popover-foreground: #f4f7fb;
   --primary: #3dcea0;
-  --primary-foreground: #061018;
-  --secondary: #101a2c;
-  --secondary-foreground: #f3f5f7;
-  --muted: #101a2c;
-  --muted-foreground: #93a0b4;
-  --accent: #101a2c;
-  --accent-foreground: #f3f5f7;
-  --border: rgba(243, 245, 247, 0.14);
-  --input: rgba(243, 245, 247, 0.22);
+  --primary-foreground: #062016;
+  --secondary: #12367a;
+  --secondary-foreground: #f4f7fb;
+  --muted: #12367a;
+  --muted-foreground: #c5d4ea;
+  --accent: #12367a;
+  --accent-foreground: #f4f7fb;
+  --border: rgba(244, 247, 251, 0.16);
+  --input: rgba(244, 247, 251, 0.22);
   --ring: #3dcea0;
 }
 
 html[data-tone="range"] body {
-  background: #070d18;
-  color: #f3f5f7;
+  background: #0a2760;
+  color: #f4f7fb;
 }
 
 html[data-tone="range"] ::selection {
