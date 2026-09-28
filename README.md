@@ -23,6 +23,7 @@ The site runs at [http://127.0.0.1:4317](http://127.0.0.1:4317).
 - A private-beta waitlist, an Add to Home Screen prompt, and a studio page.
 - [Why Cove?](http://127.0.0.1:4317/why), a short comparison with external SSDs, iCloud, Drive, OneDrive, and a VPS.
 - [Mt. Mtn.](http://127.0.0.1:4317/mt), the enterprise range. Same one-click mount, at mountain scale, in a dark navy invert of the Cove site. Enquiries are stored with the waitlist under the source `mt-mtn`.
+- [Your room](http://127.0.0.1:4317/room), a short setup: pick a desk, slide the work against the Mac you have, and join the beta. Past 50 TB the same screen becomes Mt. Mtn.
 
 ## Content, campaigns, and experiments
 

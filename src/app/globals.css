@@ -347,6 +347,58 @@ html[data-tone="range"] ::selection {
   }
 }
 
+.room-range {
+  appearance: none;
+  height: 22px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.room-range::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 999px;
+  background: transparent;
+}
+
+.room-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  margin-top: -9px;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow:
+    0 1px 4px rgba(14, 19, 32, 0.28),
+    0 0 0 0.5px rgba(14, 19, 32, 0.18);
+}
+
+.room-range::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border: 0;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow:
+    0 1px 4px rgba(14, 19, 32, 0.28),
+    0 0 0 0.5px rgba(14, 19, 32, 0.18);
+}
+
+.room-range::-moz-range-track {
+  height: 4px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+}
+
+body,
+header,
+footer {
+  transition:
+    background-color 0.7s ease,
+    color 0.7s ease,
+    border-color 0.7s ease;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -363,5 +415,10 @@ html[data-tone="range"] ::selection {
   .stream-rise,
   .stream-fall {
     opacity: 0.7;
+  }
+  body,
+  header,
+  footer {
+    transition: none;
   }
 }
