@@ -53,16 +53,14 @@ export default function TeamPage() {
         <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground">
           Not a staff page. These are the first people the cloud drive was shown to: a family archive, a marketing team, a studio, and someone building with an agent.
         </p>
-        <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-8 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:grid-cols-5">
           {desks.map((desk) => (
-            <li key={desk.name} className="glass flex items-center gap-4 rounded-[24px] p-4">
-              <span className="grid size-12 place-items-center rounded-full bg-mist text-sm font-medium text-cove">
-                {desk.initials}
-              </span>
-              <span>
-                <span className="block font-medium">{desk.name}</span>
-                <span className="block text-sm text-muted-foreground">{desk.role}</span>
-              </span>
+            <li key={desk.name}>
+              <div className="grid aspect-square place-items-center rounded-[28px] bg-[#efe8dc]">
+                <span className="font-serif text-4xl tracking-tight text-pine/70 sm:text-5xl">{desk.initials}</span>
+              </div>
+              <p className="mt-4 font-medium">{desk.name}</p>
+              <p className="text-sm text-muted-foreground">{desk.role}</p>
             </li>
           ))}
         </ul>

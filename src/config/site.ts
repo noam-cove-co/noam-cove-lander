@@ -313,7 +313,8 @@ export const site = {
   reviews: {
     id: "reviews",
     kicker: "From the private beta",
-    title: "A real note we got.",
+    title: "People wrote back.",
+    annotation: "This is a real note we got",
     featured: {
       to: "Noam",
       from: "Helen Park",
