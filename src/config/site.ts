@@ -276,6 +276,8 @@ export const site = {
         { name: "Beach.jpg", meta: "18 MB", kind: file.photo },
         { name: "School play.mov", meta: "4.6 GB", kind: file.film },
         { name: "Grandma’s birthday", meta: "86 videos", kind: file.folder },
+        { name: "Christmas.mov", meta: "8.1 GB", kind: file.film },
+        { name: "Favourites", meta: "40 photos", kind: file.folder },
       ],
     },
     {
@@ -298,6 +300,8 @@ export const site = {
         { name: "01-selects", meta: "842 files", kind: file.folder },
         { name: "hero-30.prproj", meta: "186 MB", kind: file.cut },
         { name: "masters", meta: "Ready", kind: file.folder },
+        { name: "brand-kit", meta: "Folder", kind: file.folder },
+        { name: "banner-v17.png", meta: "6.2 MB", kind: file.photo },
       ],
     },
     {
@@ -320,6 +324,8 @@ export const site = {
         { name: "selects", meta: "Raws", kind: file.folder },
         { name: "hero-cut.prproj", meta: "220 MB", kind: file.cut },
         { name: "mixes", meta: "Today", kind: file.folder },
+        { name: "stems", meta: "Folder", kind: file.folder },
+        { name: "contact-sheet.jpg", meta: "14 MB", kind: file.photo },
       ],
     },
     {
@@ -338,9 +344,10 @@ export const site = {
       cloudSize: "48 GB of project files",
       onMac: "Almost nothing on this Mac",
       files: [
-        { name: "src/app/page.tsx", meta: "Repo", kind: file.code },
-        { name: "notes/voice.md", meta: "Today", kind: file.doc },
-        { name: "agent/transcript.json", meta: "12 MB", kind: file.code },
+        { name: "florist", meta: "Repo", kind: file.folder },
+        { name: "page.tsx", meta: "8 KB", kind: file.code },
+        { name: "voice.md", meta: "Today", kind: file.doc },
+        { name: "transcript.json", meta: "12 MB", kind: file.code },
         { name: "design", meta: "Folder", kind: file.folder },
       ],
     },
