@@ -368,8 +368,8 @@ export const site = {
       initials: "HP",
       paragraphs: [
         "Noam —",
-        "I put ten years of family videos on Cove and opened them on the MacBook Air. They show up like a drive. They do not fill the laptop. My brother put the same drive on his Mac and found the Christmas film without me sending a link.",
-        "I have stopped buying the little hard drives that live in the kitchen drawer.",
+        "I put ten years of family videos on Cove and opened them on the MacBook Air. They show up *like a drive*. They *do not fill the laptop*. My brother put the same drive on his Mac and found the Christmas film without me sending a link.",
+        "I have *stopped buying the little hard drives* that live in the kitchen drawer.",
         "Helen",
       ],
       aside:
@@ -378,25 +378,25 @@ export const site = {
     quotes: [
       {
         quote:
-          "The spring campaign used to live in four places. Now it is one cloud drive the freelancer and the editor both open on their Macs. I have stopped answering which folder.",
+          "The spring campaign used to live in four places. Now it is *one cloud drive* the freelancer and the editor both open on their Macs. I have stopped answering which folder.",
         name: "Jonah Adeyemi",
         role: "Head of Brand, Halden & Co",
       },
       {
         quote:
-          "I showed Cove on the M3 Air and opened last month’s photographs on the train. Nothing copied. The laptop did not get hot. We cancelled the second shuttle drive.",
+          "I showed Cove on the M3 Air and opened last month’s photographs on the train. *Nothing copied.* The laptop did not get hot. We cancelled the second shuttle drive.",
         name: "Mara Ellison",
         role: "Producer, Northline",
       },
       {
         quote:
-          "Logic treated the session as if the drive was inside the Mac. It is in the cloud. I checked twice, and then I wrote the chorus.",
+          "Logic treated the session *as if the drive was inside the Mac*. It is in the cloud. I checked twice, and then I wrote the chorus.",
         name: "Ellis Ward",
         role: "Music producer",
       },
       {
         quote:
-          "I pointed the agent at the drive and it read the repo without me dragging the project onto the laptop. Same cloud drive as my photos. Different folders.",
+          "I pointed the agent at the drive and it read the repo without me dragging the project onto the laptop. *Same cloud drive as my photos.* Different folders.",
         name: "Priya Raman",
         role: "Builds websites with AI agents",
       },
@@ -450,6 +450,112 @@ export const site = {
   close: {
     title: "Ready when your Mac is.",
     body: "Public release is closed. Join the list and the studio will write when a seat opens for the Mac drive.",
+  },
+
+  join: {
+    id: "join",
+    kicker: "Private beta",
+    title: "Ask for a seat.",
+    body: "The Mac drive is not public yet. Tell us the work, the Mac, and where to write. The studio sends one letter when a seat opens.",
+    stages: ["The work", "The Mac", "The note"],
+    ios: "Also write when the iPhone version is ready.",
+    fine: "One letter, when a seat opens. No newsletter.",
+    done: "You’re on the list.",
+    doneBody: "We’ll write from the studio when a seat opens for the Mac drive.",
+    already: "We already have your note. We’ll write from the studio when a seat opens.",
+  },
+
+  useCases: {
+    id: "uses",
+    kicker: "On the drive",
+    title: "The work, and the window it lives in.",
+    body: "A photograph of the desk, and the drive as the Mac actually shows it.",
+    items: [
+      {
+        title: "Family films",
+        body: "Ten years of video, opened on a MacBook Air. The films stay in the cloud. The laptop only plays the one you asked for.",
+        photo: "/media/family.jpg",
+        alt: "A family together outdoors",
+        volume: "Family",
+        files: ["Christmas 2016.mov", "School play", "Holiday"],
+      },
+      {
+        title: "A spring campaign",
+        body: "The freelancer and the editor open the same drive. One place for the film, the stills, and the deck.",
+        photo: "/media/campaign.jpg",
+        alt: "A printed campaign laid out on a desk",
+        volume: "Spring campaign",
+        files: ["hero.mov", "stills", "deck.key"],
+      },
+      {
+        title: "The studio",
+        body: "Photographs, a session, a cut. The apps already on the Mac open the files. Nothing is copied onto the disk first.",
+        photo: "/media/studio.jpg",
+        alt: "A studio desk with a camera and a screen",
+        volume: "Studio",
+        files: ["selects", "session.logicx", "grade"],
+      },
+      {
+        title: "A repo, with an agent",
+        body: "The project lives on the drive. You and the agent read the same files. The MacBook does not have to hold the whole thing.",
+        photo: "/media/code.jpg",
+        alt: "Code on a laptop screen",
+        volume: "florist-shop",
+        files: ["page.tsx", "voice.md", "design"],
+      },
+    ],
+  },
+
+  pipeline: {
+    id: "making",
+    kicker: "How the Mac app is being made",
+    title: "Four stages done. Private beta is this one.",
+    body: "A cloud drive that mounts in Finder is a Mac app with a File Provider volume behind it. This is the real sequence, not a metaphor.",
+    doneLabel: "Done",
+    nowLabel: "Now",
+    nextLabel: "Still to come",
+    stages: [
+      {
+        title: "The brief",
+        body: "A full Mac, a drawer of little drives, and one kind of thing: your own cloud drive.",
+        state: "done",
+      },
+      {
+        title: "File Provider",
+        body: "The macOS API that lets a cloud volume show up in Finder, Get Info, and the apps you already use.",
+        state: "done",
+      },
+      {
+        title: "The cloud",
+        body: "The files live off the laptop. The Mac fetches a file when an app opens it, and writes changes back.",
+        state: "done",
+      },
+      {
+        title: "One click",
+        body: "The Mac app for Air, Pro, Studio, and mini. One click, and the drive is in the sidebar.",
+        state: "done",
+      },
+      {
+        title: "Private beta",
+        body: "Seats, not a public download. The drive is on other people’s Macs, and the list is how the next seat opens.",
+        state: "now",
+      },
+      {
+        title: "Harden the volume",
+        body: "Large libraries, files held open by Photos, Premiere, and Logic, and an agent reading the same drive.",
+        state: "next",
+      },
+      {
+        title: "Notarise and ship",
+        body: "A Developer ID signature, Apple notarisation, then a public Mac build. The list closes when that download is real.",
+        state: "next",
+      },
+      {
+        title: "iPhone",
+        body: "The same drive from the pocket. It waits until the Mac build is public.",
+        state: "next",
+      },
+    ],
   },
 
   download: {

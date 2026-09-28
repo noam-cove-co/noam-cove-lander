@@ -102,7 +102,7 @@ export function Locations({
       </div>
       {mounted ? (
         <div className="flex items-center gap-2 rounded-md bg-[#0a84ff] px-2 py-1.5 text-white">
-          <CoveMark className="size-[18px] shrink-0 text-white" />
+          <CoveMark className="size-[21px] shrink-0 text-white" />
           <span className="truncate">{volume}</span>
         </div>
       ) : onShow ? (

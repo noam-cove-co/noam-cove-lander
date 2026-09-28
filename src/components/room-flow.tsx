@@ -370,7 +370,7 @@ function WorkStep({
           {Array.from({ length: iconCount }, (_, index) => (
             <Glyph key={index} kind={desk.kind} variant={index} className="size-9" />
           ))}
-          <CoveMark className={cn("mb-0.5 ml-1 size-9", mountain ? "text-[#3dcea0]" : "text-[#0e6b56]")} />
+          <CoveMark className={cn("mb-0.5 ml-1 size-[41px]", mountain ? "text-[#3dcea0]" : "text-[#0e6b56]")} />
         </div>
         <p className="mt-4 font-serif text-6xl tracking-[-0.04em] tabular-nums sm:text-7xl">{formatGb(workGb)}</p>
         <p className={cn("mt-1 text-sm", mountain ? "text-[#c5d4ea]" : "text-[#4c5563]")}>on {mountain ? "Mt. Mtn." : "Cove"} · {desk.volume}</p>

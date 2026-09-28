@@ -153,7 +153,7 @@ function DeskPanel({ desk }: { desk: Desk }) {
                 focus === "volume" ? "bg-[#0a84ff] text-white" : "hover:bg-black/5",
               )}
             >
-              <CoveMark className={cn("size-[18px] shrink-0", focus === "volume" ? "text-white" : "text-cove")} />
+              <CoveMark className={cn("size-[21px] shrink-0", focus === "volume" ? "text-white" : "text-cove")} />
               <span className="min-w-0 leading-tight">{desk.volume}</span>
             </button>
           </div>

@@ -106,7 +106,7 @@ function NameStage({
   return (
     <MacWindow title="Name your drive">
       <div className="grid justify-items-center px-4 py-8">
-        <CoveMark className="size-16 text-cove" />
+        <CoveMark className="size-[74px] text-cove" />
         <p className="mt-3 font-serif text-3xl tracking-[-0.03em]">{name}</p>
         <p className="mt-1 text-[12px] text-[#6e6e73]">Your cloud drive</p>
       </div>

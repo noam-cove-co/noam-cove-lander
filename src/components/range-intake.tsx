@@ -110,7 +110,7 @@ function FinderChrome({
               <i className="size-3 rounded-full bg-[#28c840]" />
             </span>
             <p className="mx-auto flex items-center gap-1.5 text-[13px] font-semibold">
-              {mounted ? <CoveMark className="size-4 text-cove" /> : <DriveGlyph />}
+              {mounted ? <CoveMark className="size-[18px] text-cove" /> : <DriveGlyph />}
               {mounted ? "Cove Mtn" : "Macintosh HD"}
             </p>
           </div>
@@ -122,7 +122,7 @@ function FinderChrome({
                 Macintosh HD
               </p>
               <p className={cn("mt-0.5 flex items-center gap-2 rounded-md px-2 py-1.5 text-[13px]", mounted ? "bg-[#0a84ff] text-white" : "text-[#1d1d1f]/45")}>
-                <CoveMark className={cn("size-[18px]", mounted ? "text-white" : "text-cove")} />
+                <CoveMark className={cn("size-[21px]", mounted ? "text-white" : "text-cove")} />
                 Cove Mtn
               </p>
             </aside>

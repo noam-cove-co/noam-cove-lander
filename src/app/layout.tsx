@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist_Mono, Instrument_Sans, Instrument_Serif } from "next/font/google";
+import { Geist_Mono, Instrument_Sans, Instrument_Serif, Permanent_Marker } from "next/font/google";
 import { site } from "@/config/site";
 import { MobileJoinBar, SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -24,6 +24,13 @@ const serif = Instrument_Serif({
 const mono = Geist_Mono({
   subsets: ["latin"],
   variable: "--font-geist-mono",
+  display: "swap",
+});
+
+const marker = Permanent_Marker({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-marker",
   display: "swap",
 });
 
@@ -77,7 +84,7 @@ const jsonLd = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en-GB" className={`${sans.variable} ${serif.variable} ${mono.variable} h-full antialiased`} suppressHydrationWarning>
+    <html lang="en-GB" className={`${sans.variable} ${serif.variable} ${mono.variable} ${marker.variable} h-full antialiased`} suppressHydrationWarning>
       <body className="flex min-h-full flex-col">
         <RouteToneScript />
         <RouteTone />

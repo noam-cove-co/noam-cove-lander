@@ -72,7 +72,7 @@ export function JourneyPlay() {
           {index === 0 ? (
             <MacWindow title="Name your drive">
               <div className="grid justify-items-center px-4 pt-8 pb-4">
-                <CoveMark className="size-14 text-cove" />
+                <CoveMark className="size-16 text-cove" />
                 <label htmlFor="drive-name" className="mt-4 text-[11px] text-[#6e6e73]">
                   People will say this out loud
                 </label>
@@ -164,7 +164,7 @@ export function JourneyPlay() {
               {shown ? (
                 <div className="bg-white px-4 py-4">
                   <div className="grid justify-items-center text-center">
-                    <CoveMark className="size-14 text-cove" />
+                    <CoveMark className="size-16 text-cove" />
                     <p className="mt-2 font-medium">{volume}</p>
                     <p className="text-[11px] text-[#6e6e73]">Volume</p>
                   </div>

@@ -9,8 +9,40 @@ import { CoveMark, Wordmark } from "@/components/brand";
 import { InstallButton } from "@/components/install-button";
 import { isRangePath } from "@/components/route-tone";
 import { useWaitlist } from "@/components/waitlist";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { cn } from "cn";
+
+function ChromeCta({
+  children,
+  onClick,
+  href,
+}: {
+  children: React.ReactNode;
+  onClick?: () => void;
+  href?: string;
+}) {
+  const className = "inline-flex items-center gap-1.5 text-sm font-medium text-foreground";
+  const inner = (
+    <>
+      <span className="border-b border-foreground/40 pb-px">{children}</span>
+      <span aria-hidden className="text-cove">
+        →
+      </span>
+    </>
+  );
+  if (href) {
+    return (
+      <Link href={href} className={className}>
+        {inner}
+      </Link>
+    );
+  }
+  return (
+    <button type="button" onClick={onClick} className={className}>
+      {inner}
+    </button>
+  );
+}
 
 export function SiteHeader() {
   const { openWaitlist } = useWaitlist();
@@ -43,8 +75,10 @@ export function SiteHeader() {
       )}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center gap-3 px-4 sm:px-6">
-        <Link href="/" className="flex items-center gap-2" aria-label="Cove, home">
-          <CoveMark priority className="size-6" />
+        <Link href="/" className="flex items-center gap-2.5" aria-label="Cove, home">
+          <span className="grid h-11 place-items-center rounded-full bg-[#1d1d1f] px-3.5 md:h-auto md:rounded-none md:bg-transparent md:px-0">
+            <CoveMark priority className="size-8" />
+          </span>
           <Wordmark className="text-[1.55rem]" />
         </Link>
         <nav className="ml-6 hidden items-center gap-5 md:flex" aria-label="Primary">
@@ -64,16 +98,9 @@ export function SiteHeader() {
         <div className="ml-auto flex items-center gap-1">
           {range ? null : <InstallButton />}
           {range ? (
-            <Link
-              href={`${site.range.path}#enquire`}
-              className={cn(buttonVariants(), "h-9 rounded-md px-3.5 text-sm")}
-            >
-              Enquire
-            </Link>
+            <ChromeCta href={`${site.range.path}#enquire`}>Enquire</ChromeCta>
           ) : (
-            <Button type="button" onClick={() => openWaitlist()} className="h-9 rounded-md px-3.5 text-sm">
-              Join
-            </Button>
+            <ChromeCta onClick={() => openWaitlist()}>A seat</ChromeCta>
           )}
           <Button
             type="button"
@@ -116,18 +143,17 @@ export function MobileJoinBar() {
   return (
     <div className="fixed inset-x-0 bottom-0 z-40 border-t border-foreground/10 bg-background/95 p-3 backdrop-blur-md md:hidden">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 pb-[env(safe-area-inset-bottom)]">
-        <p className="text-sm leading-tight text-muted-foreground">
-          {range ? "Cove" : "Your cloud drive."}
-          <span className="block text-foreground">{range ? "The mountain mount." : "Private beta for Mac."}</span>
+        <p className="flex items-center gap-2.5 text-sm leading-tight text-muted-foreground">
+          <CoveMark className="size-8" />
+          <span>
+            {range ? "Cove" : "Your cloud drive."}
+            <span className="block text-foreground">{range ? "The mountain mount." : "Private beta for Mac."}</span>
+          </span>
         </p>
         {range ? (
-          <Link href={`${site.range.path}#enquire`} className={cn(buttonVariants(), "h-11 rounded-md px-4")}>
-            Enquire
-          </Link>
+          <ChromeCta href={`${site.range.path}#enquire`}>Enquire</ChromeCta>
         ) : (
-          <Button type="button" onClick={() => openWaitlist()} className="h-11 rounded-md px-4">
-            {site.campaign.cta}
-          </Button>
+          <ChromeCta onClick={() => openWaitlist()}>A seat</ChromeCta>
         )}
       </div>
     </div>

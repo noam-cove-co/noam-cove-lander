@@ -68,7 +68,7 @@ export function CloudStream() {
       <p className="absolute top-[42%] left-[8%] text-[11px] tracking-[0.14em] text-[#3b82f6]/80 uppercase">To the cloud</p>
       <p className="absolute top-[42%] right-[8%] text-[11px] tracking-[0.14em] text-cove/80 uppercase">Onto the Mac</p>
       <div className="absolute bottom-2 left-1/2 flex -translate-x-1/2 flex-col items-center">
-        <CoveMark className="size-7 text-cove" />
+        <CoveMark className="size-8 text-cove" />
         <p className="mt-1 text-[11px] tracking-[0.16em] text-muted-foreground uppercase">Your Mac</p>
       </div>
 
