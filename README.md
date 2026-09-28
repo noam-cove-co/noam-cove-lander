@@ -4,7 +4,7 @@ Your own cloud drive. It lives in the cloud, and it shows up on your Mac in one 
 
 Cove is a private-beta product from **NOAM Co.** (NOAM Consultancy), a small studio in Yorkshire. The Mac app mounts a dedicated cloud drive beside Macintosh HD. iPhone is marked as coming soon.
 
-This repository is the marketing site: the landing page, the studio page, and the waitlist.
+This repository is the marketing site: the landing page, Why Cove?, the studio page, the waitlist, and Mt. Mtn., the dark navy range for organisations.
 
 ## Run it
 
@@ -21,6 +21,8 @@ The site runs at [http://127.0.0.1:4317](http://127.0.0.1:4317).
 - An interactive preview. Pick a desk (home, marketing, studio, agents) and show the drive.
 - A “who it’s for” section that keeps the product the same and changes the words: family photos and videos, a campaign, a studio, or a repo an AI agent is writing.
 - A private-beta waitlist, an Add to Home Screen prompt, and a studio page.
+- [Why Cove?](http://127.0.0.1:4317/why), a short comparison with external SSDs, iCloud, Drive, OneDrive, and a VPS.
+- [Mt. Mtn.](http://127.0.0.1:4317/mt), the enterprise range. Same one-click mount, at mountain scale, in a dark navy invert of the Cove site. Enquiries are stored with the waitlist under the source `mt-mtn`.
 
 ## Content, campaigns, and experiments
 

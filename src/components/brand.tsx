@@ -48,6 +48,26 @@ export function Wordmark({ className }: { className?: string }) {
   );
 }
 
+export function MtMark({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 32 32" className={cn("size-8", className)} aria-hidden="true" fill="none">
+      <path
+        d="M3 25.5 11.2 8.2 16 17.2 20.8 8.2 29 25.5"
+        stroke="currentColor"
+        strokeWidth="2.2"
+        strokeLinejoin="round"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+export function MtWordmark({ className }: { className?: string }) {
+  return (
+    <span className={cn("font-serif leading-none tracking-[-0.04em]", className)}>Mt. Mtn.</span>
+  );
+}
+
 export function EnglishFlag({ className }: { className?: string }) {
   return (
     <svg

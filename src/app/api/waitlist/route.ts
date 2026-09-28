@@ -34,6 +34,9 @@ export async function POST(request: Request) {
   const source = clean(input.source, 32) || "site";
   const headline = clean(input.headline, 8) || site.experiment.active;
   const iosInterest = Boolean(input.iosInterest);
+  const organisation = clean(input.organisation, 120);
+  const note = clean(input.note, 500);
+  const allowedRoles = new Set<string>([...roleIds, "range"]);
 
   if (name.length < 2) {
     return Response.json({ ok: false, message: "Add your name, so we know who to write to." }, { status: 400 });
@@ -43,7 +46,7 @@ export async function POST(request: Request) {
     return Response.json({ ok: false, message: "That email does not look ready to receive a letter." }, { status: 400 });
   }
 
-  if (!roleIds.has(role)) {
+  if (!allowedRoles.has(role)) {
     return Response.json({ ok: false, message: "Choose the desk you work at." }, { status: 400 });
   }
 
@@ -60,8 +63,10 @@ export async function POST(request: Request) {
       mac,
       iosInterest,
       source,
-      campaign: site.campaign.id,
+      campaign: source === "mt-mtn" ? "mt-mtn" : site.campaign.id,
       headline,
+      organisation,
+      note,
       createdAt: new Date().toISOString(),
     });
 

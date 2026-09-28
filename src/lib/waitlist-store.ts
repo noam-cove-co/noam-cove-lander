@@ -11,6 +11,8 @@ export type WaitlistEntry = {
   source: string;
   campaign: string;
   headline: string;
+  organisation: string;
+  note: string;
   createdAt: string;
 };
 
@@ -31,7 +33,12 @@ export async function addWaitlistEntry(
 ): Promise<"created" | "exists"> {
   await fs.mkdir(path.dirname(file), { recursive: true });
   const rows = await readAll();
-  if (rows.some((row) => row.email.toLowerCase() === entry.email.toLowerCase())) {
+  if (
+    rows.some(
+      (row) =>
+        row.email.toLowerCase() === entry.email.toLowerCase() && row.source === entry.source,
+    )
+  ) {
     return "exists";
   }
   rows.push(entry);
