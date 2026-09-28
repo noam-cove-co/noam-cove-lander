@@ -169,7 +169,7 @@ export function MountDemo() {
               <div className="flex min-w-0 flex-1 justify-center px-2">
                 <p className="flex max-w-full items-center gap-1.5 truncate text-[13px] font-semibold">
                   {place === "volume" && mounted ? (
-                    <CoveMark className="size-4 shrink-0 text-cove" />
+                    <CoveMark className="size-[18px] shrink-0 text-cove" />
                   ) : (
                     <span className="relative block size-4 shrink-0">
                       <Image src="/media/hdd.png" alt="" fill sizes="16px" className="object-contain" />
@@ -309,7 +309,7 @@ function SidebarRow({
   const body = (
     <>
       {icon === "volume" ? (
-        <CoveMark className={cn("size-[18px] shrink-0", selected ? "text-white" : "text-cove")} />
+        <CoveMark className={cn("size-[21px] shrink-0", selected ? "text-white" : "text-cove")} />
       ) : (
         <SidebarGlyph name={icon} />
       )}
@@ -518,7 +518,7 @@ function GetInfo({
       <div className="bg-white px-4 py-4">
         <div className="grid justify-items-center text-center">
           {showingVolume ? (
-            <CoveMark className="size-16 text-cove" />
+            <CoveMark className="size-[74px] text-cove" />
           ) : !file ? (
             <span className="relative block size-16">
               <Image src="/media/hdd.png" alt="" fill sizes="64px" className="object-contain" />

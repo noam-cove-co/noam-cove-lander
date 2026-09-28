@@ -27,7 +27,7 @@ export function RoomInvite() {
         <div className="px-5 py-6">
           <p className="font-serif text-5xl tracking-[-0.04em]">2.4 TB</p>
           <p className="mt-1 flex items-center gap-2 text-sm text-[#4c5563]">
-            <CoveMark className="size-4 text-cove" />
+            <CoveMark className="size-[18px] text-cove" />
             on Cove · Family
           </p>
           <div className="mt-6">

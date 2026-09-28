@@ -64,7 +64,7 @@ function MacDesktop() {
             </div>
             {mounted ? (
               <div className="flex items-center gap-2 rounded-md bg-[#0a84ff] px-2 py-1.5 text-white">
-                <CoveMark className="size-[18px] text-white" />
+                <CoveMark className="size-[21px] text-white" />
                 Family
               </div>
             ) : (
@@ -102,8 +102,9 @@ function PhonePeek() {
     >
       <span className="block rounded-[2.1rem] bg-[#1d1d1f] p-[10px] shadow-[0_22px_50px_-28px_rgba(14,19,32,0.55)]">
         <span className="block overflow-hidden rounded-[1.6rem] bg-[#f6f6f6] text-[#1d1d1f]">
-          <span className="flex h-8 items-center justify-between px-5 text-[11px] font-medium">
+          <span className="relative flex h-11 items-center justify-between px-5 text-[11px] font-medium">
             <span>9:41</span>
+            <span className="absolute top-1/2 left-1/2 h-[22px] w-24 -translate-x-1/2 -translate-y-1/2 rounded-full bg-black" aria-hidden />
             <span className="text-[#6e6e73]">{peek ? "Cove" : "Locked"}</span>
           </span>
           {peek ? (
@@ -112,7 +113,7 @@ function PhonePeek() {
               <span className="mt-3 block">
                 {pocket.map((name) => (
                   <span key={name} className="flex items-center gap-2 border-t border-black/10 py-2 text-[13px]">
-                    <CoveMark className="size-4 text-cove" />
+                    <CoveMark className="size-[18px] text-cove" />
                     {name}
                   </span>
                 ))}
@@ -124,7 +125,7 @@ function PhonePeek() {
           ) : (
             <span className="grid min-h-52 place-items-center px-6 pb-8 text-center">
               <span>
-                <CoveMark className="mx-auto size-10 opacity-40" />
+                <CoveMark className="mx-auto size-[46px] opacity-40" />
                 <span className="mt-3 block font-serif text-2xl">Coming soon</span>
                 <span className="mt-2 block text-[12px] text-[#6e6e73]">Tap to peek at the drive.</span>
               </span>
@@ -157,7 +158,7 @@ export function Close() {
             </div>
             {mounted ? (
               <div className="flex items-center gap-2 rounded-md bg-[#0a84ff] px-2 py-1.5 text-white">
-                <CoveMark className="size-[18px] text-white" />
+                <CoveMark className="size-[21px] text-white" />
                 Your drive
               </div>
             ) : (
@@ -166,7 +167,7 @@ export function Close() {
                 onClick={() => setMounted(true)}
                 className="mt-3 flex w-full items-center gap-3 rounded-md px-2 py-3 text-left hover:bg-black/5"
               >
-                <CoveMark className="size-10 text-cove" />
+                <CoveMark className="size-[46px] text-cove" />
                 <span>
                   <span className="block font-medium">Show your drive</span>
                   <span className="block text-[12px] text-[#6e6e73]">One click. Then the list is how a seat opens.</span>

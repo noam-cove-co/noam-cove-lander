@@ -10,6 +10,7 @@
   --font-sans: var(--font-sans);
   --font-serif: var(--font-serif);
   --font-mono: var(--font-geist-mono);
+  --font-marker: var(--font-marker);
   --font-heading: var(--font-serif);
   --color-cove: #0e6b56;
   --color-pine: #0e1320;
@@ -131,6 +132,15 @@
     color-scheme: light;
     scroll-behavior: smooth;
     scroll-padding-top: 6rem;
+  }
+  .ink-mark {
+    background-image: linear-gradient(#e3f56b, #e3f56b);
+    background-repeat: no-repeat;
+    background-position: 0 0.62em;
+    background-size: 100% 0.42em;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+    color: inherit;
   }
   body {
     @apply bg-background text-foreground;

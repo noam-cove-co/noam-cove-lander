@@ -1,24 +1,22 @@
 "use client";
 
 import { createContext, useContext, useMemo, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import { macs, roles, site } from "@/config/site";
 import { track } from "@/lib/analytics";
 import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "cn";
 
 type Intent = { ios?: boolean };
 
-const WaitlistContext = createContext<{ openWaitlist: (intent?: Intent) => void }>({
+const WaitlistContext = createContext<{
+  openWaitlist: (intent?: Intent) => void;
+  iosRequested: boolean;
+}>({
   openWaitlist: () => {},
+  iosRequested: false,
 });
 
 export function useWaitlist() {
@@ -26,37 +24,26 @@ export function useWaitlist() {
 }
 
 export function WaitlistProvider({ children }: { children: React.ReactNode }) {
-  const [open, setOpen] = useState(false);
-  const [ios, setIos] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
+  const [iosRequested, setIosRequested] = useState(false);
 
   const value = useMemo(
     () => ({
+      iosRequested,
       openWaitlist: (intent?: Intent) => {
-        setIos(Boolean(intent?.ios));
-        setOpen(true);
+        setIosRequested(Boolean(intent?.ios));
+        if (pathname === "/") {
+          document.getElementById(site.join.id)?.scrollIntoView({ behavior: "smooth" });
+        } else {
+          router.push(`/#${site.join.id}`);
+        }
       },
     }),
-    [],
+    [iosRequested, pathname, router],
   );
 
-  return (
-    <WaitlistContext.Provider value={value}>
-      {children}
-      <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="rounded-3xl bg-background/95 p-6 backdrop-blur-xl sm:max-w-[440px]">
-          <DialogHeader>
-            <DialogTitle className="font-serif text-3xl font-normal tracking-tight">
-              Join the private beta
-            </DialogTitle>
-            <DialogDescription className="text-base leading-relaxed">
-              The Mac drive is not public yet. Leave your name and we will write when a seat opens.
-            </DialogDescription>
-          </DialogHeader>
-          <WaitlistForm source="dialog" iosDefault={ios} key={`${open}-${ios}`} />
-        </DialogContent>
-      </Dialog>
-    </WaitlistContext.Provider>
-  );
+  return <WaitlistContext.Provider value={value}>{children}</WaitlistContext.Provider>;
 }
 
 export function WaitlistForm({
@@ -143,7 +130,7 @@ export function WaitlistForm({
       </div>
       <fieldset className="grid gap-2">
         <legend className="text-sm font-medium">The drive is mostly for</legend>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-x-4 gap-y-2">
           {roles.map((item) => (
             <button
               key={item.id}
@@ -151,8 +138,8 @@ export function WaitlistForm({
               aria-pressed={role === item.id}
               onClick={() => setRole(item.id)}
               className={cn(
-                "rounded-md px-3 py-1.5 text-sm ring-1 ring-foreground/10",
-                role === item.id ? "bg-pine text-paper" : "bg-white/70 text-foreground",
+                "border-b-2 py-1 text-sm",
+                role === item.id ? "border-cove text-foreground" : "border-transparent text-muted-foreground",
               )}
             >
               {item.label}
@@ -162,7 +149,7 @@ export function WaitlistForm({
       </fieldset>
       <fieldset className="grid gap-2">
         <legend className="text-sm font-medium">Your Mac</legend>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-x-4 gap-y-2">
           {macs.map((item) => (
             <button
               key={item.id}
@@ -170,8 +157,8 @@ export function WaitlistForm({
               aria-pressed={mac === item.id}
               onClick={() => setMac(item.id)}
               className={cn(
-                "rounded-md px-3 py-1.5 text-sm ring-1 ring-foreground/10",
-                mac === item.id ? "bg-pine text-paper" : "bg-white/70 text-foreground",
+                "border-b-2 py-1 text-sm",
+                mac === item.id ? "border-cove text-foreground" : "border-transparent text-muted-foreground",
               )}
             >
               {item.label}

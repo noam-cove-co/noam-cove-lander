@@ -28,7 +28,7 @@ export default function MtPage() {
     <main>
       <header className="mx-auto w-full max-w-6xl px-4 pt-16 pb-8 sm:px-6 sm:pt-20">
         <p className="flex items-center gap-2 text-xs tracking-[0.22em] text-primary uppercase">
-          <CoveMark className="size-4" />
+          <CoveMark className="size-[18px]" />
           Cove
           <span className="text-muted-foreground">· {range.name}</span>
         </p>
@@ -95,7 +95,7 @@ export default function MtPage() {
       <section className="border-t border-white/12">
         <div className="mx-auto w-full max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
           <p className="flex items-center gap-3">
-            <CoveMark className="size-10 text-primary" />
+            <CoveMark className="size-[46px] text-primary" />
             <Wordmark className="text-5xl sm:text-7xl" />
           </p>
           <p className="mt-8 max-w-3xl font-serif text-4xl leading-[1.05] tracking-[-0.04em] sm:text-6xl">

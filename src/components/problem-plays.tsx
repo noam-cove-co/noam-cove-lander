@@ -112,7 +112,7 @@ function DrawerPlay() {
             .filter((stick) => saved.includes(stick.id))
             .map((stick) => (
               <li key={stick.id} className="flex items-center gap-2 px-3 py-1.5 text-[12px]">
-                <CoveMark className="size-3.5 text-cove" />
+                <CoveMark className="size-4 text-cove" />
                 {stick.label}
                 <span className="ml-auto text-[#6e6e73]">On Cove</span>
               </li>
@@ -134,7 +134,7 @@ function DrawerPlay() {
           </button>
         ) : (
           <button type="button" onClick={collect} className="flex w-full items-center gap-2 text-left text-[13px]">
-            <CoveMark className="size-5 shrink-0 text-cove" />
+            <CoveMark className="size-[23px] shrink-0 text-cove" />
             <span>
               <span className="block font-medium">Give them one drive</span>
               <span className="block text-[11px] text-[#6e6e73]">
