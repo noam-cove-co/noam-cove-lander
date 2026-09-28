@@ -1,9 +1,13 @@
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import { ImageResponse } from "next/og";
 
 export const size = { width: 180, height: 180 };
 export const contentType = "image/png";
 
-export default function AppleIcon() {
+export default async function AppleIcon() {
+  const png = await readFile(join(process.cwd(), "public/brand/cove-mark.png"));
+  const src = `data:image/png;base64,${png.toString("base64")}`;
   return new ImageResponse(
     (
       <div
@@ -16,28 +20,7 @@ export default function AppleIcon() {
           background: "#0e6b56",
         }}
       >
-        <div
-          style={{
-            width: 104,
-            height: 104,
-            borderRadius: 52,
-            border: "10px solid #f5f6f8",
-            borderRightColor: "transparent",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <div
-            style={{
-              width: 16,
-              height: 16,
-              borderRadius: 8,
-              background: "#f5f6f8",
-              marginRight: 16,
-            }}
-          />
-        </div>
+        <img src={src} width={148} height={148} alt="" />
       </div>
     ),
     { ...size },
