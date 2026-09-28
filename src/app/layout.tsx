@@ -77,7 +77,7 @@ const jsonLd = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en-GB" className={`${sans.variable} ${serif.variable} ${mono.variable} h-full antialiased`}>
+    <html lang="en-GB" className={`${sans.variable} ${serif.variable} ${mono.variable} h-full antialiased`} suppressHydrationWarning>
       <body className="flex min-h-full flex-col">
         <RouteToneScript />
         <RouteTone />
