@@ -41,8 +41,8 @@ export function Reviews() {
       <div className="mt-10 grid gap-4 md:grid-cols-2">
         {site.reviews.quotes.map((quote) => (
           <Reveal key={quote.name}>
-            <figure className="h-full rounded-md bg-white/50 p-6 ring-1 ring-white/80">
-              <blockquote className="text-base leading-relaxed">“{quote.quote}”</blockquote>
+            <figure className="h-full border-t border-foreground/15 pt-5">
+              <blockquote className="font-serif text-2xl leading-snug tracking-[-0.03em]">“{quote.quote}”</blockquote>
               <figcaption className="mt-4 text-sm text-muted-foreground">
                 <span className="text-foreground">{quote.name}</span>
                 <span className="px-1.5">·</span>

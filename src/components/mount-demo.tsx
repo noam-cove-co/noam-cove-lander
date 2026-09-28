@@ -1,21 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { site } from "@/config/site";
 import { track } from "@/lib/analytics";
-import {
-  CodePreview,
-  CoveVolume,
-  FileArt,
-  InternalDrive,
-  MacFolder,
-  MoviePreview,
-  PhotoPreview,
-  SidebarGlyph,
-  TimelinePreview,
-  ViewIcon,
-} from "@/components/finder-icons";
+import { FileArt, SidebarGlyph, ViewIcon } from "@/components/finder-icons";
 import { cn } from "cn";
 
 type ViewMode = "icon" | "list" | "column" | "gallery";
@@ -172,11 +162,9 @@ export function MountDemo() {
               </div>
               <div className="flex min-w-0 flex-1 justify-center px-2">
                 <p className="flex max-w-full items-center gap-1.5 truncate text-[13px] font-semibold">
-                  {place === "volume" && mounted ? (
-                    <CoveVolume className="size-4 shrink-0" />
-                  ) : (
-                    <InternalDrive className="size-4 shrink-0" />
-                  )}
+                  <span className="relative block size-4 shrink-0">
+                    <Image src="/media/hdd.png" alt="" fill sizes="16px" className="object-contain" />
+                  </span>
                   <span className="truncate">{busy ? "Connecting…" : title}</span>
                 </p>
               </div>
@@ -271,21 +259,11 @@ export function MountDemo() {
         </div>
 
         <div className="mx-auto mb-3 hidden w-fit items-end gap-1.5 rounded-2xl bg-white/20 px-2.5 py-1.5 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.28)] backdrop-blur-md md:flex">
-          <DockTile active label="Finder">
-            <MacFolder className="size-7" />
-          </DockTile>
-          <DockTile label="Photos">
-            <PhotoPreview className="size-7" />
-          </DockTile>
-          <DockTile label="Premiere">
-            <TimelinePreview className="size-7" />
-          </DockTile>
-          <DockTile label="Logic">
-            <MoviePreview className="size-7" />
-          </DockTile>
-          <DockTile label="Cursor">
-            <CodePreview className="size-7" />
-          </DockTile>
+          <DockTile active label="Finder" src="/media/finder.png" />
+          <DockTile label="Photos" src="/media/photos.png" />
+          <DockTile label="Premiere" src="/media/premiere.png" />
+          <DockTile label="Logic" src="/media/logic.png" />
+          <DockTile label="Cursor" src="/media/cursor.png" />
         </div>
       </div>
       <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
@@ -524,12 +502,12 @@ function GetInfo({
       </div>
       <div className="bg-white px-4 py-4">
         <div className="grid justify-items-center text-center">
-          {showingVolume ? (
-            <CoveVolume className="size-16" />
-          ) : file ? (
-            <FileArt kind={file.kind} name={file.name} className="size-16" />
+          {!file ? (
+            <span className="relative block size-16">
+              <Image src="/media/hdd.png" alt="" fill sizes="64px" className="object-contain" />
+            </span>
           ) : (
-            <InternalDrive className="size-16" />
+            <FileArt kind={file.kind} name={file.name} className="size-16" />
           )}
           <p className="mt-2 max-w-full truncate text-[13px] font-medium">{title}</p>
           <p className="text-[11px] text-[#6e6e73]">
@@ -580,12 +558,12 @@ function GetInfo({
   );
 }
 
-function DockTile({ children, active, label }: { children: React.ReactNode; active?: boolean; label: string }) {
+function DockTile({ src, active, label }: { src: string; active?: boolean; label: string }) {
   return (
-    <div className="grid w-11 justify-items-center" title={label}>
-      <div className="grid size-10 place-items-center rounded-[11px] bg-white/80 shadow-[0_1px_2px_rgba(0,0,0,0.25)]">
-        {children}
-      </div>
+    <div className="grid w-12 justify-items-center" title={label}>
+      <span className="relative block size-11 drop-shadow-[0_2px_4px_rgba(0,0,0,0.35)]">
+        <Image src={src} alt="" fill sizes="44px" className="object-contain" />
+      </span>
       <span className={cn("mt-1 size-1 rounded-full", active ? "bg-white" : "bg-transparent")} />
     </div>
   );

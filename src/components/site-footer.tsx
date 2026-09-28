@@ -54,7 +54,26 @@ export function SiteFooter() {
       <div className="border-t border-foreground/10">
         <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-6">
           <CraftLine />
-          <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} NOAM Co.</p>
+          <p className="text-xs text-muted-foreground">
+            © {new Date().getFullYear()} NOAM Co.
+            <span className="px-2">·</span>
+            Photographs from{" "}
+            <a href="https://unsplash.com" className="underline-offset-2 hover:underline">
+              Unsplash
+            </a>
+            . App icons from the{" "}
+            <a
+              href="https://github.com/nweii/macOS_Big_Sur_icons_replacements"
+              className="underline-offset-2 hover:underline"
+            >
+              Big Sur set
+            </a>
+            . File icons from{" "}
+            <a href="https://icons8.com" className="underline-offset-2 hover:underline">
+              Icons8
+            </a>
+            .
+          </p>
         </div>
       </div>
     </footer>
