@@ -8,6 +8,7 @@ import { JourneyPlay } from "@/components/journey-play";
 import { LanesPlay } from "@/components/lanes-play";
 import { ProblemPlays } from "@/components/problem-plays";
 import { Reviews } from "@/components/reviews";
+import { RoomInvite } from "@/components/room-invite";
 
 export default async function Page({ searchParams }: PageProps<"/">) {
   const params = await searchParams;
@@ -20,6 +21,7 @@ export default async function Page({ searchParams }: PageProps<"/">) {
       <Marquee />
       <BeatsPlay />
       <ProblemPlays />
+      <RoomInvite />
       <JourneyPlay />
       <LanesPlay />
       <Audiences />
