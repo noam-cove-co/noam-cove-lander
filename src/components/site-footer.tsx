@@ -3,8 +3,9 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { site } from "@/config/site";
-import { CoveMark, CraftLine, MtMark, MtWordmark, Wordmark } from "@/components/brand";
+import { CoveMark, CraftLine, Wordmark } from "@/components/brand";
 import { isRangePath } from "@/components/route-tone";
+import { cn } from "cn";
 
 export function SiteFooter() {
   const range = isRangePath(usePathname());
@@ -12,22 +13,9 @@ export function SiteFooter() {
     <footer className="border-t border-foreground/10">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-[1.3fr_1fr] md:py-16">
         <div>
-          <Link
-            href={range ? site.range.path : "/"}
-            className="inline-flex items-center gap-2"
-            aria-label={range ? "Mt. Mtn., home" : "Cove, home"}
-          >
-            {range ? (
-              <>
-                <MtMark className="size-7 text-primary" />
-                <MtWordmark className="text-[1.65rem]" />
-              </>
-            ) : (
-              <>
-                <CoveMark className="size-7 text-cove" />
-                <Wordmark />
-              </>
-            )}
+          <Link href="/" className="inline-flex items-center gap-2" aria-label="Cove, home">
+            <CoveMark className={cn("size-7", range ? "text-primary" : "text-cove")} />
+            <Wordmark />
           </Link>
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
             {range
