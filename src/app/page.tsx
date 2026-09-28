@@ -2,9 +2,9 @@ import { resolveHeadline } from "@/config/site";
 import { Audiences } from "@/components/audiences";
 import { ExperimentBeacon } from "@/components/experiment-beacon";
 import { Hero } from "@/components/hero";
-import { Close, Faq, Marquee, PlainWords, Platforms, Problem, Workflow } from "@/components/home-sections";
-import { Journey } from "@/components/journey";
+import { Close, Faq, Marquee, Platforms } from "@/components/home-sections";
 import { Reviews } from "@/components/reviews";
+import { ScrollStory } from "@/components/scroll-story";
 
 export default async function Page({ searchParams }: PageProps<"/">) {
   const params = await searchParams;
@@ -15,10 +15,7 @@ export default async function Page({ searchParams }: PageProps<"/">) {
       <ExperimentBeacon variant={variant} />
       <Hero variant={variant} />
       <Marquee />
-      <PlainWords />
-      <Problem />
-      <Journey />
-      <Workflow />
+      <ScrollStory />
       <Audiences />
       <Reviews />
       <Platforms />

@@ -1,6 +1,7 @@
 "use client";
 
 import { useId } from "react";
+import Image from "next/image";
 import { cn } from "cn";
 
 function gid(raw: string) {
@@ -145,6 +146,28 @@ export function TimelinePreview({ className }: { className?: string }) {
   );
 }
 
+const photos: Record<string, string> = {
+  "Beach.jpg": "/media/beach.jpg",
+  "banner-v17.png": "/media/poster.jpg",
+  "contact-sheet.jpg": "/media/camera.jpg",
+};
+
+const films: Record<string, string> = {
+  "School play.mov": "/media/stage.jpg",
+  "Christmas.mov": "/media/christmas.jpg",
+};
+
+export function artSrc(kind: string, name?: string) {
+  if (kind === "photo") return photos[name ?? ""] ?? "/media/beach.jpg";
+  if (kind === "film") return films[name ?? ""] ?? "/media/film.jpg";
+  if (kind === "folder") return "/media/folder.png";
+  if (kind === "cut") return "/media/premiere.png";
+  if (kind === "code") return "/media/code.jpg";
+  if (name?.endsWith(".md")) return "/media/desk.jpg";
+  if (name?.endsWith(".pdf")) return "/media/campaign.jpg";
+  return "/media/doc.png";
+}
+
 export function FileArt({
   kind,
   name,
@@ -154,13 +177,18 @@ export function FileArt({
   name?: string;
   className?: string;
 }) {
-  if (kind === "folder") return <MacFolder className={className} />;
-  if (kind === "photo") return <PhotoPreview className={className} variant={name?.includes("banner") || name?.includes("contact") ? 1 : 0} />;
-  if (kind === "film") return <MoviePreview className={className} />;
-  if (kind === "code") return <CodePreview className={className} />;
-  if (kind === "cut") return <TimelinePreview className={className} />;
-  const label = name?.endsWith(".md") ? "MD" : name?.endsWith(".pdf") ? "PDF" : "DOC";
-  return <DocPreview className={className} label={label} />;
+  const preview = kind === "photo" || kind === "film" || kind === "code" || name?.endsWith(".pdf") || name?.endsWith(".md");
+  return (
+    <span className={cn("relative block overflow-hidden", preview && "rounded-[3px]", className)}>
+      <Image
+        src={artSrc(kind, name)}
+        alt=""
+        fill
+        sizes="112px"
+        className={preview ? "object-cover" : "object-contain"}
+      />
+    </span>
+  );
 }
 
 export function SidebarGlyph({ name }: { name: "recents" | "apps" | "desktop" | "documents" | "downloads" | "hd" | "volume" }) {
@@ -192,7 +220,11 @@ export function SidebarGlyph({ name }: { name: "recents" | "apps" | "desktop" | 
     );
   }
   if (name === "documents") {
-    return <MacFolder className={common} />;
+    return (
+      <span className={cn("relative block", common)}>
+        <Image src="/media/folder.png" alt="" fill sizes="18px" className="object-contain" />
+      </span>
+    );
   }
   if (name === "downloads") {
     return (
@@ -202,8 +234,14 @@ export function SidebarGlyph({ name }: { name: "recents" | "apps" | "desktop" | 
       </svg>
     );
   }
-  if (name === "volume") return <CoveVolume className={common} />;
-  return <InternalDrive className={common} />;
+  if (name === "volume" || name === "hd") {
+    return (
+      <span className={cn("relative block", common)}>
+        <Image src="/media/hdd.png" alt="" fill sizes="18px" className="object-contain" />
+      </span>
+    );
+  }
+  return null;
 }
 
 export function ViewIcon({ mode }: { mode: "icon" | "list" | "column" | "gallery" }) {
