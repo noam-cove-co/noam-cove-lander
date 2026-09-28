@@ -72,7 +72,7 @@ export function SiteFooter() {
             <a href="https://icons8.com" className="underline-offset-2 hover:underline">
               Icons8
             </a>
-            .
+            . OpenClaw and GitHub Copilot marks belong to their owners.
           </p>
         </div>
       </div>
