@@ -2,16 +2,20 @@
 
 import { useEffect, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { site } from "@/config/site";
-import { CoveMark, Wordmark } from "@/components/brand";
+import { CoveMark, MtMark, MtWordmark, Wordmark } from "@/components/brand";
 import { InstallButton } from "@/components/install-button";
+import { isRangePath } from "@/components/route-tone";
 import { useWaitlist } from "@/components/waitlist";
 import { Button } from "@/components/ui/button";
 import { cn } from "cn";
 
 export function SiteHeader() {
   const { openWaitlist } = useWaitlist();
+  const pathname = usePathname();
+  const range = isRangePath(pathname);
   const [open, setOpen] = useState(false);
   const scrolled = useSyncExternalStore(
     (onChange) => {
@@ -39,22 +43,48 @@ export function SiteHeader() {
       )}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center gap-3 px-4 sm:px-6">
-        <Link href="/" className="flex items-center gap-2" aria-label="Cove, home">
-          <CoveMark className="size-6 text-cove" />
-          <Wordmark className="text-[1.55rem]" />
+        <Link
+          href={range ? site.range.path : "/"}
+          className="flex items-center gap-2"
+          aria-label={range ? "Mt. Mtn., home" : "Cove, home"}
+        >
+          {range ? (
+            <>
+              <MtMark className="size-6 text-primary" />
+              <MtWordmark className="text-[1.45rem]" />
+            </>
+          ) : (
+            <>
+              <CoveMark className="size-6 text-cove" />
+              <Wordmark className="text-[1.55rem]" />
+            </>
+          )}
         </Link>
         <nav className="ml-6 hidden items-center gap-5 md:flex" aria-label="Primary">
           {site.nav.map((item) => (
-            <Link key={item.href} href={item.href} className="text-sm text-foreground/75 hover:text-foreground">
+            <Link
+              key={item.href}
+              href={item.href}
+              className={cn(
+                "text-sm text-foreground/75 hover:text-foreground",
+                range && item.href === site.range.path && "text-primary",
+              )}
+            >
               {item.label}
             </Link>
           ))}
         </nav>
         <div className="ml-auto flex items-center gap-1">
-          <InstallButton />
-          <Button type="button" onClick={() => openWaitlist()} className="h-9 rounded-md px-3.5 text-sm">
-            Join
-          </Button>
+          {range ? null : <InstallButton />}
+          {range ? (
+            <Button render={<Link href={`${site.range.path}#enquire`} />} className="h-9 rounded-md px-3.5 text-sm">
+              Enquire
+            </Button>
+          ) : (
+            <Button type="button" onClick={() => openWaitlist()} className="h-9 rounded-md px-3.5 text-sm">
+              Join
+            </Button>
+          )}
           <Button
             type="button"
             variant="ghost"
@@ -75,7 +105,10 @@ export function SiteHeader() {
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
-              className="block py-3 text-lg"
+              className={cn(
+                "block py-3 text-lg",
+                range && item.href === site.range.path && "text-primary",
+              )}
             >
               {item.label}
             </Link>
@@ -88,16 +121,24 @@ export function SiteHeader() {
 
 export function MobileJoinBar() {
   const { openWaitlist } = useWaitlist();
+  const pathname = usePathname();
+  const range = isRangePath(pathname);
   return (
-    <div className="fixed inset-x-0 bottom-0 z-40 border-t border-white/50 bg-background/80 p-3 backdrop-blur-xl md:hidden">
+    <div className="fixed inset-x-0 bottom-0 z-40 border-t border-foreground/10 bg-background/95 p-3 backdrop-blur-md md:hidden">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 pb-[env(safe-area-inset-bottom)]">
         <p className="text-sm leading-tight text-muted-foreground">
-          Your cloud drive.
-          <span className="block text-foreground">Private beta for Mac.</span>
+          {range ? "Mt. Mtn." : "Your cloud drive."}
+          <span className="block text-foreground">{range ? "The range." : "Private beta for Mac."}</span>
         </p>
-        <Button type="button" onClick={() => openWaitlist()} className="h-11 rounded-md px-4">
-          {site.campaign.cta}
-        </Button>
+        {range ? (
+          <Button render={<Link href={`${site.range.path}#enquire`} />} className="h-11 rounded-md px-4">
+            Enquire
+          </Button>
+        ) : (
+          <Button type="button" onClick={() => openWaitlist()} className="h-11 rounded-md px-4">
+            {site.campaign.cta}
+          </Button>
+        )}
       </div>
     </div>
   );

@@ -109,8 +109,43 @@ export const site = {
     { href: "/#audiences", label: "Who it’s for" },
     { href: "/#reviews", label: "Notes" },
     { href: "/team", label: "Studio" },
+    { href: "/mt", label: "Mt. Mtn." },
     { href: "/download", label: "Download" },
   ],
+
+  range: {
+    path: "/mt",
+    name: "Mt. Mtn.",
+    spoken: "Mount Mountain",
+    kicker: "The range",
+    title: "Cove, at the size of a mountain.",
+    lede: "Same gesture. You mount a drive on the Mac. This one is dedicated, shared across an organisation, and rather larger than a laptop can hold.",
+    nameNote:
+      "Mt. for mount. Mtn. for mountain. You mount it, and the capacity is the point. The short name is deliberate. The long version is a specification.",
+    gesture: {
+      title: "Still one click.",
+      body: "It shows up under Locations, beside Macintosh HD, like Cove. The difference is what is behind the click: a drive kept for your organisation, not a corner of a shared cloud.",
+    },
+    specs: [
+      { label: "Capacity", value: "From 50 TB, and on into petabytes." },
+      { label: "Mount", value: "One click on the Macs that should see it. The same path for all of them." },
+      { label: "Who", value: "A floor, a company, an archive. People, machines, and the agents working with them." },
+      { label: "Throughput", value: "Built for rushes, libraries, and repos that do not like to wait." },
+      { label: "Governance", value: "Who mounted it, from which machine, and what they opened." },
+      { label: "Care", value: "A person at NOAM Co. You are not writing to a queue." },
+    ],
+    desks: [
+      { name: "Archives and broadcasters", body: "Years of film, not a folder that syncs when it feels like it." },
+      { name: "Agencies", body: "Several teams, one mountain, the campaign still a drive on each Mac." },
+      { name: "Labels and post", body: "Sessions and masters with somewhere serious to live." },
+      { name: "Agent desks", body: "When the repos and the transcripts outgrow the laptop, they still need a real path." },
+    ],
+    aside: "The family album is Cove. Mt. Mtn. is for when the work has become a landscape.",
+    enquire: {
+      title: "Tell us the size of it.",
+      body: "No public download. Write with the rough capacity and who would mount it. The studio reads every note.",
+    },
+  },
 
   hero: {
     eyebrow: "Private beta for Mac",

@@ -1,18 +1,38 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { site } from "@/config/site";
-import { CoveMark, CraftLine, Wordmark } from "@/components/brand";
+import { CoveMark, CraftLine, MtMark, MtWordmark, Wordmark } from "@/components/brand";
+import { isRangePath } from "@/components/route-tone";
 
 export function SiteFooter() {
+  const range = isRangePath(usePathname());
   return (
     <footer className="border-t border-foreground/10">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-[1.3fr_1fr] md:py-16">
         <div>
-          <Link href="/" className="inline-flex items-center gap-2" aria-label="Cove, home">
-            <CoveMark className="size-7 text-cove" />
-            <Wordmark />
+          <Link
+            href={range ? site.range.path : "/"}
+            className="inline-flex items-center gap-2"
+            aria-label={range ? "Mt. Mtn., home" : "Cove, home"}
+          >
+            {range ? (
+              <>
+                <MtMark className="size-7 text-primary" />
+                <MtWordmark className="text-[1.65rem]" />
+              </>
+            ) : (
+              <>
+                <CoveMark className="size-7 text-cove" />
+                <Wordmark />
+              </>
+            )}
           </Link>
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
-            Your own cloud drive. It lives in the cloud, and it shows up on your Mac in one click.
+            {range
+              ? "Cove, at the size of a mountain. A dedicated drive, mounted in one click, kept for an organisation."
+              : "Your own cloud drive. It lives in the cloud, and it shows up on your Mac in one click."}
           </p>
         </div>
         <div className="grid grid-cols-2 gap-6 text-sm">
@@ -27,7 +47,7 @@ export function SiteFooter() {
             <a href={`mailto:${site.email}`} className="hover:text-foreground">
               {site.email}
             </a>
-            <p>{site.footer.note}</p>
+            <p>{range ? "Mt. Mtn. is the range. Cove is the drive for one Mac." : site.footer.note}</p>
           </div>
         </div>
       </div>

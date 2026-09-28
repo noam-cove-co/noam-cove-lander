@@ -3,6 +3,7 @@ import { Geist_Mono, Instrument_Sans, Instrument_Serif } from "next/font/google"
 import { site } from "@/config/site";
 import { MobileJoinBar, SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { RouteTone, RouteToneScript } from "@/components/route-tone";
 import { WaitlistProvider } from "@/components/waitlist";
 import "./globals.css";
 
@@ -78,6 +79,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en-GB" className={`${sans.variable} ${serif.variable} ${mono.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col">
+        <RouteToneScript />
+        <RouteTone />
         <a
           href="#content"
           className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[80] focus:rounded-full focus:bg-pine focus:px-4 focus:py-2 focus:text-paper"

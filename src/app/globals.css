@@ -144,6 +144,34 @@
     background: #d5eee4;
     color: #0e1320;
   }
+  html[data-tone="range"] {
+    color-scheme: dark;
+    --background: #070d18;
+    --foreground: #f3f5f7;
+    --card: #0c1628;
+    --card-foreground: #f3f5f7;
+    --popover: #0c1628;
+    --popover-foreground: #f3f5f7;
+    --primary: #3dcea0;
+    --primary-foreground: #061018;
+    --secondary: #101a2c;
+    --secondary-foreground: #f3f5f7;
+    --muted: #101a2c;
+    --muted-foreground: #93a0b4;
+    --accent: #101a2c;
+    --accent-foreground: #f3f5f7;
+    --border: rgba(243, 245, 247, 0.14);
+    --input: rgba(243, 245, 247, 0.22);
+    --ring: #3dcea0;
+  }
+  html[data-tone="range"] body {
+    background: #070d18;
+    color: #f3f5f7;
+  }
+  html[data-tone="range"] ::selection {
+    background: #145744;
+    color: #f3f5f7;
+  }
 }
 
 .glass {
