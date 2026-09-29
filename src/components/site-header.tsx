@@ -174,8 +174,10 @@ export function SiteHeader() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-40 md:border-b md:border-foreground/10 md:bg-background/90 md:backdrop-blur-md",
-        scrolled && "md:bg-background/95",
+        "sticky top-0 z-40",
+        scrolled
+          ? "md:border-b md:border-foreground/10 md:bg-background/90 md:backdrop-blur-md"
+          : "md:border-b md:border-transparent md:bg-transparent",
       )}
     >
       <div className="px-3 pt-[max(0.55rem,env(safe-area-inset-top))] md:px-0 md:pt-0">
