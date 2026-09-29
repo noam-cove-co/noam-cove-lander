@@ -1,6 +1,7 @@
 /**
  * Screenshot each /internal/campaign/[name]/export/[id] creative
- * into public/campaign/[name]/[id].png at native pixel size.
+ * into public/campaign/[name]/[id].png at @2x (deviceScaleFactor 2).
+ * Logical CSS size stays the creative width×height; PNG pixels are 2×.
  */
 import playwright from "/tmp/node_modules/playwright-core/index.js";
 import { mkdir, writeFile, readFile } from "node:fs/promises";
@@ -10,6 +11,7 @@ const { chromium } = playwright;
 const base = process.env.SITE_URL ?? "http://127.0.0.1:4317";
 const chrome = process.env.CHROME_PATH ?? "/usr/local/bin/google-chrome";
 const only = process.env.ONLY?.split(",").filter(Boolean) ?? null;
+const SCALE = 2;
 
 // Keep in sync with src/config/campaigns.ts
 const campaigns = [
@@ -91,7 +93,7 @@ for (const campaign of campaigns) {
     const url = `${base}/internal/campaign/${campaign.id}/export/${id}`;
     const page = await browser.newPage({
       viewport: { width: 1600, height: 2200 },
-      deviceScaleFactor: 1,
+      deviceScaleFactor: SCALE,
     });
     await page.goto(url, { waitUntil: "networkidle", timeout: 60000 });
     await page.waitForTimeout(500);
@@ -100,7 +102,18 @@ for (const campaign of campaigns) {
     const out = join(dir, `${id}.png`);
     await frame.screenshot({ path: out, type: "png" });
     const box = await frame.boundingBox();
-    console.log(JSON.stringify({ campaign: campaign.id, id, out, box }));
+    console.log(
+      JSON.stringify({
+        campaign: campaign.id,
+        id,
+        out,
+        box,
+        scale: SCALE,
+        pixels: box
+          ? { width: Math.round(box.width * SCALE), height: Math.round(box.height * SCALE) }
+          : null,
+      }),
+    );
     await page.close();
   }
 }
@@ -119,6 +132,8 @@ await writeFile(
     {
       generatedAt: new Date().toISOString(),
       previousGeneratedAt: previous.generatedAt ?? null,
+      scale: SCALE,
+      note: "PNGs are exported at @2x (deviceScaleFactor 2). Logical sizes match creative width×height.",
       campaigns: campaigns.map((c) => ({
         id: c.id,
         assets: c.creatives.map((id) => `/campaign/${c.id}/${id}.png`),

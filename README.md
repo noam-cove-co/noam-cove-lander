@@ -62,6 +62,8 @@ Set `NEXT_PUBLIC_MIXPANEL_TOKEN` to send events to Mixpanel. Without a token, ev
 
 Event names live in `site.analytics.events` (`Land Page Viewed`, `Waitlist Joined`, `Invite Copied`, `Attribution Captured`, …).
 
-`NEXT_PUBLIC_SITE_URL` sets the canonical site URL used for metadata. It defaults to `http://127.0.0.1:4317`.
+`NEXT_PUBLIC_SITE_URL` sets the canonical site URL used for metadata and absolute Open Graph image URLs. It defaults to `https://cove.will.me.uk`. Override locally if you need a different host.
+
+Campaign PNGs in `public/campaign/` are exported at **@2x** (`deviceScaleFactor: 2` in `scripts/export-campaign-creatives.mjs`).
 
 Copy `.env.example` to `.env.local` for local secrets.

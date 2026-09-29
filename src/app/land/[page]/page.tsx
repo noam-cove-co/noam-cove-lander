@@ -60,7 +60,7 @@ export async function generateMetadata({
     openGraph: {
       title: def.title,
       description: def.description,
-      images: [{ url: def.og, width: 1200, height: 630 }],
+      images: [{ url: def.og, width: 2400, height: 1260 }],
     },
     twitter: {
       card: "summary_large_image",

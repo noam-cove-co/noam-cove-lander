@@ -35,7 +35,7 @@ const marker = Caveat({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://127.0.0.1:4317"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://cove.will.me.uk"),
   title: {
     default: "Cove | your own cloud drive, on your Mac",
     template: "%s | Cove",
@@ -51,9 +51,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Cove | your own cloud drive, on your Mac",
     description: site.description,
+    url: "/",
+    siteName: "Cove",
     locale: "en_GB",
     type: "website",
-    images: [{ url: "/campaign/own-drive/od-og-hero-cta.png", width: 1200, height: 630 }],
+    images: [{ url: "/campaign/own-drive/od-og-hero-cta.png", width: 2400, height: 1260 }],
   },
   twitter: {
     card: "summary_large_image",
