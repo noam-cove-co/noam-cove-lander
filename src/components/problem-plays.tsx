@@ -167,71 +167,89 @@ function LinkPlay() {
   const written = note.trim().length > 0;
 
   return (
-    <MacWindow title={masters ? "masters" : "review.link"}>
-      <div className="px-3 py-2">
-        <p
-          className={cn(
-            "truncate rounded-md bg-white px-2 py-1 font-mono text-[11px] ring-1 ring-black/10",
-            friday && !masters && "text-[#ff3b30] line-through",
-          )}
-        >
-          {masters ? "/Volumes/Spring campaign/masters" : "https://review.link/spring-cut"}
-        </p>
-      </div>
-      <div className="px-3 pb-3">
-        <p className={cn("text-[12px] font-medium", friday && !masters ? "text-[#ff3b30]" : "text-[#0e6b56]")}>
-          {masters ? "On the drive" : friday ? "This link died on Friday." : "Live until Friday, 16:12"}
-        </p>
-        <label className="mt-3 block text-[11px] text-[#6e6e73]" htmlFor="review-notes">
-          Notes
-        </label>
-        <textarea
-          id="review-notes"
-          value={note}
-          onChange={(event) => setNote(event.target.value)}
-          rows={3}
-          placeholder="Still being written."
-          className="mt-1 w-full resize-none bg-transparent text-[13px] leading-relaxed outline-none placeholder:text-[#a1a1a6]"
-        />
-        {friday && !masters ? (
-          <p className="text-[12px] leading-relaxed text-[#3a3a3c]">
-            {written ? "The notes are still here." : "It went before the notes were written."}
-          </p>
-        ) : null}
-        {masters ? (
-          <div className="mt-2 flex items-center gap-2 border-t border-black/10 pt-2">
-            <Glyph kind="folder" className="size-8" />
-            <span className="text-[13px]">
-              Masters
-              <span className="mt-0.5 block text-[11px] text-[#6e6e73]">Friday cannot take them.</span>
-            </span>
-          </div>
-        ) : null}
-      </div>
-      <div className="flex items-center justify-between border-t border-black/10 px-3 py-2.5">
-        {masters ? (
-          <button
-            type="button"
-            onClick={() => {
-              setFriday(false);
-              setMasters(false);
-            }}
-            className="text-[13px] text-[#0e6b56]"
+    <div>
+      <ol className="mb-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] tracking-wide text-[#6e6e73] uppercase">
+        <li className={cn(!friday && !masters && "text-cove")}>Sent</li>
+        <li aria-hidden>·</li>
+        <li className={cn(written && !friday && !masters && "text-cove")}>Notes</li>
+        <li aria-hidden>·</li>
+        <li className={cn(friday && !masters && "text-[#ff3b30]")}>Friday</li>
+        <li aria-hidden>·</li>
+        <li className={cn(masters && "text-cove")}>On Cove</li>
+      </ol>
+      <MacWindow title={masters ? "masters" : "review.link"}>
+        <div className="px-3 py-2">
+          <p
+            className={cn(
+              "truncate rounded-md bg-white px-2 py-1 font-mono text-[11px] ring-1 ring-black/10",
+              friday && !masters && "text-[#ff3b30] line-through",
+            )}
           >
-            Send the link again
-          </button>
-        ) : friday ? (
-          <button type="button" onClick={() => setMasters(true)} className="text-[13px] font-medium text-[#0e6b56]">
-            Open the masters
-          </button>
-        ) : (
-          <button type="button" onClick={() => setFriday(true)} className="text-[13px] font-medium text-[#1d1d1f]">
-            Skip to Friday
-          </button>
-        )}
-        <span className="text-[11px] text-[#6e6e73]">{written ? "Note kept" : "No note yet"}</span>
-      </div>
-    </MacWindow>
+            {masters ? "/Volumes/Spring campaign/masters" : "https://review.link/spring-cut"}
+          </p>
+          <p className="mt-2 text-[11px] leading-relaxed text-[#6e6e73]">
+            {masters
+              ? "Same cut. On the drive. Friday cannot take it."
+              : "WeTransfer, Dropbox Review, a “view only” cut. Useful for a day."}
+          </p>
+        </div>
+        <div className="px-3 pb-3">
+          <p className={cn("text-[12px] font-medium", friday && !masters ? "text-[#ff3b30]" : "text-[#0e6b56]")}>
+            {masters ? "On the drive" : friday ? "This link died on Friday." : "Live until Friday, 16:12"}
+          </p>
+          <label className="mt-3 block text-[11px] text-[#6e6e73]" htmlFor="review-notes">
+            Notes
+          </label>
+          <textarea
+            id="review-notes"
+            value={note}
+            onChange={(event) => setNote(event.target.value)}
+            rows={3}
+            placeholder="Still being written."
+            className="mt-1 w-full resize-none bg-transparent text-[13px] leading-relaxed outline-none placeholder:text-[#a1a1a6]"
+          />
+          {friday && !masters ? (
+            <p className="text-[12px] leading-relaxed text-[#3a3a3c]">
+              {written
+                ? "The notes are still here. The cut is not. Ask for another link, or open the masters on Cove."
+                : "It went before the notes were written. The client still has questions."}
+            </p>
+          ) : null}
+          {masters ? (
+            <div className="mt-2 flex items-center gap-2 border-t border-black/10 pt-2">
+              <Glyph kind="folder" className="size-8" />
+              <span className="text-[13px]">
+                Masters
+                <span className="mt-0.5 block text-[11px] text-[#6e6e73]">Friday cannot take them.</span>
+              </span>
+            </div>
+          ) : null}
+        </div>
+        <div className="flex items-center justify-between border-t border-black/10 px-3 py-2.5">
+          {masters ? (
+            <button
+              type="button"
+              onClick={() => {
+                setFriday(false);
+                setMasters(false);
+              }}
+              className="text-[13px] text-[#0e6b56]"
+            >
+              Send the link again
+            </button>
+          ) : friday ? (
+            <button type="button" onClick={() => setMasters(true)} className="text-[13px] font-medium text-[#0e6b56]">
+              Open the masters
+            </button>
+          ) : (
+            <button type="button" onClick={() => setFriday(true)} className="text-[13px] font-medium text-[#1d1d1f]">
+              Skip to Friday
+            </button>
+          )}
+          <span className="text-[11px] text-[#6e6e73]">{written ? "Note kept" : "No note yet"}</span>
+        </div>
+      </MacWindow>
+    </div>
   );
 }
 

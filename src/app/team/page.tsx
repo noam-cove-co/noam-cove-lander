@@ -1,19 +1,13 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { site } from "@/config/site";
-import { CoveMark, CraftLine, NoamSeal } from "@/components/brand";
+import { CoveMark } from "@/components/brand";
+import { JoinButton } from "@/components/join-button";
 
 export const metadata: Metadata = {
   title: "Team",
   description: "Cove is made by NOAM Co., a small consultancy in Yorkshire.",
 };
-
-const desks = [
-  { initials: "HP", name: "Helen Park", role: "Family videos" },
-  { initials: "JA", name: "Jonah Adeyemi", role: "Marketing, Halden & Co" },
-  { initials: "ME", name: "Mara Ellison", role: "Producer, Northline" },
-  { initials: "EW", name: "Ellis Ward", role: "Music" },
-  { initials: "PR", name: "Priya Raman", role: "Websites, with an agent" },
-];
 
 export default function TeamPage() {
   return (
@@ -24,9 +18,15 @@ export default function TeamPage() {
       </h1>
       <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">{site.team.body}</p>
 
-      <article className="glass mt-10 grid gap-8 rounded-md p-6 sm:p-10 lg:grid-cols-[180px_1fr] lg:gap-12">
-        <div className="grid size-28 place-items-center rounded-md bg-pine text-paper sm:size-36">
-          <NoamSeal className="size-16 sm:size-20" />
+      <article className="glass mt-10 grid gap-8 rounded-md p-6 sm:p-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-12">
+        <div className="flex items-center justify-center">
+          <Image
+            src="/brand/cove-icon.png"
+            alt="A fluffy cloud shaped into a cove"
+            width={1024}
+            height={1024}
+            className="h-auto w-full max-w-[280px]"
+          />
         </div>
         <div>
           {site.team.letter.map((paragraph) => (
@@ -34,12 +34,12 @@ export default function TeamPage() {
               {paragraph}
             </p>
           ))}
-          <div className="mt-8 flex items-end justify-between gap-6">
+          <div className="mt-8 flex flex-wrap items-end justify-between gap-6">
             <div>
               <p className="font-serif text-2xl italic">{site.team.sign}</p>
               <p className="text-sm text-muted-foreground">{site.team.role}</p>
             </div>
-            <CoveMark className="size-16 sm:size-[4.5rem]" />
+            <JoinButton className="h-10 rounded-md px-4 text-sm" />
           </div>
         </div>
       </article>
@@ -54,43 +54,45 @@ export default function TeamPage() {
       </div>
 
       <section className="mt-16">
-        <h2 className="font-serif text-4xl tracking-tight">First desks on the drive</h2>
+        <h2 className="font-serif text-4xl tracking-tight">The desk</h2>
         <div aria-hidden="true" className="mt-4 h-px w-12 bg-[#b42318]" />
         <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground">
-          Not a staff page. These are the first people the cloud drive was shown to: a family archive, a marketing team, a studio, and someone building with an agent.
+          Two of us. One builds Cove. One runs the studio floor.
         </p>
-        <ul className="mt-10 grid grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-3 lg:grid-cols-5">
-          {desks.map((desk, index) => {
-            const ink = index === 2;
-            return (
-              <li key={desk.name}>
-                <div className="bg-[#f4f1ea] p-[2px] text-[#0e1320] shadow-[inset_0_0_0_1px_#0e1320]">
-                  <div
-                    className={
-                      ink
-                        ? "flex aspect-[3/4] flex-col bg-[#0e1320] text-[#f5f6f8] shadow-[inset_0_0_0_1px_#f5f6f8]"
-                        : "flex aspect-[3/4] flex-col shadow-[inset_0_0_0_1px_#0e1320]"
-                    }
-                  >
-                    <span className="grid flex-1 place-items-center font-serif text-5xl italic leading-none tracking-[-0.04em] sm:text-6xl lg:text-7xl">
-                      {desk.initials}
-                    </span>
-                    <span className="pb-2.5 text-center text-[0.62rem] tracking-[0.22em] opacity-60">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                  </div>
+        <ul className="mt-10 grid gap-6 sm:grid-cols-2">
+          {site.team.people.map((person) => (
+            <li key={person.name} className="group">
+              <div className="overflow-hidden bg-[#f4f1ea] p-[2px] shadow-[inset_0_0_0_1px_#0e1320]">
+                <div className="relative aspect-[4/5] overflow-hidden bg-[#ebe4d8] shadow-[inset_0_0_0_1px_#0e1320]">
+                  {person.photo ? (
+                    <Image
+                      src={person.photo}
+                      alt={person.alt || person.name}
+                      fill
+                      sizes="(max-width: 640px) 100vw, 40vw"
+                      className="object-cover"
+                    />
+                  ) : (
+                    <div className="grid h-full place-items-center bg-[#0e1320] text-[#f5f6f8]">
+                      <span className="font-serif text-7xl italic tracking-[-0.05em] sm:text-8xl">{person.initials}</span>
+                    </div>
+                  )}
                 </div>
-                <p className="mt-3 font-medium">{desk.name}</p>
-                <p className="text-sm text-muted-foreground">{desk.role}</p>
-              </li>
-            );
-          })}
+              </div>
+              <div className="mt-4 flex items-baseline justify-between gap-3 border-t border-foreground/15 pt-3">
+                <div>
+                  <p className="font-serif text-2xl tracking-tight">{person.name}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">{person.role}</p>
+                </div>
+                <CoveMark className="size-7 opacity-70" />
+              </div>
+            </li>
+          ))}
         </ul>
       </section>
 
       <div className="mt-16">
-        <CraftLine />
-        <p className="mt-3 text-sm text-muted-foreground">
+        <p className="text-sm text-muted-foreground">
           Write to us at{" "}
           <a className="text-foreground underline decoration-cove/40 underline-offset-4" href={`mailto:${site.email}`}>
             {site.email}

@@ -16,14 +16,14 @@ export function SiteFooter() {
             <CoveMark className="size-7" />
             <Wordmark />
           </Link>
-          <div className="mt-4">
-            <CraftLine />
-          </div>
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
             {range
               ? "Cove, at the size of a mountain. A dedicated drive, mounted in one click, kept for an organisation."
               : "Your own cloud drive. It lives in the cloud, and it shows up on your Mac in one click."}
           </p>
+          <div className="mt-4">
+            <CraftLine />
+          </div>
         </div>
         <div className="grid grid-cols-2 gap-6 text-sm">
           <div className="grid content-start gap-2">
@@ -61,7 +61,7 @@ export function SiteFooter() {
             <a href="https://icons8.com" className="underline-offset-2 hover:underline">
               Icons8
             </a>
-            . OpenClaw and GitHub Copilot marks belong to their owners.
+            . Figma and GitHub Copilot marks belong to their owners.
           </p>
         </div>
       </div>

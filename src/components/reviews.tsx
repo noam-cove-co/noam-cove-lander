@@ -66,17 +66,16 @@ export function Reviews() {
           <p className="max-w-xl text-muted-foreground">{note.aside}</p>
         </div>
       </Reveal>
-      <div className="mt-10 grid gap-4 md:grid-cols-2">
+      <div className="mt-10 grid gap-x-10 gap-y-12 md:grid-cols-2">
         {site.reviews.quotes.map((quote) => (
           <Reveal key={quote.name}>
-            <figure className="h-full border-t border-foreground/15 pt-5">
+            <figure className="h-full">
               <blockquote className="font-serif text-2xl leading-snug tracking-[-0.03em]">
                 “<Marked text={quote.quote} />”
               </blockquote>
-              <figcaption className="mt-4 text-sm text-muted-foreground">
-                <span className="text-foreground">{quote.name}</span>
-                <span className="px-1.5">·</span>
-                {quote.role}
+              <figcaption className="mt-5">
+                <p className="font-serif text-lg tracking-tight text-foreground">{quote.name}</p>
+                <p className="mt-0.5 text-[0.78rem] tracking-[0.04em] text-muted-foreground">{quote.role}</p>
               </figcaption>
             </figure>
           </Reveal>

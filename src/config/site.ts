@@ -222,7 +222,7 @@ export const site = {
       },
       {
         title: "Links that expire",
-        body: "A review link does its job, then dies on a Friday while the notes are still being written.",
+        body: "A review link does its job, then dies on a Friday while the notes are still being written. WeTransfer, a Dropbox review, a “view only” cut: useful for a day, gone when the client writes back.",
       },
       {
         title: "One small disk",
@@ -286,6 +286,16 @@ export const site = {
     title: "One drive. The words change with the work.",
     intro:
       "Cove is your own cloud drive, kept in the cloud, and mounted on your Mac in one click. Built first for marketing teams. The same drive holds a family’s photos and videos, or the repo an AI agent is building with you.",
+    contrasts: [
+      {
+        label: "At home",
+        text: "Christmas films, school plays, the folder the phone keeps filling. Opened on the MacBook. Held in the cloud.",
+      },
+      {
+        label: "With an agent",
+        text: "The repo, the briefs, the transcripts. You and the copilot share one path. The system disk stays out of it.",
+      },
+    ],
   },
 
   desks: [
@@ -293,8 +303,8 @@ export const site = {
       id: "home",
       label: "At home",
       badge: "",
-      title: "Years of photos and videos, without filling the Mac.",
-      body: "Holiday films, school plays, the folder the phone keeps filling. Cove is a cloud drive you open on your Mac. The pictures stay in the cloud. The laptop just shows them. A brother can open the same drive and find Christmas without a link.",
+      title: "Years of family film, without a drawer of drives.",
+      body: "Holiday films, school plays, the folder the phone keeps filling. Cove is a cloud drive you open on your Mac. The pictures stay in the cloud. A brother can open the same drive and find Christmas without a link.",
       say: "At home there is nothing to learn. It is a drive for the family’s photos and videos.",
       terms: [
         { word: "Drive", means: "The place the photos live, sitting on your Mac after one click." },
@@ -365,8 +375,8 @@ export const site = {
       id: "agents",
       label: "Agents",
       badge: "New",
-      title: "A cloud drive for the repo, and for the agent beside you.",
-      body: "If you build websites with AI agents, Cove does not become a different product. It is still your cloud drive, mounted on the Mac. Point Cursor, Claude, or a copilot at it. The repo, the notes, and the agent’s transcripts have a home that is not the system disk.",
+      title: "The repo lives on the drive. So does the agent.",
+      body: "If you build with AI agents, Cove does not become a different product. It is still your cloud drive, mounted on the Mac. Point Cursor, Claude, or a copilot at it. The project, the notes, and the transcripts have a home that is not the system disk.",
       say: "Here the words are technical, on purpose. Mount means the cloud drive appears on the Mac, so you and the agent share a path.",
       terms: [
         { word: "Mount", means: "The cloud drive shows up on the Mac as a real drive." },
@@ -390,15 +400,15 @@ export const site = {
     id: "reviews",
     kicker: "From the private beta",
     title: "People wrote back.",
-    annotation: "This is a real note we got",
+    annotation: "This is a real email we got",
     featured: {
-      to: "Noam",
+      to: "Cove team",
       from: "Helen Park",
       role: "Keeping the family videos",
       subject: "the holiday videos finally have a home",
       initials: "HP",
       paragraphs: [
-        "Noam —",
+        "Cove team —",
         "I put ten years of family videos on Cove and opened them on the MacBook Air. They show up like a drive. They do not fill the laptop. My brother put the same drive on his Mac and found the Christmas film without me sending a link.",
         "I have stopped buying the little hard drives that live in the kitchen drawer.",
         "Helen",
@@ -616,12 +626,28 @@ export const site = {
     title: "A small team in Yorkshire.",
     body: "NOAM Consultancy makes Cove. The product is a cloud drive for your Mac. The flags in the footer are the only map we need.",
     letter: [
-      "Cove started because the Mac was full. Family videos, a client’s campaign, a project an agent was writing: all of them wanted a home, and every workaround made the desk noisier.",
-      "I wanted one kind of thing. Your own drive. Living in the cloud. Showing up on the Mac in one click, in the apps already there.",
-      "NOAM Co. will stay small.",
+      "Cove started because my Mac was full. Family videos, a client’s campaign, a project an agent was writing: all of them wanted a home, and every workaround made my workflow slower, and my output limited.",
+      "I wanted one kind of thing. Your own drive. Living in the cloud. Showing up on my Mac in one click, as if it had always been part of the machine. The other tools felt external: limited, throttled, slow, and forever asking to be remounted.",
+      "Try it on your Mac. If the drive fits the work, stay on the list. The seat opens from there.",
     ],
-    sign: "Noam",
+    sign: "Will",
     role: "Founder, NOAM Co.",
+    people: [
+      {
+        name: "Will S.",
+        role: "Founder, CMO",
+        initials: "WS",
+        photo: null,
+        alt: "",
+      },
+      {
+        name: "Humphrey Bogart",
+        role: "Resident Retriever & Chief Zoomies Officer",
+        initials: "HB",
+        photo: "/media/humphrey.jpg",
+        alt: "Humphrey Bogart, a golden retriever",
+      },
+    ],
     principles: [
       {
         title: "A real drive",

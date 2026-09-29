@@ -31,15 +31,16 @@ export function Audiences() {
       </h2>
       <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">{site.audiences.intro}</p>
 
-      <div className="mt-10 grid gap-8 border-t border-foreground/10 pt-8 sm:grid-cols-2">
-        <Compare label="At home" text="Years of family photos and videos, open on the Mac, without filling it." />
-        <Compare
-          label="With an AI agent"
-          text="The same cloud drive, mounted on the Mac, holding the repo and the agent’s notes."
-        />
+      <div className="mt-10 grid gap-4 border-t border-foreground/10 pt-8 sm:grid-cols-2 sm:gap-6">
+        {site.audiences.contrasts.map((item) => (
+          <div key={item.label} className="rounded-md border border-foreground/10 bg-white/45 px-5 py-5">
+            <p className="text-[0.68rem] font-medium tracking-[0.16em] text-cove uppercase">{item.label}</p>
+            <p className="mt-2 text-base leading-relaxed text-foreground/90 sm:text-lg">{item.text}</p>
+          </div>
+        ))}
       </div>
 
-      <div role="tablist" aria-label="Choose a desk" className="mt-8 flex gap-2 overflow-x-auto pb-1">
+      <div role="tablist" aria-label="Choose a desk" className="mt-8 flex gap-3 overflow-x-auto pb-1">
         {desks.map((item) => (
           <button
             key={item.id}
@@ -52,10 +53,14 @@ export function Audiences() {
               item.id === desk.id ? "border-cove text-foreground" : "border-transparent text-muted-foreground",
             )}
           >
-            {item.label}
-            {item.badge ? (
-              <span className="ml-2 text-[10px] tracking-[0.14em] uppercase opacity-70">{item.badge}</span>
-            ) : null}
+            <span className="inline-flex items-baseline gap-1.5">
+              {item.label}
+              {item.badge ? (
+                <sup className="font-sans text-[0.58rem] font-medium tracking-[0.14em] text-cove uppercase">
+                  {item.badge}
+                </sup>
+              ) : null}
+            </span>
           </button>
         ))}
       </div>
@@ -111,13 +116,13 @@ function DeskPanel({ desk }: { desk: Desk }) {
   }
 
   return (
-    <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]">
-      <article>
-        <p className="text-xs tracking-[0.18em] text-cove uppercase">In plain words, still</p>
-        <h3 className="mt-4 font-serif text-4xl leading-tight tracking-[-0.03em] sm:text-5xl">{desk.title}</h3>
+    <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-10">
+      <article className="audience-plain rounded-md border border-foreground/10 bg-[#f5f6f8]/95 p-5 shadow-[0_18px_40px_-32px_rgba(14,19,32,0.45)] backdrop-blur-md sm:p-7">
+        <p className="text-[0.68rem] font-medium tracking-[0.16em] text-cove uppercase">In plain words, still</p>
+        <h3 className="mt-3 font-serif text-3xl leading-tight tracking-[-0.03em] sm:text-4xl lg:text-5xl">{desk.title}</h3>
         <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">{desk.body}</p>
-        <p className="mt-6 max-w-xl font-serif text-2xl leading-snug italic">{desk.say}</p>
-        <ul className="mt-8 grid gap-1 border-t border-foreground/10 pt-4">
+        <p className="mt-5 max-w-xl font-serif text-xl leading-snug italic sm:text-2xl">{desk.say}</p>
+        <ul className="mt-7 grid gap-1 border-t border-foreground/10 pt-4">
           {desk.terms.map((term) => {
             const active = word === term.word;
             return (
@@ -137,90 +142,83 @@ function DeskPanel({ desk }: { desk: Desk }) {
         </ul>
       </article>
 
-      <MacWindow title={desk.volume}>
+      <div className="audience-window relative z-0">
+        <MacWindow title={desk.volume}>
           <div className="grid sm:grid-cols-[12.5rem_1fr]">
-          <div className="border-b border-black/10 px-2 py-2 text-[13px] sm:border-r sm:border-b-0">
-            <p className="px-2 pt-1 text-[11px] font-semibold text-[#6e6e73]">Locations</p>
-            <div className="mt-1 flex items-center gap-2 px-2 py-1.5 text-[#6e6e73]">
-              <HdIcon />
-              Macintosh HD
+            <div className="border-b border-black/10 px-2 py-2 text-[13px] sm:border-r sm:border-b-0">
+              <p className="px-2 pt-1 text-[11px] font-semibold text-[#6e6e73]">Locations</p>
+              <div className="mt-1 flex items-center gap-2 px-2 py-1.5 text-[#6e6e73]">
+                <HdIcon />
+                Macintosh HD
+              </div>
+              <button
+                type="button"
+                onClick={chooseVolume}
+                className={cn(
+                  "flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left",
+                  focus === "volume" ? "bg-[#0a84ff] text-white" : "hover:bg-black/5",
+                )}
+              >
+                <CoveMark className={cn("size-[21px] shrink-0", focus === "volume" ? "text-white" : "text-cove")} />
+                <span className="min-w-0 leading-tight">{desk.volume}</span>
+              </button>
             </div>
-            <button
-              type="button"
-              onClick={chooseVolume}
-              className={cn(
-                "flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left",
-                focus === "volume" ? "bg-[#0a84ff] text-white" : "hover:bg-black/5",
-              )}
-            >
-              <CoveMark className={cn("size-[21px] shrink-0", focus === "volume" ? "text-white" : "text-cove")} />
-              <span className="min-w-0 leading-tight">{desk.volume}</span>
-            </button>
+            <ul className="py-1">
+              {desk.files.map((item, itemIndex) => {
+                const on = focus === item.name;
+                return (
+                  <li key={item.name}>
+                    <button
+                      type="button"
+                      onClick={() => chooseFile(item.name)}
+                      aria-pressed={on}
+                      className={cn(
+                        "flex w-full items-center gap-2 px-3 py-1.5 text-left text-[13px]",
+                        on ? "bg-[#0a84ff] text-white" : "hover:bg-black/5",
+                      )}
+                    >
+                      <Glyph kind={item.kind} name={item.name} variant={itemIndex} className="size-5" />
+                      <span className="min-w-0 flex-1 truncate">{item.name}</span>
+                      <span className={cn("shrink-0 text-[11px] tabular-nums", on ? "text-white/80" : "text-[#6e6e73]")}>
+                        {item.meta}
+                      </span>
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
           </div>
-          <ul className="py-1">
-            {desk.files.map((item, itemIndex) => {
-              const on = focus === item.name;
-              return (
-                <li key={item.name}>
-                  <button
-                    type="button"
-                    onClick={() => chooseFile(item.name)}
-                    aria-pressed={on}
-                    className={cn(
-                      "flex w-full items-center gap-2 px-3 py-1.5 text-left text-[13px]",
-                      on ? "bg-[#0a84ff] text-white" : "hover:bg-black/5",
-                    )}
-                  >
-                    <Glyph kind={item.kind} name={item.name} variant={itemIndex} className="size-5" />
-                    <span className="min-w-0 flex-1 truncate">{item.name}</span>
-                    <span className={cn("shrink-0 text-[11px] tabular-nums", on ? "text-white/80" : "text-[#6e6e73]")}>
-                      {item.meta}
-                    </span>
-                  </button>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-        {selected ? (
-          <div className="flex items-center gap-3 border-t border-black/10 px-3 py-3">
-            <Glyph kind={selected.kind} name={selected.name} className="size-10" />
-            <p className="min-w-0 text-[13px]">
-              <span className="block truncate font-medium">{selected.name}</span>
-              <span className="block text-[11px] text-[#6e6e73]">From the cloud. Zero KB on this Mac.</span>
-            </p>
-          </div>
-        ) : null}
-        <button
-          type="button"
-          onClick={chooseCloud}
-          className={cn(
-            "flex w-full items-center justify-between gap-3 border-t border-black/10 px-3 py-2.5 text-left text-[12px]",
-            focus === "cloud" && "bg-[#e7f3ee]",
-          )}
-        >
-          <span>
-            {desk.cloudSize}
-            <span className="mt-0.5 block text-[#6e6e73]">
-              {opened.length
-                ? `Opened ${opened.length}. Still almost nothing on this Mac.`
-                : desk.onMac}
+          {selected ? (
+            <div className="flex items-center gap-3 border-t border-black/10 px-3 py-3">
+              <Glyph kind={selected.kind} name={selected.name} className="size-10" />
+              <p className="min-w-0 text-[13px]">
+                <span className="block truncate font-medium">{selected.name}</span>
+                <span className="block text-[11px] text-[#6e6e73]">From the cloud. Zero KB on this Mac.</span>
+              </p>
+            </div>
+          ) : null}
+          <button
+            type="button"
+            onClick={chooseCloud}
+            className={cn(
+              "flex w-full items-center justify-between gap-3 border-t border-black/10 px-3 py-2.5 text-left text-[12px]",
+              focus === "cloud" && "bg-[#e7f3ee]",
+            )}
+          >
+            <span>
+              {desk.cloudSize}
+              <span className="mt-0.5 block text-[#6e6e73]">
+                {opened.length
+                  ? `Opened ${opened.length}. Still almost nothing on this Mac.`
+                  : desk.onMac}
+              </span>
             </span>
-          </span>
-          <span className="shrink-0 text-[#6e6e73]">
-            {opened.length ? `${opened.length} open` : focus ? "On the drive" : "Tap a word"}
-          </span>
-        </button>
-      </MacWindow>
-    </div>
-  );
-}
-
-function Compare({ label, text }: { label: string; text: string }) {
-  return (
-    <div>
-      <p className="text-xs tracking-[0.18em] text-cove uppercase">{label}</p>
-      <p className="mt-2 text-lg leading-relaxed">{text}</p>
+            <span className="shrink-0 text-[#6e6e73]">
+              {opened.length ? `${opened.length} open` : focus ? "On the drive" : "Tap a word"}
+            </span>
+          </button>
+        </MacWindow>
+      </div>
     </div>
   );
 }
