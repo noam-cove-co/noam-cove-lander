@@ -47,7 +47,7 @@ export const site = {
   company: "NOAM Co.",
   companyLong: "NOAM Consultancy",
   studio: "Yorkshire",
-  email: "studio@noam.co",
+  email: "hi@noam.co",
   description:
     "Cove is your own cloud drive. One click, and it shows up on your Mac. The files stay in the cloud. Crafted by NOAM Co.",
 
@@ -110,7 +110,7 @@ export const site = {
     { href: "/#audiences", label: "Who it’s for" },
     { href: "/room", label: "Your room" },
     { href: "/#reviews", label: "Notes" },
-    { href: "/team", label: "Studio" },
+    { href: "/team", label: "Team" },
     { href: "/mt", label: "Mt. Mtn." },
     { href: "/download", label: "Download" },
   ],
@@ -569,20 +569,16 @@ export const site = {
   },
 
   team: {
-    title: "A small studio in Yorkshire.",
-    body: "NOAM Consultancy makes Cove. The mark is a monogram. The product is a cloud drive for your Mac. The rose in the footer is the only map we need.",
+    title: "A small team in Yorkshire.",
+    body: "NOAM Consultancy makes Cove. The product is a cloud drive for your Mac. The flags in the footer are the only map we need.",
     letter: [
       "Cove started because the Mac was full. Family videos, a client’s campaign, a project an agent was writing: all of them wanted a home, and every workaround made the desk noisier.",
       "I wanted one kind of thing. Your own drive. Living in the cloud. Showing up on the Mac in one click, in the apps already there.",
-      "NOAM Co. will stay small. If you write, a person reads it.",
+      "NOAM Co. will stay small.",
     ],
     sign: "Noam",
     role: "Founder, NOAM Co.",
     principles: [
-      {
-        title: "Monogram",
-        body: "Traditional on the outside. A seal, a quiet colour, a rose kept in the footer.",
-      },
       {
         title: "A real drive",
         body: "Modern where it counts. A cloud drive your Mac already knows how to open.",
