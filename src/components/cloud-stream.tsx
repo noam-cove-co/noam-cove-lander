@@ -7,7 +7,7 @@ const returning = ["Family", "Spring campaign", "The session"];
 export function CloudStream() {
   return (
     <section
-      className="stream-field relative mx-auto w-full max-w-5xl overflow-hidden px-4 pt-4 pb-16 sm:px-6 sm:pt-6 sm:pb-24"
+      className="stream-field relative mx-auto w-full max-w-5xl overflow-hidden px-4 pt-14 pb-16 sm:px-6 md:pt-2 md:pb-24"
       aria-label="Files go up to the cloud. The drive comes back down onto the Mac."
     >
       <div className="pointer-events-none absolute inset-x-8 top-10 bottom-16 rounded-full opacity-70" aria-hidden>
