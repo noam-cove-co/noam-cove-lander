@@ -44,9 +44,15 @@ function subscribeNothing() {
 export function InstallButton({
   className,
   label = "Add to Home Screen",
+  iconOnly = false,
+  showLabel = false,
 }: {
   className?: string;
   label?: string;
+  /** Icon only, including on wide screens. Used in the mobile bottom bar. */
+  iconOnly?: boolean;
+  /** Always show the words, including on a phone. Used in the page-end callout. */
+  showLabel?: boolean;
 }) {
   const [open, setOpen] = useState(false);
   const [deferred, setDeferred] = useState<BeforeInstallPromptEvent | null>(null);
@@ -82,12 +88,13 @@ export function InstallButton({
       <Button
         type="button"
         variant="ghost"
+        size={iconOnly ? "icon" : "default"}
         onClick={onClick}
-        className={cn("h-10 rounded-md px-3 text-sm", className)}
+        aria-label={iconOnly ? label : undefined}
+        className={cn(iconOnly ? "size-10 rounded-md" : "h-10 rounded-md px-3 text-sm", className)}
       >
         <Share />
-        <span className="hidden sm:inline">{label}</span>
-        <span className="sr-only sm:hidden">{label}</span>
+        {iconOnly ? null : <span className={showLabel ? undefined : "hidden sm:inline"}>{label}</span>}
       </Button>
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="rounded-3xl bg-background/95 p-6 backdrop-blur-xl sm:max-w-md">

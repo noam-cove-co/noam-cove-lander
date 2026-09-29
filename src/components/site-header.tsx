@@ -158,18 +158,21 @@ export function MobileJoinBar() {
   return (
     <div className="fixed inset-x-0 bottom-0 z-40 border-t border-foreground/10 bg-background/95 backdrop-blur-md md:hidden">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
-        <p className="flex items-center gap-2.5 text-sm leading-tight text-muted-foreground">
-          <CoveMark className="size-8" />
-          <span>
+        <p className="flex min-w-0 items-center gap-2.5 text-sm leading-tight text-muted-foreground">
+          <CoveMark className="size-8 shrink-0" />
+          <span className="min-w-0">
             {range ? "Cove" : "Your cloud drive."}
             <span className="block text-foreground">{range ? "The mountain mount." : "Private beta for Mac."}</span>
           </span>
         </p>
-        {range ? (
-          <ChromeCta href={`${site.range.path}#enquire`}>Enquire</ChromeCta>
-        ) : (
-          <ChromeCta onClick={() => openWaitlist()}>{navCta}</ChromeCta>
-        )}
+        <div className="flex shrink-0 items-center gap-0.5">
+          <InstallButton iconOnly />
+          {range ? (
+            <ChromeCta href={`${site.range.path}#enquire`}>Enquire</ChromeCta>
+          ) : (
+            <ChromeCta onClick={() => openWaitlist()}>{navCta}</ChromeCta>
+          )}
+        </div>
       </div>
     </div>
   );
