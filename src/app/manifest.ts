@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Cove — a dedicated drive for your Mac",
+    name: "Cove | a dedicated drive for your Mac",
     short_name: "Cove",
     description:
       "A dedicated cloud drive that mounts on your Mac in one click. Crafted by NOAM Co.",

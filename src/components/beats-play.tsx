@@ -179,7 +179,7 @@ function MacStage({
 }) {
   return (
     <MacWindow title={mounted ? name : "Finder"}>
-      <Locations volume={name} mounted={mounted} onShow={onShow} action={`One click — show ${name}`} />
+      <Locations volume={name} mounted={mounted} onShow={onShow} action={`One click: show ${name}`} />
       <div className="flex items-center justify-between border-t border-black/10 px-3 py-2.5 text-[12px] text-[#6e6e73]">
         <span>{mounted ? "Ready to open. Like a drive you plugged in." : "Beside Macintosh HD, once you click."}</span>
         {mounted ? (

@@ -1,21 +1,41 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { JoinListView } from "@/components/land/join-list-view";
+import { LookFamiliarView } from "@/components/land/look-familiar-view";
+import { OutOfSpaceView } from "@/components/land/out-of-space-view";
 import { OwnDriveView } from "@/components/land/own-drive-view";
-import { campaignById, allCampaignIds } from "@/config/campaigns";
+import { campaignById } from "@/config/campaigns";
 
 const pages = {
   "own-drive": {
     View: OwnDriveView,
     title: "Your own cloud drive, on your Mac",
-    description: "Cove — a cloud drive that shows up on your Mac in one click. Private beta from NOAM Co.",
+    description: "Cove: a cloud drive that shows up on your Mac in one click. Private beta from NOAM Co.",
     og: "/campaign/own-drive/od-og-hero-cta.png",
+    campaignId: "own-drive",
   },
   "join-the-list": {
     View: JoinListView,
     title: "Join the Cove private beta",
     description: "Join the Cove waitlist. Invite friends to climb the list. Your own cloud drive, on your Mac.",
     og: "/campaign/join-the-list/jl-og-void.png",
+    campaignId: "join-the-list",
+  },
+  "out-of-space": {
+    View: OutOfSpaceView,
+    title: "Look familiar? The Mac is full again",
+    description:
+      "The work got heavy. The laptop stayed the same size. Cove is your own cloud drive, on your Mac: enough room to do what you actually want.",
+    og: "/campaign/out-of-space/oos-og-familiar.png",
+    campaignId: "out-of-space",
+  },
+  "look-familiar": {
+    View: LookFamiliarView,
+    title: "Look familiar? Cove print ads",
+    description:
+      "Classic print-style Cove ads: enough space to do the work, on your Mac. Private beta from NOAM Co.",
+    og: "/campaign/out-of-space/oos-og-rolex.png",
+    campaignId: "out-of-space",
   },
 } as const;
 
@@ -33,7 +53,7 @@ export async function generateMetadata({
   const { page } = await params;
   const def = pages[page as PageKey];
   if (!def) return {};
-  const campaign = campaignById(page);
+  const campaign = campaignById(def.campaignId);
   return {
     title: def.title,
     description: def.description,
@@ -50,7 +70,7 @@ export async function generateMetadata({
     },
     robots: { index: true, follow: true },
     other: {
-      "cove:campaign": campaign?.id ?? page,
+      "cove:campaign": campaign?.id ?? def.campaignId,
     },
   };
 }
@@ -59,8 +79,6 @@ export default async function LandPage({ params }: { params: Promise<{ page: str
   const { page } = await params;
   const def = pages[page as PageKey];
   if (!def) notFound();
-  // Ensure campaign slug exists for future land pages wired from config.
-  if (!allCampaignIds().includes(page) && !(page in pages)) notFound();
   const View = def.View;
   return <View />;
 }

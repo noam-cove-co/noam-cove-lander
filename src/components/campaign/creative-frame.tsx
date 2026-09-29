@@ -191,7 +191,7 @@ function MiniFinder({ compact }: { compact?: boolean }) {
             </div>
           </div>
           <div className="border-t border-black/10 px-3 py-1.5 text-[10px] text-[#6e6e73]">
-            3 items — 2.4 TB in the cloud. Zero KB on this Mac.
+            3 items | 2.4 TB in the cloud. Zero KB on this Mac.
           </div>
         </div>
       </div>
@@ -502,6 +502,192 @@ export function CreativeFrame({
             <MiniFinder compact={wide || !tall} />
           </div>
           <Footer cue={creative.cue} muted="#4c5563" />
+        </div>
+      </article>
+    );
+  }
+
+  if (layout === "scrappy") {
+    const dark = creative.tone === "ink" || creative.tone === "void";
+    return (
+      <article
+        data-creative={creative.id}
+        data-format={creative.format}
+        className={cn("relative overflow-hidden", className)}
+        style={{
+          width: creative.width,
+          height: creative.height,
+          background: tone.bg,
+          color: tone.fg,
+          padding: pad,
+        }}
+      >
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-70"
+          style={{
+            backgroundImage:
+              "repeating-linear-gradient(0deg, transparent, transparent 27px, rgba(14,19,32,0.03) 28px), repeating-linear-gradient(90deg, transparent, transparent 27px, rgba(14,19,32,0.025) 28px)",
+          }}
+        />
+        <div className="relative z-[1] flex h-full flex-col justify-between">
+          <div className="flex items-start justify-between gap-4">
+            <BrandLockup tone={tone} mark={mark} wordSize={wordSize} />
+            {creative.persona ? (
+              <p
+                className="font-marker rotate-[-6deg] text-cove"
+                style={{ fontSize: story ? 34 : 26, color: dark ? "#3dcea0" : "#0e6b56" }}
+              >
+                {creative.persona}
+              </p>
+            ) : null}
+          </div>
+
+          <div className="relative max-w-[94%]">
+            {creative.scribble ? (
+              <p
+                className="font-marker mb-3 rotate-[-3deg]"
+                style={{
+                  fontSize: story ? 48 : tall ? 40 : 34,
+                  color: dark ? "#3dcea0" : "#0e6b56",
+                }}
+              >
+                {creative.scribble}
+              </p>
+            ) : null}
+            <Headline
+              text={creative.headline}
+              accent={creative.accent}
+              color={tone.fg}
+              accentColor={tone.accent}
+              size={story ? 78 : tall ? 64 : wide ? 48 : 54}
+            />
+            {creative.line ? (
+              <p className="mt-3 font-serif" style={{ fontSize: story ? 42 : 32, lineHeight: 1.05 }}>
+                {creative.line}
+              </p>
+            ) : null}
+            {/* Nearly-full disk scrap */}
+            <div
+              className="mt-6 max-w-md rounded-[10px] p-4"
+              style={{
+                background: dark ? "rgba(255,255,255,0.06)" : "#fff",
+                boxShadow: dark ? "inset 0 0 0 1px rgba(255,255,255,0.1)" : "0 12px 28px -20px rgba(14,19,32,0.35)",
+                transform: "rotate(-1.2deg)",
+              }}
+            >
+              <div className="flex items-center justify-between text-[12px]" style={{ color: tone.muted }}>
+                <span>Macintosh HD</span>
+                <span className="font-marker text-[18px]" style={{ color: "#ff9f0a" }}>
+                  Nearly full
+                </span>
+              </div>
+              <div className="mt-2 h-2.5 overflow-hidden rounded-full" style={{ background: dark ? "rgba(255,255,255,0.12)" : "#e5e5ea" }}>
+                <div className="h-full rounded-full bg-[#ff9f0a]" style={{ width: "94%" }} />
+              </div>
+              <p className="mt-2 text-[12px]" style={{ color: tone.muted }}>
+                244 GB of 256 GB used
+              </p>
+            </div>
+            {creative.support ? (
+              <p className="mt-5 max-w-[34ch] font-sans" style={{ fontSize: 18, lineHeight: 1.35, color: tone.muted }}>
+                {creative.support}
+              </p>
+            ) : null}
+            {creative.cta ? (
+              <div className="mt-5">
+                <TryCta label={creative.cta} large={tall || square} />
+              </div>
+            ) : null}
+          </div>
+
+          <Footer cue={creative.cue} muted={tone.muted} />
+        </div>
+      </article>
+    );
+  }
+
+  if (layout === "broadsheet") {
+    const dark = creative.tone === "ink" || creative.tone === "void";
+    return (
+      <article
+        data-creative={creative.id}
+        data-format={creative.format}
+        className={cn("relative overflow-hidden", className)}
+        style={{
+          width: creative.width,
+          height: creative.height,
+          background: dark ? "#0e1320" : "#f3f1ea",
+          color: dark ? "#f5f6f8" : "#0e1320",
+          padding: pad * 1.05,
+        }}
+      >
+        <div className="relative flex h-full flex-col">
+          <div
+            className="flex items-end justify-between gap-4 border-b pb-3"
+            style={{ borderColor: dark ? "rgba(245,246,248,0.2)" : "rgba(14,19,32,0.2)" }}
+          >
+            <span className="font-serif tracking-[-0.04em]" style={{ fontSize: story ? 28 : 22 }}>
+              Cove
+            </span>
+            <span
+              className="font-sans tracking-[0.22em] uppercase"
+              style={{ fontSize: 11, color: dark ? "rgba(245,246,248,0.55)" : "#5c6570" }}
+            >
+              {creative.persona ?? "Private beta"}
+            </span>
+            <span className="font-sans tracking-[0.18em] uppercase" style={{ fontSize: 11, color: dark ? "#3dcea0" : "#0e6b56" }}>
+              Est. Yorkshire
+            </span>
+          </div>
+
+          <div className="flex flex-1 flex-col justify-center py-8">
+            <p
+              className="font-serif tracking-[-0.045em] text-balance"
+              style={{
+                fontSize: story ? 96 : tall ? 82 : wide ? 56 : 64,
+                lineHeight: 0.96,
+                maxWidth: "16ch",
+              }}
+            >
+              {creative.headline}
+            </p>
+            {creative.line ? (
+              <p className="mt-4 font-serif" style={{ fontSize: story ? 48 : 36, lineHeight: 1.05, opacity: 0.88 }}>
+                {creative.line}
+              </p>
+            ) : null}
+            <div
+              aria-hidden
+              className="my-6"
+              style={{ width: 72, height: 1, background: dark ? "rgba(245,246,248,0.28)" : "rgba(14,19,32,0.28)" }}
+            />
+            {creative.support ? (
+              <p
+                className="max-w-[38ch] font-sans"
+                style={{
+                  fontSize: story ? 24 : 18,
+                  lineHeight: 1.45,
+                  color: dark ? "rgba(245,246,248,0.68)" : "#3c4654",
+                }}
+              >
+                {creative.support}
+              </p>
+            ) : null}
+          </div>
+
+          <div
+            className="flex items-end justify-between gap-4 border-t pt-3"
+            style={{ borderColor: dark ? "rgba(245,246,248,0.2)" : "rgba(14,19,32,0.2)" }}
+          >
+            <p className="font-sans text-[12px] tracking-[0.16em] uppercase" style={{ color: dark ? "rgba(245,246,248,0.5)" : "#5c6570" }}>
+              {creative.cue ?? "Cove"}
+            </p>
+            <Image src="/brand/cove-mark.png" alt="" width={36} height={36} unoptimized />
+            <p className="font-sans text-[12px]" style={{ color: dark ? "rgba(245,246,248,0.5)" : "#5c6570" }}>
+              NOAM Co.
+            </p>
+          </div>
         </div>
       </article>
     );

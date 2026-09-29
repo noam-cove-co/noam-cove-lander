@@ -89,7 +89,7 @@ export function OwnDriveView() {
             <p className="text-[0.72rem] font-medium tracking-[0.18em] text-cove uppercase">On the Mac</p>
             <h2 className="mt-3 font-serif text-4xl tracking-[-0.03em] sm:text-5xl">It shows up like a normal drive.</h2>
             <p className="mt-4 max-w-md text-base leading-relaxed text-muted-foreground sm:text-lg">
-              Under Locations, beside Macintosh HD. Photos, Premiere, Logic, Cursor — they see a drive. What you open comes from the cloud as you need it.
+              Under Locations, beside Macintosh HD. Photos, Premiere, Logic, Cursor: they see a drive. What you open comes from the cloud as you need it.
             </p>
             <ul className="mt-8 grid gap-3 text-sm text-foreground/80">
               <li>One click to mount</li>

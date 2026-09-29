@@ -37,8 +37,8 @@ const marker = Caveat({
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://127.0.0.1:4317"),
   title: {
-    default: "Cove — your own cloud drive, on your Mac",
-    template: "%s — Cove",
+    default: "Cove | your own cloud drive, on your Mac",
+    template: "%s | Cove",
   },
   description: site.description,
   applicationName: "Cove",
@@ -49,10 +49,17 @@ export const metadata: Metadata = {
   },
   formatDetection: { telephone: false },
   openGraph: {
-    title: "Cove — your own cloud drive, on your Mac",
+    title: "Cove | your own cloud drive, on your Mac",
     description: site.description,
     locale: "en_GB",
     type: "website",
+    images: [{ url: "/campaign/own-drive/od-og-hero-cta.png", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Cove | your own cloud drive, on your Mac",
+    description: site.description,
+    images: ["/campaign/own-drive/od-og-hero-cta.png"],
   },
 };
 

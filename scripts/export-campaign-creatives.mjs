@@ -54,6 +54,25 @@ const campaigns = [
       "jl-li-board",
     ],
   },
+  {
+    id: "out-of-space",
+    creatives: [
+      "oos-og-familiar",
+      "oos-ig-sound",
+      "oos-ig-full",
+      "oos-fb-256",
+      "oos-story-drawer",
+      "oos-poster-heavy",
+      "oos-og-rolex",
+      "oos-ig-nb",
+      "oos-li-porsche",
+      "oos-poster-ralph",
+      "oos-ig-news",
+      "oos-fb-news",
+      "oos-li-square",
+      "oos-story-print",
+    ],
+  },
 ];
 
 const browser = await chromium.launch({

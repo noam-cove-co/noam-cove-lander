@@ -28,6 +28,16 @@ export default function LandIndexPage() {
             </Link>
           </li>
         ))}
+        <li>
+          <Link
+            href="/land/look-familiar"
+            className="block border border-foreground/10 bg-paper p-5 hover:border-cove/40"
+          >
+            <p className="text-[0.72rem] tracking-[0.16em] text-cove uppercase">print</p>
+            <h2 className="mt-1 font-serif text-2xl tracking-tight">Look Familiar</h2>
+            <p className="mt-2 text-sm text-muted-foreground">/land/look-familiar | classic print ads</p>
+          </Link>
+        </li>
       </ul>
     </main>
   );

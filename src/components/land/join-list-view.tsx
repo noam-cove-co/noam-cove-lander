@@ -55,7 +55,7 @@ export function JoinListView() {
             <span className="mt-2 block text-white/85">Join the list.</span>
           </h1>
           <p className="mt-5 max-w-md text-lg leading-relaxed text-white/60">
-            Your own cloud drive, on your Mac. A seat opens — we write. Invite someone and climb the ladder.
+            Your own cloud drive, on your Mac. A seat opens: we write. Invite someone and climb the ladder.
           </p>
           <dl className="mt-8 grid gap-3 text-sm text-white/70 sm:grid-cols-3">
             <div>

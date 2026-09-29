@@ -251,10 +251,10 @@ export function MountDemo() {
             <div className="flex h-7 items-center border-t border-black/10 bg-[#f6f6f6] px-3 text-[11px] text-[#6e6e73]">
               {place === "volume" && mounted ? (
                 <span>
-                  {desk.files.length} items — {desk.cloudSize}. Zero KB on this Mac.
+                  {desk.files.length} items | {desk.cloudSize}. Zero KB on this Mac.
                 </span>
               ) : (
-                <span>{hdItems.length} items — 11 GB available of 256 GB.</span>
+                <span>{hdItems.length} items | 11 GB available of 256 GB.</span>
               )}
             </div>
           </section>
@@ -368,7 +368,7 @@ function FinderBody({
               <span className={cn("truncate tabular-nums", on ? "text-white/90" : "text-[#6e6e73]")}>{item.meta}</span>
               <span className={cn("hidden truncate sm:block", on ? "text-white/90" : "text-[#6e6e73]")}>{kindLabel(item)}</span>
               <span className={cn("font-medium tabular-nums", on ? "text-white" : volume ? "text-[#0e6b56]" : "text-[#6e6e73]")}>
-                {volume ? "Zero KB" : "—"}
+                {volume ? "Zero KB" : "·"}
               </span>
             </button>
           );

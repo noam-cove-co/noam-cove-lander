@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-09-29T18:48:09.590Z",
-  "previousGeneratedAt": "2026-09-29T18:47:24.776Z",
+  "generatedAt": "2026-09-29T20:59:38.178Z",
+  "previousGeneratedAt": "2026-09-29T18:48:09.590Z",
   "campaigns": [
     {
       "id": "own-drive",
@@ -41,6 +41,25 @@
         "/campaign/join-the-list/jl-ig-board-tall.png",
         "/campaign/join-the-list/jl-fb-board.png",
         "/campaign/join-the-list/jl-li-board.png"
+      ]
+    },
+    {
+      "id": "out-of-space",
+      "assets": [
+        "/campaign/out-of-space/oos-og-familiar.png",
+        "/campaign/out-of-space/oos-ig-sound.png",
+        "/campaign/out-of-space/oos-ig-full.png",
+        "/campaign/out-of-space/oos-fb-256.png",
+        "/campaign/out-of-space/oos-story-drawer.png",
+        "/campaign/out-of-space/oos-poster-heavy.png",
+        "/campaign/out-of-space/oos-og-rolex.png",
+        "/campaign/out-of-space/oos-ig-nb.png",
+        "/campaign/out-of-space/oos-li-porsche.png",
+        "/campaign/out-of-space/oos-poster-ralph.png",
+        "/campaign/out-of-space/oos-ig-news.png",
+        "/campaign/out-of-space/oos-fb-news.png",
+        "/campaign/out-of-space/oos-li-square.png",
+        "/campaign/out-of-space/oos-story-print.png"
       ]
     }
   ]

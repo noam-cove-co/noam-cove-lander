@@ -1,17 +1,25 @@
 /**
  * Cove marketing campaign kit.
  *
- * Two funnel campaigns for the next release:
+ * Funnel campaigns:
  * - own-drive: product awareness
  * - join-the-list: waitlist conversion
+ * - out-of-space: disk-full pain (Look familiar?) + classic print cuts
  *
  * Creatives follow a print-ad grammar: generous air, one line that lands,
- * small Cove lockup — plus product-UI, hero-wash, and referral leaderboard cuts.
+ * small Cove lockup | plus product-UI, hero-wash, scrappy, and broadsheet cuts.
  */
 
 export type CreativeTone = "paper" | "ink" | "mist" | "void";
 
-export type CreativeLayout = "print" | "leaderboard" | "void-logo" | "hero-cta" | "product-ui";
+export type CreativeLayout =
+  | "print"
+  | "leaderboard"
+  | "void-logo"
+  | "hero-cta"
+  | "product-ui"
+  | "scrappy"
+  | "broadsheet";
 
 export type CreativeFormat =
   | "og"
@@ -38,7 +46,11 @@ export type CreativeSpec = {
   height: number;
   tone: CreativeTone;
   layout?: CreativeLayout;
-  /** Large serif line — the ad. */
+  /** Large serif line: the ad. */
+  /** Optional marker scribble (Caveat), e.g. Look familiar? */
+  scribble?: string;
+  /** Small persona line for broadsheet / scrappy cuts. */
+  persona?: string;
   headline: string;
   /** Optional second line in the same serif voice. */
   line?: string;
@@ -57,7 +69,7 @@ export type CreativeSpec = {
 export type CampaignDef = {
   id: string;
   name: string;
-  purpose: "awareness" | "waitlist";
+  purpose: "awareness" | "waitlist" | "pain";
   /** Future /land/[slug] page. */
   landSlug: string;
   summary: string;
@@ -229,7 +241,7 @@ export const campaigns: CampaignDef[] = [
         layout: "product-ui",
         tone: "paper",
         headline: "One click. Then Finder.",
-        support: "Your own cloud drive — the lander, as an ad.",
+        support: "Your own cloud drive: the lander, as an ad.",
         cta: "Try on this Mac",
         cue: "Yorkshire",
       }),
@@ -392,6 +404,163 @@ export const campaigns: CampaignDef[] = [
         support: "Cove waitlist · seats from the top",
         cue: "NOAM Co.",
         board: referralBoard,
+      }),
+    ],
+  },
+  {
+    id: "out-of-space",
+    name: "Out of Space",
+    purpose: "pain",
+    landSlug: "out-of-space",
+    summary:
+      "The biggest Cove pain: the Mac is full, the work is not. Scrappy Look familiar? cuts for Meta, plus Rolex / Porsche / New Balance broadsheet ads. Land: /land/out-of-space and /land/look-familiar.",
+    defaultUtm: {
+      source: "paid",
+      medium: "social",
+      campaign: "out-of-space",
+    },
+    creatives: [
+      // Scrappy funnel ads
+      creative("og", {
+        id: "oos-og-familiar",
+        layout: "scrappy",
+        tone: "paper",
+        scribble: "Look familiar?",
+        headline: "11 GB left. Again.",
+        support: "Family film, a campaign, and a project. One small disk.",
+        persona: "Every desk",
+        cue: "Cove",
+        cta: "Get the drive",
+      }),
+      creative("instagram-square", {
+        id: "oos-ig-sound",
+        layout: "scrappy",
+        tone: "paper",
+        scribble: "Sound familiar?",
+        headline: "The work got bigger. The disk did not.",
+        support: "Your Mac stays light. The library lives in Cove.",
+        persona: "Marketing",
+        cue: "Private beta",
+        cta: "Try on this Mac",
+      }),
+      creative("instagram-portrait", {
+        id: "oos-ig-full",
+        layout: "scrappy",
+        tone: "mist",
+        scribble: "This disk",
+        headline: "Nearly full. Still.",
+        line: "Cove is the other drive.",
+        support: "One click. It shows up in Finder.",
+        persona: "At home",
+        cue: "Yorkshire",
+        cta: "Join the list",
+      }),
+      creative("facebook-feed", {
+        id: "oos-fb-256",
+        layout: "scrappy",
+        tone: "ink",
+        scribble: "256 GB",
+        headline: "Not enough for what you actually want to do.",
+        support: "A cloud drive on your Mac. The heavy files leave the laptop.",
+        persona: "Studio",
+        cue: "Cove",
+        cta: "Get more room",
+      }),
+      creative("instagram-story", {
+        id: "oos-story-drawer",
+        layout: "scrappy",
+        tone: "paper",
+        scribble: "The drawer of drives",
+        headline: "You already know this feeling.",
+        line: "There is a better drive.",
+        support: "Cove | your own cloud drive, on your Mac",
+        cue: "Swipe for the list",
+        cta: "Join the list",
+      }),
+      creative("poster", {
+        id: "oos-poster-heavy",
+        layout: "scrappy",
+        tone: "paper",
+        scribble: "Look familiar?",
+        headline: "The work got heavy. The laptop stayed the same size.",
+        support: "Cove mounts a cloud drive beside Macintosh HD.",
+        persona: "Agents & desks",
+        cue: "NOAM Co.",
+        cta: "Try on this Mac",
+      }),
+      // Classic print / broadsheet
+      creative("og", {
+        id: "oos-og-rolex",
+        layout: "broadsheet",
+        tone: "paper",
+        headline: "The Mac that stays light.",
+        support: "A cloud drive, shown in Finder. The library does not live on the system disk.",
+        persona: "For people who fill a Mac every year",
+        cue: "Cove",
+      }),
+      creative("instagram-square", {
+        id: "oos-ig-nb",
+        layout: "broadsheet",
+        tone: "paper",
+        headline: "Dads keep the family films here.",
+        support: "Not in a drawer. Not on a full laptop. On a drive that simply shows up.",
+        persona: "At home",
+        cue: "Cove | private beta",
+      }),
+      creative("linkedin-og", {
+        id: "oos-li-porsche",
+        layout: "broadsheet",
+        tone: "ink",
+        headline: "Performance is nothing without room.",
+        support: "Mount Cove. Keep the campaign, the cut, and the masters off the laptop.",
+        persona: "Marketing & post",
+        cue: "NOAM Co. | Yorkshire",
+      }),
+      creative("poster", {
+        id: "oos-poster-ralph",
+        layout: "broadsheet",
+        tone: "paper",
+        headline: "Quiet confidence. Loud libraries.",
+        support: "Your own cloud drive, on your Mac in one click. Crafted for desks that outgrew 256 GB.",
+        persona: "Studio",
+        cue: "Cove",
+      }),
+      creative("instagram-portrait", {
+        id: "oos-ig-news",
+        layout: "broadsheet",
+        tone: "paper",
+        headline: "Full again?",
+        line: "There is another drive.",
+        support: "Cove appears under Locations. The heavy files stay in the cloud.",
+        persona: "Building with agents",
+        cue: "Join the list",
+      }),
+      creative("facebook-feed", {
+        id: "oos-fb-news",
+        layout: "broadsheet",
+        tone: "mist",
+        headline: "Enough space to do the work.",
+        support: "Not another browser folder. A drive. On the Mac.",
+        persona: "Every desk",
+        cue: "Cove",
+      }),
+      creative("linkedin-square", {
+        id: "oos-li-square",
+        layout: "broadsheet",
+        tone: "paper",
+        headline: "The disk is not the limit.",
+        support: "Cove | private beta for Mac",
+        persona: "Founding seats",
+        cue: "noam.co",
+      }),
+      creative("instagram-story", {
+        id: "oos-story-print",
+        layout: "broadsheet",
+        tone: "ink",
+        headline: "Look familiar?",
+        line: "Then try Cove.",
+        support: "Your own cloud drive. One click onto the Mac.",
+        cue: "Private beta",
       }),
     ],
   },

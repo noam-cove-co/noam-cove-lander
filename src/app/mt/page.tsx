@@ -6,11 +6,11 @@ import { RangeIntake } from "@/components/range-intake";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Mt. Mtn. — Cove, at the size of a mountain",
+    absolute: "Mt. Mtn. | Cove, at the size of a mountain",
   },
   description: site.range.lede,
   openGraph: {
-    title: "Mt. Mtn. — Cove, at the size of a mountain",
+    title: "Mt. Mtn. | Cove, at the size of a mountain",
     description: site.range.lede,
     locale: "en_GB",
     type: "website",

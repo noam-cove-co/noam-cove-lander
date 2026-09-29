@@ -73,7 +73,7 @@ export function MacDesktop() {
                 onClick={() => setMounted(true)}
                 className="mt-2 w-full rounded-md bg-[#0e6b56] px-3 py-2 text-left text-[13px] font-medium text-white"
               >
-                One click — show Family
+                One click: show Family
               </button>
             )}
           </div>

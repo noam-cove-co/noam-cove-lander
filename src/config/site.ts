@@ -418,7 +418,7 @@ export const site = {
       subject: "the holiday videos finally have a home",
       initials: "HP",
       paragraphs: [
-        "Cove team —",
+        "Cove team:",
         "I put ten years of family videos on Cove and opened them on the MacBook Air. They show up like a drive. They do not fill the laptop. My brother put the same drive on his Mac and found the Christmas film without me sending a link.",
         "I have stopped buying the little hard drives that live in the kitchen drawer.",
         "Helen",

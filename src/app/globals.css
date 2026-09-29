@@ -10,7 +10,7 @@
   --font-sans: var(--font-sans);
   --font-serif: var(--font-serif);
   --font-mono: var(--font-geist-mono);
-  --font-marker: var(--font-marker);
+  --font-marker: var(--font-marker), "Caveat", cursive;
   --font-heading: var(--font-serif);
   --color-cove: #0e6b56;
   --color-pine: #0e1320;

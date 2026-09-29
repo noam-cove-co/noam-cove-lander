@@ -132,8 +132,8 @@ function FinderChrome({
           </div>
           <div className="flex h-7 items-center border-t border-black/10 px-3 text-[11px] text-[#6e6e73]">
             {mounted
-              ? "12 items — 1.2 PB in the cloud. Zero KB on this Mac."
-              : "12 items — 11 GB available of 256 GB."}
+              ? "12 items | 1.2 PB in the cloud. Zero KB on this Mac."
+              : "12 items | 11 GB available of 256 GB."}
           </div>
         </section>
       </div>
