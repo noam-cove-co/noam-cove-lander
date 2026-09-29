@@ -26,7 +26,7 @@ export default async function OpenGraphImage() {
       >
         <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
           <img src={src} width={72} height={72} alt="" />
-          <div style={{ fontSize: 42, letterSpacing: -1 }}>cove</div>
+          <div style={{ fontSize: 42, letterSpacing: -1 }}>Cove</div>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 18, maxWidth: 860 }}>
           <div style={{ fontSize: 72, lineHeight: 0.95, letterSpacing: -2 }}>
