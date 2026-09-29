@@ -105,14 +105,40 @@ export const site = {
   },
 
   nav: [
-    { href: "/#product", label: "Product" },
+    { href: "/why", label: "Why Cove?" },
+    { href: "/room", label: "Size it" },
+    { href: "/download", label: "Download" },
+  ],
+
+  menu: {
+    label: "Product",
+    items: [
+      {
+        href: "/how",
+        label: "How Cove works",
+        detail: "The folders, the work, and how far the Mac app has come.",
+      },
+      {
+        href: "/#audiences",
+        label: "Who it’s for",
+        detail: "A family album, a campaign, a studio, or an agent.",
+      },
+      {
+        href: "/mt",
+        label: "Mt. Mtn.",
+        detail: "The same click, at the size of a mountain.",
+      },
+    ],
+  },
+
+  footerNav: [
+    { href: "/how", label: "How Cove works" },
     { href: "/why", label: "Why Cove?" },
     { href: "/#audiences", label: "Who it’s for" },
-    { href: "/room", label: "Your room" },
-    { href: "/#reviews", label: "Notes" },
-    { href: "/team", label: "Team" },
-    { href: "/mt", label: "Mt. Mtn." },
+    { href: "/room", label: "Size it" },
     { href: "/download", label: "Download" },
+    { href: "/mt", label: "Mt. Mtn." },
+    { href: "/team", label: "Team" },
   ],
 
   range: {

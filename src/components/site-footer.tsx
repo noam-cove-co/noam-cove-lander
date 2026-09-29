@@ -24,7 +24,7 @@ export function SiteFooter() {
         </div>
         <div className="grid grid-cols-2 gap-6 text-sm">
           <div className="grid content-start gap-2">
-            {site.nav.map((item) => (
+            {site.footerNav.map((item) => (
               <Link key={item.href} href={item.href} className="text-foreground/80 hover:text-foreground">
                 {item.label}
               </Link>

@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { site } from "@/config/site";
 import { CoveMark, Wordmark } from "@/components/brand";
 import { InstallButton } from "@/components/install-button";
@@ -45,6 +45,84 @@ function ChromeCta({
     <button type="button" onClick={onClick} className={classes}>
       {inner}
     </button>
+  );
+}
+
+function ProductMenu({ onNavigate }: { onNavigate?: () => void }) {
+  const [pinned, setPinned] = useState(false);
+  const [hover, setHover] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
+  const shown = pinned || hover;
+
+  useEffect(() => {
+    if (!pinned) return;
+    const onPointer = (event: MouseEvent) => {
+      if (!rootRef.current?.contains(event.target as Node)) setPinned(false);
+    };
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setPinned(false);
+    };
+    document.addEventListener("mousedown", onPointer);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onPointer);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [pinned]);
+
+  if (onNavigate) {
+    return (
+      <div className="pt-1">
+        <p className="px-0 pt-1 text-[0.68rem] tracking-[0.18em] text-muted-foreground uppercase">{site.menu.label}</p>
+        {site.menu.items.map((item) => (
+          <Link
+            key={item.href}
+            href={item.href}
+            onClick={onNavigate}
+            className="block py-2.5 text-lg"
+          >
+            {item.label}
+          </Link>
+        ))}
+      </div>
+    );
+  }
+
+  return (
+    <div
+      ref={rootRef}
+      className="relative"
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+    >
+      <button
+        type="button"
+        aria-expanded={shown}
+        aria-controls="product-menu"
+        onClick={() => setPinned((value) => !value)}
+        className={cn("inline-flex items-center gap-1 text-sm text-foreground/75 hover:text-foreground", shown && "text-foreground")}
+      >
+        {site.menu.label}
+        <ChevronDown className={cn("size-3.5 transition-transform", shown && "rotate-180")} />
+      </button>
+      {shown ? (
+        <div id="product-menu" className="absolute top-full left-0 z-50 pt-3">
+          <div className="w-80 border border-foreground/10 bg-background p-2 shadow-[0_18px_40px_-28px_rgba(14,19,32,0.45)]">
+            {site.menu.items.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setPinned(false)}
+                className="block px-3 py-2.5 hover:bg-foreground/5"
+              >
+                <span className="block font-serif text-xl tracking-tight">{item.label}</span>
+                <span className="mt-0.5 block text-sm leading-snug text-muted-foreground">{item.detail}</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      ) : null}
+    </div>
   );
 }
 
@@ -125,21 +203,19 @@ export function SiteHeader() {
           </span>
         </Link>
         <nav className="ml-6 hidden items-center gap-5 md:flex" aria-label="Primary">
+          <ProductMenu />
           {site.nav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className={cn(
-                "text-sm text-foreground/75 hover:text-foreground",
-                range && item.href === site.range.path && "text-primary",
-              )}
+              className="text-sm text-foreground/75 hover:text-foreground"
             >
               {item.label}
             </Link>
           ))}
         </nav>
         <div className="ml-auto flex items-center gap-1">
-          {range ? null : <InstallButton className="max-md:hidden" />}
+          {range ? null : <InstallButton iconOnly choices className="max-md:hidden" />}
           {range ? (
             <ChromeCta href={`${site.range.path}#enquire`}>Enquire</ChromeCta>
           ) : (
@@ -170,6 +246,7 @@ export function SiteHeader() {
       </div>
       {open ? (
         <nav className="border-t border-foreground/10 px-4 pt-1 pb-3 md:hidden" aria-label="Mobile">
+          <ProductMenu onNavigate={() => setOpen(false)} />
           {site.nav.map((item) => (
             <Link
               key={item.href}
@@ -218,7 +295,7 @@ export function MobileJoinBar() {
           </span>
         </p>
         <div className="flex shrink-0 items-center gap-0.5">
-          <InstallButton iconOnly />
+          <InstallButton iconOnly choices menuUp />
           {range ? (
             <ChromeCta href={`${site.range.path}#enquire`}>Enquire</ChromeCta>
           ) : (

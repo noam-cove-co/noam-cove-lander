@@ -36,7 +36,7 @@ const lanes = [
   },
 ];
 
-export function LanesPlay() {
+export function LanesPlay({ className }: { className?: string }) {
   const [laneIndex, setLaneIndex] = useState(0);
   const [open, setOpen] = useState<string | null>(null);
   const [seen, setSeen] = useState<string[]>([]);
@@ -56,7 +56,7 @@ export function LanesPlay() {
   }
 
   return (
-    <section className="mx-auto w-full max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
+    <section className={cn("mx-auto w-full max-w-6xl px-4 py-20 sm:px-6 sm:py-28", className)}>
       <Kicker>{site.workflow.kicker}</Kicker>
       <h2 className="mt-3 max-w-3xl font-serif text-4xl leading-[1.02] tracking-tight text-balance sm:text-6xl">
         {site.workflow.title}
