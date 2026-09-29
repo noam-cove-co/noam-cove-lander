@@ -1,6 +1,8 @@
 {
-  "generatedAt": "2026-09-29T20:59:38.178Z",
-  "previousGeneratedAt": "2026-09-29T18:48:09.590Z",
+  "generatedAt": "2026-09-29T21:15:10.550Z",
+  "previousGeneratedAt": "2026-09-29T20:59:38.178Z",
+  "scale": 2,
+  "note": "PNGs are exported at @2x (deviceScaleFactor 2). Logical sizes match creative width×height.",
   "campaigns": [
     {
       "id": "own-drive",
