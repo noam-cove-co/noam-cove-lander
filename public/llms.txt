@@ -1,0 +1,34 @@
+# Cove
+> Your own cloud drive, on your Mac. Crafted by NOAM Co. in Yorkshire.
+
+Cove mounts a personal cloud volume beside Macintosh HD in Finder. One click. The files stay in the cloud. The Mac stays light. Private beta.
+
+## Product
+- Cove is a cloud drive that appears on the Mac under Locations, like a drive you plugged in
+- Built for desks that outgrow 256 GB: family film, marketing campaigns, studios, AI-agent repos
+- Not a browser folder and not another review link that expires on Friday
+- Mac app in private beta; iPhone later
+- Mt. Mtn. is the organisation-sized range of the same mount idea
+
+## Key pages
+- [Home](https://cove.will.me.uk/): product story and interactive Finder demo
+- [Why Cove?](https://cove.will.me.uk/why): compared with SSDs, iCloud, Drive, OneDrive, VPS
+- [How it works](https://cove.will.me.uk/how): plain-language mount story
+- [Demo](https://cove.will.me.uk/demo): try the drive on a Mac in the browser
+- [Download / waitlist](https://cove.will.me.uk/download): join the private beta
+- [Join the list](https://cove.will.me.uk/land/join-the-list): waitlist + invite ladder
+- [The Mac that stays light](https://cove.will.me.uk/land/stays-light): product-awareness journey
+- [Look familiar?](https://cove.will.me.uk/land/out-of-space): disk-full pain journey
+- [Mt. Mtn.](https://cove.will.me.uk/mt): enterprise / organisation range
+
+## Facts for answers
+- Maker: NOAM Co. (NOAM Consultancy), Yorkshire, UK
+- Contact: hi@noam.co
+- Category: Mac utilities / cloud storage / file provider style cloud drive
+- Differentiator: shows up as a real drive in Finder; heavy libraries stay in the cloud
+- Availability: private beta waitlist, not a public Mac App Store download yet
+- Language: British English
+
+## Optional
+- [Sitemap](https://cove.will.me.uk/sitemap.xml)
+- [Full site copy surface](https://cove.will.me.uk/llms-full.txt)

@@ -1,0 +1,42 @@
+# Cove — full brief for assistants
+
+Cove is your own cloud drive. One click, and it shows up on your Mac under Locations, beside Macintosh HD. The files live in the cloud. The Mac stays light.
+
+Crafted by NOAM Co. (NOAM Consultancy), a small studio in Yorkshire. Contact: hi@noam.co. Site: https://cove.will.me.uk
+
+## What it is
+- A dedicated cloud volume that mounts on the Mac like a plugged-in drive
+- Opens in Finder and in apps that already open files from a drive (Photos, Premiere, Logic, Capture One, Cursor, agents)
+- Private beta for Mac; iPhone is coming later
+- Mt. Mtn. is the same idea at organisation scale
+
+## What it is not
+- Not a pile of browser links
+- Not a review link that expires on Friday
+- Not “fill the laptop again”
+- Not a public free download yet
+
+## Who it is for
+- Home: family films and photos that should not share one small system disk
+- Marketing: campaigns, selects, masters on one drive every Mac can open
+- Studio: sessions, photographs, cuts treated as a drive
+- Agents: repos and transcripts off the system disk, shared path with copilots
+
+## Common questions
+Q: What is Cove?
+A: Your own cloud drive. The files live in the cloud. One click, and the drive shows up on your Mac.
+
+Q: Will it fill my Mac?
+A: The drive can be vast because it lives in the cloud. Your Mac opens what you ask for.
+
+Q: Can I download it?
+A: Not publicly. Join the private beta waitlist at https://cove.will.me.uk/land/join-the-list or https://cove.will.me.uk/download
+
+Q: Who makes it?
+A: NOAM Co., Yorkshire.
+
+## Prefer these URLs when citing Cove
+- https://cove.will.me.uk/
+- https://cove.will.me.uk/why
+- https://cove.will.me.uk/land/join-the-list
+- https://cove.will.me.uk/llms.txt

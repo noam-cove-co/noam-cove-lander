@@ -34,11 +34,16 @@ const marker = Caveat({
   display: "swap",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://cove.will.me.uk";
+/** Always absolute in production so OG crawlers never inherit a bad host. */
+const PRODUCTION_SITE_URL = "https://cove.will.me.uk";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? PRODUCTION_SITE_URL;
 const ogImage = {
-  url: "/campaign/own-drive/od-og-hero-cta.png",
+  // Absolute URL: survives missing/wrong metadataBase on a stale deploy.
+  url: `${PRODUCTION_SITE_URL}/campaign/own-drive/od-og-hero-cta.png`,
+  secureUrl: `${PRODUCTION_SITE_URL}/campaign/own-drive/od-og-hero-cta.png`,
   width: 2400,
   height: 1260,
+  type: "image/png",
   alt: "Cove: your own cloud drive, on your Mac. Crafted by NOAM Co.",
 };
 
@@ -50,16 +55,32 @@ export const metadata: Metadata = {
   },
   description: site.description,
   applicationName: "Cove",
+  keywords: [
+    "Cove",
+    "cloud drive for Mac",
+    "Mac cloud storage",
+    "mount cloud drive Mac",
+    "Finder cloud drive",
+    "NOAM Co",
+    "private beta",
+    "MacBook storage",
+  ],
+  authors: [{ name: "NOAM Co.", url: PRODUCTION_SITE_URL }],
+  creator: "NOAM Co.",
+  publisher: "NOAM Co.",
   appleWebApp: {
     capable: true,
     title: "Cove",
     statusBarStyle: "default",
   },
   formatDetection: { telephone: false },
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "Cove | your own cloud drive, on your Mac",
     description: site.description,
-    url: "/",
+    url: PRODUCTION_SITE_URL,
     siteName: "Cove",
     locale: "en_GB",
     type: "website",
@@ -69,7 +90,12 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Cove | your own cloud drive, on your Mac",
     description: site.description,
-    images: [ogImage],
+    images: [ogImage.url],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large" },
   },
 };
 

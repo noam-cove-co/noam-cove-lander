@@ -54,19 +54,24 @@ export async function generateMetadata({
   const def = pages[page as PageKey];
   if (!def) return {};
   const campaign = campaignById(def.campaignId);
+  const ogAbsolute = def.og.startsWith("http")
+    ? def.og
+    : `https://cove.will.me.uk${def.og}`;
   return {
     title: def.title,
     description: def.description,
+    alternates: { canonical: `/land/${page}` },
     openGraph: {
       title: def.title,
       description: def.description,
-      images: [{ url: def.og, width: 2400, height: 1260 }],
+      url: `https://cove.will.me.uk/land/${page}`,
+      images: [{ url: ogAbsolute, width: 2400, height: 1260, type: "image/png" }],
     },
     twitter: {
       card: "summary_large_image",
       title: def.title,
       description: def.description,
-      images: [def.og],
+      images: [ogAbsolute],
     },
     robots: { index: true, follow: true },
     other: {

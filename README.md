@@ -63,7 +63,9 @@ Set `NEXT_PUBLIC_MIXPANEL_TOKEN` to send events to Mixpanel. Without a token, ev
 
 Event names live in `site.analytics.events` (`Land Page Viewed`, `Waitlist Joined`, `Invite Copied`, `Attribution Captured`, …).
 
-`NEXT_PUBLIC_SITE_URL` sets the canonical site URL used for metadata and absolute Open Graph image URLs. It defaults to `https://cove.will.me.uk`. Override locally if you need a different host.
+`NEXT_PUBLIC_SITE_URL` sets the canonical site URL used for metadata. It defaults to `https://cove.will.me.uk`. **Set this on Vercel production** so OG tags never resolve to localhost. Main OG image is forced absolute: `https://cove.will.me.uk/campaign/own-drive/od-og-hero-cta.png`.
+
+Generative SEO: [`/llms.txt`](http://127.0.0.1:4317/llms.txt), [`/llms-full.txt`](http://127.0.0.1:4317/llms-full.txt), [`/sitemap.xml`](http://127.0.0.1:4317/sitemap.xml). Growth notes: [`docs/marketing-growth.md`](docs/marketing-growth.md).
 
 Campaign PNGs in `public/campaign/` are exported at **@2x** (`deviceScaleFactor: 2` in `scripts/export-campaign-creatives.mjs`).
 
