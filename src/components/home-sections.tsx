@@ -1,4 +1,5 @@
 import { site } from "@/config/site";
+import { NoamSeal } from "@/components/brand";
 import { Section } from "@/components/section";
 import {
   Accordion,
@@ -14,16 +15,26 @@ export function Faq() {
     <Section>
       <h2 className="max-w-xl font-serif text-4xl tracking-tight sm:text-5xl">{site.faq.title}</h2>
       <Accordion defaultValue={[site.faq.items[0].q]} className="mt-8 border-t border-foreground/10">
-        {site.faq.items.map((item) => (
-          <AccordionItem key={item.q} value={item.q}>
-            <AccordionTrigger className="py-5 font-serif text-xl hover:no-underline sm:text-2xl">
-              {item.q}
-            </AccordionTrigger>
-            <AccordionContent className="max-w-2xl pb-5 text-base leading-relaxed text-muted-foreground">
-              {item.a}
-            </AccordionContent>
-          </AccordionItem>
-        ))}
+        {site.faq.items.map((item) => {
+          const mentionsNoam = /NOAM/i.test(item.a);
+          return (
+            <AccordionItem key={item.q} value={item.q}>
+              <AccordionTrigger className="py-5 font-serif text-xl hover:no-underline sm:text-2xl">
+                {item.q}
+              </AccordionTrigger>
+              <AccordionContent className="max-w-2xl pb-5 text-base leading-relaxed text-muted-foreground">
+                {mentionsNoam ? (
+                  <span className="flex items-start gap-3">
+                    <NoamSeal className="mt-0.5 size-7 shrink-0 text-muted-foreground" />
+                    <span>{item.a}</span>
+                  </span>
+                ) : (
+                  item.a
+                )}
+              </AccordionContent>
+            </AccordionItem>
+          );
+        })}
       </Accordion>
     </Section>
   );

@@ -3,7 +3,7 @@
 import { useLayoutEffect, useMemo, useState } from "react";
 import { site } from "@/config/site";
 import { track } from "@/lib/analytics";
-import { CoveMark } from "@/components/brand";
+import { CoveMark, NoamSeal } from "@/components/brand";
 import { Glyph } from "@/components/mac-window";
 import { cn } from "cn";
 
@@ -602,7 +602,16 @@ function ListStep({
       >
         {status === "sending" ? "Sending…" : mountain ? "Send the note" : site.campaign.cta}
       </button>
-      <p className={cn("text-xs", mountain ? "text-[#c5d4ea]" : "text-[#6e6e73]")}>{mountain ? room.mountainJoin.fine : room.join.fine}</p>
+      <p className={cn("flex items-start gap-2 text-xs", mountain ? "text-[#c5d4ea]" : "text-[#6e6e73]")}>
+        {mountain ? (
+          <>
+            <NoamSeal className="mt-0.5 size-5 shrink-0 text-[#c5d4ea]" />
+            <span>{room.mountainJoin.fine}</span>
+          </>
+        ) : (
+          room.join.fine
+        )}
+      </p>
     </form>
   );
 }

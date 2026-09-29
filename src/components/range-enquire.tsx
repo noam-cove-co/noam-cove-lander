@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { site } from "@/config/site";
 import { track } from "@/lib/analytics";
+import { NoamSeal } from "@/components/brand";
 import { Button } from "@/components/ui/button";
 import { cn } from "cn";
 
@@ -75,11 +76,18 @@ export function RangeEnquire() {
     return (
       <div role="status">
         <p className="font-serif text-5xl tracking-[-0.03em] text-[#f3f5f7]">Received.</p>
-        <p className="mt-4 max-w-md text-base leading-relaxed text-[#93a0b4]">
-          {status === "already"
-            ? "We already have a note from this address about Mt. Mtn. The studio will write."
-            : "A person at NOAM Co. will write. You are not in a queue."}
-        </p>
+        {status === "already" ? (
+          <p className="mt-4 max-w-md text-base leading-relaxed text-[#93a0b4]">
+            We already have a note from this address about Mt. Mtn. The studio will write.
+          </p>
+        ) : (
+          <div className="mt-4 flex items-start gap-3">
+            <NoamSeal className="mt-0.5 size-7 shrink-0 text-[#93a0b4]" />
+            <p className="max-w-md text-base leading-relaxed text-[#93a0b4]">
+              A person at NOAM Co. will write. You are not in a queue.
+            </p>
+          </div>
+        )}
       </div>
     );
   }
