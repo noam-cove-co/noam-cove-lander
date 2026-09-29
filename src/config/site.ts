@@ -462,6 +462,18 @@ export const site = {
     done: "You’re on the list.",
     doneBody: "We’ll write from the studio when a seat opens for the Mac drive.",
     already: "We already have your note. We’ll write from the studio when a seat opens.",
+    gift: {
+      title: "A quicker seat",
+      unwrap: "Unwrap",
+      close: "Close",
+      body: "Each person who joins with your link moves you up the list. The more people who join, the sooner a seat opens.",
+      waiting: "Your link appears here once you’re on the list. The form is just above.",
+      linkLabel: "Your link",
+      copy: "Copy link",
+      copied: "Copied",
+      invitedOne: "1 person joined with your link",
+      invitedOther: "people joined with your link",
+    },
   },
 
   useCases: {

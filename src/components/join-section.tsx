@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { macs, roles, site } from "@/config/site";
 import { track } from "@/lib/analytics";
+import { InviteGift, rememberInvite, type SavedInvite } from "@/components/invite-gift";
 import { useWaitlist } from "@/components/waitlist";
 import { cn } from "cn";
 
@@ -20,6 +21,7 @@ export function JoinSection() {
   const [company, setCompany] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "done" | "already">("idle");
   const [message, setMessage] = useState("");
+  const [invite, setInvite] = useState<SavedInvite | null>(null);
 
   async function onSubmit(event: React.FormEvent) {
     event.preventDefault();
@@ -31,18 +33,33 @@ export function JoinSection() {
     setStatus("sending");
     const params = new URLSearchParams(window.location.search);
     const headline = params.get("v") === "b" ? "b" : params.get("v") === "a" ? "a" : site.experiment.active;
+    const ref = params.get("ref") ?? "";
 
     try {
       const response = await fetch("/api/waitlist", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, role, mac, iosInterest, company, source: "page", headline }),
+        body: JSON.stringify({ name, email, role, mac, iosInterest, company, source: "page", headline, ref }),
       });
-      const data = (await response.json()) as { ok?: boolean; already?: boolean; message?: string };
+      const data = (await response.json()) as {
+        ok?: boolean;
+        already?: boolean;
+        message?: string;
+        inviteCode?: string;
+        invited?: number;
+      };
       if (!response.ok || !data.ok) {
         setStatus("idle");
         setMessage(data.message ?? "The list did not take that. Try again in a moment.");
         return;
+      }
+      if (typeof data.inviteCode === "string" && /^[a-z0-9]{4,16}$/.test(data.inviteCode)) {
+        const next = {
+          code: data.inviteCode,
+          invited: typeof data.invited === "number" && data.invited > 0 ? Math.floor(data.invited) : 0,
+        };
+        setInvite(next);
+        rememberInvite(next);
       }
       setStatus(data.already ? "already" : "done");
       track(site.analytics.events.waitlistJoined, { source: "page", role, iosInterest, already: Boolean(data.already) });
@@ -221,6 +238,7 @@ export function JoinSection() {
             <p className="mt-4 text-xs text-[#5c6570]">{join.fine}</p>
           </form>
         )}
+        <InviteGift invite={invite} />
       </div>
     </section>
   );
