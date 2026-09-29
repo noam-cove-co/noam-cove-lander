@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { site } from "@/config/site";
-import { CoveMark, Wordmark } from "@/components/brand";
+import { Wordmark } from "@/components/brand";
 import { JoinButton } from "@/components/join-button";
 
 export const metadata: Metadata = {
@@ -76,10 +77,14 @@ export default function WhyPage() {
 
       <section className="border-t border-foreground/10">
         <div className="mx-auto flex w-full max-w-3xl flex-col gap-8 px-4 py-20 sm:px-6 sm:py-28">
-          <div className="flex items-end justify-between gap-6">
-            <Wordmark className="text-6xl sm:text-7xl" />
-            <CoveMark className="mb-1 size-16 sm:size-20" />
-          </div>
+          <Image
+            src="/brand/cove-icon.png"
+            alt="A fluffy cloud shaped into a cove"
+            width={1024}
+            height={1024}
+            className="h-auto w-full max-w-[420px]"
+          />
+          <Wordmark className="text-6xl sm:text-7xl" />
           <div className="font-serif text-3xl leading-tight tracking-[-0.03em] sm:text-4xl">
             {why.close.slice(1).map((line) => (
               <p key={line}>{line}</p>
