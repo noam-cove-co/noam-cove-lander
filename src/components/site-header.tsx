@@ -211,7 +211,6 @@ export function SiteHeader() {
           ))}
         </nav>
         <div className="ml-auto flex items-center gap-1">
-          {range ? null : <InstallButton iconOnly choices className="max-md:hidden" />}
           {range ? (
             <ChromeCta href={`${site.range.path}#enquire`}>Enquire</ChromeCta>
           ) : (
