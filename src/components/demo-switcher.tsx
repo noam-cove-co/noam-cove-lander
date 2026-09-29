@@ -71,7 +71,7 @@ export function DemoSwitcher() {
 
       {mode === "cove" ? (
         <div className="pb-16 sm:pb-24">
-          <DemoStage>
+          <DemoStage length={2}>
             <MountDemo />
           </DemoStage>
         </div>

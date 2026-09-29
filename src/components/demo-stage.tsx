@@ -13,11 +13,12 @@ function readNarrow() {
   return window.matchMedia("(max-width: 767px)").matches;
 }
 
-export function DemoStage({ children }: { children: ReactNode }) {
+export function DemoStage({ children, length = 1 }: { children: ReactNode; length?: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const reduce = Boolean(useReducedMotion());
   const narrow = useSyncExternalStore(subscribeNarrow, readNarrow, () => false);
   const [peak, setPeak] = useState(1);
+  const runway = Math.max(1, length) * 108;
 
   useLayoutEffect(() => {
     if (reduce || narrow) return;
@@ -50,7 +51,7 @@ export function DemoStage({ children }: { children: ReactNode }) {
   }
 
   return (
-    <div ref={ref} className="relative h-[108vh]">
+    <div ref={ref} className="relative" style={{ height: `${runway}vh` }}>
       <div className="sticky top-16 z-20 mx-auto w-full max-w-6xl px-4 sm:px-6">
         <motion.div data-demo-frame style={{ scale }} className="origin-top will-change-transform">
           {children}
