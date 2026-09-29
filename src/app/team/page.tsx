@@ -65,33 +65,32 @@ export default function TeamPage() {
         <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground">
           Two of us. One builds Cove. One runs the studio floor.
         </p>
-        <ul className="mt-10 grid gap-6 sm:grid-cols-2">
+        <ul className="mt-8 grid gap-3 sm:grid-cols-2 sm:gap-4">
           {site.team.people.map((person) => (
-            <li key={person.name} className="group">
-              <div className="overflow-hidden bg-[#f4f1ea] p-[2px] shadow-[inset_0_0_0_1px_#0e1320]">
-                <div className="relative aspect-[4/5] overflow-hidden bg-[#ebe4d8] shadow-[inset_0_0_0_1px_#0e1320]">
-                  {person.photo ? (
-                    <Image
-                      src={person.photo}
-                      alt={person.alt || person.name}
-                      fill
-                      sizes="(max-width: 640px) 100vw, 40vw"
-                      className="object-cover"
-                    />
-                  ) : (
-                    <div className="grid h-full place-items-center bg-[#0e1320] text-[#f5f6f8]">
-                      <span className="font-serif text-7xl italic tracking-[-0.05em] sm:text-8xl">{person.initials}</span>
-                    </div>
-                  )}
-                </div>
+            <li
+              key={person.name}
+              className="flex items-center gap-4 rounded-[1.1rem] bg-white/80 p-3.5 ring-1 ring-foreground/10 shadow-[0_14px_36px_-28px_rgba(14,19,32,0.45)] sm:gap-5 sm:p-4"
+            >
+              <div className="relative size-[4.5rem] shrink-0 overflow-hidden rounded-full bg-[#ebe4d8] ring-1 ring-foreground/10 sm:size-24">
+                {person.photo ? (
+                  <Image
+                    src={person.photo}
+                    alt={person.alt || person.name}
+                    fill
+                    sizes="96px"
+                    className="object-cover"
+                  />
+                ) : (
+                  <div className="grid h-full place-items-center bg-[#0e1320] text-[#f5f6f8]">
+                    <span className="font-serif text-2xl italic tracking-[-0.04em] sm:text-3xl">{person.initials}</span>
+                  </div>
+                )}
               </div>
-              <div className="mt-4 flex items-baseline justify-between gap-3 border-t border-foreground/15 pt-3">
-                <div>
-                  <p className="font-serif text-2xl tracking-tight">{person.name}</p>
-                  <p className="mt-1 text-sm text-muted-foreground">{person.role}</p>
-                </div>
-                <NoamSeal className="size-7 shrink-0 text-muted-foreground" />
+              <div className="min-w-0 flex-1">
+                <p className="font-serif text-xl tracking-tight sm:text-2xl">{person.name}</p>
+                <p className="mt-1 text-sm leading-snug text-muted-foreground">{person.role}</p>
               </div>
+              <NoamSeal className="size-6 shrink-0 self-start text-muted-foreground sm:size-7 sm:self-center" />
             </li>
           ))}
         </ul>
