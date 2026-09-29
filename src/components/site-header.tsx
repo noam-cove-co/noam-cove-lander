@@ -89,10 +89,10 @@ export function SiteHeader() {
           <span className="grid h-11 place-items-center rounded-full bg-[#1d1d1f] px-3 md:h-auto md:rounded-none md:bg-transparent md:px-0">
             <CoveMark priority className="size-8" />
           </span>
-          <span className="rounded-full bg-cove px-1.5 py-px text-[9px] leading-none font-semibold tracking-[0.14em] text-white md:hidden">
-            BETA
+          <span className="leading-none">
+            <Wordmark className="text-[1.55rem]" />
+            <sup className="ml-0.5 font-sans text-[0.55rem] font-medium tracking-[0.14em] text-cove">BETA</sup>
           </span>
-          <Wordmark className="text-[1.55rem]" />
         </Link>
         <nav className="ml-6 hidden items-center gap-5 md:flex" aria-label="Primary">
           {site.nav.map((item) => (
@@ -109,7 +109,7 @@ export function SiteHeader() {
           ))}
         </nav>
         <div className="ml-auto flex items-center gap-1">
-          {range ? null : <InstallButton />}
+          {range ? null : <InstallButton className="max-md:hidden" />}
           {range ? (
             <ChromeCta href={`${site.range.path}#enquire`}>Enquire</ChromeCta>
           ) : (
