@@ -21,9 +21,6 @@ export function SiteFooter() {
               ? "Cove, at the size of a mountain. A dedicated drive, mounted in one click, kept for an organisation."
               : "Your own cloud drive. It lives in the cloud, and it shows up on your Mac in one click."}
           </p>
-          <div className="mt-4">
-            <CraftLine />
-          </div>
         </div>
         <div className="grid grid-cols-2 gap-6 text-sm">
           <div className="grid content-start gap-2">
@@ -38,6 +35,9 @@ export function SiteFooter() {
               {site.email}
             </a>
             <p>{range ? "Mt. Mtn. is the range. Cove is the drive for one Mac." : site.footer.note}</p>
+            <div className="pt-1">
+              <CraftLine />
+            </div>
           </div>
         </div>
       </div>

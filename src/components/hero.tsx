@@ -9,8 +9,8 @@ export function Hero({ variant }: { variant: HeadlineVariant }) {
   const line = headlineFor(variant);
   return (
     <>
-      <div className="hero-wash relative -mt-[calc(3.5rem+env(safe-area-inset-top))] overflow-hidden pt-[calc(3.5rem+env(safe-area-inset-top))] md:-mt-16 md:pt-16">
-        <section className="relative mx-auto grid w-full max-w-6xl items-center gap-6 px-4 pt-10 sm:px-6 sm:pt-16 lg:grid-cols-[minmax(0,1.12fr)_minmax(280px,0.88fr)] lg:gap-4 lg:pt-20">
+      <div className="hero-wash relative -mt-[calc(3.5rem+env(safe-area-inset-top))] pt-[calc(3.5rem+env(safe-area-inset-top))] md:-mt-16 md:pt-16">
+        <section className="relative mx-auto grid w-full max-w-6xl items-center gap-6 overflow-hidden px-4 pt-10 sm:px-6 sm:pt-16 lg:grid-cols-[minmax(0,1.12fr)_minmax(280px,0.88fr)] lg:gap-4 lg:pt-20">
           <div className="order-2 lg:order-1">
             <h1 className="max-w-4xl font-serif text-[2.7rem] leading-[0.96] tracking-[-0.035em] text-balance sm:text-6xl lg:text-[4.75rem]">
               {line.before}
@@ -40,7 +40,7 @@ export function Hero({ variant }: { variant: HeadlineVariant }) {
             />
           </div>
         </section>
-        <div className="relative mt-8 sm:mt-10">
+        <div className="relative mt-4 overflow-visible sm:mt-6">
           <DemoStage>
             <MountDemo />
           </DemoStage>

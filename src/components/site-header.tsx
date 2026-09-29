@@ -191,9 +191,9 @@ export function SiteHeader() {
           <span className="grid h-11 place-items-center rounded-full bg-[#1d1d1f] px-3 md:h-auto md:rounded-none md:bg-transparent md:px-0">
             <CoveMark priority className="size-9 md:size-10" />
           </span>
-          <span className="inline-flex items-start leading-none">
+          <span className="inline-flex items-baseline leading-none">
             <Wordmark className="text-[1.55rem]" />
-            <sup className="ml-0.5 align-super font-sans text-[0.55rem] font-medium tracking-[0.14em] text-cove">
+            <sup className="ml-0.5 translate-y-[0.55em] font-sans text-[0.55rem] font-medium tracking-[0.14em] text-cove">
               BETA
             </sup>
           </span>

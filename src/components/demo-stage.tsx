@@ -18,8 +18,8 @@ export function DemoStage({ children, length = 1 }: { children: ReactNode; lengt
   const reduce = Boolean(useReducedMotion());
   const narrow = useSyncExternalStore(subscribeNarrow, readNarrow, () => false);
   const [peak, setPeak] = useState(1);
-  // Long enough for a clear zoom hold; not so tall that CloudStream sits past a dead gap.
-  const runway = Math.max(1, length) * 170;
+  // Homepage ~200vh: zoom in, hold, zoom out. Demo page can pass length=0.5 for half.
+  const runway = Math.max(0.5, length) * 200;
 
   useLayoutEffect(() => {
     if (reduce || narrow) return;
@@ -29,33 +29,47 @@ export function DemoStage({ children, length = 1 }: { children: ReactNode; lengt
       const width = frame.offsetWidth;
       const height = frame.offsetHeight;
       if (width < 8 || height < 8) return;
-      const byWidth = (window.innerWidth * 0.88) / width;
-      const byHeight = (window.innerHeight * 0.92) / height;
+      // Prefer ~85vw, but never grow past ~88svh so the sticky frame stays on screen.
+      const byWidth = (window.innerWidth * 0.85) / width;
+      const byHeight = (window.innerHeight * 0.88) / height;
       const next = Math.min(byWidth, byHeight);
-      const clamped = next < 1.05 ? 1 : Math.min(next, 1.85);
+      const clamped = next < 1.02 ? 1 : Math.min(next, 1.55);
       setPeak((current) => (Math.abs(current - clamped) < 0.01 ? current : clamped));
     };
     measure();
+    const ro = typeof ResizeObserver !== "undefined" ? new ResizeObserver(measure) : null;
+    const frame = ref.current?.querySelector("[data-demo-frame]");
+    if (frame && ro) ro.observe(frame);
     window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
+    return () => {
+      ro?.disconnect();
+      window.removeEventListener("resize", measure);
+    };
   }, [reduce, narrow]);
 
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end end"],
   });
-  // Zoom in early and hold at peak until the section unpins — no late zoom-out gap.
-  const scale = useTransform(scrollYProgress, [0, 0.22, 1], [1, reduce ? 1 : peak, reduce ? 1 : peak]);
+  // Zoom in → hold sticky at peak → zoom back out as the section releases.
+  const scale = useTransform(
+    scrollYProgress,
+    [0, 0.2, 0.55, 0.85, 1],
+    [1, reduce ? 1 : peak, reduce ? 1 : peak, reduce ? 1 : peak, 1],
+  );
 
-  // Mobile: no sticky runway — CloudStream can sit a natural gap below the demo.
   if (reduce || narrow) {
     return <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">{children}</div>;
   }
 
   return (
     <div ref={ref} className="relative" style={{ height: `${runway}vh` }}>
-      <div className="sticky top-16 z-20 mx-auto w-full max-w-6xl px-4 pb-6 sm:px-6">
-        <motion.div data-demo-frame style={{ scale }} className="origin-top will-change-transform">
+      <div className="sticky top-0 z-20 flex h-svh items-center justify-center overflow-visible">
+        <motion.div
+          data-demo-frame
+          style={{ scale }}
+          className="mx-auto w-full max-w-6xl origin-center px-4 will-change-transform sm:px-6"
+        >
           {children}
         </motion.div>
       </div>
