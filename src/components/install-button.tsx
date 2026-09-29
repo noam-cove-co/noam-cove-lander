@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { Share } from "lucide-react";
 import { site } from "@/config/site";
 import { track } from "@/lib/analytics";
+import { useWaitlist } from "@/components/waitlist";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -46,6 +47,8 @@ export function InstallButton({
   label = "Add to Home Screen",
   iconOnly = false,
   showLabel = false,
+  choices = false,
+  menuUp = false,
 }: {
   className?: string;
   label?: string;
@@ -53,7 +56,14 @@ export function InstallButton({
   iconOnly?: boolean;
   /** Always show the words, including on a phone. Used in the page-end callout. */
   showLabel?: boolean;
+  /** Share icon opens Add to Home Screen, or join and refer. */
+  choices?: boolean;
+  /** Open the choices above the icon. Used on the bottom bar. */
+  menuUp?: boolean;
 }) {
+  const { openWaitlist } = useWaitlist();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
   const [deferred, setDeferred] = useState<BeforeInstallPromptEvent | null>(null);
   const [accepted, setAccepted] = useState(false);
@@ -69,7 +79,23 @@ export function InstallButton({
     return () => window.removeEventListener("beforeinstallprompt", onPrompt);
   }, []);
 
-  if (installed || accepted) return null;
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onPointer = (event: MouseEvent) => {
+      if (!rootRef.current?.contains(event.target as Node)) setMenuOpen(false);
+    };
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMenuOpen(false);
+    };
+    document.addEventListener("mousedown", onPointer);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onPointer);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [menuOpen]);
+
+  if ((installed || accepted) && !choices) return null;
 
   async function onClick() {
     track(site.analytics.events.installPrompt, { hasPrompt: Boolean(deferred), ios });
@@ -85,17 +111,59 @@ export function InstallButton({
 
   return (
     <>
-      <Button
-        type="button"
-        variant="ghost"
-        size={iconOnly ? "icon" : "default"}
-        onClick={onClick}
-        aria-label={iconOnly ? label : undefined}
-        className={cn(iconOnly ? "size-10 rounded-md" : "h-10 rounded-md px-3 text-sm", className)}
-      >
-        <Share />
-        {iconOnly ? null : <span className={showLabel ? undefined : "hidden sm:inline"}>{label}</span>}
-      </Button>
+      <div ref={rootRef} className="relative">
+        <Button
+          type="button"
+          variant="ghost"
+          size={iconOnly || choices ? "icon" : "default"}
+          onClick={() => {
+            if (choices) {
+              setMenuOpen((value) => !value);
+              return;
+            }
+            void onClick();
+          }}
+          aria-label={choices ? "Share" : iconOnly ? label : undefined}
+          aria-expanded={choices ? menuOpen : undefined}
+          aria-haspopup={choices ? "menu" : undefined}
+          className={cn(iconOnly || choices ? "size-10 rounded-md" : "h-10 rounded-md px-3 text-sm", className)}
+        >
+          <Share />
+          {iconOnly || choices ? null : <span className={showLabel ? undefined : "hidden sm:inline"}>{label}</span>}
+        </Button>
+        {choices && menuOpen ? (
+          <div
+            role="menu"
+            className={cn(
+              "absolute right-0 z-50 w-52 border border-foreground/10 bg-background p-1 shadow-[0_18px_40px_-28px_rgba(14,19,32,0.55)]",
+              menuUp ? "bottom-full mb-2" : "top-full mt-2",
+            )}
+          >
+            <button
+              type="button"
+              role="menuitem"
+              className="block w-full px-3 py-2 text-left text-sm hover:bg-foreground/5"
+              onClick={() => {
+                setMenuOpen(false);
+                void onClick();
+              }}
+            >
+              Add to Home Screen
+            </button>
+            <button
+              type="button"
+              role="menuitem"
+              className="block w-full px-3 py-2 text-left text-sm hover:bg-foreground/5"
+              onClick={() => {
+                setMenuOpen(false);
+                openWaitlist();
+              }}
+            >
+              Join or refer
+            </button>
+          </div>
+        ) : null}
+      </div>
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="rounded-3xl bg-background/95 p-6 backdrop-blur-xl sm:max-w-md">
           <DialogHeader>
