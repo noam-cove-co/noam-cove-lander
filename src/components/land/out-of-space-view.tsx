@@ -224,7 +224,13 @@ function StorageSettingsPanel() {
   );
 }
 
-function CoveFinderPreview({ mounted }: { mounted: boolean }) {
+function CoveFinderPreview({
+  mounted,
+  onMount,
+}: {
+  mounted: boolean;
+  onMount: () => void;
+}) {
   const files = site.desks[0].files.slice(0, 6);
   return (
     <MacDesktopShell menu={mounted ? "Cove" : "Finder"}>
@@ -242,7 +248,13 @@ function CoveFinderPreview({ mounted }: { mounted: boolean }) {
                 <span className="truncate">Family</span>
               </div>
             ) : (
-              <p className="px-2 py-2 text-[12px] text-[#6e6e73]">Nothing else plugged in.</p>
+              <button
+                type="button"
+                onClick={onMount}
+                className="mt-2 w-full rounded-md bg-[#0e6b56] px-3 py-2.5 text-left text-[13px] font-medium text-white"
+              >
+                One click: show Family
+              </button>
             )}
             <p className="mt-3 px-2 text-[11px] font-semibold tracking-wide text-[#6e6e73]">Favourites</p>
             <div className="px-2 py-1 text-[#1d1d1f]/70">Desktop</div>
@@ -251,11 +263,11 @@ function CoveFinderPreview({ mounted }: { mounted: boolean }) {
           <div className="bg-[#f6f6f6] p-4">
             {mounted ? (
               <>
-                <div className="mb-3 flex items-center justify-between text-[12px] text-[#6e6e73]">
+                <div className="mb-3 flex items-center justify-between gap-3 text-[12px] text-[#6e6e73]">
                   <span>Cloud drive · on this Mac</span>
-                  <span className="font-marker text-lg text-cove">zero KB until you open</span>
+                  <span className="font-marker shrink-0 text-lg text-cove">zero KB until you open</span>
                 </div>
-                <div className="grid grid-cols-3 gap-3 sm:grid-cols-3">
+                <div className="grid grid-cols-3 gap-3">
                   {files.map((file, index) => (
                     <div key={file.name} className="flex flex-col items-center gap-1.5 text-center">
                       <Glyph kind={file.kind} name={file.name} variant={index % 3} className="size-12" />
@@ -271,6 +283,13 @@ function CoveFinderPreview({ mounted }: { mounted: boolean }) {
                   <p className="mt-2 max-w-[16rem] text-[13px] leading-relaxed text-[#6e6e73]">
                     The work is waiting. The disk is not.
                   </p>
+                  <button
+                    type="button"
+                    onClick={onMount}
+                    className="mt-4 inline-flex h-10 items-center rounded-md bg-[#0e6b56] px-4 text-[13px] font-medium text-white"
+                  >
+                    Show Family on this Mac
+                  </button>
                 </div>
               </div>
             )}
@@ -503,7 +522,32 @@ function PainJourney() {
 }
 
 function MountReveal() {
+  const stageRef = useRef<HTMLDivElement>(null);
+  const mountedRef = useRef(false);
   const [mounted, setMounted] = useState(false);
+  const reduce = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: stageRef,
+    offset: ["start 0.55", "end end"],
+  });
+
+  function mount(next: boolean) {
+    if (mountedRef.current === next) return;
+    mountedRef.current = next;
+    setMounted(next);
+    track(site.analytics.events.landCta, {
+      land: LAND,
+      cta: next ? "Mount preview" : "Unmount preview",
+    });
+  }
+
+  // Reveal Cove as the sticky Finder settles into view, so the journey
+  // still lands even if a control below the fold is missed.
+  useMotionValueEvent(scrollYProgress, "change", (value) => {
+    if (reduce) return;
+    if (value > 0.08) mount(true);
+  });
+
   return (
     <section className="hero-wash border-t border-foreground/10">
       <div className="mx-auto max-w-6xl px-4 pt-16 sm:px-6 sm:pt-24">
@@ -517,30 +561,27 @@ function MountReveal() {
           </p>
         </Reveal>
       </div>
-      <DemoStage length={0.85}>
-        <div data-demo-frame>
-          <CoveFinderPreview mounted={mounted} />
-          <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
+      <div ref={stageRef}>
+        <DemoStage length={0.85}>
+          <CoveFinderPreview mounted={mounted} onMount={() => mount(true)} />
+          <div className="relative z-30 mt-5 flex flex-wrap items-center justify-center gap-3">
             <button
               type="button"
-              onClick={() => {
-                setMounted((value) => !value);
-                track(site.analytics.events.landCta, {
-                  land: LAND,
-                  cta: mounted ? "Unmount preview" : "Mount preview",
-                });
-              }}
+              onClick={() => mount(!mountedRef.current)}
               className="try-mac-frame"
               style={{ animation: "none" }}
             >
-              <span className="try-mac inline-flex h-11 items-center px-5 text-[14px] font-medium" style={{ animation: "none" }}>
+              <span
+                className="try-mac inline-flex h-11 items-center px-5 text-[14px] font-medium"
+                style={{ animation: "none" }}
+              >
                 {mounted ? "Remove from this Mac" : "One click: show Family"}
               </span>
             </button>
             <TryCta href={withUtm("/land/own-drive")} label="See the drive" />
           </div>
-        </div>
-      </DemoStage>
+        </DemoStage>
+      </div>
     </section>
   );
 }
