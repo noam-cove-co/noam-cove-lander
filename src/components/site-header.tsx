@@ -12,6 +12,8 @@ import { useWaitlist } from "@/components/waitlist";
 import { Button } from "@/components/ui/button";
 import { cn } from "cn";
 
+const navCta = "More space";
+
 function ChromeCta({
   children,
   onClick,
@@ -70,15 +72,21 @@ export function SiteHeader() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-40 border-b border-foreground/10 bg-background/90 backdrop-blur-md",
-        scrolled && "bg-background/95",
+        "sticky top-0 z-40 md:border-b md:border-foreground/10 md:bg-background/90 md:backdrop-blur-md",
+        scrolled && "md:bg-background/95",
       )}
     >
-      <div className="mx-auto flex h-16 max-w-6xl items-center gap-3 px-4 sm:px-6">
-        <Link href="/" className="flex items-center gap-2.5" aria-label="Cove, home">
-          <span className="grid h-11 place-items-center rounded-full bg-[#1d1d1f] px-3.5 md:h-auto md:rounded-none md:bg-transparent md:px-0">
-            <CoveMark priority className="size-8" />
-          </span>
+      <div className="px-3 pt-[max(0.55rem,env(safe-area-inset-top))] md:px-0 md:pt-0">
+      <div
+        className={cn(
+          "mx-auto max-w-6xl border border-foreground/10 bg-background/70 shadow-[0_16px_40px_-28px_rgba(14,19,32,0.55),inset_0_1px_0_rgba(255,255,255,0.55)] backdrop-blur-xl",
+          open ? "rounded-[1.6rem]" : "rounded-full",
+          "md:rounded-none md:border-0 md:bg-transparent md:shadow-none md:backdrop-blur-none",
+        )}
+      >
+      <div className="mx-auto flex h-14 max-w-6xl items-center gap-2 px-2.5 md:h-16 md:gap-3 md:px-6">
+        <Link href="/" className="flex items-center gap-2" aria-label="Cove, home">
+          <CoveMark priority className="size-8" />
           <Wordmark className="text-[1.55rem]" />
         </Link>
         <nav className="ml-6 hidden items-center gap-5 md:flex" aria-label="Primary">
@@ -100,7 +108,7 @@ export function SiteHeader() {
           {range ? (
             <ChromeCta href={`${site.range.path}#enquire`}>Enquire</ChromeCta>
           ) : (
-            <ChromeCta onClick={() => openWaitlist()}>A seat</ChromeCta>
+            <ChromeCta onClick={() => openWaitlist()}>{navCta}</ChromeCta>
           )}
           <Button
             type="button"
@@ -116,14 +124,14 @@ export function SiteHeader() {
         </div>
       </div>
       {open ? (
-        <nav className="border-t border-foreground/10 px-4 py-2 md:hidden" aria-label="Mobile">
+        <nav className="border-t border-foreground/10 px-4 pt-1 pb-3 md:hidden" aria-label="Mobile">
           {site.nav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
               className={cn(
-                "block py-3 text-lg",
+                "block py-2.5 text-lg",
                 range && item.href === site.range.path && "text-primary",
               )}
             >
@@ -132,6 +140,8 @@ export function SiteHeader() {
           ))}
         </nav>
       ) : null}
+      </div>
+      </div>
     </header>
   );
 }
@@ -141,8 +151,8 @@ export function MobileJoinBar() {
   const pathname = usePathname();
   const range = isRangePath(pathname);
   return (
-    <div className="fixed inset-x-0 bottom-0 z-40 border-t border-foreground/10 bg-background/95 p-3 backdrop-blur-md md:hidden">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 pb-[env(safe-area-inset-bottom)]">
+    <div className="fixed inset-x-3 bottom-[max(0.75rem,env(safe-area-inset-bottom))] z-40 md:hidden">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 rounded-full border border-foreground/10 bg-background/70 px-3 py-2 shadow-[0_16px_40px_-28px_rgba(14,19,32,0.55),inset_0_1px_0_rgba(255,255,255,0.55)] backdrop-blur-xl">
         <p className="flex items-center gap-2.5 text-sm leading-tight text-muted-foreground">
           <CoveMark className="size-8" />
           <span>
@@ -153,7 +163,7 @@ export function MobileJoinBar() {
         {range ? (
           <ChromeCta href={`${site.range.path}#enquire`}>Enquire</ChromeCta>
         ) : (
-          <ChromeCta onClick={() => openWaitlist()}>A seat</ChromeCta>
+          <ChromeCta onClick={() => openWaitlist()}>{navCta}</ChromeCta>
         )}
       </div>
     </div>

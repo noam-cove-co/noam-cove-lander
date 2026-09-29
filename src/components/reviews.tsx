@@ -29,7 +29,7 @@ export function Reviews() {
         <h2 className="mt-3 font-serif text-4xl tracking-tight sm:text-5xl">{site.reviews.title}</h2>
       </Reveal>
       <Reveal delay={0.05}>
-        <p className="font-marker mt-10 inline-block -rotate-2 text-[1.7rem] leading-none text-[#d01212] sm:text-[2rem]">
+        <p className="font-marker mt-10 inline-block -rotate-2 text-[2.05rem] leading-none font-medium text-[#d01212] sm:text-[2.35rem]">
           {site.reviews.annotation}
         </p>
         <article className="mt-4 overflow-hidden bg-white shadow-[0_22px_50px_-32px_rgba(14,19,32,0.45)] ring-1 ring-black/10">
@@ -54,9 +54,7 @@ export function Reviews() {
             </div>
             <div className="mt-6 max-w-2xl space-y-4 text-[17px] leading-relaxed">
               {note.paragraphs.map((paragraph) => (
-                <p key={paragraph}>
-                  <Marked text={paragraph} />
-                </p>
+                <p key={paragraph}>{paragraph}</p>
               ))}
             </div>
           </div>
