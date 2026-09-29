@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Check } from "lucide-react";
 import { site } from "@/config/site";
-import { InstallButton } from "@/components/install-button";
 import { JoinButton } from "@/components/join-button";
 import { WaitlistForm } from "@/components/waitlist";
 
@@ -52,16 +51,6 @@ export default function DownloadPage() {
           <WaitlistForm source="download" />
         </div>
       </div>
-
-      <section className="mt-6 rounded-md bg-pine px-6 py-8 text-paper sm:px-8">
-        <h2 className="font-serif text-3xl tracking-tight">Keep this page on your home screen</h2>
-        <p className="mt-2 max-w-lg text-sm leading-relaxed text-white/75">
-          The Mac app is private for now. Add Cove to your home screen and the beta stays a tap away.
-        </p>
-        <div className="mt-5">
-          <InstallButton label="Add to Home Screen" className="bg-white/10 text-paper hover:bg-white/15" />
-        </div>
-      </section>
     </main>
   );
 }
