@@ -1,0 +1,76 @@
+{
+  "schema_hint": "cove-operator-next-v1",
+  "evaluated_at": "2026-09-29T22:14:58Z",
+  "inputs": [
+    ".claude-ads/setup-profile.json",
+    ".claude-ads/brand-profile.json",
+    ".claude-ads/data-lifecycle.json"
+  ],
+  "product_status_core": {
+    "error": "cannot read maturity status: [Errno 2] No such file or directory: '/workspace/control-plane/manifests/maturity-status.json'",
+    "status": "invalid",
+    "as_of": "2026-09-29",
+    "note": "Expected for a consumer project: maturity-status.json is an upstream Claude Ads product artifact, not a Cove client file. Fail-closed per status-contract.md."
+  },
+  "highest_priority_blocker": {
+    "id": "approved-budget-and-target-cpa",
+    "severity": "blocking",
+    "summary": "No approved monthly paid budget or target cost-per-waitlist-join is recorded.",
+    "evidence_refs": [
+      "brand-profile:missing_fields:Approved monthly paid budget and target CPA",
+      "setup-profile:objective.success_metrics"
+    ],
+    "recovery": "Operator records GBP monthly budget ceiling and target CPA (or acceptable CPA band) in setup notes, then re-run /ads plan to attach budget_amount values.",
+    "blocks": [
+      "confident pacing",
+      "channel spend shares",
+      "/ads launch --apply"
+    ]
+  },
+  "queue": [
+    {
+      "id": "approved-budget-and-target-cpa",
+      "rank": 1,
+      "summary": "Approve monthly GBP budget + target cost per waitlist join"
+    },
+    {
+      "id": "configure-ad-accounts",
+      "rank": 2,
+      "summary": "Replace unconfigured Meta, Google, and LinkedIn account_id placeholders with real account IDs (secrets stay in env/keychain)",
+      "evidence_refs": [
+        "setup-profile:account_refs"
+      ]
+    },
+    {
+      "id": "measurement-cold-start",
+      "rank": 3,
+      "summary": "Instrument waitlist join as the optimization event (Meta Pixel/CAPI, Google tag/enhanced conversions, LinkedIn Insight Tag) and classify account/pixel/conversion cold-start as cold or unknown until history exists",
+      "evidence_refs": [
+        "setup-profile:data_sources meta/google/linkedin export missing",
+        "ads-meta:cold-start-contract"
+      ]
+    },
+    {
+      "id": "platform-exports",
+      "rank": 4,
+      "summary": "Supply dated Meta, Google, and LinkedIn exports or API reads before any /ads audit",
+      "evidence_refs": [
+        "setup-profile:data_sources status=missing"
+      ]
+    },
+    {
+      "id": "approve-tone-inference",
+      "rank": 5,
+      "summary": "Approve or reject brand-profile tone and audience inferences currently pending",
+      "evidence_refs": [
+        "brand-profile:inferences approval_status=pending"
+      ]
+    }
+  ],
+  "unblocked_now": [
+    "/ads plan from owned site copy and public/campaign assets (this run)",
+    "/ads create creative briefs from authorized PNGs",
+    "/ads launch --draft after plan + creative (still no live writes)"
+  ],
+  "mutation_authority": "draft-only"
+}

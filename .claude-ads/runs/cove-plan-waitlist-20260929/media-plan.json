@@ -1,0 +1,292 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "media-plan",
+  "run_id": "cove-plan-waitlist-20260929",
+  "created_at": "2026-09-29T22:14:58Z",
+  "objective": "Grow qualified Cove private-beta waitlist joins in the United Kingdom via Meta, Google, and LinkedIn, using owned landers and campaign creatives, without live account mutation until mutation gates pass",
+  "currency": "GBP",
+  "channels": [
+    {
+      "platform": "meta",
+      "role": "primary-prospecting-and-remarketing",
+      "rationale": "Strong fit for Mac-owner problem/solution creative (own-drive and out-of-space narratives) and waitlist CTA creatives; Instagram/Facebook placements match existing od-* and jl-* PNG kits. Cold-start: treat account, Pixel, and conversion history as unknown until evidence exists; no mature-account CPA or Advantage+ consolidation claims.",
+      "budget_amount": null,
+      "prerequisites": [
+        "Meta Business Manager ad account ID configured in setup-profile",
+        "Meta Pixel or Conversions API events for Waitlist Joined with diagnostics",
+        "Approved GBP budget ceiling and target cost per waitlist join",
+        "Landing: https://cove.will.me.uk/land/own-drive and /land/join-the-list with UTM",
+        "Creative rights confirmed for public/campaign/own-drive and join-the-list"
+      ],
+      "exclusions": [
+        "No live campaign creation or budget edits in this plan",
+        "No mature-account learning-phase forecasts",
+        "No broad negatives or lookalike claims without seed evidence",
+        "Do not optimize to link clicks as a proxy for waitlist joins"
+      ]
+    },
+    {
+      "platform": "google",
+      "role": "intent-capture-and-demand-gen",
+      "rationale": "Search captures explicit Mac storage / cloud-drive / Finder-mount intent; Demand Gen or YouTube can reuse product imagery later. Separate YouTube score if YouTube is activated. Provisional until keyword demand and conversion tagging are evidenced.",
+      "budget_amount": null,
+      "prerequisites": [
+        "Google Ads account ID configured",
+        "Google tag + conversion action for waitlist join (and Enhanced Conversions if eligible)",
+        "Approved search themes derived from site copy only after Search Terms review policy is accepted",
+        "Landing pages indexable and fast on mobile and desktop",
+        "Approved GBP budget and CPA band"
+      ],
+      "exclusions": [
+        "No invented negative keyword list without a search terms report",
+        "Do not sum Meta and Google conversions across mismatched windows",
+        "No Performance Max scale claims without feed/asset and conversion history",
+        "No live account writes from this plan"
+      ]
+    },
+    {
+      "platform": "linkedin",
+      "role": "b2b-desk-and-professional-reach",
+      "rationale": "Cove desks include Marketing and Building with agents; LinkedIn creatives (od-li-*, jl-li-*) already exist. Use for professional Mac users and small teams, not mass consumer scale. Keep budgets provisional and audiences narrow until Insight Tag and lead quality are reviewed.",
+      "budget_amount": null,
+      "prerequisites": [
+        "LinkedIn Campaign Manager account ID configured",
+        "LinkedIn Insight Tag on waitlist thank-you / join confirmation path",
+        "Approved professional audience hypotheses (marketing, creative studios, agent builders)",
+        "Approved GBP budget and CPA band"
+      ],
+      "exclusions": [
+        "No job-title scraping or unapproved matched audiences",
+        "No Mt. Mtn. enterprise pitch mixed into founding-beta waitlist ads without separate offer approval",
+        "No live campaign mutation from this plan"
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "record-budget-cpa",
+      "description": "Operator records monthly GBP paid budget ceiling and target (or band) cost per waitlist join in setup notes",
+      "owner": "noam-co-operator",
+      "timing": "before any launch draft with spend",
+      "dependencies": [],
+      "evidence_refs": [
+        "brand-profile:missing_fields",
+        "setup-profile:objective"
+      ],
+      "success_measure": "Setup profile or operator note contains currency GBP, monthly ceiling, and target CPA band",
+      "rollback_or_exit": "Keep budgets null and stop before /ads launch --apply"
+    },
+    {
+      "id": "configure-accounts",
+      "description": "Replace Meta, Google, and LinkedIn account_id placeholders; store API tokens only in environment or keychain with secret_ref in profile",
+      "owner": "noam-co-operator",
+      "timing": "before measurement validation",
+      "dependencies": [
+        "record-budget-cpa"
+      ],
+      "evidence_refs": [
+        "setup-profile:account_refs"
+      ],
+      "success_measure": "setup-profile account_refs show real IDs; secret presence refs only",
+      "rollback_or_exit": "Leave unconfigured; continue advisory creative work only"
+    },
+    {
+      "id": "instrument-waitlist-conversion",
+      "description": "Map POST /api/waitlist success to platform conversion events (Meta Pixel/CAPI, Google conversion, LinkedIn conversion) with UTM capture already on site",
+      "owner": "noam-co-operator",
+      "timing": "before paid traffic",
+      "dependencies": [
+        "configure-accounts"
+      ],
+      "evidence_refs": [
+        "setup-profile:objective.conversion_definition",
+        "repo:src/config/site.ts#analytics.events.waitlistJoined"
+      ],
+      "success_measure": "Test events fire for Waitlist Joined in each platform diagnostics; cold-start dimensions classified",
+      "rollback_or_exit": "Pause launch drafts if events missing or mis-attributed"
+    },
+    {
+      "id": "approve-brand-inferences",
+      "description": "Approve or reject pending tone and primary_audiences inferences on brand-profile",
+      "owner": "noam-co-operator",
+      "timing": "before creative production scale",
+      "dependencies": [],
+      "evidence_refs": [
+        "brand-profile:inferences"
+      ],
+      "success_measure": "approval_status approved or rejected with note",
+      "rollback_or_exit": "Keep creative hypotheses provisional"
+    },
+    {
+      "id": "create-meta-briefs",
+      "description": "Run /ads create for Meta feed and story using public/campaign/own-drive and join-the-list PNGs; primary lander /land/own-drive, convert on /land/join-the-list",
+      "owner": "paid-media-advisor",
+      "timing": "after brand inference review preferred",
+      "dependencies": [
+        "approve-brand-inferences"
+      ],
+      "evidence_refs": [
+        "repo:public/campaign/manifest.json",
+        "repo:src/config/campaigns.ts#own-drive",
+        "repo:src/config/campaigns.ts#join-the-list"
+      ],
+      "success_measure": "Schema-valid creative-brief under a new run with human_review pending",
+      "rollback_or_exit": "Do not upload creatives to Meta until human_review approved"
+    },
+    {
+      "id": "create-google-rsa-plan",
+      "description": "Draft Google Search RSA themes from approved site claims only (Mac cloud drive, Finder mount, private beta waitlist); Demand Gen asset list from own-drive kit as optional phase-2",
+      "owner": "paid-media-advisor",
+      "timing": "after measurement instrumentation started",
+      "dependencies": [
+        "instrument-waitlist-conversion",
+        "approve-brand-inferences"
+      ],
+      "evidence_refs": [
+        "repo:src/config/site.ts#site.description",
+        "repo:src/config/site.ts#site.campaign"
+      ],
+      "success_measure": "Copy deck with approved_claims evidence_refs; no negatives invented",
+      "rollback_or_exit": "Hold Search launch if claims or conversion action unapproved"
+    },
+    {
+      "id": "create-linkedin-briefs",
+      "description": "Run /ads create for LinkedIn single image using od-li-* and jl-li-* assets aimed at marketing and agent-builder desks",
+      "owner": "paid-media-advisor",
+      "timing": "parallel with Meta creative after brand review",
+      "dependencies": [
+        "approve-brand-inferences"
+      ],
+      "evidence_refs": [
+        "repo:public/campaign/own-drive/od-li-hero.png",
+        "repo:public/campaign/join-the-list/jl-li-reserved.png",
+        "repo:src/config/site.ts#roles"
+      ],
+      "success_measure": "Schema-valid creative-brief; audience hypotheses labeled provisional",
+      "rollback_or_exit": "Do not enable LinkedIn spend without Insight Tag validation"
+    },
+    {
+      "id": "draft-launch-meta",
+      "description": "Produce /ads launch --draft for Meta: one prospecting campaign to /land/own-drive or /land/stays-light and one conversion campaign to /land/join-the-list; cold-start staging only",
+      "owner": "paid-media-advisor",
+      "timing": "after create-meta-briefs and instrument-waitlist-conversion",
+      "dependencies": [
+        "create-meta-briefs",
+        "instrument-waitlist-conversion",
+        "record-budget-cpa"
+      ],
+      "evidence_refs": [
+        "media-plan:channels[meta]",
+        "mutation-gate:draft-only"
+      ],
+      "success_measure": "mutation-plan status draft with ceilings, rollback, verification steps",
+      "rollback_or_exit": "Never --apply until owner approval and mutation gate pass"
+    },
+    {
+      "id": "draft-launch-google",
+      "description": "Produce /ads launch --draft for Google Search waitlist acquisition with exact conversion action and lander /land/join-the-list (or own-drive\u2192list path)",
+      "owner": "paid-media-advisor",
+      "timing": "after create-google-rsa-plan",
+      "dependencies": [
+        "create-google-rsa-plan",
+        "record-budget-cpa"
+      ],
+      "evidence_refs": [
+        "media-plan:channels[google]"
+      ],
+      "success_measure": "mutation-plan draft with search structure and measurement checks",
+      "rollback_or_exit": "No apply; pause if search terms evidence later shows policy risk"
+    },
+    {
+      "id": "draft-launch-linkedin",
+      "description": "Produce /ads launch --draft for LinkedIn sponsored content waitlist with narrow professional targeting hypotheses",
+      "owner": "paid-media-advisor",
+      "timing": "after create-linkedin-briefs",
+      "dependencies": [
+        "create-linkedin-briefs",
+        "instrument-waitlist-conversion",
+        "record-budget-cpa"
+      ],
+      "evidence_refs": [
+        "media-plan:channels[linkedin]"
+      ],
+      "success_measure": "mutation-plan draft; spend ceiling explicit",
+      "rollback_or_exit": "No apply; exit if CPL exceeds approved band after learning window"
+    },
+    {
+      "id": "measurement-window-review",
+      "description": "After first live spend (post-approval), review same-window waitlist joins vs platform-reported conversions; do not sum mismatched attribution windows",
+      "owner": "noam-co-operator",
+      "timing": "7 to 14 days after first approved spend",
+      "dependencies": [
+        "draft-launch-meta",
+        "draft-launch-google",
+        "draft-launch-linkedin"
+      ],
+      "evidence_refs": [
+        "setup-profile:objective.success_metrics",
+        "references:conversion-tracking"
+      ],
+      "success_measure": "Reconciled join count from waitlist store vs platform conversions with disclosed gaps",
+      "rollback_or_exit": "Pause underperforming channel drafts or live campaigns via approved mutation plans only"
+    }
+  ],
+  "assumptions": [
+    "Primary geography is United Kingdom; other English-speaking markets remain provisional",
+    "Primary conversion is waitlist join, not download (publicRelease false)",
+    "Owned creatives under public/campaign are rights-cleared for Cove paid use",
+    "Meta account, Pixel, and conversion history are unknown cold-start dimensions until evidenced",
+    "Budget amounts stay null until operator supplies GBP ceilings",
+    "British English and no em dashes in public ad copy"
+  ],
+  "exclusions": [
+    "No live account writes or spend from this plan",
+    "No /ads audit until dated platform exports or API reads exist",
+    "No invented CPA/ROAS targets or channel mix percentages",
+    "No negative keyword list without search terms evidence",
+    "No permanent deletion recommendations",
+    "TikTok, Snapchat, Reddit, Pinterest, X, Apple, Amazon, Microsoft, YouTube not in scope for this plan"
+  ],
+  "status": "draft",
+  "data_lifecycle": {
+    "schema_version": "1.0.0",
+    "lifecycle_id": "cove-run-plan-waitlist-20260929",
+    "classification": "internal",
+    "retention": {
+      "minimum_seconds": 0,
+      "mode": "operator-defined",
+      "delete_after": "2027-09-29T00:00:00Z",
+      "purpose": "Advisory Cove waitlist media plan and status-next artifacts; no credentials or account exports",
+      "exception_reason": null
+    },
+    "encryption": {
+      "at_rest": "verified",
+      "in_transit": "verified",
+      "evidence_refs": [
+        "operator-attestation:workspace-disk-encryption",
+        "transport:https-only-for-remote-sources",
+        "repo:no-secrets-in-claude-ads-profiles"
+      ]
+    },
+    "access": {
+      "owner": "noam-co-operator",
+      "authorized_roles": [
+        "cove-operator",
+        "paid-media-advisor"
+      ],
+      "access_log_locator": ".claude-ads/runs/cove-plan-waitlist-20260929/access-log.json"
+    },
+    "deletion": {
+      "status": "scheduled",
+      "method": "Operator deletes this run directory after review or when superseded",
+      "verification_required": true,
+      "verification_artifact_locator": null
+    },
+    "incident": {
+      "owner": "noam-co-operator",
+      "reporting_channel": "hi@noam.co",
+      "status": "not-triggered",
+      "record_locator": null
+    }
+  }
+}

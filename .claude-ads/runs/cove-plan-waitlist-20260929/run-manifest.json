@@ -1,0 +1,94 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "cove-plan-waitlist-20260929",
+  "started_at": "2026-09-29T22:14:58Z",
+  "scopes": [
+    "status-next",
+    "media-plan",
+    "meta",
+    "google",
+    "linkedin",
+    "waitlist-acquisition"
+  ],
+  "adapters": [
+    {
+      "platform": "meta",
+      "mode": "export",
+      "status": "unavailable",
+      "reason": "account unconfigured; no export"
+    },
+    {
+      "platform": "google",
+      "mode": "export",
+      "status": "unavailable",
+      "reason": "account unconfigured; no export"
+    },
+    {
+      "platform": "linkedin",
+      "mode": "export",
+      "status": "unavailable",
+      "reason": "account unconfigured; no export"
+    }
+  ],
+  "sources": [
+    "setup-profile:cove-setup-20260929",
+    "brand-profile:cove-setup-20260929",
+    "repo:src/config/site.ts",
+    "repo:src/config/campaigns.ts",
+    "repo:public/campaign/manifest.json",
+    "skill:ads-plan",
+    "skill:ads-meta:cold-start-contract",
+    "template:ads-plan/assets/saas.md",
+    "template:ads-plan/assets/generic.md"
+  ],
+  "privacy_class": "internal",
+  "data_lifecycle": {
+    "schema_version": "1.0.0",
+    "lifecycle_id": "cove-run-plan-waitlist-20260929",
+    "classification": "internal",
+    "retention": {
+      "minimum_seconds": 0,
+      "mode": "operator-defined",
+      "delete_after": "2027-09-29T00:00:00Z",
+      "purpose": "Advisory Cove waitlist media plan and status-next artifacts; no credentials or account exports",
+      "exception_reason": null
+    },
+    "encryption": {
+      "at_rest": "verified",
+      "in_transit": "verified",
+      "evidence_refs": [
+        "operator-attestation:workspace-disk-encryption",
+        "transport:https-only-for-remote-sources",
+        "repo:no-secrets-in-claude-ads-profiles"
+      ]
+    },
+    "access": {
+      "owner": "noam-co-operator",
+      "authorized_roles": [
+        "cove-operator",
+        "paid-media-advisor"
+      ],
+      "access_log_locator": ".claude-ads/runs/cove-plan-waitlist-20260929/access-log.json"
+    },
+    "deletion": {
+      "status": "scheduled",
+      "method": "Operator deletes this run directory after review or when superseded",
+      "verification_required": true,
+      "verification_artifact_locator": null
+    },
+    "incident": {
+      "owner": "noam-co-operator",
+      "reporting_channel": "hi@noam.co",
+      "status": "not-triggered",
+      "record_locator": null
+    }
+  },
+  "worker_status": {
+    "status-next": "completed",
+    "planner": "completed",
+    "meta-audit": "skipped",
+    "google-audit": "skipped",
+    "linkedin-audit": "skipped"
+  },
+  "completeness": "partial"
+}

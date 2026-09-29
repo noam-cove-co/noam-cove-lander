@@ -10,6 +10,14 @@
         "setup-profile.json",
         "brand-profile.json"
       ]
+    },
+    {
+      "at": "2026-09-29T22:15:00Z",
+      "actor": "cove-ads-conductor",
+      "action": "run-plan-waitlist",
+      "artifacts": [
+        ".claude-ads/runs/cove-plan-waitlist-20260929/"
+      ]
     }
   ]
 }

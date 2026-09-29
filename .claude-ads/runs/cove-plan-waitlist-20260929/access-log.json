@@ -1,0 +1,15 @@
+{
+  "entries": [
+    {
+      "at": "2026-09-29T22:14:58Z",
+      "actor": "cove-ads-conductor",
+      "action": "create-run",
+      "artifacts": [
+        "run-manifest.json",
+        "status-next.json",
+        "media-plan.json",
+        "media-plan.md"
+      ]
+    }
+  ]
+}
