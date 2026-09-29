@@ -64,8 +64,14 @@ export function BeatsPlay() {
                   active ? "border-cove" : "border-foreground/15",
                 )}
               >
-                <span className="text-sm text-cove">0{beatIndex + 1}</span>
-                <span className="mt-1 block font-serif text-3xl tracking-[-0.03em] sm:text-4xl">{beat.title}</span>
+                <span
+                  className={cn(
+                    "block font-serif text-3xl tracking-[-0.03em] sm:text-4xl",
+                    active ? "text-foreground" : "text-foreground/40",
+                  )}
+                >
+                  {beat.title}
+                </span>
                 <span className="mt-2 block max-w-md text-base leading-relaxed text-muted-foreground">{beat.body}</span>
               </button>
             );
