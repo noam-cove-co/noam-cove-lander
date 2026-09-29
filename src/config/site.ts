@@ -119,6 +119,11 @@ export const site = {
         detail: "The folders, the work, and how far the Mac app has come.",
       },
       {
+        href: "/demo",
+        label: "Demo",
+        detail: "Cove on a Mac, then Mt. Mtn. for the organisation-sized drive.",
+      },
+      {
         href: "/#audiences",
         label: "Who it’s for",
         detail: "A family album, a campaign, a studio, or an agent.",
@@ -133,6 +138,7 @@ export const site = {
 
   footerNav: [
     { href: "/how", label: "How Cove works" },
+    { href: "/demo", label: "Demo" },
     { href: "/why", label: "Why Cove?" },
     { href: "/#audiences", label: "Who it’s for" },
     { href: "/room", label: "Size it" },

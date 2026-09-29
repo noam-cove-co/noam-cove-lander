@@ -135,14 +135,8 @@ export function SiteHeader() {
   const demoAfterClose = useRef(false);
 
   const scrollToDemo = useCallback(() => {
-    const demo = pathname === "/" ? document.getElementById("demo") : null;
-    if (demo) {
-      demo.scrollIntoView({ behavior: "smooth" });
-      if (window.location.hash !== "#demo") history.pushState(null, "", "#demo");
-      return;
-    }
-    router.push("/#demo");
-  }, [pathname, router]);
+    router.push("/demo");
+  }, [router]);
 
   function openDemo() {
     if (open) {
@@ -199,7 +193,9 @@ export function SiteHeader() {
           </span>
           <span className="leading-none">
             <Wordmark className="text-[1.55rem]" />
-            <sup className="ml-0.5 font-sans text-[0.55rem] font-medium tracking-[0.14em] text-cove">BETA</sup>
+            <sup className="ml-3 align-super font-sans text-[0.55rem] font-medium tracking-[0.14em] text-cove">
+              BETA
+            </sup>
           </span>
         </Link>
         <nav className="ml-6 hidden items-center gap-5 md:flex" aria-label="Primary">

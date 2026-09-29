@@ -1,15 +1,16 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import { InstallButton } from "@/components/install-button";
-import { JoinButton } from "@/components/join-button";
+import { WaitlistStrip } from "@/components/waitlist-strip";
 
 export function PageCloser() {
+  const pathname = usePathname();
+  const home = pathname === "/";
+
   return (
     <>
-      <section aria-label="Join the waitlist" className="border-t border-foreground/10">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-6 gap-y-2 px-4 py-3 sm:px-6">
-          <p className="text-sm leading-snug text-foreground">The private beta opens from the list.</p>
-          <JoinButton className="h-8 rounded-md px-3.5 text-sm" />
-        </div>
-      </section>
+      {home ? null : <WaitlistStrip />}
       <section className="bg-pine text-paper">
         <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-7 sm:flex-row sm:items-center sm:justify-between sm:gap-8 sm:px-6 sm:py-8">
           <div className="min-w-0">
