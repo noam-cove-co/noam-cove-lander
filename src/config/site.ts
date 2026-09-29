@@ -150,7 +150,6 @@ export const site = {
   },
 
   hero: {
-    eyebrow: "Private beta for Mac",
     sub: "Click once and Cove appears on your Mac, next to your other drives. Photos, videos, a campaign, or a whole project open in the apps you already have. The files themselves stay in the cloud.",
     secondaryCta: "See it on a Mac",
     platforms: "On the Mac today. iPhone, when it’s ready.",
