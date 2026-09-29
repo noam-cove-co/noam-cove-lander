@@ -27,3 +27,11 @@ Upstream: [krusemediallc/arcads-claude-code](https://github.com/krusemediallc/ar
 ## Postiz
 
 Self-hosted planner: [docs/postiz.md](../docs/postiz.md) · compose under `tools/postiz/`.
+
+## LinkedIn + X skills (primary growth)
+
+```bash
+bash tools/install-linkedin-x-skills.sh
+```
+
+Bundles land in `.cursor/skills/linkedin-marketing` and `.cursor/skills/x-marketing`. Strategy: [docs/growth/linkedin-x-primary.md](../docs/growth/linkedin-x-primary.md).

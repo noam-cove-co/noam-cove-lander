@@ -54,3 +54,7 @@ __pycache__/
 # ArcAds: local upstream clone (skills are synced into .cursor/skills/)
 /tools/arcads-claude-code/
 /outputs/arcads/
+
+# LinkedIn / X skill upstream clones (bundles live in .cursor/skills/)
+/tools/linkedin-skills/
+/tools/x-skills/

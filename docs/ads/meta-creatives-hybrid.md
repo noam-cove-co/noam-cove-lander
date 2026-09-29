@@ -2,6 +2,8 @@
 
 Infra and creative first. **No budget, no live Meta spend, no autoposting** until accounts, OAuth, and a human approval gate exist.
 
+**Channel priority:** LinkedIn + X are the primary organic acquisition levers ([`docs/growth/linkedin-x-primary.md`](../growth/linkedin-x-primary.md)). This Meta + ArcAds pack is secondary until paid is ready.
+
 ## What this stack is for
 
 | Layer | Tooling | Role now | Later |

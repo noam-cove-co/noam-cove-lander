@@ -73,6 +73,14 @@ The Cove Journal code and Markdown under [`content/journal/`](content/journal/) 
 
 ### Social + B2B agents
 
+**Primary growth channels: LinkedIn + X** ([`docs/growth/linkedin-x-primary.md`](docs/growth/linkedin-x-primary.md)).
+
+```bash
+bash tools/install-linkedin-x-skills.sh
+```
+
+- Bundles: `.cursor/skills/linkedin-marketing`, `.cursor/skills/x-marketing`
+- Agent: [`.cursor/agents/cove-linkedin-x.md`](.cursor/agents/cove-linkedin-x.md)
 - Skill **cove-social-executive**: Social Media Executive + B2B copy (press, blogs, LinkedIn, IG, X) → [`docs/social/`](docs/social/)
 - Skill **cove-week1-social-pack**: writes approval-only post files → [`docs/social/week-1/`](docs/social/week-1/)
 - How to invoke: [`.cursor/agents/README.md`](.cursor/agents/README.md)

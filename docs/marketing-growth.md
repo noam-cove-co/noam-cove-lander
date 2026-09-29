@@ -70,15 +70,17 @@ Measure: brand queries, citations in Perplexity/ChatGPT (manual), referral traff
 
 ---
 
-## Social plan (LinkedIn, Instagram, X)
+## Social plan (LinkedIn + X primary; Instagram supporting)
+
+**Primary acquisition levers:** LinkedIn and X. See [`docs/growth/linkedin-x-primary.md`](growth/linkedin-x-primary.md). Instagram supports creative; Meta paid stays phase-0 offline until budget.
 
 ### Roles
 
 | Channel | Job | Cadence (start) |
 | --- | --- | --- |
-| LinkedIn | Credibility + waitlist for marketing/studio desks | 3 posts / week |
-| Instagram | Visual product (Finder UI, print ads @2x) | 4 posts / week + 2 stories |
-| X | Sharp lines + product demos | 5 short posts / week |
+| LinkedIn (**primary**) | Credibility + waitlist for marketing/studio desks | 3 posts / week |
+| X (**primary**) | Sharp hooks + Mac/maker discourse | 5–7 short posts / week |
+| Instagram (supporting) | Visual product (Finder UI, print ads @2x) | 2–3 posts / week when art is ready |
 
 ### Pillars (rotate)
 
