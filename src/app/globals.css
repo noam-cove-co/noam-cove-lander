@@ -213,6 +213,15 @@ html[data-tone="range"] ::selection {
   animation: cove-marquee 42s linear infinite;
 }
 
+.quiz-banner-track {
+  animation: cove-marquee 56s linear infinite;
+}
+
+.quiz-banner:hover .quiz-banner-track,
+.quiz-banner:focus-visible .quiz-banner-track {
+  animation-play-state: paused;
+}
+
 @keyframes cove-marquee {
   from {
     transform: translateX(0);
@@ -413,6 +422,7 @@ footer {
     scroll-behavior: auto;
   }
   .marquee-track,
+  .quiz-banner-track,
   .travel-dot,
   .try-mac-frame,
   .try-mac::after,
