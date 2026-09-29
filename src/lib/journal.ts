@@ -1,8 +1,14 @@
 import fs from "node:fs";
 import path from "node:path";
+import { site } from "@/config/site";
 
 export type JournalCategory = "Press" | "Product" | "Studio" | "Notes";
 export type JournalStatus = "published" | "draft";
+
+/** When false, /journal is 404 and omitted from nav, sitemap, and robots allow. */
+export function isJournalPublic() {
+  return site.journalPublic === true;
+}
 
 export type JournalPostMeta = {
   title: string;

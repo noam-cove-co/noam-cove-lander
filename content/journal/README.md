@@ -20,4 +20,4 @@ dateline: Yorkshire, UK   # optional
 
 Body supports headings, paragraphs, **bold**, *italic*, links, and blockquotes.
 
-Drafts stay off the public index and sitemap. Published pieces appear at `/journal/<slug>`.
+Drafts stay off the public index and sitemap. The whole Journal surface is currently **hidden** (`site.journalPublic: false` in `src/config/site.ts`): routes 404 and are omitted from nav, sitemap, and robots. When that flag is true, published pieces appear at `/journal/<slug>`.

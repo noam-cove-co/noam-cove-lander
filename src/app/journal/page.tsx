@@ -1,13 +1,20 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { JournalMasthead } from "@/components/journal/masthead";
-import { formatJournalDate, getAllJournalPosts, type JournalCategory } from "@/lib/journal";
+import {
+  formatJournalDate,
+  getAllJournalPosts,
+  isJournalPublic,
+  type JournalCategory,
+} from "@/lib/journal";
 
 export const metadata: Metadata = {
   title: "Journal",
   description:
     "The Cove Journal: press notes, product essays, and studio dispatches from NOAM Co. in Yorkshire.",
   alternates: { canonical: "/journal" },
+  robots: { index: false, follow: false },
 };
 
 const CATEGORY_ORDER: JournalCategory[] = ["Press", "Product", "Studio", "Notes"];
@@ -17,6 +24,8 @@ export default async function JournalIndexPage({
 }: {
   searchParams: Promise<{ category?: string }>;
 }) {
+  if (!isJournalPublic()) notFound();
+
   const { category: rawCategory } = await searchParams;
   const posts = getAllJournalPosts();
   const activeCategory = CATEGORY_ORDER.find((item) => item === rawCategory);

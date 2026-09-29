@@ -67,11 +67,9 @@ Event names live in `site.analytics.events` (`Land Page Viewed`, `Waitlist Joine
 
 Generative SEO: [`/llms.txt`](http://127.0.0.1:4317/llms.txt), [`/llms-full.txt`](http://127.0.0.1:4317/llms-full.txt), [`/sitemap.xml`](http://127.0.0.1:4317/sitemap.xml). Growth notes: [`docs/marketing-growth.md`](docs/marketing-growth.md).
 
-### Journal
+### Journal (hidden)
 
-[The Cove Journal](http://127.0.0.1:4317/journal) is the press / blog surface: masthead, breadcrumbs, byline, published/updated dates, reading time, and a green ink scroll line.
-
-Publish by adding Markdown under [`content/journal/`](content/journal/) with front matter (`status: published`). See that folder’s README for the schema. Drafts stay off the public index and sitemap.
+The Cove Journal code and Markdown under [`content/journal/`](content/journal/) stay in the repo, but **`site.journalPublic` is `false`**: no nav/footer link, `/journal` returns 404, and sitemap/robots exclude it. Flip `journalPublic` to `true` in [`src/config/site.ts`](src/config/site.ts) when ready to ship.
 
 ### Social + B2B agents
 

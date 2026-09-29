@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { staysLightSteps } from "@/config/stays-light-funnel";
-import { getAllJournalPosts } from "@/lib/journal";
+import { getAllJournalPosts, isJournalPublic } from "@/lib/journal";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://cove.will.me.uk";
 
@@ -14,7 +14,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/download",
     "/room",
     "/mt",
-    "/journal",
     "/land/own-drive",
     "/land/join-the-list",
     "/land/out-of-space",
@@ -25,7 +24,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     .filter((step) => step.id !== "list")
     .map((step) => step.path);
 
-  const journalPaths = getAllJournalPosts().map((post) => `/journal/${post.slug}`);
+  const journalPaths = isJournalPublic()
+    ? ["/journal", ...getAllJournalPosts().map((post) => `/journal/${post.slug}`)]
+    : [];
 
   return [...staticPaths, ...funnelPaths, ...journalPaths].map((path) => ({
     url: new URL(path, siteUrl).toString(),

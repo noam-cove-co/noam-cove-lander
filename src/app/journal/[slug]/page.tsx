@@ -5,19 +5,23 @@ import { JournalBreadcrumbs, JournalByline } from "@/components/journal/article-
 import { JournalMasthead } from "@/components/journal/masthead";
 import { JournalMdBody } from "@/components/journal/md-body";
 import { ReadingProgress } from "@/components/journal/reading-progress";
-import { getAllJournalPosts, getJournalPost } from "@/lib/journal";
+import { getAllJournalPosts, getJournalPost, isJournalPublic } from "@/lib/journal";
 
 type Props = { params: Promise<{ slug: string }> };
 
 export async function generateStaticParams() {
+  if (!isJournalPublic()) return [];
   return getAllJournalPosts().map((post) => ({ slug: post.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  if (!isJournalPublic()) {
+    return { title: "Journal", robots: { index: false, follow: false } };
+  }
   const { slug } = await params;
   const post = getJournalPost(slug);
   if (!post || post.status !== "published") {
-    return { title: "Journal" };
+    return { title: "Journal", robots: { index: false, follow: false } };
   }
   return {
     title: post.title,
@@ -37,6 +41,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function JournalPostPage({ params }: Props) {
+  if (!isJournalPublic()) notFound();
+
   const { slug } = await params;
   const post = getJournalPost(slug);
   if (!post || post.status !== "published") notFound();
