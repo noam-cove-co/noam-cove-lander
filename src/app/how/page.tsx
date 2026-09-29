@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { Marquee } from "@/components/home-sections";
 import { LanesPlay } from "@/components/lanes-play";
 import { Pipeline } from "@/components/pipeline";
+import { QuizBanner } from "@/components/quiz-banner";
 import { UseCases } from "@/components/use-cases";
 
 export const metadata: Metadata = {
@@ -14,7 +14,7 @@ export default function HowPage() {
   return (
     <main>
       <LanesPlay className="pt-28 sm:pt-36" />
-      <Marquee />
+      <QuizBanner />
       <UseCases />
       <Pipeline />
     </main>

@@ -3,7 +3,6 @@ import { Caveat, Geist_Mono, Instrument_Sans, Instrument_Serif } from "next/font
 import { site } from "@/config/site";
 import { MobileJoinBar, SiteHeader } from "@/components/site-header";
 import { PageCloser } from "@/components/page-closer";
-import { QuizBanner } from "@/components/quiz-banner";
 import { SiteFooter } from "@/components/site-footer";
 import { RouteTone, RouteToneScript } from "@/components/route-tone";
 import { WaitlistProvider } from "@/components/waitlist";
@@ -98,7 +97,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </a>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <WaitlistProvider>
-          <QuizBanner />
           <SiteHeader />
           <div id="content" className="flex-1 pb-24 md:pb-0">
             {children}

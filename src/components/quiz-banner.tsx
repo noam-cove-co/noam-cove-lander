@@ -13,7 +13,7 @@ export function QuizBanner() {
   const loop = [...line, ...line, ...line, ...line];
 
   return (
-    <Link href={site.room.path} className="quiz-banner block overflow-hidden border-b border-foreground/15">
+    <Link href={site.room.path} className="quiz-banner block overflow-hidden border-y border-foreground/15">
       <span className="sr-only">How much room do you need? Take the short quiz, then join the list.</span>
       <div className="quiz-banner-track flex w-max" aria-hidden>
         {[0, 1].map((copy) => (

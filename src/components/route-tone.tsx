@@ -22,6 +22,7 @@ export function RouteTone() {
       document.documentElement.dataset.tone = "range";
       return;
     }
+    if (pathname === "/demo") return;
     delete document.documentElement.dataset.tone;
   }, [pathname]);
 

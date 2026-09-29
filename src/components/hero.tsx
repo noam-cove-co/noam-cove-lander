@@ -20,7 +20,7 @@ export function Hero({ variant }: { variant: HeadlineVariant }) {
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
             <JoinButton />
             <a
-              href="#demo"
+              href="/demo"
               className="inline-flex h-11 items-center justify-center rounded-md border border-foreground/15 bg-white px-5 text-[15px]"
             >
               {site.hero.secondaryCta}

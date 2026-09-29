@@ -16,6 +16,9 @@ export function SiteFooter() {
             <CoveMark className="size-7" />
             <Wordmark />
           </Link>
+          <div className="mt-4">
+            <CraftLine />
+          </div>
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
             {range
               ? "Cove, at the size of a mountain. A dedicated drive, mounted in one click, kept for an organisation."
@@ -39,12 +42,8 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="border-t border-foreground/10">
-        <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-6">
-          <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-            <CoveMark className="size-8" />
-            <CraftLine />
-          </div>
-          <p className="text-xs text-muted-foreground">
+        <div className="mx-auto max-w-6xl px-4 py-5 sm:px-6">
+          <p className="text-xs leading-relaxed text-muted-foreground">
             © {new Date().getFullYear()} NOAM Co.
             <span className="px-2">·</span>
             Photographs from{" "}
