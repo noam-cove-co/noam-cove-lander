@@ -1,0 +1,175 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "brand-profile",
+  "run_id": "cove-setup-20260929",
+  "created_at": "2026-09-29T22:09:04Z",
+  "brand_name": "Cove",
+  "website_url": "https://cove.will.me.uk/",
+  "observations": [
+    {
+      "field": "product",
+      "value": "Cove is your own cloud drive. One click, and it shows up on your Mac. The files stay in the cloud.",
+      "evidence_refs": [
+        "repo:src/config/site.ts#site.description"
+      ],
+      "confidence": "high"
+    },
+    {
+      "field": "company",
+      "value": "NOAM Co. / NOAM Consultancy, Yorkshire",
+      "evidence_refs": [
+        "repo:src/config/site.ts#site.company"
+      ],
+      "confidence": "high"
+    },
+    {
+      "field": "campaign",
+      "value": "Founding beta / Private beta waitlist CTA Join the waitlist",
+      "evidence_refs": [
+        "repo:src/config/site.ts#site.campaign"
+      ],
+      "confidence": "high"
+    },
+    {
+      "field": "brand_colours",
+      "value": {
+        "paper": "#f5f6f8",
+        "ink": "#0e1320",
+        "green": "#0e6b56"
+      },
+      "evidence_refs": [
+        "repo:brand-tokens"
+      ],
+      "confidence": "high"
+    },
+    {
+      "field": "typography",
+      "value": "Instrument Sans, Instrument Serif, Caveat",
+      "evidence_refs": [
+        "repo:brand-tokens"
+      ],
+      "confidence": "high"
+    },
+    {
+      "field": "landing_surfaces",
+      "value": [
+        "/land/own-drive",
+        "/land/join-the-list",
+        "/land/out-of-space",
+        "/land/look-familiar",
+        "/land/stays-light"
+      ],
+      "evidence_refs": [
+        "repo:README.md#Marketing-funnel"
+      ],
+      "confidence": "high"
+    },
+    {
+      "field": "creative_assets",
+      "value": "Authorized campaign PNGs under public/campaign/ (own-drive kit including od-og-hero-cta.png)",
+      "evidence_refs": [
+        "repo:public/campaign/"
+      ],
+      "confidence": "high"
+    },
+    {
+      "field": "locale_voice",
+      "value": "British English; prefer colon or pipe over em dashes in frontend and social drafts",
+      "evidence_refs": [
+        "repo:docs/social/",
+        "repo:.cursor/skills/cove-social-executive"
+      ],
+      "confidence": "high"
+    }
+  ],
+  "inferences": [
+    {
+      "field": "tone",
+      "value": "Calm, precise, product-led; craft and presence over hype; Mac-native familiarity",
+      "evidence_refs": [
+        "repo:src/config/site.ts",
+        "repo:docs/marketing-growth.md"
+      ],
+      "confidence": "medium",
+      "approval_status": "pending"
+    },
+    {
+      "field": "primary_audiences",
+      "value": [
+        "Home and family Mac users",
+        "Marketing teams",
+        "Photo/video makers",
+        "Builders using agents"
+      ],
+      "evidence_refs": [
+        "repo:src/config/site.ts#roles"
+      ],
+      "confidence": "medium",
+      "approval_status": "pending"
+    },
+    {
+      "field": "paid_media_stage",
+      "value": "Pre-account: plan and creative from owned assets; audits blocked until exports or API reads exist",
+      "evidence_refs": [
+        "setup:account_refs"
+      ],
+      "confidence": "high",
+      "approval_status": "approved"
+    }
+  ],
+  "source_ids": [
+    "cove-site-copy",
+    "cove-campaign-pngs",
+    "cove-marketing-docs"
+  ],
+  "source_assets_authorized": true,
+  "missing_fields": [
+    "Live Meta account ID and export",
+    "Live Google Ads account ID and export",
+    "Live LinkedIn Campaign Manager account ID and export",
+    "Approved monthly paid budget and target CPA",
+    "Owner-approved tone inference"
+  ],
+  "status": "partial",
+  "data_lifecycle": {
+    "schema_version": "1.0.0",
+    "lifecycle_id": "cove-lifecycle-v1",
+    "classification": "internal",
+    "retention": {
+      "minimum_seconds": 0,
+      "mode": "operator-defined",
+      "delete_after": "2027-09-29T00:00:00Z",
+      "purpose": "Support Cove paid-media planning and draft-only workflows without storing credentials or account exports in the repo",
+      "exception_reason": null
+    },
+    "encryption": {
+      "at_rest": "verified",
+      "in_transit": "verified",
+      "evidence_refs": [
+        "operator-attestation:workspace-disk-encryption",
+        "transport:https-only-for-remote-sources",
+        "repo:no-secrets-in-claude-ads-profiles"
+      ]
+    },
+    "access": {
+      "owner": "noam-co-operator",
+      "authorized_roles": [
+        "cove-operator",
+        "paid-media-advisor"
+      ],
+      "access_log_locator": ".claude-ads/access-log.json"
+    },
+    "deletion": {
+      "status": "scheduled",
+      "method": "Operator deletes .claude-ads/runs artifacts and rotates any local exports outside the repo; profiles are rewritten or removed by commit",
+      "verification_required": true,
+      "verification_artifact_locator": null
+    },
+    "incident": {
+      "owner": "noam-co-operator",
+      "reporting_channel": "hi@noam.co",
+      "status": "not-triggered",
+      "record_locator": null
+    }
+  }
+}

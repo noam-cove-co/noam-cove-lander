@@ -1,0 +1,128 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "setup-profile",
+  "run_id": "cove-setup-20260929",
+  "created_at": "2026-09-29T22:09:04Z",
+  "business": {
+    "name": "Cove (NOAM Co.)",
+    "business_model": "Private-beta Mac cloud-drive product from NOAM Consultancy (Yorkshire); waitlist-led acquisition before public download",
+    "geographies": [
+      "United Kingdom",
+      "English-speaking markets provisional"
+    ],
+    "regulated_categories": []
+  },
+  "objective": {
+    "primary": "Grow qualified private-beta waitlist signups for Cove without live ad-account mutation until explicitly approved",
+    "conversion_definition": "Waitlist join via POST /api/waitlist (email + role + Mac) attributed with UTM and Mixpanel events when configured",
+    "success_metrics": [
+      "Waitlist joins",
+      "Land page to waitlist conversion rate",
+      "Cost per waitlist join when paid media is live",
+      "Invite ladder copies from join-the-list"
+    ]
+  },
+  "platforms": [
+    "meta",
+    "google",
+    "linkedin"
+  ],
+  "account_refs": [
+    {
+      "platform": "meta",
+      "account_id": "unconfigured"
+    },
+    {
+      "platform": "google",
+      "account_id": "unconfigured"
+    },
+    {
+      "platform": "linkedin",
+      "account_id": "unconfigured"
+    }
+  ],
+  "data_sources": [
+    {
+      "id": "cove-site-copy",
+      "kind": "manual",
+      "platform": "meta",
+      "status": "available"
+    },
+    {
+      "id": "cove-campaign-pngs",
+      "kind": "manual",
+      "platform": "meta",
+      "status": "available"
+    },
+    {
+      "id": "meta-export",
+      "kind": "export",
+      "platform": "meta",
+      "status": "missing"
+    },
+    {
+      "id": "google-export",
+      "kind": "export",
+      "platform": "google",
+      "status": "missing"
+    },
+    {
+      "id": "linkedin-export",
+      "kind": "export",
+      "platform": "linkedin",
+      "status": "missing"
+    }
+  ],
+  "privacy_class": "internal",
+  "mutation_authority": "draft-only",
+  "approver_ids": [
+    "noam-co-operator"
+  ],
+  "assumptions": [
+    "No live ad accounts are connected yet; account_id values are placeholders",
+    "Primary paid channels for founding beta are Meta, Google Search/Demand Gen, and LinkedIn",
+    "British English and Cove brand tokens from src/config/site.ts remain source of truth for claims",
+    "Live account writes stay disabled until platform, operation, approval, idempotency, verification, audit, and rollback gates pass"
+  ],
+  "data_lifecycle": {
+    "schema_version": "1.0.0",
+    "lifecycle_id": "cove-lifecycle-v1",
+    "classification": "internal",
+    "retention": {
+      "minimum_seconds": 0,
+      "mode": "operator-defined",
+      "delete_after": "2027-09-29T00:00:00Z",
+      "purpose": "Support Cove paid-media planning and draft-only workflows without storing credentials or account exports in the repo",
+      "exception_reason": null
+    },
+    "encryption": {
+      "at_rest": "verified",
+      "in_transit": "verified",
+      "evidence_refs": [
+        "operator-attestation:workspace-disk-encryption",
+        "transport:https-only-for-remote-sources",
+        "repo:no-secrets-in-claude-ads-profiles"
+      ]
+    },
+    "access": {
+      "owner": "noam-co-operator",
+      "authorized_roles": [
+        "cove-operator",
+        "paid-media-advisor"
+      ],
+      "access_log_locator": ".claude-ads/access-log.json"
+    },
+    "deletion": {
+      "status": "scheduled",
+      "method": "Operator deletes .claude-ads/runs artifacts and rotates any local exports outside the repo; profiles are rewritten or removed by commit",
+      "verification_required": true,
+      "verification_artifact_locator": null
+    },
+    "incident": {
+      "owner": "noam-co-operator",
+      "reporting_channel": "hi@noam.co",
+      "status": "not-triggered",
+      "record_locator": null
+    }
+  }
+}

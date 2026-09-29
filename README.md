@@ -73,6 +73,16 @@ Generative SEO: [`/llms.txt`](http://127.0.0.1:4317/llms.txt), [`/llms-full.txt`
 - Skill **cove-week1-social-pack**: writes approval-only post files → [`docs/social/week-1/`](docs/social/week-1/)
 - How to invoke: [`.cursor/agents/README.md`](.cursor/agents/README.md)
 
+### Paid media (Claude Ads)
+
+Claude Ads is installed as the paid-ads agent (read-only / draft-only by default).
+
+- Project skills: `.cursor/skills/ads` and `ads-*`
+- Cove entry agent: [`.cursor/agents/cove-ads.md`](.cursor/agents/cove-ads.md)
+- Setup + brand profile: [`.claude-ads/`](.claude-ads/)
+- Install / commands: [`docs/claude-ads.md`](docs/claude-ads.md)
+- Re-clone upstream locally under `tools/claude-ads` (gitignored); see [`tools/README.md`](tools/README.md)
+
 Campaign PNGs in `public/campaign/` are exported at **@2x** (`deviceScaleFactor: 2` in `scripts/export-campaign-creatives.mjs`).
 
 Copy `.env.example` to `.env.local` for local secrets.

@@ -130,8 +130,11 @@ Practical loop:
 | --- | --- | --- |
 | Social Media Executive + B2B copy | `.cursor/skills/cove-social-executive/` | LinkedIn, IG, X, press, blogs |
 | Week-1 social pack | `.cursor/skills/cove-week1-social-pack/` | Writes `docs/social/week-1/` only |
+| Claude Ads (paid media) | `.cursor/skills/ads/` + `.cursor/agents/cove-ads.md` | Audits, plans, creative, draft launch/optimise, monitor, report |
 
 Week-1 pack is already generated under [`docs/social/week-1/`](../docs/social/week-1/). Approve → schedule. Do not autopost.
+
+Claude Ads profile and commands: [`docs/claude-ads.md`](claude-ads.md). Cove setup is draft-only until dated platform exports and budget exist; no live account writes by default.
 
 ---
 
@@ -142,3 +145,4 @@ Week-1 pack is already generated under [`docs/social/week-1/`](../docs/social/we
 3. Confirm OG absolute URL + @2x PNG live  
 4. Submit sitemap in Search Console  
 5. Approve `docs/social/week-1/` posts and schedule  
+6. Supply Meta / Google / LinkedIn exports (or account IDs) and run `/ads plan` then `/ads create` for founding-beta waitlist  

@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0.0",
+  "lifecycle_id": "cove-lifecycle-v1",
+  "classification": "internal",
+  "retention": {
+    "minimum_seconds": 0,
+    "mode": "operator-defined",
+    "delete_after": "2027-09-29T00:00:00Z",
+    "purpose": "Support Cove paid-media planning and draft-only workflows without storing credentials or account exports in the repo",
+    "exception_reason": null
+  },
+  "encryption": {
+    "at_rest": "verified",
+    "in_transit": "verified",
+    "evidence_refs": [
+      "operator-attestation:workspace-disk-encryption",
+      "transport:https-only-for-remote-sources",
+      "repo:no-secrets-in-claude-ads-profiles"
+    ]
+  },
+  "access": {
+    "owner": "noam-co-operator",
+    "authorized_roles": [
+      "cove-operator",
+      "paid-media-advisor"
+    ],
+    "access_log_locator": ".claude-ads/access-log.json"
+  },
+  "deletion": {
+    "status": "scheduled",
+    "method": "Operator deletes .claude-ads/runs artifacts and rotates any local exports outside the repo; profiles are rewritten or removed by commit",
+    "verification_required": true,
+    "verification_artifact_locator": null
+  },
+  "incident": {
+    "owner": "noam-co-operator",
+    "reporting_channel": "hi@noam.co",
+    "status": "not-triggered",
+    "record_locator": null
+  }
+}

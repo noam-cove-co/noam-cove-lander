@@ -42,3 +42,7 @@ next-env.d.ts
 
 # private beta signups
 /data/*.json
+
+# Claude Ads: local upstream clone + per-run artifacts (keep profiles)
+/tools/claude-ads/
+/.claude-ads/runs/

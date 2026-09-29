@@ -1,0 +1,15 @@
+{
+  "schema_hint": "operator access log for Claude Ads artifacts",
+  "entries": [
+    {
+      "at": "2026-09-29T22:09:04Z",
+      "actor": "cove-cloud-agent",
+      "action": "create-setup",
+      "artifacts": [
+        "data-lifecycle.json",
+        "setup-profile.json",
+        "brand-profile.json"
+      ]
+    }
+  ]
+}
