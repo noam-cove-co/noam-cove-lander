@@ -40,7 +40,7 @@ export function Hero({ variant }: { variant: HeadlineVariant }) {
             />
           </div>
         </section>
-        <div className="relative mt-12">
+        <div className="relative mt-8 sm:mt-10">
           <DemoStage>
             <MountDemo />
           </DemoStage>
