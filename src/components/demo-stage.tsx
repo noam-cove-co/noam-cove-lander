@@ -18,6 +18,8 @@ export function DemoStage({ children, length = 1 }: { children: ReactNode; lengt
   const reduce = Boolean(useReducedMotion());
   const narrow = useSyncExternalStore(subscribeNarrow, readNarrow, () => false);
   const [peak, setPeak] = useState(1);
+  // Extra downward settle so zoom-out hands off flush into the next section (no giant gap).
+  const [settleY, setSettleY] = useState(0);
   // Homepage ~200vh: zoom in, hold, zoom out. Demo page can pass length=0.5 for half.
   const runway = Math.max(0.5, length) * 200;
 
@@ -35,6 +37,12 @@ export function DemoStage({ children, length = 1 }: { children: ReactNode; lengt
       const next = Math.min(byWidth, byHeight);
       const clamped = next < 1.02 ? 1 : Math.min(next, 1.55);
       setPeak((current) => (Math.abs(current - clamped) < 0.01 ? current : clamped));
+      // From vertical center down to a tight bottom pad, so release meets CloudStream cleanly.
+      const fromCenterToBottom = (window.innerHeight - height) / 2 - 20;
+      setSettleY((current) => {
+        const value = Math.max(0, fromCenterToBottom);
+        return Math.abs(current - value) < 1 ? current : value;
+      });
     };
     measure();
     const ro = typeof ResizeObserver !== "undefined" ? new ResizeObserver(measure) : null;
@@ -57,6 +65,8 @@ export function DemoStage({ children, length = 1 }: { children: ReactNode; lengt
     [0, 0.2, 0.55, 0.85, 1],
     [1, reduce ? 1 : peak, reduce ? 1 : peak, reduce ? 1 : peak, 1],
   );
+  // Stay centered through the hold; drift down while zooming out so the next section isn’t orphaned.
+  const y = useTransform(scrollYProgress, [0, 0.75, 1], [0, 0, reduce ? 0 : settleY]);
 
   if (reduce || narrow) {
     return <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">{children}</div>;
@@ -67,7 +77,7 @@ export function DemoStage({ children, length = 1 }: { children: ReactNode; lengt
       <div className="sticky top-0 z-20 flex h-svh items-center justify-center overflow-visible">
         <motion.div
           data-demo-frame
-          style={{ scale }}
+          style={{ scale, y }}
           className="mx-auto w-full max-w-6xl origin-center px-4 will-change-transform sm:px-6"
         >
           {children}
