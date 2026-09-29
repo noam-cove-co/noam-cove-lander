@@ -105,6 +105,8 @@ export const site = {
       roomSized: "Room Sized",
       landView: "Land Page Viewed",
       landCta: "Land CTA Clicked",
+      funnelStepViewed: "Funnel Step Viewed",
+      funnelStepCompleted: "Funnel Step Completed",
       inviteShared: "Invite Shared",
       inviteCopied: "Invite Copied",
       referralAttributed: "Referral Attributed",

@@ -38,7 +38,22 @@ export function LandWaitlist({
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    track(site.analytics.events.waitlistStarted, { source, land, campaign });
+    const attr = readAttribution();
+    const deskToRole: Record<string, string> = {
+      home: "home",
+      marketing: "marketing",
+      studio: "video",
+      agents: "agents",
+    };
+    if (attr.desk && deskToRole[attr.desk]) setRole(deskToRole[attr.desk]);
+    track(site.analytics.events.waitlistStarted, {
+      source,
+      land,
+      campaign,
+      funnel: attr.funnel ?? null,
+      funnel_step: attr.funnel_step ?? null,
+      desk: attr.desk ?? null,
+    });
   }, [source, land, campaign]);
 
   async function onSubmit(event: React.FormEvent) {
@@ -105,6 +120,9 @@ export function LandWaitlist({
         invite_code: next.inviteCode,
         rank: next.rank,
         referral_code: ref || null,
+        funnel: attr.funnel ?? null,
+        funnel_step: "list",
+        desk: attr.desk ?? null,
       });
     } catch {
       setStatus("idle");

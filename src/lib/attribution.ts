@@ -11,6 +11,10 @@ export type Attribution = {
   utm_term?: string;
   ref?: string;
   land?: string;
+  /** Multi-step funnel id, e.g. look-familiar */
+  funnel?: string;
+  funnel_step?: string;
+  desk?: string;
   gclid?: string;
   fbclid?: string;
   firstTouchAt?: string;
@@ -111,10 +115,29 @@ export function attributionProperties(extra?: Record<string, unknown>) {
     utm_term: attr.utm_term ?? null,
     referral_code: attr.ref ?? null,
     land_page: attr.land ?? null,
+    funnel: attr.funnel ?? null,
+    funnel_step: attr.funnel_step ?? null,
+    desk: attr.desk ?? null,
     gclid: attr.gclid ?? null,
     fbclid: attr.fbclid ?? null,
     ...extra,
   };
+}
+
+/** Merge funnel progress fields without wiping UTMs. */
+export function patchFunnelAttribution(
+  patch: Pick<Attribution, "funnel" | "funnel_step" | "desk" | "land">,
+) {
+  if (typeof window === "undefined") return readAttribution();
+  const previous = readAttribution();
+  const next: Attribution = {
+    ...previous,
+    ...patch,
+    lastTouchAt: new Date().toISOString(),
+    firstTouchAt: previous.firstTouchAt ?? new Date().toISOString(),
+  };
+  writeAttribution(next);
+  return next;
 }
 
 export function withUtm(path: string, overrides?: Partial<Attribution>) {

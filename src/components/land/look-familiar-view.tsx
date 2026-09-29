@@ -34,7 +34,7 @@ export function LookFamiliarView() {
           </div>
           <nav className="flex gap-4 text-sm text-[#3c4654]">
             <Link href={withUtm("/land/out-of-space")} className="hover:text-[#0e1320]">
-              Scrappy funnel
+              Look familiar journey
             </Link>
             <Link
               href={withUtm("/land/join-the-list")}

@@ -43,8 +43,12 @@ Two campaign land pages (bare chrome, Mixpanel + UTM ready):
 
 - [`/land/own-drive`](http://127.0.0.1:4317/land/own-drive) — product awareness
 - [`/land/join-the-list`](http://127.0.0.1:4317/land/join-the-list) — waitlist + referral ladder
-- [`/land/out-of-space`](http://127.0.0.1:4317/land/out-of-space) — immersive Look familiar? pain journey (scroll, Mac storage UI, Cove Finder, case studies, email)
-- [`/land/look-familiar`](http://127.0.0.1:4317/land/look-familiar) — classic print-ad mini page
+- [`/land/out-of-space`](http://127.0.0.1:4317/land/out-of-space) — Look familiar? funnel step 1 (pain)
+- [`/land/out-of-space/drive`](http://127.0.0.1:4317/land/out-of-space/drive) — step 2 (Cove Finder mount)
+- [`/land/out-of-space/desk`](http://127.0.0.1:4317/land/out-of-space/desk) — step 3 (pick a desk)
+- [`/land/out-of-space/proof`](http://127.0.0.1:4317/land/out-of-space/proof) — step 4 (email + quotes)
+- then [`/land/join-the-list`](http://127.0.0.1:4317/land/join-the-list) — step 5 (signup)
+- [`/land/look-familiar`](http://127.0.0.1:4317/land/look-familiar) — classic print-ad mini page (unchanged)
 
 Campaign creatives live under [`/internal/campaign`](http://127.0.0.1:4317/internal/campaign) (noindex). PNGs are in `public/campaign/`.
 
