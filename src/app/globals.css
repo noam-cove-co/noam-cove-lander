@@ -321,20 +321,19 @@ html[data-tone="range"] ::selection {
 
 .audience-plain {
   position: relative;
-  z-index: 1;
-}
-
-@media (min-width: 1024px) {
-  .audience-plain {
-    position: sticky;
-    top: 6rem;
-    z-index: auto;
-  }
 }
 
 .audience-window {
   position: relative;
   z-index: 0;
+}
+
+@media (min-width: 1024px) {
+  .audience-window {
+    position: sticky;
+    top: 6rem;
+    align-self: start;
+  }
 }
 
 @media (max-width: 1023px) {
