@@ -4,7 +4,6 @@ import { BeatsPlay } from "@/components/beats-play";
 import { ExperimentBeacon } from "@/components/experiment-beacon";
 import { Hero } from "@/components/hero";
 import { Close, Faq, Marquee, Platforms } from "@/components/home-sections";
-import { JourneyPlay } from "@/components/journey-play";
 import { ProblemPlays } from "@/components/problem-plays";
 import { JoinSection } from "@/components/join-section";
 import { Reviews } from "@/components/reviews";
@@ -23,7 +22,6 @@ export default async function Page({ searchParams }: PageProps<"/">) {
       <BeatsPlay />
       <ProblemPlays />
       <RoomInvite />
-      <JourneyPlay />
       <WaitlistStrip />
       <Audiences />
       <Reviews />

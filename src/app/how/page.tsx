@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { JourneyPlay } from "@/components/journey-play";
 import { LanesPlay } from "@/components/lanes-play";
 import { Pipeline } from "@/components/pipeline";
 import { QuizBanner } from "@/components/quiz-banner";
@@ -15,6 +16,7 @@ export default function HowPage() {
     <main>
       <LanesPlay className="pt-28 sm:pt-36" />
       <QuizBanner />
+      <JourneyPlay />
       <UseCases />
       <Pipeline />
     </main>

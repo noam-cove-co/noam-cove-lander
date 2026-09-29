@@ -273,7 +273,7 @@ export function MountDemo() {
           <DockTile label="Photos" src="/media/photos.png" />
           <DockTile label="Premiere" src="/media/premiere.png" />
           <DockTile label="Logic" src="/media/logic.png" />
-          <DockTile label="OpenClaw" src="/media/openclaw.png" />
+          <DockTile label="Figma" src="/media/figma.png" />
           <DockTile label="Copilot" src="/media/copilot.png" />
         </div>
       </div>

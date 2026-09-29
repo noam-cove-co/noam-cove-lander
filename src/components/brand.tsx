@@ -44,9 +44,9 @@ export function NoamSeal({ className }: { className?: string }) {
       )}
     >
       <span className="absolute inset-0 rounded-[25%] shadow-[inset_0_0_0_4.2cqw_currentColor]" />
-      <span className="relative flex flex-col items-center text-center font-serif text-[34cqw] leading-[0.8] tracking-[-0.04em]">
-        <span>No.</span>
-        <span>Co.</span>
+      <span className="relative flex flex-col items-center justify-center text-center leading-none">
+        <span className="font-serif text-[38cqw] font-medium tracking-[-0.06em]">NOAM</span>
+        <span className="mt-[2cqw] font-sans text-[16cqw] font-light tracking-[0.28em]">Co</span>
       </span>
     </span>
   );
