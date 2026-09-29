@@ -222,7 +222,8 @@ export const site = {
       },
       {
         title: "Links that expire",
-        body: "A review link does its job, then dies on a Friday while the notes are still being written. WeTransfer, a Dropbox review, a “view only” cut: useful for a day, gone when the client writes back.",
+        body: "A review link does its job, then dies on a Friday while the notes are still being written.",
+        note: "WeTransfer, a Dropbox review, a “view only” cut: useful for a day, gone when the client writes back.",
       },
       {
         title: "One small disk",
