@@ -273,36 +273,26 @@ html[data-tone="range"] ::selection {
   animation: try-shine 2.8s ease-in-out infinite;
 }
 
-.stream-dash {
-  stroke-dasharray: 7 12;
-  animation: stream-dash 1.5s linear infinite;
+.stream-rail {
+  position: relative;
+  display: block;
+  height: 1px;
+  min-width: 2.75rem;
+  flex: 1 1 auto;
+  container-type: inline-size;
+  background: color-mix(in srgb, var(--foreground) 14%, transparent);
 }
 
-.stream-dash-reverse {
-  animation-direction: reverse;
-}
-
-.stream-rise,
-.stream-fall {
+.stream-bead {
   position: absolute;
+  top: 50%;
+  left: 0;
   width: 6px;
   height: 6px;
+  margin-top: -3px;
   border-radius: 999px;
-  opacity: 0;
-}
-
-.stream-rise {
-  bottom: 24%;
-  background: linear-gradient(180deg, #dbeafe, #2563eb);
-  box-shadow: 0 0 8px rgba(59, 130, 246, 0.45);
-  animation: stream-rise 3.4s linear infinite;
-}
-
-.stream-fall {
-  top: 24%;
-  background: linear-gradient(180deg, #bbf7d0, #0e6b56);
-  box-shadow: 0 0 8px rgba(14, 107, 86, 0.35);
-  animation: stream-fall 3.6s linear infinite;
+  background: #0e6b56;
+  animation: stream-bead 7.6s cubic-bezier(0.45, 0, 0.2, 1) infinite;
 }
 
 @keyframes try-frame {
@@ -325,42 +315,19 @@ html[data-tone="range"] ::selection {
   }
 }
 
-@keyframes stream-dash {
-  to {
-    stroke-dashoffset: -38;
-  }
-}
-
-@keyframes stream-rise {
+@keyframes stream-bead {
   0% {
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
     opacity: 0;
   }
-  14% {
-    opacity: 0.95;
+  16% {
+    opacity: 1;
   }
-  86% {
-    opacity: 0.8;
+  84% {
+    opacity: 1;
   }
   100% {
-    transform: translateY(-132px);
-    opacity: 0;
-  }
-}
-
-@keyframes stream-fall {
-  0% {
-    transform: translateY(0);
-    opacity: 0;
-  }
-  14% {
-    opacity: 0.95;
-  }
-  86% {
-    opacity: 0.8;
-  }
-  100% {
-    transform: translateY(132px);
+    transform: translate3d(calc(100cqi - 6px), 0, 0);
     opacity: 0;
   }
 }
@@ -426,14 +393,12 @@ footer {
   .travel-dot,
   .try-mac-frame,
   .try-mac::after,
-  .stream-dash,
-  .stream-rise,
-  .stream-fall {
+  .stream-bead {
     animation: none;
   }
-  .stream-rise,
-  .stream-fall {
-    opacity: 0.7;
+  .stream-bead {
+    opacity: 1;
+    left: 46%;
   }
   body,
   header,
