@@ -1,5 +1,5 @@
 import { macs, roles, site } from "@/config/site";
-import { addWaitlistEntry } from "@/lib/waitlist-store";
+import { addWaitlistEntry, inviteCount } from "@/lib/waitlist-store";
 
 const roleIds = new Set<string>(roles.map((role) => role.id));
 const macIds = new Set<string>(macs.map((mac) => mac.id));
@@ -7,6 +7,15 @@ const macIds = new Set<string>(macs.map((mac) => mac.id));
 function clean(value: unknown, max: number) {
   if (typeof value !== "string") return "";
   return value.replace(/\s+/g, " ").trim().slice(0, max);
+}
+
+export async function GET(request: Request) {
+  const ref = new URL(request.url).searchParams.get("ref") ?? "";
+  const invited = await inviteCount(ref);
+  if (invited === null) {
+    return Response.json({ ok: false }, { status: 404 });
+  }
+  return Response.json({ ok: true, invited }, { headers: { "Cache-Control": "no-store" } });
 }
 
 export async function POST(request: Request) {
@@ -55,22 +64,30 @@ export async function POST(request: Request) {
   }
 
   try {
-    const result = await addWaitlistEntry({
-      id: crypto.randomUUID(),
-      name,
-      email,
-      role,
-      mac,
-      iosInterest,
-      source,
-      campaign: source === "mt-mtn" ? "mt-mtn" : site.campaign.id,
-      headline,
-      organisation,
-      note,
-      createdAt: new Date().toISOString(),
-    });
+    const result = await addWaitlistEntry(
+      {
+        id: crypto.randomUUID(),
+        name,
+        email,
+        role,
+        mac,
+        iosInterest,
+        source,
+        campaign: source === "mt-mtn" ? "mt-mtn" : site.campaign.id,
+        headline,
+        organisation,
+        note,
+        createdAt: new Date().toISOString(),
+      },
+      clean(input.ref, 32),
+    );
 
-    return Response.json({ ok: true, already: result === "exists" });
+    return Response.json({
+      ok: true,
+      already: result.status === "exists",
+      inviteCode: result.inviteCode,
+      invited: result.invited,
+    });
   } catch {
     return Response.json(
       { ok: false, message: "The list did not take that. Try again in a moment." },
