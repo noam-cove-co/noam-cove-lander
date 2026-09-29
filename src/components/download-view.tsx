@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Check } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import { site } from "@/config/site";
+import { NoamSeal } from "@/components/brand";
 import { MacDesktop, PhonePeek } from "@/components/platform-plays";
 import { WaitlistForm } from "@/components/waitlist";
 
@@ -56,15 +57,22 @@ export function DownloadView() {
                 {site.platforms.macos.detail}
               </p>
               <ul className="mt-7 grid gap-0 border-t border-foreground/12">
-                {site.download.includes.map((item) => (
-                  <li
-                    key={item}
-                    className="flex gap-3 border-b border-foreground/12 py-3.5 text-[15px] leading-relaxed"
-                  >
-                    <Check className="mt-0.5 size-4 shrink-0 text-cove" strokeWidth={2.25} />
-                    {item}
-                  </li>
-                ))}
+                {site.download.includes.map((item) => {
+                  const mentionsNoam = /NOAM/i.test(item);
+                  return (
+                    <li
+                      key={item}
+                      className="flex gap-3 border-b border-foreground/12 py-3.5 text-[15px] leading-relaxed"
+                    >
+                      {mentionsNoam ? (
+                        <NoamSeal className="mt-0.5 size-5 shrink-0 text-muted-foreground" />
+                      ) : (
+                        <Check className="mt-0.5 size-4 shrink-0 text-cove" strokeWidth={2.25} />
+                      )}
+                      {item}
+                    </li>
+                  );
+                })}
               </ul>
               <button
                 type="button"

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { site } from "@/config/site";
-import { CoveMark } from "@/components/brand";
+import { CoveMark, NoamByline, NoamSeal } from "@/components/brand";
 import { JoinButton } from "@/components/join-button";
 
 export const metadata: Metadata = {
@@ -12,7 +12,9 @@ export const metadata: Metadata = {
 export default function TeamPage() {
   return (
     <main className="mx-auto w-full max-w-6xl px-4 pt-32 pb-20 sm:px-6 sm:pt-40">
-      <p className="text-[0.72rem] font-medium tracking-[0.22em] text-cove uppercase">NOAM Co.</p>
+      <NoamByline className="text-[0.72rem] font-medium tracking-[0.22em] text-cove uppercase" sealClassName="size-7 text-cove">
+        NOAM Co.
+      </NoamByline>
       <h1 className="mt-3 max-w-3xl font-serif text-5xl leading-[0.98] tracking-tight text-balance sm:text-6xl">
         {site.team.title}
       </h1>
@@ -37,7 +39,10 @@ export default function TeamPage() {
           <div className="mt-8 flex flex-wrap items-end justify-between gap-6">
             <div>
               <p className="font-serif text-2xl italic">{site.team.sign}</p>
-              <p className="text-sm text-muted-foreground">{site.team.role}</p>
+              <p className="mt-1 flex items-center gap-2 text-sm text-muted-foreground">
+                <NoamSeal className="size-5 shrink-0 text-muted-foreground" />
+                {site.team.role}
+              </p>
             </div>
             <JoinButton className="h-10 rounded-md px-4 text-sm" />
           </div>
@@ -91,7 +96,8 @@ export default function TeamPage() {
         </ul>
       </section>
 
-      <div className="mt-16">
+      <div className="mt-16 flex items-start gap-3">
+        <NoamSeal className="mt-0.5 size-7 shrink-0 text-muted-foreground" />
         <p className="text-sm text-muted-foreground">
           Write to us at{" "}
           <a className="text-foreground underline decoration-cove/40 underline-offset-4" href={`mailto:${site.email}`}>

@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { site } from "@/config/site";
-import { CoveMark, Wordmark } from "@/components/brand";
+import { CoveMark, NoamSeal, Wordmark } from "@/components/brand";
 import { RangeEnquire } from "@/components/range-enquire";
 import { RangeIntake } from "@/components/range-intake";
 
@@ -62,15 +62,27 @@ export default function MtPage() {
           <h2 className="mt-4 max-w-3xl font-serif text-5xl tracking-[-0.04em] sm:text-6xl">{range.gesture.title}</h2>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">{range.gesture.body}</p>
           <dl className="mt-16 border-t border-white/12">
-            {range.specs.map((spec) => (
-              <div
-                key={spec.label}
-                className="grid gap-2 border-b border-white/12 py-6 sm:grid-cols-[11rem_1fr] sm:items-baseline sm:gap-8 sm:py-7"
-              >
-                <dt className="text-xs tracking-[0.18em] text-muted-foreground uppercase">{spec.label}</dt>
-                <dd className="font-serif text-2xl tracking-[-0.03em] sm:text-3xl">{spec.value}</dd>
-              </div>
-            ))}
+            {range.specs.map((spec) => {
+              const mentionsNoam = /NOAM/i.test(spec.value);
+              return (
+                <div
+                  key={spec.label}
+                  className="grid gap-2 border-b border-white/12 py-6 sm:grid-cols-[11rem_1fr] sm:items-baseline sm:gap-8 sm:py-7"
+                >
+                  <dt className="text-xs tracking-[0.18em] text-muted-foreground uppercase">{spec.label}</dt>
+                  <dd className="font-serif text-2xl tracking-[-0.03em] sm:text-3xl">
+                    {mentionsNoam ? (
+                      <span className="flex items-start gap-3">
+                        <NoamSeal className="mt-1.5 size-7 shrink-0 text-muted-foreground" />
+                        <span>{spec.value}</span>
+                      </span>
+                    ) : (
+                      spec.value
+                    )}
+                  </dd>
+                </div>
+              );
+            })}
           </dl>
         </div>
       </section>
@@ -110,7 +122,11 @@ export default function MtPage() {
             <p className="text-xs tracking-[0.22em] text-primary uppercase">Enquire</p>
             <h2 className="mt-4 font-serif text-5xl tracking-[-0.04em] sm:text-6xl">{range.enquire.title}</h2>
             <p className="mt-6 max-w-sm text-lg leading-relaxed text-muted-foreground">{range.enquire.body}</p>
-            <a href={`mailto:${site.email}`} className="mt-8 inline-block text-sm text-primary hover:underline">
+            <a
+              href={`mailto:${site.email}`}
+              className="mt-8 inline-flex items-center gap-2.5 text-sm text-primary hover:underline"
+            >
+              <NoamSeal className="size-6 shrink-0 text-primary" />
               {site.email}
             </a>
           </div>

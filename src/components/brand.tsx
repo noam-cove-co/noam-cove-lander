@@ -1,4 +1,5 @@
 import Image from "next/image";
+import type { ReactNode } from "react";
 import { cn } from "cn";
 
 export function CoveMark({ className, priority = false }: { className?: string; priority?: boolean }) {
@@ -106,6 +107,7 @@ export function YorkshireFlag({ className }: { className?: string }) {
 export function CraftLine({ className }: { className?: string }) {
   return (
     <p className={cn("inline-flex flex-wrap items-center gap-2.5 text-sm text-muted-foreground", className)}>
+      <NoamSeal className="size-6 shrink-0" />
       <span>Crafted by NOAM Co.</span>
       <span className="inline-flex items-center gap-1.5">
         <UnionJack />
@@ -114,5 +116,23 @@ export function CraftLine({ className }: { className?: string }) {
         <span className="sr-only">Yorkshire</span>
       </span>
     </p>
+  );
+}
+
+/** Compact NOAM seal + label, matching the reviews email aside. */
+export function NoamByline({
+  children = "NOAM Co.",
+  className,
+  sealClassName,
+}: {
+  children?: ReactNode;
+  className?: string;
+  sealClassName?: string;
+}) {
+  return (
+    <span className={cn("inline-flex items-center gap-2.5", className)}>
+      <NoamSeal className={cn("size-6 shrink-0", sealClassName)} />
+      <span>{children}</span>
+    </span>
   );
 }
