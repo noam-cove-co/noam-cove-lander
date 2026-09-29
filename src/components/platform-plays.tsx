@@ -38,7 +38,7 @@ export function Platforms() {
   );
 }
 
-function MacDesktop() {
+export function MacDesktop() {
   const [mounted, setMounted] = useState(true);
   return (
     <div
@@ -91,7 +91,7 @@ function MacDesktop() {
   );
 }
 
-function PhonePeek() {
+export function PhonePeek() {
   const [peek, setPeek] = useState(false);
   return (
     <button
