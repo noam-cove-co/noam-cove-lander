@@ -191,11 +191,11 @@ export function SiteHeader() {
       <div className="mx-auto flex h-14 max-w-6xl items-center gap-2 px-2.5 md:h-16 md:gap-3 md:px-6">
         <Link href="/" className="flex items-center gap-2" aria-label="Cove, home">
           <span className="grid h-11 place-items-center rounded-full bg-[#1d1d1f] px-3 md:h-auto md:rounded-none md:bg-transparent md:px-0">
-            <CoveMark priority className="size-8" />
+            <CoveMark priority className="size-9 md:size-10" />
           </span>
-          <span className="leading-none">
+          <span className="inline-flex items-start leading-none">
             <Wordmark className="text-[1.55rem]" />
-            <sup className="ml-3 align-super font-sans text-[0.55rem] font-medium tracking-[0.14em] text-cove">
+            <sup className="ml-0.5 align-super font-sans text-[0.55rem] font-medium tracking-[0.14em] text-cove">
               BETA
             </sup>
           </span>

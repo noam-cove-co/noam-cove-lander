@@ -54,7 +54,7 @@ export function NoamSeal({ className }: { className?: string }) {
 export function Wordmark({ className }: { className?: string }) {
   return (
     <span className={cn("font-serif text-[1.65rem] leading-none tracking-[-0.04em]", className)}>
-      cove
+      Cove
     </span>
   );
 }
