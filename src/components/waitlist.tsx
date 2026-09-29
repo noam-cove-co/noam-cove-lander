@@ -4,7 +4,9 @@ import { createContext, useContext, useMemo, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { Laptop } from "lucide-react";
 import { macs, roles, site } from "@/config/site";
-import { track } from "@/lib/analytics";
+import { identify, track } from "@/lib/analytics";
+import { readAttribution } from "@/lib/attribution";
+import { rememberInvite } from "@/components/invite-gift";
 import { CoveMark } from "@/components/brand";
 import { Glyph, MacWindow } from "@/components/mac-window";
 import { cn } from "cn";
@@ -100,21 +102,57 @@ export function WaitlistForm({
 
     const params = new URLSearchParams(window.location.search);
     const headline = params.get("v") === "b" ? "b" : params.get("v") === "a" ? "a" : site.experiment.active;
+    const attr = readAttribution();
+    const ref = attr.ref ?? params.get("ref") ?? "";
 
     try {
       const response = await fetch("/api/waitlist", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, role, mac, iosInterest, company, source, headline }),
+        body: JSON.stringify({
+          name,
+          email,
+          role,
+          mac,
+          iosInterest,
+          company,
+          source,
+          headline,
+          ref,
+          land: attr.land,
+          campaign: attr.utm_campaign || site.campaign.id,
+          utm_source: attr.utm_source,
+          utm_medium: attr.utm_medium,
+          utm_campaign: attr.utm_campaign,
+          utm_content: attr.utm_content,
+          utm_term: attr.utm_term,
+        }),
       });
-      const data = (await response.json()) as { ok?: boolean; already?: boolean; message?: string };
+      const data = (await response.json()) as {
+        ok?: boolean;
+        already?: boolean;
+        message?: string;
+        inviteCode?: string;
+        invited?: number;
+      };
       if (!response.ok || !data.ok) {
         setStatus("idle");
         setMessage(data.message ?? "The list did not take that. Try again in a moment.");
         return;
       }
+      if (data.inviteCode) {
+        rememberInvite({ code: data.inviteCode, invited: data.invited ?? 0 });
+      }
       setStatus(data.already ? "already" : "done");
-      track(site.analytics.events.waitlistJoined, { source, role, iosInterest, already: Boolean(data.already) });
+      identify(email, { name, role, mac, source });
+      track(site.analytics.events.waitlistJoined, {
+        source,
+        role,
+        iosInterest,
+        already: Boolean(data.already),
+        invite_code: data.inviteCode,
+        referral_code: ref || null,
+      });
     } catch {
       setStatus("idle");
       setMessage("The list did not take that. Try again in a moment.");

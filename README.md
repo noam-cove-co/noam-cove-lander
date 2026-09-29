@@ -37,8 +37,29 @@ All public copy lives in [`src/config/site.ts`](src/config/site.ts). That file i
 
 Waitlist notes are written to `data/waitlist.json` (gitignored) by `POST /api/waitlist`.
 
-## Analytics
+## Marketing funnel
 
-Set `NEXT_PUBLIC_MIXPANEL_TOKEN` if you want events sent to Mixpanel. Without a token, events stay in the browser console during development.
+Two campaign land pages (bare chrome, Mixpanel + UTM ready):
+
+- [`/land/own-drive`](http://127.0.0.1:4317/land/own-drive) — product awareness
+- [`/land/join-the-list`](http://127.0.0.1:4317/land/join-the-list) — waitlist + referral ladder
+
+Campaign creatives live under [`/internal/campaign`](http://127.0.0.1:4317/internal/campaign) (noindex). PNGs are in `public/campaign/`.
+
+Pass UTMs on any URL (`utm_source`, `utm_medium`, `utm_campaign`, `utm_content`, `utm_term`, plus `ref` for invites). Attribution is stored in `localStorage` / cookie and attached to Mixpanel events and waitlist rows.
+
+### Waitlist storage
+
+`POST /api/waitlist` writes to **Vercel Redis** when `KV_REST_API_URL` + `KV_REST_API_TOKEN` (or Upstash `UPSTASH_REDIS_*`) are set. Otherwise it falls back to `data/waitlist.json` (gitignored).
+
+`GET /api/waitlist/leaderboard` returns the invite ladder for the land page.
+
+### Analytics
+
+Set `NEXT_PUBLIC_MIXPANEL_TOKEN` to send events to Mixpanel. Without a token, events log to the browser console in development.
+
+Event names live in `site.analytics.events` (`Land Page Viewed`, `Waitlist Joined`, `Invite Copied`, `Attribution Captured`, …).
 
 `NEXT_PUBLIC_SITE_URL` sets the canonical site URL used for metadata. It defaults to `http://127.0.0.1:4317`.
+
+Copy `.env.example` to `.env.local` for local secrets.

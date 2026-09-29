@@ -3,6 +3,7 @@ import { Caveat, Geist_Mono, Instrument_Sans, Instrument_Serif } from "next/font
 import { site } from "@/config/site";
 import { SiteChrome } from "@/components/site-chrome";
 import { RouteTone, RouteToneScript } from "@/components/route-tone";
+import { AttributionBeacon } from "@/components/attribution-beacon";
 import { WaitlistProvider } from "@/components/waitlist";
 import "./globals.css";
 
@@ -95,6 +96,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </a>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <WaitlistProvider>
+          <AttributionBeacon pageEvent={false} />
           <SiteChrome>{children}</SiteChrome>
         </WaitlistProvider>
       </body>

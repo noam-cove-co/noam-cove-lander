@@ -1,5 +1,5 @@
 import { macs, roles, site } from "@/config/site";
-import { addWaitlistEntry, inviteCount } from "@/lib/waitlist-store";
+import { addWaitlistEntry, inviteCount, storageBackend } from "@/lib/waitlist-store";
 
 const roleIds = new Set<string>(roles.map((role) => role.id));
 const macIds = new Set<string>(macs.map((mac) => mac.id));
@@ -15,7 +15,10 @@ export async function GET(request: Request) {
   if (invited === null) {
     return Response.json({ ok: false }, { status: 404 });
   }
-  return Response.json({ ok: true, invited }, { headers: { "Cache-Control": "no-store" } });
+  return Response.json(
+    { ok: true, invited, backend: storageBackend() },
+    { headers: { "Cache-Control": "no-store" } },
+  );
 }
 
 export async function POST(request: Request) {
@@ -40,12 +43,14 @@ export async function POST(request: Request) {
   const email = clean(input.email, 160).toLowerCase();
   const role = clean(input.role, 32);
   const mac = clean(input.mac, 32);
-  const source = clean(input.source, 32) || "site";
+  const source = clean(input.source, 48) || "site";
   const headline = clean(input.headline, 8) || site.experiment.active;
   const iosInterest = Boolean(input.iosInterest);
   const organisation = clean(input.organisation, 120);
   const note = clean(input.note, 500);
-  const allowedRoles = new Set<string>([...roleIds, "range"]);
+  const land = clean(input.land, 64);
+  const campaign = clean(input.campaign, 64) || (source === "mt-mtn" ? "mt-mtn" : site.campaign.id);
+  const allowedRoles = new Set<string>([...roleIds, "range", "home"]);
 
   if (name.length < 2) {
     return Response.json({ ok: false, message: "Add your name, so we know who to write to." }, { status: 400 });
@@ -73,10 +78,16 @@ export async function POST(request: Request) {
         mac,
         iosInterest,
         source,
-        campaign: source === "mt-mtn" ? "mt-mtn" : site.campaign.id,
+        campaign,
         headline,
         organisation,
         note,
+        land: land || undefined,
+        utmSource: clean(input.utm_source, 80) || undefined,
+        utmMedium: clean(input.utm_medium, 80) || undefined,
+        utmCampaign: clean(input.utm_campaign, 80) || undefined,
+        utmContent: clean(input.utm_content, 80) || undefined,
+        utmTerm: clean(input.utm_term, 80) || undefined,
         createdAt: new Date().toISOString(),
       },
       clean(input.ref, 32),
@@ -87,6 +98,8 @@ export async function POST(request: Request) {
       already: result.status === "exists",
       inviteCode: result.inviteCode,
       invited: result.invited,
+      rank: result.rank,
+      backend: storageBackend(),
     });
   } catch {
     return Response.json(
