@@ -134,10 +134,9 @@
     scroll-padding-top: 6rem;
   }
   .ink-mark {
-    background-image: linear-gradient(#e3f56b, #e3f56b);
-    background-repeat: no-repeat;
-    background-position: 0 0.62em;
-    background-size: 100% 0.42em;
+    background-color: #dff56a;
+    border-radius: 0.45em;
+    padding: 0.05em 0.32em;
     box-decoration-break: clone;
     -webkit-box-decoration-break: clone;
     color: inherit;

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist_Mono, Instrument_Sans, Instrument_Serif, Permanent_Marker } from "next/font/google";
+import { Caveat, Geist_Mono, Instrument_Sans, Instrument_Serif } from "next/font/google";
 import { site } from "@/config/site";
 import { MobileJoinBar, SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -27,9 +27,9 @@ const mono = Geist_Mono({
   display: "swap",
 });
 
-const marker = Permanent_Marker({
+const marker = Caveat({
   subsets: ["latin"],
-  weight: "400",
+  weight: ["500", "600"],
   variable: "--font-marker",
   display: "swap",
 });

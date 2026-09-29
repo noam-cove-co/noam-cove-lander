@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { site } from "@/config/site";
-import { CoveSeal, CraftLine, NoamSeal } from "@/components/brand";
+import { CoveMark, CraftLine, NoamSeal } from "@/components/brand";
 
 export const metadata: Metadata = {
   title: "Studio",
@@ -39,7 +39,7 @@ export default function TeamPage() {
               <p className="font-serif text-2xl italic">{site.team.sign}</p>
               <p className="text-sm text-muted-foreground">{site.team.role}</p>
             </div>
-            <CoveSeal className="size-14 -rotate-6 text-cove sm:size-16" />
+            <CoveMark className="size-16 sm:size-[4.5rem]" />
           </div>
         </div>
       </article>

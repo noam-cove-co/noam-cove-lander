@@ -3,9 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { site } from "@/config/site";
-import { CoveMark, CoveSeal, CraftLine, Wordmark } from "@/components/brand";
+import { CoveMark, CraftLine, Wordmark } from "@/components/brand";
 import { isRangePath } from "@/components/route-tone";
-import { cn } from "cn";
 
 export function SiteFooter() {
   const range = isRangePath(usePathname());
@@ -42,7 +41,7 @@ export function SiteFooter() {
       <div className="border-t border-foreground/10">
         <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-6">
           <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-            <CoveSeal className={cn("size-6", range ? "text-primary" : "text-cove")} />
+            <CoveMark className="size-8" />
             <CraftLine />
           </div>
           <p className="text-xs text-muted-foreground">
