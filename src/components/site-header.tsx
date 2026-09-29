@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { site } from "@/config/site";
 import { CoveMark, Wordmark } from "@/components/brand";
@@ -18,12 +18,14 @@ function ChromeCta({
   children,
   onClick,
   href,
+  className,
 }: {
   children: React.ReactNode;
   onClick?: () => void;
   href?: string;
+  className?: string;
 }) {
-  const className = "inline-flex items-center gap-1.5 text-sm font-medium text-foreground";
+  const classes = cn("inline-flex items-center gap-1.5 text-sm font-medium text-foreground", className);
   const inner = (
     <>
       <span className="border-b border-foreground/40 pb-px">{children}</span>
@@ -34,13 +36,13 @@ function ChromeCta({
   );
   if (href) {
     return (
-      <Link href={href} className={className}>
+      <Link href={href} className={classes}>
         {inner}
       </Link>
     );
   }
   return (
-    <button type="button" onClick={onClick} className={className}>
+    <button type="button" onClick={onClick} className={classes}>
       {inner}
     </button>
   );
@@ -49,8 +51,36 @@ function ChromeCta({
 export function SiteHeader() {
   const { openWaitlist } = useWaitlist();
   const pathname = usePathname();
+  const router = useRouter();
   const range = isRangePath(pathname);
   const [open, setOpen] = useState(false);
+  const demoAfterClose = useRef(false);
+
+  const scrollToDemo = useCallback(() => {
+    const demo = pathname === "/" ? document.getElementById("demo") : null;
+    if (demo) {
+      demo.scrollIntoView({ behavior: "smooth" });
+      if (window.location.hash !== "#demo") history.pushState(null, "", "#demo");
+      return;
+    }
+    router.push("/#demo");
+  }, [pathname, router]);
+
+  function openDemo() {
+    if (open) {
+      demoAfterClose.current = true;
+      setOpen(false);
+      return;
+    }
+    scrollToDemo();
+  }
+
+  useEffect(() => {
+    if (open || !demoAfterClose.current) return;
+    demoAfterClose.current = false;
+    scrollToDemo();
+  }, [open, scrollToDemo]);
+
   const scrolled = useSyncExternalStore(
     (onChange) => {
       window.addEventListener("scroll", onChange, { passive: true });
@@ -113,7 +143,17 @@ export function SiteHeader() {
           {range ? (
             <ChromeCta href={`${site.range.path}#enquire`}>Enquire</ChromeCta>
           ) : (
-            <ChromeCta onClick={() => openWaitlist()}>{navCta}</ChromeCta>
+            <>
+              {/* hidden! overrides the unlayered .try-mac-frame display rule on desktop */}
+              <span className="try-mac-frame shrink-0 md:hidden!">
+                <button type="button" onClick={openDemo} className="try-mac px-4 py-1.5 text-sm font-medium">
+                  Try now
+                </button>
+              </span>
+              <ChromeCta className="max-md:hidden" onClick={() => openWaitlist()}>
+                {navCta}
+              </ChromeCta>
+            </>
           )}
           <Button
             type="button"
@@ -143,6 +183,18 @@ export function SiteHeader() {
               {item.label}
             </Link>
           ))}
+          {range ? null : (
+            <div className="mt-1 border-t border-foreground/10 pt-2.5">
+              <ChromeCta
+                onClick={() => {
+                  setOpen(false);
+                  openWaitlist();
+                }}
+              >
+                {navCta}
+              </ChromeCta>
+            </div>
+          )}
         </nav>
       ) : null}
       </div>
