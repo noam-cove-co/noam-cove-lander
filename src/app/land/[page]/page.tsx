@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { JoinListView } from "@/components/land/join-list-view";
 import { LookFamiliarView } from "@/components/land/look-familiar-view";
+import { OutOfSpaceView } from "@/components/land/out-of-space-view";
 import { OwnDriveView } from "@/components/land/own-drive-view";
 import { campaignById } from "@/config/campaigns";
 
-/** Standalone land pages. Look familiar funnel lives at /land/out-of-space/* (static routes). */
 const pages = {
   "own-drive": {
     View: OwnDriveView,
@@ -20,6 +20,14 @@ const pages = {
     description: "Join the Cove waitlist. Invite friends to climb the list. Your own cloud drive, on your Mac.",
     og: "/campaign/join-the-list/jl-og-void.png",
     campaignId: "join-the-list",
+  },
+  "out-of-space": {
+    View: OutOfSpaceView,
+    title: "Look familiar? The Mac is full again",
+    description:
+      "The work got heavy. The laptop stayed the same size. Cove is your own cloud drive, on your Mac: enough room to do what you actually want.",
+    og: "/campaign/out-of-space/oos-og-familiar.png",
+    campaignId: "out-of-space",
   },
   "look-familiar": {
     View: LookFamiliarView,

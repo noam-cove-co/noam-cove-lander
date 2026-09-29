@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { campaigns } from "@/config/campaigns";
-import { lookFamiliarSteps } from "@/config/look-familiar-funnel";
+import { staysLightSteps } from "@/config/stays-light-funnel";
 
 export const metadata = {
   title: "Landing pages",
@@ -18,12 +18,12 @@ export default function LandIndexPage() {
       </p>
 
       <section className="mt-12">
-        <h2 className="font-serif text-2xl tracking-tight">Look familiar? steps</h2>
+        <h2 className="font-serif text-2xl tracking-tight">The Mac that stays light</h2>
         <p className="mt-2 text-sm text-muted-foreground">
-          Multi-step education path ending on the existing join list.
+          Classy product-awareness journey → waitlist. Separate from the Look familiar? one-pager.
         </p>
         <ol className="mt-6 grid gap-3">
-          {lookFamiliarSteps.map((step, index) => (
+          {staysLightSteps.map((step, index) => (
             <li key={step.id}>
               <Link
                 href={step.path}
@@ -41,20 +41,18 @@ export default function LandIndexPage() {
       </section>
 
       <ul className="mt-12 grid gap-4">
-        {campaigns
-          .filter((campaign) => campaign.landSlug !== "out-of-space")
-          .map((campaign) => (
-            <li key={campaign.id}>
-              <Link
-                href={`/land/${campaign.landSlug}`}
-                className="block border border-foreground/10 bg-paper p-5 hover:border-cove/40"
-              >
-                <p className="text-[0.72rem] tracking-[0.16em] text-cove uppercase">{campaign.purpose}</p>
-                <h2 className="mt-1 font-serif text-2xl tracking-tight">{campaign.name}</h2>
-                <p className="mt-2 text-sm text-muted-foreground">/land/{campaign.landSlug}</p>
-              </Link>
-            </li>
-          ))}
+        {campaigns.map((campaign) => (
+          <li key={campaign.id}>
+            <Link
+              href={`/land/${campaign.landSlug}`}
+              className="block border border-foreground/10 bg-paper p-5 hover:border-cove/40"
+            >
+              <p className="text-[0.72rem] tracking-[0.16em] text-cove uppercase">{campaign.purpose}</p>
+              <h2 className="mt-1 font-serif text-2xl tracking-tight">{campaign.name}</h2>
+              <p className="mt-2 text-sm text-muted-foreground">/land/{campaign.landSlug}</p>
+            </Link>
+          </li>
+        ))}
         <li>
           <Link
             href="/land/look-familiar"

@@ -4,44 +4,45 @@ import Link from "next/link";
 import { useEffect } from "react";
 import { site } from "@/config/site";
 import {
-  LOOK_FAMILIAR_FUNNEL,
-  type FunnelStepId,
-  funnelStepById,
-  lookFamiliarSteps,
-  nextFunnelStep,
-  prevFunnelStep,
-} from "@/config/look-familiar-funnel";
+  STAYS_LIGHT_FUNNEL,
+  type StaysLightStepId,
+  nextStaysLightStep,
+  prevStaysLightStep,
+  staysLightStepById,
+  staysLightStepIndex,
+  staysLightSteps,
+} from "@/config/stays-light-funnel";
 import { track } from "@/lib/analytics";
 import { patchFunnelAttribution, withUtm } from "@/lib/attribution";
 import { AttributionBeacon } from "@/components/attribution-beacon";
 import { CoveMark, Wordmark } from "@/components/brand";
 
-const LAND = "out-of-space";
+const LAND = "stays-light";
 
-export function FunnelChrome({
+export function StaysLightChrome({
   stepId,
   children,
-  tone = "paper",
+  tone = "atelier",
 }: {
-  stepId: FunnelStepId;
+  stepId: StaysLightStepId;
   children: React.ReactNode;
-  tone?: "paper" | "ink";
+  tone?: "atelier" | "ink";
 }) {
-  const step = funnelStepById(stepId)!;
-  const next = nextFunnelStep(stepId);
-  const prev = prevFunnelStep(stepId);
-  const index = lookFamiliarSteps.findIndex((item) => item.id === stepId);
+  const step = staysLightStepById(stepId)!;
+  const next = nextStaysLightStep(stepId);
+  const prev = prevStaysLightStep(stepId);
+  const index = staysLightStepIndex(stepId);
   const ink = tone === "ink";
 
   useEffect(() => {
     patchFunnelAttribution({
-      funnel: LOOK_FAMILIAR_FUNNEL,
+      funnel: STAYS_LIGHT_FUNNEL,
       funnel_step: stepId,
       land: LAND,
     });
     track(site.analytics.events.funnelStepViewed, {
       land: LAND,
-      funnel: LOOK_FAMILIAR_FUNNEL,
+      funnel: STAYS_LIGHT_FUNNEL,
       step: stepId,
       step_index: index + 1,
     });
@@ -51,8 +52,8 @@ export function FunnelChrome({
     if (!next) return withUtm("/land/join-the-list");
     if (next.id === "list") {
       return withUtm("/land/join-the-list", {
-        utm_campaign: "out-of-space",
-        utm_content: "funnel-proof",
+        utm_campaign: "stays-light",
+        utm_content: `funnel-${stepId}`,
       });
     }
     return withUtm(next.path);
@@ -61,77 +62,82 @@ export function FunnelChrome({
   function onContinue() {
     track(site.analytics.events.funnelStepCompleted, {
       land: LAND,
-      funnel: LOOK_FAMILIAR_FUNNEL,
+      funnel: STAYS_LIGHT_FUNNEL,
       step: stepId,
       next: next?.id ?? "list",
     });
     track(site.analytics.events.landCta, {
       land: LAND,
       cta: step.nextLabel ?? "Continue",
-      funnel: LOOK_FAMILIAR_FUNNEL,
+      funnel: STAYS_LIGHT_FUNNEL,
       step: stepId,
     });
   }
 
   return (
-    <div className={`min-h-svh ${ink ? "bg-[#0e1320] text-[#f5f6f8]" : "bg-[#f3f1ea] text-foreground"}`}>
+    <div
+      className={`min-h-svh ${
+        ink ? "bg-[#0e1320] text-[#f5f6f8]" : "bg-[#e9e7e1] text-[#0e1320]"
+      }`}
+    >
       <AttributionBeacon land={`${LAND}:${stepId}`} />
       <header
         className={`sticky top-0 z-40 border-b backdrop-blur-md ${
-          ink ? "border-white/10 bg-[#0e1320]/90" : "border-foreground/10 bg-[#f3f1ea]/90"
+          ink ? "border-white/10 bg-[#0e1320]/92" : "border-[#0e1320]/10 bg-[#e9e7e1]/92"
         }`}
       >
-        <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
+        <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-5 py-4 sm:px-8">
           <Link href="/" className="inline-flex items-center gap-2" aria-label="Cove, home">
             <CoveMark className="size-8" />
             <span className="inline-flex items-center gap-1.5">
-              <Wordmark className={`text-[1.35rem] ${ink ? "text-white" : ""}`} />
+              <Wordmark className={`text-[1.4rem] ${ink ? "text-white" : ""}`} />
               <span
-                className={`translate-y-[0.35em] font-sans text-[0.55rem] font-medium tracking-[0.14em] ${
-                  ink ? "text-[#3dcea0]" : "text-cove"
+                className={`translate-y-[0.35em] font-sans text-[0.52rem] font-medium tracking-[0.16em] ${
+                  ink ? "text-[#3dcea0]" : "text-[#0e6b56]"
                 }`}
               >
                 BETA
               </span>
             </span>
           </Link>
-          <nav aria-label="Funnel progress" className="hidden items-center gap-1.5 sm:flex">
-            {lookFamiliarSteps.map((item, i) => {
-              const done = i < index;
+          <nav aria-label="Journey" className="hidden items-center gap-0 md:flex">
+            {staysLightSteps.map((item, i) => {
               const current = i === index;
-              const href = item.id === "list" ? withUtm(item.path) : withUtm(item.path);
+              const done = i < index;
               return (
-                <Link
-                  key={item.id}
-                  href={href}
-                  className={`rounded-full px-2.5 py-1 text-[11px] tracking-[0.04em] transition-colors ${
-                    current
-                      ? ink
-                        ? "bg-white/15 text-white"
-                        : "bg-foreground text-paper"
-                      : done
+                <span key={item.id} className="inline-flex items-center">
+                  {i > 0 ? (
+                    <span className={`mx-2 h-px w-6 ${ink ? "bg-white/20" : "bg-[#0e1320]/15"}`} aria-hidden />
+                  ) : null}
+                  <Link
+                    href={withUtm(item.path)}
+                    className={`font-sans text-[0.68rem] tracking-[0.18em] uppercase transition-colors ${
+                      current
                         ? ink
-                          ? "text-[#3dcea0]"
-                          : "text-cove"
-                        : ink
-                          ? "text-white/40 hover:text-white/70"
-                          : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  <span className="tabular-nums opacity-70">{i + 1}</span> {item.label}
-                </Link>
+                          ? "text-white"
+                          : "text-[#0e1320]"
+                        : done
+                          ? ink
+                            ? "text-[#3dcea0]"
+                            : "text-[#0e6b56]"
+                          : ink
+                            ? "text-white/35 hover:text-white/70"
+                            : "text-[#0e1320]/35 hover:text-[#0e1320]/70"
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                </span>
               );
             })}
           </nav>
-          <p className={`text-sm sm:hidden ${ink ? "text-white/60" : "text-muted-foreground"}`}>
-            {index + 1} / {lookFamiliarSteps.length} · {step.label}
+          <p
+            className={`font-sans text-[0.68rem] tracking-[0.16em] uppercase md:hidden ${
+              ink ? "text-white/50" : "text-[#0e1320]/45"
+            }`}
+          >
+            {String(index + 1).padStart(2, "0")} · {step.label}
           </p>
-        </div>
-        <div className={`h-0.5 w-full ${ink ? "bg-white/10" : "bg-foreground/8"}`}>
-          <div
-            className={`h-full transition-[width] duration-500 ${ink ? "bg-[#3dcea0]" : "bg-cove"}`}
-            style={{ width: `${((index + 1) / lookFamiliarSteps.length) * 100}%` }}
-          />
         </div>
       </header>
 
@@ -140,73 +146,50 @@ export function FunnelChrome({
       {step.nextLabel && next ? (
         <footer
           className={`sticky bottom-0 z-30 border-t backdrop-blur-md ${
-            ink ? "border-white/10 bg-[#0e1320]/92" : "border-foreground/10 bg-[#f3f1ea]/92"
+            ink ? "border-white/10 bg-[#0e1320]/94" : "border-[#0e1320]/10 bg-[#e9e7e1]/94"
           }`}
         >
-          <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:px-6">
-            <div className="flex items-center gap-4 text-sm">
+          <div className="mx-auto flex max-w-5xl flex-col gap-3 px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-8">
+            <div className="flex items-center gap-5 text-sm">
               {prev ? (
                 <Link
                   href={withUtm(prev.path)}
-                  className={ink ? "text-white/55 hover:text-white" : "text-muted-foreground hover:text-foreground"}
+                  className={ink ? "text-white/45 hover:text-white" : "text-[#0e1320]/45 hover:text-[#0e1320]"}
                 >
                   ← {prev.label}
                 </Link>
               ) : (
-                <span className={ink ? "text-white/35" : "text-muted-foreground/50"}>Look familiar?</span>
+                <span className={ink ? "text-white/30" : "text-[#0e1320]/30"}>Cove</span>
               )}
               <Link
                 href={withUtm("/land/join-the-list")}
                 onClick={() =>
                   track(site.analytics.events.landCta, {
                     land: LAND,
-                    cta: "Skip to list",
-                    funnel: LOOK_FAMILIAR_FUNNEL,
+                    cta: "Skip to seat",
+                    funnel: STAYS_LIGHT_FUNNEL,
                     step: stepId,
                   })
                 }
-                className={ink ? "text-white/45 hover:text-white/80" : "text-muted-foreground hover:text-foreground"}
+                className={ink ? "text-white/35 hover:text-white/70" : "text-[#0e1320]/35 hover:text-[#0e1320]/70"}
               >
-                Skip to list
+                Skip to the list
               </Link>
             </div>
             <Link
               href={continueHref()}
               onClick={onContinue}
-              className={`inline-flex h-12 items-center justify-center rounded-md px-6 text-[15px] font-medium ${
-                ink ? "bg-[#3dcea0] text-[#061018]" : "bg-foreground text-paper"
+              className={`inline-flex h-12 items-center justify-center px-7 text-[14px] tracking-[0.04em] ${
+                ink
+                  ? "bg-[#f5f6f8] text-[#0e1320] hover:bg-white"
+                  : "bg-[#0e1320] text-[#f5f6f8] hover:bg-[#1a2233]"
               }`}
             >
-              {step.nextLabel} →
+              {step.nextLabel}
             </Link>
           </div>
         </footer>
       ) : null}
     </div>
-  );
-}
-
-export function FunnelTryCta({ href, label }: { href: string; label: string }) {
-  return (
-    <a
-      href={href}
-      onClick={() =>
-        track(site.analytics.events.landCta, {
-          land: LAND,
-          cta: label,
-          href,
-          funnel: LOOK_FAMILIAR_FUNNEL,
-        })
-      }
-      className="try-mac-frame inline-flex w-fit"
-      style={{ animation: "none" }}
-    >
-      <span
-        className="try-mac inline-flex h-12 items-center px-6 text-[15px] font-medium whitespace-nowrap"
-        style={{ animation: "none" }}
-      >
-        {label}
-      </span>
-    </a>
   );
 }

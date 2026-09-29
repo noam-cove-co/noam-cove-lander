@@ -413,7 +413,7 @@ export const campaigns: CampaignDef[] = [
     purpose: "pain",
     landSlug: "out-of-space",
     summary:
-      "The biggest Cove pain: the Mac is full, the work is not. Scrappy Look familiar? cuts for Meta, plus Rolex / Porsche / New Balance broadsheet ads. Funnel: /land/out-of-space → drive → desk → proof → /land/join-the-list. Print desk: /land/look-familiar.",
+      "The biggest Cove pain: the Mac is full, the work is not. Scrappy Look familiar? cuts for Meta, plus Rolex / Porsche / New Balance broadsheet ads. One-pager: /land/out-of-space. Print desk: /land/look-familiar. Classy multi-step: /land/stays-light.",
     defaultUtm: {
       source: "paid",
       medium: "social",

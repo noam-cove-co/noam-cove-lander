@@ -3,11 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import {
-  LOOK_FAMILIAR_FUNNEL,
-  funnelDesks,
-  lookFamiliarSteps,
-} from "@/config/look-familiar-funnel";
+import { STAYS_LIGHT_FUNNEL, staysLightSteps } from "@/config/stays-light-funnel";
 import { AttributionBeacon } from "@/components/attribution-beacon";
 import { CoveMark, Wordmark } from "@/components/brand";
 import { LandWaitlist } from "@/components/land/land-waitlist";
@@ -19,21 +15,18 @@ const CAMPAIGN = "join-the-list";
 
 export function JoinListView() {
   const [fromFunnel, setFromFunnel] = useState(false);
-  const [deskLabel, setDeskLabel] = useState<string | null>(null);
 
   useEffect(() => {
     const attr = readAttribution();
-    const funnel = attr.funnel === LOOK_FAMILIAR_FUNNEL;
+    const funnel = attr.funnel === STAYS_LIGHT_FUNNEL;
     setFromFunnel(funnel);
     if (funnel) {
       patchFunnelAttribution({
-        funnel: LOOK_FAMILIAR_FUNNEL,
+        funnel: STAYS_LIGHT_FUNNEL,
         funnel_step: "list",
-        land: "out-of-space",
+        land: "stays-light",
         desk: attr.desk,
       });
-      const desk = funnelDesks.find((item) => item.id === attr.desk);
-      setDeskLabel(desk?.persona ?? null);
     }
   }, []);
 
@@ -61,20 +54,22 @@ export function JoinListView() {
             </span>
           </Link>
           {fromFunnel ? (
-            <nav aria-label="Funnel progress" className="hidden items-center gap-1.5 md:flex">
-              {lookFamiliarSteps.map((item, i) => {
+            <nav aria-label="Journey" className="hidden items-center gap-0 md:flex">
+              {staysLightSteps.map((item, i) => {
                 const current = item.id === "list";
-                const done = i < lookFamiliarSteps.length - 1;
+                const done = i < staysLightSteps.length - 1;
                 return (
-                  <Link
-                    key={item.id}
-                    href={withUtm(item.path)}
-                    className={`rounded-full px-2.5 py-1 text-[11px] tracking-[0.04em] ${
-                      current ? "bg-white/15 text-white" : done ? "text-[#3dcea0]" : "text-white/40"
-                    }`}
-                  >
-                    <span className="tabular-nums opacity-70">{i + 1}</span> {item.label}
-                  </Link>
+                  <span key={item.id} className="inline-flex items-center">
+                    {i > 0 ? <span className="mx-2 h-px w-5 bg-white/20" aria-hidden /> : null}
+                    <Link
+                      href={withUtm(item.path)}
+                      className={`font-sans text-[0.68rem] tracking-[0.18em] uppercase ${
+                        current ? "text-white" : done ? "text-[#3dcea0]" : "text-white/35"
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  </span>
                 );
               })}
             </nav>
@@ -84,11 +79,6 @@ export function JoinListView() {
             </Link>
           )}
         </div>
-        {fromFunnel ? (
-          <div className="h-0.5 w-full bg-white/10">
-            <div className="h-full w-full bg-[#3dcea0]" />
-          </div>
-        ) : null}
       </header>
 
       <section className="relative mx-auto grid max-w-6xl items-center gap-10 px-4 pt-10 pb-16 sm:px-6 sm:pt-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.95fr)] lg:pb-20">
@@ -102,7 +92,9 @@ export function JoinListView() {
             className="pointer-events-none absolute -right-8 -bottom-16 w-[min(100%,420px)] opacity-[0.18] sm:-right-16"
           />
           {fromFunnel ? (
-            <p className="font-marker rotate-[-3deg] text-2xl text-[#3dcea0]">Enough room?</p>
+            <p className="font-sans text-[0.72rem] font-medium tracking-[0.28em] text-[#3dcea0] uppercase">
+              Reserve a seat
+            </p>
           ) : (
             <p className="text-[0.72rem] font-medium tracking-[0.22em] text-[#3dcea0] uppercase">Join the List</p>
           )}
@@ -112,13 +104,13 @@ export function JoinListView() {
           </h1>
           <p className="mt-5 max-w-md text-lg leading-relaxed text-white/60">
             {fromFunnel
-              ? `Your own cloud drive, on your Mac${deskLabel ? ` · ${deskLabel}` : ""}. A seat opens: we write.`
+              ? "The Mac that stays light. A seat opens: we write. Invite someone and climb the ladder."
               : "Your own cloud drive, on your Mac. A seat opens: we write. Invite someone and climb the ladder."}
           </p>
           {fromFunnel ? (
             <p className="mt-3">
-              <Link href={withUtm("/land/out-of-space/proof")} className="text-sm text-white/50 hover:text-white/80">
-                ← Back to proof
+              <Link href={withUtm("/land/stays-light/craft")} className="text-sm text-white/50 hover:text-white/80">
+                ← Back to craft
               </Link>
             </p>
           ) : null}
@@ -146,7 +138,8 @@ export function JoinListView() {
             <p className="text-[0.72rem] font-medium tracking-[0.18em] text-[#3dcea0] uppercase">Referrals</p>
             <h2 className="mt-3 font-serif text-4xl tracking-[-0.03em] sm:text-5xl">The list has a ladder.</h2>
             <p className="mt-4 max-w-md text-base leading-relaxed text-white/60">
-              After you join, you get an invite link. Each person who signs up with it moves you up. Seats open from the top of the board.
+              After you join, you get an invite link. Each person who signs up with it moves you up. Seats open from the
+              top of the board.
             </p>
           </div>
           <ReferralBoard dark land={LAND} />
