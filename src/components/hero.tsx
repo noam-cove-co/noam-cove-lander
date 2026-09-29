@@ -9,7 +9,7 @@ export function Hero({ variant }: { variant: HeadlineVariant }) {
   const line = headlineFor(variant);
   return (
     <>
-      <div className="hero-wash relative -mt-[calc(3.5rem+env(safe-area-inset-top))] overflow-hidden pt-[calc(3.5rem+env(safe-area-inset-top))] md:-mt-16 md:pt-16">
+      <div className="relative -mt-[calc(3.5rem+env(safe-area-inset-top))] overflow-hidden bg-white pt-[calc(3.5rem+env(safe-area-inset-top))] md:-mt-16 md:pt-16">
         <section className="relative mx-auto grid w-full max-w-6xl items-center gap-6 px-4 pt-10 sm:px-6 sm:pt-16 lg:grid-cols-[minmax(0,1.12fr)_minmax(280px,0.88fr)] lg:gap-4 lg:pt-20">
           <div className="order-2 lg:order-1">
             <h1 className="max-w-4xl font-serif text-[2.7rem] leading-[0.96] tracking-[-0.035em] text-balance sm:text-6xl lg:text-[4.75rem]">
@@ -36,7 +36,7 @@ export function Hero({ variant }: { variant: HeadlineVariant }) {
               width={1024}
               height={1024}
               priority
-              className="h-auto w-full drop-shadow-[0_28px_50px_rgba(14,19,32,0.18)]"
+              className="h-auto w-full"
             />
           </div>
         </section>
