@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { site } from "@/config/site";
-import { CoveMark, CraftLine, NoamByline, Wordmark } from "@/components/brand";
+import { CoveMark, CraftLine, Wordmark } from "@/components/brand";
 import { isRangePath } from "@/components/route-tone";
 
 export function SiteFooter() {
@@ -43,30 +43,26 @@ export function SiteFooter() {
       </div>
       <div className="border-t border-foreground/10">
         <div className="mx-auto max-w-6xl px-4 py-5 sm:px-6">
-          <div className="flex flex-wrap items-start gap-x-3 gap-y-2 text-xs leading-relaxed text-muted-foreground">
-            <NoamByline sealClassName="size-5 text-muted-foreground" className="shrink-0 text-xs">
-              © {new Date().getFullYear()} NOAM Co.
-            </NoamByline>
-            <p className="min-w-0 flex-1">
-              <span className="hidden sm:inline">· </span>
-              Photographs from{" "}
-              <a href="https://unsplash.com" className="underline-offset-2 hover:underline">
-                Unsplash
-              </a>
-              . App icons from the{" "}
-              <a
-                href="https://github.com/nweii/macOS_Big_Sur_icons_replacements"
-                className="underline-offset-2 hover:underline"
-              >
-                Big Sur set
-              </a>
-              . File icons from{" "}
-              <a href="https://icons8.com" className="underline-offset-2 hover:underline">
-                Icons8
-              </a>
-              . Figma and GitHub Copilot marks belong to their owners.
-            </p>
-          </div>
+          <p className="text-xs leading-relaxed text-muted-foreground">
+            © {new Date().getFullYear()} NOAM Co.
+            <span className="px-2">·</span>
+            Photographs from{" "}
+            <a href="https://unsplash.com" className="underline-offset-2 hover:underline">
+              Unsplash
+            </a>
+            . App icons from the{" "}
+            <a
+              href="https://github.com/nweii/macOS_Big_Sur_icons_replacements"
+              className="underline-offset-2 hover:underline"
+            >
+              Big Sur set
+            </a>
+            . File icons from{" "}
+            <a href="https://icons8.com" className="underline-offset-2 hover:underline">
+              Icons8
+            </a>
+            . Figma and GitHub Copilot marks belong to their owners.
+          </p>
         </div>
       </div>
     </footer>

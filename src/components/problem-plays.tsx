@@ -178,7 +178,7 @@ function LinkPlay() {
         <li aria-hidden>·</li>
         <li className={cn(masters && "text-cove")}>On Cove</li>
       </ol>
-      <div className="relative pb-16 sm:pb-8">
+      <div>
         <MacWindow title={masters ? "masters" : "review.link"}>
           <div className="px-3 py-2">
             <p
@@ -252,11 +252,11 @@ function LinkPlay() {
         {"note" in edge && typeof edge.note === "string" ? (
           <aside
             className={cn(
-              "absolute right-0 -bottom-1 z-10 w-[min(100%,15.5rem)] -rotate-2 rounded-[2px] bg-[#fff4b8] px-3 py-2.5 shadow-[2px_3px_0_rgba(14,19,32,0.12),0_12px_28px_-18px_rgba(14,19,32,0.45)] ring-1 ring-black/5 transition-opacity duration-300 sm:-right-2 sm:bottom-5 sm:w-[14.5rem]",
-              masters && "opacity-40",
+              "mt-2 rounded-[3px] border border-[#e6d27a]/80 bg-[#fff8c9] px-3 py-2 transition-opacity duration-300",
+              masters && "opacity-50",
             )}
           >
-            <p className="font-marker text-[1.05rem] leading-snug text-[#3a2f12]">{edge.note}</p>
+            <p className="font-marker text-[0.95rem] leading-snug text-[#4a3f1a]">{edge.note}</p>
           </aside>
         ) : null}
       </div>
