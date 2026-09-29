@@ -24,7 +24,7 @@ export function DownloadView() {
   return (
     <main>
       <section className="hero-wash relative -mt-[calc(3.5rem+env(safe-area-inset-top))] isolate overflow-hidden pt-[calc(3.5rem+env(safe-area-inset-top))] md:-mt-16 md:pt-16">
-        <div className="relative mx-auto w-full max-w-6xl px-4 pt-28 pb-16 sm:px-6 sm:pt-36 sm:pb-24">
+        <div className="relative mx-auto w-full max-w-6xl px-4 pt-10 pb-16 sm:px-6 sm:pt-16 sm:pb-24">
           <motion.div
             initial={reduce ? false : { opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
