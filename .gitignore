@@ -58,3 +58,7 @@ __pycache__/
 # LinkedIn / X skill upstream clones (bundles live in .cursor/skills/)
 /tools/linkedin-skills/
 /tools/x-skills/
+
+# LinkedIn personal model (career detail, figures, voice fingerprint)
+**/linkedin-marketing/references/story-bank.md
+**/linkedin-marketing/references/voice-profile.md
