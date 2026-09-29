@@ -9,11 +9,16 @@ import { WaitlistForm } from "@/components/waitlist";
 
 export function DownloadView() {
   const reduce = useReducedMotion();
-  const [iosDefault, setIosDefault] = useState(false);
+  const [waitlistIntent, setWaitlistIntent] = useState<{ ios: boolean; stamp: number }>({
+    ios: false,
+    stamp: 0,
+  });
 
   function askForSeat(ios = false) {
-    setIosDefault(ios);
-    document.getElementById("waitlist")?.scrollIntoView({ behavior: "smooth" });
+    setWaitlistIntent({ ios, stamp: Date.now() });
+    requestAnimationFrame(() => {
+      document.getElementById("waitlist")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
   }
 
   return (
@@ -125,7 +130,12 @@ export function DownloadView() {
             are building with an agent.
           </p>
           <div className="mt-10">
-            <WaitlistForm key={iosDefault ? "ios" : "mac"} source="download" iosDefault={iosDefault} />
+            <WaitlistForm
+              key={waitlistIntent.stamp || "idle"}
+              source="download"
+              iosDefault={waitlistIntent.ios}
+              initialStep={waitlistIntent.ios && waitlistIntent.stamp ? 2 : 0}
+            />
           </div>
         </div>
       </section>
