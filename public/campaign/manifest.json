@@ -1,5 +1,6 @@
 {
-  "generatedAt": "2026-09-29T18:42:36.226Z",
+  "generatedAt": "2026-09-29T18:48:09.590Z",
+  "previousGeneratedAt": "2026-09-29T18:47:24.776Z",
   "campaigns": [
     {
       "id": "own-drive",
@@ -11,7 +12,13 @@
         "/campaign/own-drive/od-ig-always.png",
         "/campaign/own-drive/od-story-click.png",
         "/campaign/own-drive/od-poster-own.png",
-        "/campaign/own-drive/od-li-square.png"
+        "/campaign/own-drive/od-li-square.png",
+        "/campaign/own-drive/od-og-hero-cta.png",
+        "/campaign/own-drive/od-ig-hero-cta.png",
+        "/campaign/own-drive/od-ig-product.png",
+        "/campaign/own-drive/od-fb-product.png",
+        "/campaign/own-drive/od-li-hero.png",
+        "/campaign/own-drive/od-poster-product.png"
       ]
     },
     {
@@ -24,7 +31,16 @@
         "/campaign/join-the-list/jl-ig-click.png",
         "/campaign/join-the-list/jl-story-beta.png",
         "/campaign/join-the-list/jl-poster-wait.png",
-        "/campaign/join-the-list/jl-li-square.png"
+        "/campaign/join-the-list/jl-li-square.png",
+        "/campaign/join-the-list/jl-og-void.png",
+        "/campaign/join-the-list/jl-ig-void.png",
+        "/campaign/join-the-list/jl-story-void.png",
+        "/campaign/join-the-list/jl-poster-void.png",
+        "/campaign/join-the-list/jl-og-board.png",
+        "/campaign/join-the-list/jl-ig-board.png",
+        "/campaign/join-the-list/jl-ig-board-tall.png",
+        "/campaign/join-the-list/jl-fb-board.png",
+        "/campaign/join-the-list/jl-li-board.png"
       ]
     }
   ]

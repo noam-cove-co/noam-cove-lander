@@ -3,14 +3,15 @@
  * into public/campaign/[name]/[id].png at native pixel size.
  */
 import playwright from "/tmp/node_modules/playwright-core/index.js";
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, writeFile, readFile } from "node:fs/promises";
 import { join } from "node:path";
 
 const { chromium } = playwright;
-
 const base = process.env.SITE_URL ?? "http://127.0.0.1:4317";
 const chrome = process.env.CHROME_PATH ?? "/usr/local/bin/google-chrome";
+const only = process.env.ONLY?.split(",").filter(Boolean) ?? null;
 
+// Keep in sync with src/config/campaigns.ts
 const campaigns = [
   {
     id: "own-drive",
@@ -23,6 +24,12 @@ const campaigns = [
       "od-story-click",
       "od-poster-own",
       "od-li-square",
+      "od-og-hero-cta",
+      "od-ig-hero-cta",
+      "od-ig-product",
+      "od-fb-product",
+      "od-li-hero",
+      "od-poster-product",
     ],
   },
   {
@@ -36,6 +43,15 @@ const campaigns = [
       "jl-story-beta",
       "jl-poster-wait",
       "jl-li-square",
+      "jl-og-void",
+      "jl-ig-void",
+      "jl-story-void",
+      "jl-poster-void",
+      "jl-og-board",
+      "jl-ig-board",
+      "jl-ig-board-tall",
+      "jl-fb-board",
+      "jl-li-board",
     ],
   },
 ];
@@ -49,14 +65,17 @@ const browser = await chromium.launch({
 for (const campaign of campaigns) {
   const dir = join(process.cwd(), "public/campaign", campaign.id);
   await mkdir(dir, { recursive: true });
-  for (const id of campaign.creatives) {
+  const ids = only
+    ? campaign.creatives.filter((id) => only.includes(id))
+    : campaign.creatives;
+  for (const id of ids) {
     const url = `${base}/internal/campaign/${campaign.id}/export/${id}`;
     const page = await browser.newPage({
-      viewport: { width: 1400, height: 2000 },
+      viewport: { width: 1600, height: 2200 },
       deviceScaleFactor: 1,
     });
     await page.goto(url, { waitUntil: "networkidle", timeout: 60000 });
-    await page.waitForTimeout(400);
+    await page.waitForTimeout(500);
     const frame = page.locator(`[data-creative="${id}"]`);
     await frame.waitFor({ state: "visible", timeout: 15000 });
     const out = join(dir, `${id}.png`);
@@ -67,11 +86,20 @@ for (const campaign of campaigns) {
   }
 }
 
+const manifestPath = join(process.cwd(), "public/campaign/manifest.json");
+let previous = {};
+try {
+  previous = JSON.parse(await readFile(manifestPath, "utf8"));
+} catch {
+  previous = {};
+}
+
 await writeFile(
-  join(process.cwd(), "public/campaign/manifest.json"),
+  manifestPath,
   JSON.stringify(
     {
       generatedAt: new Date().toISOString(),
+      previousGeneratedAt: previous.generatedAt ?? null,
       campaigns: campaigns.map((c) => ({
         id: c.id,
         assets: c.creatives.map((id) => `/campaign/${c.id}/${id}.png`),

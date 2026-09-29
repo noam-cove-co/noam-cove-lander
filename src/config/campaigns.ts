@@ -6,10 +6,12 @@
  * - join-the-list: waitlist conversion
  *
  * Creatives follow a print-ad grammar: generous air, one line that lands,
- * small Cove lockup. Instrument Serif + Sans, paper / ink / cove green only.
+ * small Cove lockup — plus product-UI, hero-wash, and referral leaderboard cuts.
  */
 
-export type CreativeTone = "paper" | "ink" | "mist";
+export type CreativeTone = "paper" | "ink" | "mist" | "void";
+
+export type CreativeLayout = "print" | "leaderboard" | "void-logo" | "hero-cta" | "product-ui";
 
 export type CreativeFormat =
   | "og"
@@ -21,6 +23,13 @@ export type CreativeFormat =
   | "poster"
   | "linkedin-square";
 
+export type LeaderboardRow = {
+  rank: number;
+  name: string;
+  invites: number;
+  you?: boolean;
+};
+
 export type CreativeSpec = {
   id: string;
   format: CreativeFormat;
@@ -28,6 +37,7 @@ export type CreativeSpec = {
   width: number;
   height: number;
   tone: CreativeTone;
+  layout?: CreativeLayout;
   /** Large serif line — the ad. */
   headline: string;
   /** Optional second line in the same serif voice. */
@@ -38,6 +48,10 @@ export type CreativeSpec = {
   cue?: string;
   /** Accent word inside headline rendered in cove green when set. */
   accent?: string;
+  /** Blue CTA label (hero-cta / product-ui). */
+  cta?: string;
+  /** Leaderboard rows for referral creatives. */
+  board?: LeaderboardRow[];
 };
 
 export type CampaignDef = {
@@ -76,9 +90,18 @@ function creative(
     width: size.width,
     height: size.height,
     label: partial.label ?? size.label,
+    layout: partial.layout ?? "print",
     ...partial,
   };
 }
+
+const referralBoard: LeaderboardRow[] = [
+  { rank: 1, name: "Amelia K.", invites: 14 },
+  { rank: 2, name: "James R.", invites: 11 },
+  { rank: 3, name: "You", invites: 9, you: true },
+  { rank: 4, name: "Priya S.", invites: 7 },
+  { rank: 5, name: "Tom H.", invites: 6 },
+];
 
 export const campaigns: CampaignDef[] = [
   {
@@ -87,7 +110,7 @@ export const campaigns: CampaignDef[] = [
     purpose: "awareness",
     landSlug: "own-drive",
     summary:
-      "Product awareness. Print-ad quiet: one truth about Cove, then the mark. For Meta, LinkedIn, and link previews.",
+      "Product awareness. Print-ad quiet, plus hero-wash and product-UI cuts that reuse the lander Finder stage and blue Try CTA.",
     defaultUtm: {
       source: "paid",
       medium: "social",
@@ -155,6 +178,61 @@ export const campaigns: CampaignDef[] = [
         support: "Cove · crafted by NOAM Co.",
         cue: "Private beta",
       }),
+      // Product UI + blue CTA + hero wash
+      creative("og", {
+        id: "od-og-hero-cta",
+        layout: "hero-cta",
+        tone: "paper",
+        headline: "Your own cloud drive, on your Mac.",
+        support: "One click. It shows up in Finder.",
+        cta: "Try on this Mac",
+        cue: "Private beta",
+      }),
+      creative("instagram-square", {
+        id: "od-ig-hero-cta",
+        layout: "hero-cta",
+        tone: "paper",
+        headline: "On your Mac in one click.",
+        support: "Cove · your own cloud drive",
+        cta: "Try on this Mac",
+        cue: "noam.co",
+      }),
+      creative("instagram-portrait", {
+        id: "od-ig-product",
+        layout: "product-ui",
+        tone: "paper",
+        headline: "Same cloud drive. On this Mac.",
+        support: "Show it in Finder. The heavy files leave the laptop.",
+        cta: "Try on this Mac",
+        cue: "Cove",
+      }),
+      creative("facebook-feed", {
+        id: "od-fb-product",
+        layout: "product-ui",
+        tone: "paper",
+        headline: "It shows up like a normal drive.",
+        support: "Cove under Locations. Zero KB on this Mac until you open something.",
+        cta: "Try on this Mac",
+        cue: "Private beta",
+      }),
+      creative("linkedin-og", {
+        id: "od-li-hero",
+        layout: "hero-cta",
+        tone: "paper",
+        headline: "A drive that simply shows up.",
+        support: "Built for Mac. Kept in the cloud.",
+        cta: "Try on this Mac",
+        cue: "Cove · NOAM Co.",
+      }),
+      creative("poster", {
+        id: "od-poster-product",
+        layout: "product-ui",
+        tone: "paper",
+        headline: "One click. Then Finder.",
+        support: "Your own cloud drive — the lander, as an ad.",
+        cta: "Try on this Mac",
+        cue: "Yorkshire",
+      }),
     ],
   },
   {
@@ -163,7 +241,7 @@ export const campaigns: CampaignDef[] = [
     purpose: "waitlist",
     landSlug: "join-the-list",
     summary:
-      "Waitlist conversion. Same quiet voice, clearer ask: join the private beta. For ads that end on /land/join-the-list.",
+      "Waitlist conversion. Quiet ask, plus black premium void-logo set and a referral leaderboard: invite someone, climb the list.",
     defaultUtm: {
       source: "paid",
       medium: "social",
@@ -231,6 +309,89 @@ export const campaigns: CampaignDef[] = [
         line: "Join the list.",
         support: "Cove private beta · Mac first",
         cue: "NOAM Co.",
+      }),
+      // Black premium void-logo
+      creative("og", {
+        id: "jl-og-void",
+        layout: "void-logo",
+        tone: "void",
+        headline: "Private beta.",
+        line: "Join the list.",
+        support: "Your own cloud drive, on your Mac.",
+        cue: "Cove",
+      }),
+      creative("instagram-square", {
+        id: "jl-ig-void",
+        layout: "void-logo",
+        tone: "void",
+        headline: "A seat opens.",
+        line: "We write.",
+        support: "Cove · waitlist",
+        cue: "NOAM Co.",
+      }),
+      creative("instagram-story", {
+        id: "jl-story-void",
+        layout: "void-logo",
+        tone: "void",
+        headline: "Not public.",
+        line: "Not yet.",
+        support: "Join the private beta list.",
+        cue: "Join →",
+      }),
+      creative("poster", {
+        id: "jl-poster-void",
+        layout: "void-logo",
+        tone: "void",
+        headline: "The list is the door.",
+        support: "Cove · private beta · Yorkshire",
+        cue: "noam.co",
+      }),
+      // Referral leaderboard
+      creative("og", {
+        id: "jl-og-board",
+        layout: "leaderboard",
+        tone: "paper",
+        headline: "Invite someone. Climb the list.",
+        support: "Each invite moves you up. Seats open from the top.",
+        cue: "Private beta",
+        board: referralBoard,
+      }),
+      creative("instagram-square", {
+        id: "jl-ig-board",
+        layout: "leaderboard",
+        tone: "mist",
+        headline: "You’re number three.",
+        line: "One more invite.",
+        support: "Refer a friend. Move up the waitlist.",
+        cue: "Cove",
+        board: referralBoard,
+      }),
+      creative("instagram-portrait", {
+        id: "jl-ig-board-tall",
+        layout: "leaderboard",
+        tone: "paper",
+        headline: "The list has a ladder.",
+        support: "Invite. Climb. Get in sooner.",
+        cue: "Join the list",
+        board: referralBoard,
+      }),
+      creative("facebook-feed", {
+        id: "jl-fb-board",
+        layout: "leaderboard",
+        tone: "ink",
+        headline: "Referrals move the queue.",
+        support: "Share Cove. Jump the waitlist.",
+        cue: "Private beta",
+        board: referralBoard,
+      }),
+      creative("linkedin-square", {
+        id: "jl-li-board",
+        layout: "leaderboard",
+        tone: "void",
+        headline: "Climb with an invite.",
+        support: "Cove waitlist · seats from the top",
+        cue: "NOAM Co.",
+        board: referralBoard,
       }),
     ],
   },
