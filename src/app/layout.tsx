@@ -1,9 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Caveat, Geist_Mono, Instrument_Sans, Instrument_Serif } from "next/font/google";
 import { site } from "@/config/site";
-import { MobileJoinBar, SiteHeader } from "@/components/site-header";
-import { PageCloser } from "@/components/page-closer";
-import { SiteFooter } from "@/components/site-footer";
+import { SiteChrome } from "@/components/site-chrome";
 import { RouteTone, RouteToneScript } from "@/components/route-tone";
 import { WaitlistProvider } from "@/components/waitlist";
 import "./globals.css";
@@ -97,13 +95,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </a>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <WaitlistProvider>
-          <SiteHeader />
-          <div id="content" className="flex-1 pb-24 md:pb-0">
-            {children}
-            <PageCloser />
-          </div>
-          <SiteFooter />
-          <MobileJoinBar />
+          <SiteChrome>{children}</SiteChrome>
         </WaitlistProvider>
       </body>
     </html>

@@ -1,0 +1,31 @@
+{
+  "generatedAt": "2026-09-29T18:42:36.226Z",
+  "campaigns": [
+    {
+      "id": "own-drive",
+      "assets": [
+        "/campaign/own-drive/od-og-always.png",
+        "/campaign/own-drive/od-li-light.png",
+        "/campaign/own-drive/od-fb-heavy.png",
+        "/campaign/own-drive/od-ig-ohio.png",
+        "/campaign/own-drive/od-ig-always.png",
+        "/campaign/own-drive/od-story-click.png",
+        "/campaign/own-drive/od-poster-own.png",
+        "/campaign/own-drive/od-li-square.png"
+      ]
+    },
+    {
+      "id": "join-the-list",
+      "assets": [
+        "/campaign/join-the-list/jl-og-seat.png",
+        "/campaign/join-the-list/jl-li-reserved.png",
+        "/campaign/join-the-list/jl-fb-write.png",
+        "/campaign/join-the-list/jl-ig-list.png",
+        "/campaign/join-the-list/jl-ig-click.png",
+        "/campaign/join-the-list/jl-story-beta.png",
+        "/campaign/join-the-list/jl-poster-wait.png",
+        "/campaign/join-the-list/jl-li-square.png"
+      ]
+    }
+  ]
+}
