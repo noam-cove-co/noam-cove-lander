@@ -124,7 +124,14 @@ Practical loop:
 4. Schedule in Buffer / Later / native schedulers  
 5. Agent summarises performance notes weekly (from exported CSV), not live replies  
 
-When ready for more automation: one “Social pack” Cursor agent that only writes files + checklist; posting stays human or via a scheduler with approval.
+### Agents (built)
+
+| Skill | Path | Job |
+| --- | --- | --- |
+| Social Media Executive + B2B copy | `.cursor/skills/cove-social-executive/` | LinkedIn, IG, X, press, blogs |
+| Week-1 social pack | `.cursor/skills/cove-week1-social-pack/` | Writes `docs/social/week-1/` only |
+
+Week-1 pack is already generated under [`docs/social/week-1/`](../docs/social/week-1/). Approve → schedule. Do not autopost.
 
 ---
 
@@ -134,4 +141,4 @@ When ready for more automation: one “Social pack” Cursor agent that only wri
 2. Set `NEXT_PUBLIC_SITE_URL=https://cove.will.me.uk` on Vercel  
 3. Confirm OG absolute URL + @2x PNG live  
 4. Submit sitemap in Search Console  
-5. Kick off week-1 social pack from Stays Light + Look familiar assets  
+5. Approve `docs/social/week-1/` posts and schedule  

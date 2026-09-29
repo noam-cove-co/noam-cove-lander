@@ -67,6 +67,12 @@ Event names live in `site.analytics.events` (`Land Page Viewed`, `Waitlist Joine
 
 Generative SEO: [`/llms.txt`](http://127.0.0.1:4317/llms.txt), [`/llms-full.txt`](http://127.0.0.1:4317/llms-full.txt), [`/sitemap.xml`](http://127.0.0.1:4317/sitemap.xml). Growth notes: [`docs/marketing-growth.md`](docs/marketing-growth.md).
 
+### Social + B2B agents
+
+- Skill **cove-social-executive**: Social Media Executive + B2B copy (press, blogs, LinkedIn, IG, X) → [`docs/social/`](docs/social/)
+- Skill **cove-week1-social-pack**: writes approval-only post files → [`docs/social/week-1/`](docs/social/week-1/)
+- How to invoke: [`.cursor/agents/README.md`](.cursor/agents/README.md)
+
 Campaign PNGs in `public/campaign/` are exported at **@2x** (`deviceScaleFactor: 2` in `scripts/export-campaign-creatives.mjs`).
 
 Copy `.env.example` to `.env.local` for local secrets.
