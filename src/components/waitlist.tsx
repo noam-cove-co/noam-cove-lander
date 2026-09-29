@@ -48,11 +48,13 @@ export function WaitlistProvider({ children }: { children: React.ReactNode }) {
 export function WaitlistForm({
   source,
   iosDefault = false,
+  initialStep = 0,
 }: {
   source: string;
   iosDefault?: boolean;
+  initialStep?: number;
 }) {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(Math.min(2, Math.max(0, initialStep)));
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [role, setRole] = useState("");
