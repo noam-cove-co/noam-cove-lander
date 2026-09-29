@@ -117,6 +117,7 @@ export const site = {
 
   nav: [
     { href: "/why", label: "Why Cove?" },
+    { href: "/journal", label: "Journal" },
     { href: "/room", label: "Size it" },
     { href: "/download", label: "Download" },
   ],
@@ -151,6 +152,7 @@ export const site = {
     { href: "/how", label: "How Cove works" },
     { href: "/demo", label: "Demo" },
     { href: "/why", label: "Why Cove?" },
+    { href: "/journal", label: "Journal" },
     { href: "/#audiences", label: "Who it’s for" },
     { href: "/room", label: "Size it" },
     { href: "/download", label: "Download" },

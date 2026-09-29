@@ -67,6 +67,12 @@ Event names live in `site.analytics.events` (`Land Page Viewed`, `Waitlist Joine
 
 Generative SEO: [`/llms.txt`](http://127.0.0.1:4317/llms.txt), [`/llms-full.txt`](http://127.0.0.1:4317/llms-full.txt), [`/sitemap.xml`](http://127.0.0.1:4317/sitemap.xml). Growth notes: [`docs/marketing-growth.md`](docs/marketing-growth.md).
 
+### Journal
+
+[The Cove Journal](http://127.0.0.1:4317/journal) is the press / blog surface: masthead, breadcrumbs, byline, published/updated dates, reading time, and a green ink scroll line.
+
+Publish by adding Markdown under [`content/journal/`](content/journal/) with front matter (`status: published`). See that folder’s README for the schema. Drafts stay off the public index and sitemap.
+
 ### Social + B2B agents
 
 - Skill **cove-social-executive**: Social Media Executive + B2B copy (press, blogs, LinkedIn, IG, X) → [`docs/social/`](docs/social/)
