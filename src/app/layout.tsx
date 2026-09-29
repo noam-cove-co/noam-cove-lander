@@ -34,8 +34,16 @@ const marker = Caveat({
   display: "swap",
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://cove.will.me.uk";
+const ogImage = {
+  url: "/campaign/own-drive/od-og-hero-cta.png",
+  width: 2400,
+  height: 1260,
+  alt: "Cove: your own cloud drive, on your Mac. Crafted by NOAM Co.",
+};
+
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://cove.will.me.uk"),
+  metadataBase: new URL(siteUrl),
   title: {
     default: "Cove | your own cloud drive, on your Mac",
     template: "%s | Cove",
@@ -55,13 +63,13 @@ export const metadata: Metadata = {
     siteName: "Cove",
     locale: "en_GB",
     type: "website",
-    images: [{ url: "/campaign/own-drive/od-og-hero-cta.png", width: 2400, height: 1260 }],
+    images: [ogImage],
   },
   twitter: {
     card: "summary_large_image",
     title: "Cove | your own cloud drive, on your Mac",
     description: site.description,
-    images: ["/campaign/own-drive/od-og-hero-cta.png"],
+    images: [ogImage],
   },
 };
 
