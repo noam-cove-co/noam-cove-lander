@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { site } from "@/config/site";
-import { CoveMark, NoamByline, NoamSeal } from "@/components/brand";
+import { NoamSeal } from "@/components/brand";
 import { JoinButton } from "@/components/join-button";
 
 export const metadata: Metadata = {
@@ -12,9 +12,10 @@ export const metadata: Metadata = {
 export default function TeamPage() {
   return (
     <main className="mx-auto w-full max-w-6xl px-4 pt-32 pb-20 sm:px-6 sm:pt-40">
-      <NoamByline className="text-[0.72rem] font-medium tracking-[0.22em] text-cove uppercase" sealClassName="size-7 text-cove">
-        NOAM Co.
-      </NoamByline>
+      <div className="flex items-center gap-3">
+        <NoamSeal className="size-9 shrink-0 text-cove" />
+        <p className="text-[0.72rem] font-medium tracking-[0.22em] text-cove uppercase">NOAM Co.</p>
+      </div>
       <h1 className="mt-3 max-w-3xl font-serif text-5xl leading-[0.98] tracking-tight text-balance sm:text-6xl">
         {site.team.title}
       </h1>
@@ -89,7 +90,7 @@ export default function TeamPage() {
                   <p className="font-serif text-2xl tracking-tight">{person.name}</p>
                   <p className="mt-1 text-sm text-muted-foreground">{person.role}</p>
                 </div>
-                <CoveMark className="size-7 opacity-70" />
+                <NoamSeal className="size-7 shrink-0 text-muted-foreground" />
               </div>
             </li>
           ))}
