@@ -37,7 +37,7 @@ export function DemoStage({ children }: { children: ReactNode }) {
   }
 
   return (
-    <div ref={ref} className="relative h-[210vh]">
+    <div ref={ref} className="relative h-[135vh]">
       <div className="sticky top-16 z-20 mx-auto w-full max-w-6xl px-4 sm:px-6">
         <motion.div data-demo-frame style={{ scale }} className="origin-top will-change-transform">
           {children}

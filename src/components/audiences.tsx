@@ -75,7 +75,7 @@ export function Audiences() {
           transition={{ duration: 0.35 }}
           className="mt-8"
         >
-          <DeskPanel desk={desk} />
+          <DeskPanel key={desk.id} desk={desk} />
         </motion.div>
       </AnimatePresence>
     </section>
@@ -117,7 +117,7 @@ function DeskPanel({ desk }: { desk: Desk }) {
 
   return (
     <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-10">
-      <article className="audience-plain rounded-md border border-foreground/10 bg-[#f5f6f8]/95 p-5 shadow-[0_18px_40px_-32px_rgba(14,19,32,0.45)] backdrop-blur-md sm:p-7">
+      <article className="audience-plain order-2 rounded-md border border-foreground/10 bg-[#f5f6f8] p-5 sm:p-7 lg:order-1">
         <p className="text-[0.68rem] font-medium tracking-[0.16em] text-cove uppercase">In plain words, still</p>
         <h3 className="mt-3 font-serif text-3xl leading-tight tracking-[-0.03em] sm:text-4xl lg:text-5xl">{desk.title}</h3>
         <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">{desk.body}</p>
@@ -142,7 +142,7 @@ function DeskPanel({ desk }: { desk: Desk }) {
         </ul>
       </article>
 
-      <div className="audience-window relative z-0">
+      <div className="audience-window order-1 lg:order-2">
         <MacWindow title={desk.volume}>
           <div className="grid sm:grid-cols-[12.5rem_1fr]">
             <div className="border-b border-black/10 px-2 py-2 text-[13px] sm:border-r sm:border-b-0">
@@ -167,7 +167,7 @@ function DeskPanel({ desk }: { desk: Desk }) {
               {desk.files.map((item, itemIndex) => {
                 const on = focus === item.name;
                 return (
-                  <li key={item.name}>
+                  <li key={`${desk.id}-${item.name}`}>
                     <button
                       type="button"
                       onClick={() => chooseFile(item.name)}
