@@ -165,6 +165,7 @@ function LinkPlay() {
   const [friday, setFriday] = useState(false);
   const [masters, setMasters] = useState(false);
   const written = note.trim().length > 0;
+  const edge = site.problem.items[1];
 
   return (
     <div>
@@ -177,78 +178,88 @@ function LinkPlay() {
         <li aria-hidden>·</li>
         <li className={cn(masters && "text-cove")}>On Cove</li>
       </ol>
-      <MacWindow title={masters ? "masters" : "review.link"}>
-        <div className="px-3 py-2">
-          <p
+      <div className="relative pb-16 sm:pb-8">
+        <MacWindow title={masters ? "masters" : "review.link"}>
+          <div className="px-3 py-2">
+            <p
+              className={cn(
+                "truncate rounded-md bg-white px-2 py-1 font-mono text-[11px] ring-1 ring-black/10",
+                friday && !masters && "text-[#ff3b30] line-through",
+              )}
+            >
+              {masters ? "/Volumes/Spring campaign/masters" : "https://review.link/spring-cut"}
+            </p>
+            <p className="mt-2 text-[11px] leading-relaxed text-[#6e6e73]">
+              {masters ? "Same cut. On the drive. Friday cannot take it." : "Live review for the spring cut."}
+            </p>
+          </div>
+          <div className="px-3 pb-3">
+            <p className={cn("text-[12px] font-medium", friday && !masters ? "text-[#ff3b30]" : "text-[#0e6b56]")}>
+              {masters ? "On the drive" : friday ? "This link died on Friday." : "Live until Friday, 16:12"}
+            </p>
+            <label className="mt-3 block text-[11px] text-[#6e6e73]" htmlFor="review-notes">
+              Notes
+            </label>
+            <textarea
+              id="review-notes"
+              value={note}
+              onChange={(event) => setNote(event.target.value)}
+              rows={3}
+              placeholder="Still being written."
+              className="mt-1 w-full resize-none bg-transparent text-[13px] leading-relaxed outline-none placeholder:text-[#a1a1a6]"
+            />
+            {friday && !masters ? (
+              <p className="text-[12px] leading-relaxed text-[#3a3a3c]">
+                {written
+                  ? "The notes are still here. The cut is not. Ask for another link, or open the masters on Cove."
+                  : "It went before the notes were written. The client still has questions."}
+              </p>
+            ) : null}
+            {masters ? (
+              <div className="mt-2 flex items-center gap-2 border-t border-black/10 pt-2">
+                <Glyph kind="folder" className="size-8" />
+                <span className="text-[13px]">
+                  Masters
+                  <span className="mt-0.5 block text-[11px] text-[#6e6e73]">Friday cannot take them.</span>
+                </span>
+              </div>
+            ) : null}
+          </div>
+          <div className="flex items-center justify-between border-t border-black/10 px-3 py-2.5">
+            {masters ? (
+              <button
+                type="button"
+                onClick={() => {
+                  setFriday(false);
+                  setMasters(false);
+                }}
+                className="text-[13px] text-[#0e6b56]"
+              >
+                Send the link again
+              </button>
+            ) : friday ? (
+              <button type="button" onClick={() => setMasters(true)} className="text-[13px] font-medium text-[#0e6b56]">
+                Open the masters
+              </button>
+            ) : (
+              <button type="button" onClick={() => setFriday(true)} className="text-[13px] font-medium text-[#1d1d1f]">
+                Skip to Friday
+              </button>
+            )}
+            <span className="text-[11px] text-[#6e6e73]">{written ? "Note kept" : "No note yet"}</span>
+          </div>
+        </MacWindow>
+        {"note" in edge && typeof edge.note === "string" ? (
+          <aside
             className={cn(
-              "truncate rounded-md bg-white px-2 py-1 font-mono text-[11px] ring-1 ring-black/10",
-              friday && !masters && "text-[#ff3b30] line-through",
+              "absolute right-0 -bottom-1 z-10 w-[min(100%,15.5rem)] -rotate-2 rounded-[2px] bg-[#fff4b8] px-3 py-2.5 shadow-[2px_3px_0_rgba(14,19,32,0.12),0_12px_28px_-18px_rgba(14,19,32,0.45)] ring-1 ring-black/5 transition-opacity duration-300 sm:-right-2 sm:bottom-5 sm:w-[14.5rem]",
+              masters && "opacity-40",
             )}
           >
-            {masters ? "/Volumes/Spring campaign/masters" : "https://review.link/spring-cut"}
-          </p>
-          <p className="mt-2 text-[11px] leading-relaxed text-[#6e6e73]">
-            {masters
-              ? "Same cut. On the drive. Friday cannot take it."
-              : "WeTransfer, Dropbox Review, a “view only” cut. Useful for a day."}
-          </p>
-        </div>
-        <div className="px-3 pb-3">
-          <p className={cn("text-[12px] font-medium", friday && !masters ? "text-[#ff3b30]" : "text-[#0e6b56]")}>
-            {masters ? "On the drive" : friday ? "This link died on Friday." : "Live until Friday, 16:12"}
-          </p>
-          <label className="mt-3 block text-[11px] text-[#6e6e73]" htmlFor="review-notes">
-            Notes
-          </label>
-          <textarea
-            id="review-notes"
-            value={note}
-            onChange={(event) => setNote(event.target.value)}
-            rows={3}
-            placeholder="Still being written."
-            className="mt-1 w-full resize-none bg-transparent text-[13px] leading-relaxed outline-none placeholder:text-[#a1a1a6]"
-          />
-          {friday && !masters ? (
-            <p className="text-[12px] leading-relaxed text-[#3a3a3c]">
-              {written
-                ? "The notes are still here. The cut is not. Ask for another link, or open the masters on Cove."
-                : "It went before the notes were written. The client still has questions."}
-            </p>
-          ) : null}
-          {masters ? (
-            <div className="mt-2 flex items-center gap-2 border-t border-black/10 pt-2">
-              <Glyph kind="folder" className="size-8" />
-              <span className="text-[13px]">
-                Masters
-                <span className="mt-0.5 block text-[11px] text-[#6e6e73]">Friday cannot take them.</span>
-              </span>
-            </div>
-          ) : null}
-        </div>
-        <div className="flex items-center justify-between border-t border-black/10 px-3 py-2.5">
-          {masters ? (
-            <button
-              type="button"
-              onClick={() => {
-                setFriday(false);
-                setMasters(false);
-              }}
-              className="text-[13px] text-[#0e6b56]"
-            >
-              Send the link again
-            </button>
-          ) : friday ? (
-            <button type="button" onClick={() => setMasters(true)} className="text-[13px] font-medium text-[#0e6b56]">
-              Open the masters
-            </button>
-          ) : (
-            <button type="button" onClick={() => setFriday(true)} className="text-[13px] font-medium text-[#1d1d1f]">
-              Skip to Friday
-            </button>
-          )}
-          <span className="text-[11px] text-[#6e6e73]">{written ? "Note kept" : "No note yet"}</span>
-        </div>
-      </MacWindow>
+            <p className="font-marker text-[1.05rem] leading-snug text-[#3a2f12]">{edge.note}</p>
+          </aside>
+        ) : null}
+      </div>
     </div>
   );
 }
