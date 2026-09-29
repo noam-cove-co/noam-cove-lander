@@ -1,0 +1,90 @@
+{
+  "schema": "cove-meta-copy-v1",
+  "campaign": "founding-beta",
+  "destination": "https://cove.will.me.uk/land/join-the-list?utm_source=meta&utm_medium=paid_social&utm_campaign=founding-beta",
+  "cta": "SIGN_UP",
+  "language": "en-GB",
+  "status": "draft",
+  "bodies": [
+    {
+      "id": "body-stays-light",
+      "angle": "stays-light",
+      "primary": "Your Mac is full. Your libraries are not going to get smaller.\n\nCove is your own cloud drive. One click, and it shows up in Finder. The files stay in the cloud. The Mac stays light.\n\nPrivate beta from NOAM Co. in Yorkshire.",
+      "headline_candidates": [
+        "The Mac that stays light",
+        "Your own cloud drive, on your Mac",
+        "One click. It shows up in Finder"
+      ],
+      "description_candidates": [
+        "Join the private beta waitlist",
+        "Crafted by NOAM Co. in Yorkshire",
+        "Files stay in the cloud"
+      ]
+    },
+    {
+      "id": "body-look-familiar",
+      "angle": "look-familiar",
+      "primary": "Look familiar? 11 GB left, and the film library still wants in.\n\nCove mounts beside Macintosh HD so the heavy work can live in the cloud without another browser tab.\n\nJoin the private beta waitlist.",
+      "headline_candidates": [
+        "Look familiar?",
+        "Storage guilt, meet Finder",
+        "Keep the Mac. Move the library"
+      ],
+      "description_candidates": [
+        "Private beta for Mac",
+        "Waitlist open",
+        "Yorkshire-made"
+      ]
+    },
+    {
+      "id": "body-finder",
+      "angle": "finder-mount",
+      "primary": "Not another folder in a browser. A drive under Locations.\n\nCove shows up on your Mac in one click. Photos, Premiere, Logic, Capture One, Cursor: open what you need. Leave the rest in the cloud.\n\nSeats open from the list.",
+      "headline_candidates": [
+        "It shows up like a drive",
+        "Beside Macintosh HD",
+        "Finder, not another tab"
+      ],
+      "description_candidates": [
+        "Join the waitlist",
+        "Mac private beta",
+        "Your own cloud drive"
+      ]
+    },
+    {
+      "id": "body-desk-studio",
+      "angle": "desk-studio",
+      "primary": "Sessions, stills, and timelines outgrew the laptop. The laptop did not get bigger.\n\nCove is the cloud drive that shows up for the studio desk: quiet confidence, loud libraries.\n\nPrivate beta waitlist now open.",
+      "headline_candidates": [
+        "Loud libraries. Light Mac",
+        "Studio storage, Finder-native",
+        "Quiet confidence for heavy work"
+      ],
+      "description_candidates": [
+        "Crafted by NOAM Co.",
+        "Join the private beta",
+        "On your Mac in one click"
+      ]
+    },
+    {
+      "id": "body-agents",
+      "angle": "desk-agents",
+      "primary": "Agents write into repos. Repos fill disks.\n\nCove keeps the working set on a cloud drive that mounts like the rest of your Mac. You stay in Cursor. The system volume stays itself.\n\nJoin the Cove private beta waitlist.",
+      "headline_candidates": [
+        "Room for the agents",
+        "Repos stay light. Agents keep writing",
+        "A drive for the working set"
+      ],
+      "description_candidates": [
+        "Private beta for Mac",
+        "Waitlist open",
+        "NOAM Co., Yorkshire"
+      ]
+    }
+  ],
+  "notes": [
+    "meta-ad-builder expects 5 bodies / 5 titles / 3 descriptions for TEXT_LIQUIDITY when deploying.",
+    "Do not invent social proof or performance numbers.",
+    "Approve in Postiz or docs before any paused deploy."
+  ]
+}

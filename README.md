@@ -87,6 +87,19 @@ Claude Ads is installed as the paid-ads agent (read-only / draft-only by default
 - Install / commands: [`docs/claude-ads.md`](docs/claude-ads.md)
 - Re-clone upstream locally under `tools/claude-ads` (gitignored); see [`tools/README.md`](tools/README.md)
 
+### Meta ads + ArcAds creatives
+
+Phase 0 (no budget): ArcAds skills for generative creatives, Meta strategy pack offline, **paused-only** deploy later.
+
+```bash
+bash tools/install-arcads-skills.sh
+```
+
+- Hybrid runbook: [`docs/ads/meta-creatives-hybrid.md`](docs/ads/meta-creatives-hybrid.md)
+- Seed strategy / copy / briefs: [`docs/ads/meta/`](docs/ads/meta/)
+- Agent: [`.cursor/agents/cove-meta-creatives.md`](.cursor/agents/cove-meta-creatives.md)
+- Put Arcads API credentials in `tools/arcads-claude-code/.env` (gitignored) when ready to generate
+
 Campaign PNGs in `public/campaign/` are exported at **@2x** (`deviceScaleFactor: 2` in `scripts/export-campaign-creatives.mjs`).
 
 Copy `.env.example` to `.env.local` for local secrets.

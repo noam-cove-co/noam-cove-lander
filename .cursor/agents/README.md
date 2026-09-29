@@ -7,10 +7,12 @@ Project skills live in `.cursor/skills/`. Invoke them in Cursor with the skill n
 | [`cove-ads`](cove-ads.md) + [`ads`](../skills/ads/SKILL.md) | Paid-media expert (Claude Ads): audit, plan, create, draft launch/optimise, monitor, experiment, report | `.claude-ads/runs/**` |
 | Claude Ads platform / workflow skills | `ads-meta`, `ads-google`, `ads-plan`, `ads-create`, … | `.claude-ads/runs/**` |
 | Claude Ads specialist agents | `audit-*`, `copy-writer`, `creative-strategist`, `visual-designer`, … | Worker outputs under runs |
+| [`cove-meta-creatives`](cove-meta-creatives.md) | Hybrid Meta + ArcAds creatives (strategy, briefs, generation, paused deploy prep) | `docs/ads/meta/**` |
+| ArcAds skills | `arcads-external-api`, `chatgpt-image-ad`, `nano-banana-image-ad`, `meta-ad-builder`, `pixar-style-ad`, … | ArcAds `outputs/` (local) |
 | [`cove-social-executive`](../skills/cove-social-executive/SKILL.md) | Social Media Executive + B2B copywrite manager (LinkedIn, IG, X, press, blogs) | `docs/social/**` |
 | [`cove-week1-social-pack`](../skills/cove-week1-social-pack/SKILL.md) | Week-1 pack only: post files from campaign PNGs | `docs/social/week-1/**` |
 
-Full Claude Ads install notes: [`docs/claude-ads.md`](../../docs/claude-ads.md). Cove profile: [`.claude-ads/`](../../.claude-ads/).
+Full Claude Ads install notes: [`docs/claude-ads.md`](../../docs/claude-ads.md). Cove profile: [`.claude-ads/`](../../.claude-ads/). ArcAds + Meta hybrid: [`docs/ads/meta-creatives-hybrid.md`](../../docs/ads/meta-creatives-hybrid.md).
 
 ## Rules shared across marketing agents
 
@@ -40,4 +42,9 @@ press release announcing the Cove private beta waitlist.
 ```
 Run the cove-week1-social-pack skill. Refresh docs/social/week-1 from
 current campaign assets.
+```
+
+```
+Follow cove-meta-creatives. Expand docs/ads/meta creative briefs using
+public/campaign/own-drive stills. No ArcAds spend and no Meta deploy.
 ```
