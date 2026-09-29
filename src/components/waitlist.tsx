@@ -2,8 +2,11 @@
 
 import { createContext, useContext, useMemo, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
+import { Laptop } from "lucide-react";
 import { macs, roles, site } from "@/config/site";
 import { track } from "@/lib/analytics";
+import { CoveMark } from "@/components/brand";
+import { Glyph, MacWindow } from "@/components/mac-window";
 import { cn } from "cn";
 
 type Intent = { ios?: boolean };
@@ -45,6 +48,24 @@ export function WaitlistProvider({ children }: { children: React.ReactNode }) {
   return <WaitlistContext.Provider value={value}>{children}</WaitlistContext.Provider>;
 }
 
+const roleGlyph: Record<string, string> = {
+  home: "photo",
+  marketing: "cut",
+  music: "film",
+  photo: "photo",
+  video: "film",
+  agents: "code",
+  other: "folder",
+};
+
+const macShort: Record<string, string> = {
+  air: "Air",
+  pro: "Pro",
+  studio: "Studio",
+  mini: "Mini",
+  none: "Later",
+};
+
 export function WaitlistForm({
   source,
   iosDefault = false,
@@ -65,6 +86,8 @@ export function WaitlistForm({
   const [message, setMessage] = useState("");
 
   const stages = ["Work", "Mac", "You"] as const;
+  const roleLabel = roles.find((item) => item.id === role)?.label;
+  const macLabel = macs.find((item) => item.id === mac)?.label;
 
   async function onSubmit(event: React.FormEvent) {
     event.preventDefault();
@@ -99,164 +122,248 @@ export function WaitlistForm({
   }
 
   const field =
-    "w-full border-0 border-b border-black/15 bg-transparent py-3 text-lg text-[#1d1d1f] outline-none placeholder:text-[#8e8e93] focus:border-[#0e6b56]";
+    "w-full rounded-md border border-black/10 bg-white px-3 py-3 text-[15px] text-[#1d1d1f] outline-none placeholder:text-[#8e8e93] focus:border-[#0e6b56] focus:ring-2 focus:ring-[#0e6b56]/15";
 
   if (status === "done" || status === "already") {
     return (
-      <div role="status">
-        <p className="font-serif text-4xl tracking-[-0.03em] text-[#0e1320]">
-          {status === "already" ? "Already with us." : "You’re on the list."}
-        </p>
-        <p className="mt-3 max-w-md text-base leading-relaxed text-[#4c5563]">
-          {status === "already"
-            ? "We already have your note. We’ll write from the studio when a seat opens."
-            : "We’ll write from the studio when a seat opens for the Mac drive."}
-        </p>
-      </div>
+      <MacWindow title="Waitlist">
+        <div className="px-5 py-8 sm:px-7" role="status">
+          <CoveMark className="size-12 text-cove" />
+          <p className="mt-4 font-serif text-3xl tracking-[-0.03em] text-[#0e1320] sm:text-4xl">
+            {status === "already" ? "Already with us." : "You’re on the list."}
+          </p>
+          <p className="mt-3 max-w-md text-sm leading-relaxed text-[#4c5563] sm:text-base">
+            {status === "already"
+              ? "We already have your note. We’ll write from the studio when a seat opens."
+              : "We’ll write from the studio when a seat opens for the Mac drive."}
+          </p>
+        </div>
+      </MacWindow>
     );
   }
 
   return (
     <form onSubmit={onSubmit}>
-      <ol className="flex gap-6 border-b border-black/10 pb-3 text-sm">
-        {stages.map((label, index) => (
-          <li key={label}>
-            <button
-              type="button"
-              onClick={() => {
-                if (index === 0 || (index === 1 && role) || (index === 2 && role && mac)) setStep(index);
-              }}
-              className={cn(
-                "border-b-2 pb-3 -mb-[13px]",
-                step === index ? "border-[#0e6b56] text-[#0e1320]" : "border-transparent text-[#5c6570]",
-              )}
-            >
-              {label}
-            </button>
-          </li>
-        ))}
-      </ol>
-
-      {step === 0 ? (
-        <fieldset className="mt-8 grid gap-1">
-          <legend className="text-sm text-[#3c4654]">The drive is mostly for</legend>
-          <div className="mt-3 flex flex-col">
-            {roles.map((item) => (
-              <button
-                key={item.id}
-                type="button"
-                aria-pressed={role === item.id}
-                onClick={() => setRole(item.id)}
-                className={cn(
-                  "border-b border-black/10 py-3 text-left text-lg",
-                  role === item.id ? "text-[#0e1320]" : "text-[#6e6e73]",
-                )}
-              >
-                <span className={cn("border-b-2 pb-0.5", role === item.id ? "border-[#0e6b56]" : "border-transparent")}>
-                  {item.label}
+      <MacWindow
+        title={
+          <span className="inline-flex items-center gap-2">
+            <CoveMark className="size-4 text-cove" />
+            Ask for a seat
+          </span>
+        }
+      >
+        <div className="border-b border-black/10 px-4 py-3 sm:px-5">
+          <ol className="flex items-center gap-2" aria-label="Steps">
+            {stages.map((label, index) => {
+              const reachable = index === 0 || (index === 1 && role) || (index === 2 && role && mac);
+              const active = step === index;
+              const done = index < step;
+              return (
+                <li key={label} className="flex min-w-0 flex-1 items-center gap-2">
+                  <button
+                    type="button"
+                    disabled={!reachable}
+                    onClick={() => reachable && setStep(index)}
+                    className={cn(
+                      "flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left disabled:opacity-40",
+                      active && "bg-white ring-1 ring-black/10",
+                    )}
+                  >
+                    <span
+                      className={cn(
+                        "grid size-6 shrink-0 place-items-center rounded-full text-[11px] font-medium tabular-nums",
+                        active || done ? "bg-[#0e6b56] text-white" : "bg-black/8 text-[#6e6e73]",
+                      )}
+                    >
+                      {index + 1}
+                    </span>
+                    <span className={cn("truncate text-[13px]", active ? "text-[#0e1320]" : "text-[#6e6e73]")}>
+                      {label}
+                    </span>
+                  </button>
+                </li>
+              );
+            })}
+          </ol>
+          {(roleLabel || macLabel) && step > 0 ? (
+            <div className="mt-3 flex flex-wrap gap-2">
+              {roleLabel ? (
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-white px-2.5 py-1 text-[11px] text-[#3c4654] ring-1 ring-black/10">
+                  <Glyph kind={roleGlyph[role] ?? "folder"} className="size-3.5" />
+                  {roleLabel}
                 </span>
-              </button>
-            ))}
-          </div>
-        </fieldset>
-      ) : null}
-
-      {step === 1 ? (
-        <fieldset className="mt-8 grid gap-1">
-          <legend className="text-sm text-[#3c4654]">Your Mac</legend>
-          <div className="mt-3 flex flex-col">
-            {macs.map((item) => (
-              <button
-                key={item.id}
-                type="button"
-                aria-pressed={mac === item.id}
-                onClick={() => setMac(item.id)}
-                className={cn(
-                  "border-b border-black/10 py-3 text-left text-lg",
-                  mac === item.id ? "text-[#0e1320]" : "text-[#6e6e73]",
-                )}
-              >
-                <span className={cn("border-b-2 pb-0.5", mac === item.id ? "border-[#0e6b56]" : "border-transparent")}>
-                  {item.label}
+              ) : null}
+              {macLabel && step > 1 ? (
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-white px-2.5 py-1 text-[11px] text-[#3c4654] ring-1 ring-black/10">
+                  <Laptop className="size-3.5" />
+                  {macLabel}
                 </span>
-              </button>
-            ))}
-          </div>
-        </fieldset>
-      ) : null}
-
-      {step === 2 ? (
-        <div className="mt-8 grid gap-5">
-          <label className="grid gap-1 text-sm text-[#3c4654]">
-            Name
-            <input required value={name} onChange={(event) => setName(event.target.value)} autoComplete="name" className={field} />
-          </label>
-          <label className="grid gap-1 text-sm text-[#3c4654]">
-            Email
-            <input
-              required
-              type="email"
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-              autoComplete="email"
-              className={field}
-            />
-          </label>
-          <label className="flex items-start gap-2 text-sm leading-snug text-[#3c4654]">
-            <input
-              type="checkbox"
-              className="mt-0.5 size-4 accent-[#0e6b56]"
-              checked={iosInterest}
-              onChange={(event) => setIosInterest(event.target.checked)}
-            />
-            Also write when the iPhone version is ready.
-          </label>
+              ) : null}
+            </div>
+          ) : null}
         </div>
-      ) : null}
 
-      <input
-        tabIndex={-1}
-        autoComplete="off"
-        aria-hidden
-        className="hidden"
-        value={company}
-        onChange={(event) => setCompany(event.target.value)}
-      />
+        <div className="px-4 py-5 sm:px-5 sm:py-6">
+          {step === 0 ? (
+            <fieldset>
+              <legend className="text-[13px] text-[#3c4654]">The drive is mostly for</legend>
+              <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3">
+                {roles.map((item) => {
+                  const on = role === item.id;
+                  return (
+                    <button
+                      key={item.id}
+                      type="button"
+                      aria-pressed={on}
+                      onClick={() => setRole(item.id)}
+                      className={cn(
+                        "flex flex-col items-start gap-2 rounded-[10px] bg-white px-3 py-3 text-left ring-1 transition-colors",
+                        on ? "ring-[#0e6b56] ring-2" : "ring-black/10 hover:ring-black/20",
+                      )}
+                    >
+                      <Glyph kind={roleGlyph[item.id] ?? "folder"} className="size-8" />
+                      <span className={cn("text-[13px] leading-snug", on ? "text-[#0e1320]" : "text-[#4c5563]")}>
+                        {item.label}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </fieldset>
+          ) : null}
 
-      {message ? (
-        <p className="mt-4 text-sm text-[#9f1239]" role="alert">
-          {message}
-        </p>
-      ) : null}
+          {step === 1 ? (
+            <fieldset>
+              <legend className="text-[13px] text-[#3c4654]">Your Mac</legend>
+              <div className="mt-3 grid grid-cols-2 gap-2">
+                {macs.map((item) => {
+                  const on = mac === item.id;
+                  return (
+                    <button
+                      key={item.id}
+                      type="button"
+                      aria-pressed={on}
+                      onClick={() => setMac(item.id)}
+                      className={cn(
+                        "flex items-center gap-3 rounded-[10px] bg-white px-3 py-3.5 text-left ring-1 transition-colors",
+                        on ? "ring-[#0e6b56] ring-2" : "ring-black/10 hover:ring-black/20",
+                      )}
+                    >
+                      <span
+                        className={cn(
+                          "grid size-10 shrink-0 place-items-center rounded-md",
+                          on ? "bg-[#e7f3ee] text-cove" : "bg-[#f0f1f3] text-[#6e6e73]",
+                        )}
+                      >
+                        {item.id === "none" ? (
+                          <CoveMark className="size-5" />
+                        ) : (
+                          <Laptop className="size-5" strokeWidth={1.75} />
+                        )}
+                      </span>
+                      <span className="min-w-0">
+                        <span className={cn("block text-[14px] font-medium", on ? "text-[#0e1320]" : "text-[#1d1d1f]")}>
+                          {macShort[item.id] ?? item.label}
+                        </span>
+                        <span className="mt-0.5 block truncate text-[11px] text-[#6e6e73]">{item.label}</span>
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </fieldset>
+          ) : null}
 
-      <div className="mt-8 flex items-center justify-between gap-4">
-        <button
-          type="button"
-          onClick={() => setStep((current) => Math.max(0, current - 1))}
-          className={cn("text-sm text-[#3c4654]", step === 0 && "invisible")}
-        >
-          Back
-        </button>
-        {step < 2 ? (
+          {step === 2 ? (
+            <div className="grid gap-4">
+              <label className="grid gap-1.5 text-[13px] text-[#3c4654]">
+                Name
+                <input
+                  required
+                  value={name}
+                  onChange={(event) => setName(event.target.value)}
+                  autoComplete="name"
+                  placeholder="Your name"
+                  className={field}
+                />
+              </label>
+              <label className="grid gap-1.5 text-[13px] text-[#3c4654]">
+                Email
+                <input
+                  required
+                  type="email"
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
+                  autoComplete="email"
+                  placeholder="you@studio.com"
+                  className={field}
+                />
+              </label>
+              <label
+                className={cn(
+                  "flex cursor-pointer items-start gap-3 rounded-[10px] bg-white px-3 py-3 text-[13px] leading-snug text-[#3c4654] ring-1",
+                  iosInterest ? "ring-[#0e6b56]" : "ring-black/10",
+                )}
+              >
+                <input
+                  type="checkbox"
+                  className="mt-0.5 size-4 accent-[#0e6b56]"
+                  checked={iosInterest}
+                  onChange={(event) => setIosInterest(event.target.checked)}
+                />
+                <span>
+                  Also write when iPhone is ready
+                  <span className="mt-0.5 block text-[11px] text-[#6e6e73]">Same drive, from your pocket. Not in this beta.</span>
+                </span>
+              </label>
+            </div>
+          ) : null}
+
+          <input
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden
+            className="hidden"
+            value={company}
+            onChange={(event) => setCompany(event.target.value)}
+          />
+
+          {message ? (
+            <p className="mt-4 text-sm text-[#9f1239]" role="alert">
+              {message}
+            </p>
+          ) : null}
+        </div>
+
+        <div className="flex items-center justify-between gap-3 border-t border-black/10 bg-white/50 px-4 py-3.5 sm:px-5">
           <button
             type="button"
-            disabled={step === 0 ? !role : !mac}
-            onClick={() => setStep((current) => current + 1)}
-            className="h-12 rounded-md bg-[#0e6b56] px-5 text-[15px] font-medium text-white disabled:opacity-40"
+            onClick={() => setStep((current) => Math.max(0, current - 1))}
+            className={cn("text-sm text-[#3c4654]", step === 0 && "invisible")}
           >
-            Continue
+            Back
           </button>
-        ) : (
-          <button
-            type="submit"
-            disabled={status === "sending"}
-            className="h-12 rounded-md bg-[#0e6b56] px-5 text-[15px] font-medium text-white disabled:opacity-60"
-          >
-            {status === "sending" ? "Adding you…" : site.campaign.cta}
-          </button>
-        )}
-      </div>
-      <p className="mt-4 text-xs text-[#5c6570]">One letter, when a seat opens. No newsletter.</p>
+          {step < 2 ? (
+            <button
+              type="button"
+              disabled={step === 0 ? !role : !mac}
+              onClick={() => setStep((current) => current + 1)}
+              className="h-11 rounded-md bg-[#0e6b56] px-5 text-[15px] font-medium text-white disabled:opacity-40"
+            >
+              Continue
+            </button>
+          ) : (
+            <button
+              type="submit"
+              disabled={status === "sending"}
+              className="h-11 rounded-md bg-[#0e6b56] px-5 text-[15px] font-medium text-white disabled:opacity-60"
+            >
+              {status === "sending" ? "Adding you…" : site.campaign.cta}
+            </button>
+          )}
+        </div>
+      </MacWindow>
+      <p className="mt-4 text-center text-xs text-[#5c6570]">One letter, when a seat opens. No newsletter.</p>
     </form>
   );
 }

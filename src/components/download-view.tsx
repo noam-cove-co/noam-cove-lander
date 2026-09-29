@@ -126,11 +126,10 @@ export function DownloadView() {
           <h2 className="mt-3 font-serif text-5xl tracking-[-0.04em] text-[#0e1320] sm:text-6xl">
             Ask for a seat
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-[#3c4654]">
-            Tell us whether the drive is for family photos, a marketing team, a studio, or a project you
-            are building with an agent.
+          <p className="mt-4 max-w-md text-base leading-relaxed text-[#3c4654]">
+            Pick the desk, the Mac, and leave a way to write back.
           </p>
-          <div className="mt-10">
+          <div className="mt-8">
             <WaitlistForm
               key={waitlistIntent.stamp || "idle"}
               source="download"
