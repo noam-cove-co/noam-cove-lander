@@ -62,3 +62,6 @@ __pycache__/
 # LinkedIn personal model (career detail, figures, voice fingerprint)
 **/linkedin-marketing/references/story-bank.md
 **/linkedin-marketing/references/voice-profile.md
+
+# LinkedIn visual render intermediates
+/docs/social/linkedin-week1-visuals/frames/
