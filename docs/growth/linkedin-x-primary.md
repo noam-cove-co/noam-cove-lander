@@ -9,6 +9,8 @@
 | **LinkedIn** | Credibility, B2B desks (marketing, studio, agents), founder/maker trust, waitlist joins | High: desks that buy tools with words |
 | **X** | Sharp hooks, Mac/maker discourse, fast tests of angles, traffic to land pages | High: storage-guilt and Finder-native ideas travel |
 
+Named “audience of one” scenes (family media → marketers → agencies → studio → vibe coders / agents): [`docs/growth/icp.md`](icp.md).
+
 Meta / IG / paid: keep producing offline; turn on when accounts + budget exist. Do not let paid setup block organic LI/X cadence.
 
 ## Tooling
