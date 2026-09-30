@@ -10,7 +10,7 @@ description: >-
 
 LinkedIn and X are the **primary** acquisition levers. Meta/ArcAds are secondary until budget exists.
 
-1. Read [`docs/growth/linkedin-x-primary.md`](../../docs/growth/linkedin-x-primary.md) and [`docs/social/VOICE.md`](../../docs/social/VOICE.md).
+1. Read [`docs/growth/approved-claims.md`](../../docs/growth/approved-claims.md) (law), [`docs/growth/icp.md`](../../docs/growth/icp.md) (personas), [`docs/growth/linkedin-x-primary.md`](../../docs/growth/linkedin-x-primary.md), and [`docs/social/VOICE.md`](../../docs/social/VOICE.md).
 2. Prefer bundle skills:
    - LinkedIn: `.cursor/skills/linkedin-marketing` → nested `skills/linkedin-*`
    - X: `.cursor/skills/x-marketing` → nested `skills/x-*`

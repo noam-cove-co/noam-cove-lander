@@ -26,8 +26,10 @@ Cove / NOAM Co. X voice for the founding-beta waitlist era.
 
 ## 3. Hard rules (always / never)
 
-- Always: British English; real URL with UTMs when linking; draft → approve before Publora
-- Never: fake screenshots as Apple UI claims; autopost; promise public download
+- Always: British English, UK first; claims from `docs/growth/approved-claims.md`; one persona from `docs/growth/icp.md`; real URL with UTMs; draft → approve before Publora
+- Scarcity: vague FOMO only (no counts, pricing, or dates)
+- App name-drops OK when the persona uses them
+- Never: fake screenshots as Apple UI claims; invent metrics; autopost; promise public download
 
 ## 4. Links and CTA
 
