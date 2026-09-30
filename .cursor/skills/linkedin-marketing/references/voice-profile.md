@@ -27,8 +27,12 @@ Cove / NOAM Co. LinkedIn voice for the founding-beta waitlist era.
 
 ## 3. Hard rules (always / never)
 
-- Always: British English; one concrete product truth; point to a real Cove URL; draft → human approve before any Publora publish
-- Never: invent metrics or logos; promise a public download; autopost without approval; name competitors unless comparing carefully on /why
+- Always: British English, UK first; one concrete product truth from `docs/growth/approved-claims.md`; one persona from `docs/growth/icp.md`; point to a real Cove URL; draft → human approve before any Publora publish
+- Scarcity: deliberately vague FOMO (seats from the list). No seat counts, waitlist size, pricing, or ship dates
+- App name-drops OK when the persona uses them (Premiere, Logic, Capture One, Cursor, …)
+- File Provider / mounting language OK on LinkedIn if kept plain
+- Never: invent metrics or logos; invent customers; promise a public download; autopost without approval; name competitors unless comparing carefully on /why
+- Testimonials: only the approved private-beta family-film quote in approved-claims.md unless the sheet grows
 
 ## 4. Links and CTA
 

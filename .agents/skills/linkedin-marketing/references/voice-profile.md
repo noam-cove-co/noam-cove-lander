@@ -22,6 +22,7 @@ Cove / NOAM Co. LinkedIn voice for the founding-beta waitlist era.
 
 - You are: Cove by NOAM Co.: a private-beta Mac product that mounts your own cloud drive in Finder
 - Your audience (ICP): Mac owners whose disk is full: marketing, studio, home film, people building with agents; UK/EU first
+- Audience of one (named scenes): see `docs/growth/icp.md` — pick one person per post (e.g. marketing lead with a 2 TB campaign, wedding-film parent, studio editor, vibe coder)
 - Your content pillars: The Mac that stays light · Finder-native cloud · Desk stories (home/marketing/studio/agents) · Craft from NOAM Co.
 
 ## 3. Hard rules (always / never)

@@ -1,11 +1,12 @@
 # Cove approved claims
 
-**Status:** draft · needs your sign-off  
+**Status:** approved  
 **Owner:** NOAM Co.  
-**Evidence base:** `src/config/site.ts`, `docs/social/VOICE.md`, public land pages  
-**Rule:** If it is not on this sheet (or explicitly added), do not say it in LinkedIn, X, ads, press, or Journal.
+**Approved:** 2026-09-30  
+**Evidence base:** `src/config/site.ts`, `docs/social/VOICE.md`, public land pages, operator sign-off  
+**Rule:** If it is not on this sheet (or explicitly added here), do not say it in LinkedIn, X, ads, press, or Journal.
 
-Use with LinkedIn/X skills, Claude Ads, ArcAds briefs, and Postiz drafts.
+Use with LinkedIn/X skills, Claude Ads, ArcAds briefs, and Postiz drafts. Hit **personas hard** (see `docs/growth/icp.md`); keep scarcity **exciting and deliberately vague**.
 
 ---
 
@@ -14,9 +15,8 @@ Use with LinkedIn/X skills, Claude Ads, ArcAds briefs, and Postiz drafts.
 | Label | Meaning |
 | --- | --- |
 | **Say freely** | Safe in any public channel |
-| **Say carefully** | True, but keep the wording; do not escalate |
+| **Say carefully** | True; keep the framing; do not escalate into numbers or dates |
 | **Do not say** | Forbidden until this sheet changes |
-| **Pending you** | Drafted from product truth; confirm or rewrite |
 
 ---
 
@@ -28,10 +28,11 @@ Use with LinkedIn/X skills, Claude Ads, ArcAds briefs, and Postiz drafts.
 | One click, and it shows up on your Mac | Core line |
 | The files stay in the cloud | Core line |
 | It shows up in Finder under Locations, beside Macintosh HD | Product behaviour |
-| People who build software call this mounting; on the Mac it simply shows up | OK to explain once |
-| Crafted by NOAM Co. (NOAM Consultancy) | Maker |
+| People who build software call this mounting; on the Mac it simply shows up | OK on LinkedIn and How pages |
+| File Provider / real macOS API language | OK on LinkedIn when useful; still plain-language first |
+| Crafted by NOAM Co. (NOAM Consultancy) in Yorkshire | Maker; UK-first voice |
 | Contact: hi@noam.co | Public |
-| Site: https://getcove.cloud | Public |
+| Site: use the live marketing host from `site` / current land URLs | Prefer canonical production host in links |
 
 **Approved signature lines** (also in `VOICE.md`):
 
@@ -40,8 +41,9 @@ Use with LinkedIn/X skills, Claude Ads, ArcAds briefs, and Postiz drafts.
 - One click. It shows up in Finder.
 - Look familiar?
 - Quiet confidence. Loud libraries.
-- Crafted by NOAM Co.
+- Crafted by NOAM Co. in Yorkshire.
 - Private beta.
+- Founding beta.
 
 ---
 
@@ -49,18 +51,26 @@ Use with LinkedIn/X skills, Claude Ads, ArcAds briefs, and Postiz drafts.
 
 | Claim | Exact framing |
 | --- | --- |
-| Private beta / founding beta | Badge and campaign name; not a public launch |
+| **Private beta** and **founding beta** | Both OK; same era; not a public launch |
 | CTA is join the waitlist | Not “download now” |
 | The Mac app is not a public download | Seats open from the waitlist |
-| Marketing teams are among the first seats | From FAQ; do not imply exclusive-only |
-| iPhone is coming / still to come / when it’s ready | Never give a date unless this sheet adds one |
+| Seats are limited / list is how a seat opens | FOMO OK; **no counts, no dates, no quotas** |
+| Marketing teams are among the first seats | Do not imply exclusive-only |
+| iPhone is coming / still to come / when it’s ready | Never give a date |
 | On the Mac today | Current platform |
+| Pricing | **Do not mention.** Scarcity and access, not price |
 
-**Pending you**
+### Scarcity voice (approved)
 
-- [ ] Exact phrase for beta stage: “private beta” vs “founding beta” vs both OK?
-- [ ] Any seat count, invite quota, or timeline we may mention? (Default: **none**)
-- [ ] Pricing: say nothing / “pricing later” / something else?
+Deliberately vague on purpose. Prefer atmosphere over stats:
+
+- Seats open from the list.
+- The list is how a seat opens.
+- Private beta. Not a public download.
+- We write when a seat opens.
+- Founding beta: early desks only.
+
+**Never:** “only 50 seats”, “closes Friday”, “X people waiting”, fake counters, countdown timers with invented deadlines.
 
 ---
 
@@ -70,45 +80,46 @@ Use with LinkedIn/X skills, Claude Ads, ArcAds briefs, and Postiz drafts.
 | --- | --- |
 | Not another browser folder | Contrast OK |
 | Not a review link that expires | Contrast OK |
-| Apps that open files from a normal drive can open them from Cove | Photos, Finder, Premiere, Final Cut, Logic, Capture One, Cursor, agents you already run |
-| The Mac opens what you ask for; the library can be larger than the laptop disk | Performance/size; no TB guarantees in ads unless listed below |
-| Mt. Mtn. is the organisation-sized range of the same mount idea | Separate product line; same click |
-| Past ~50 TB the room flow points to Mt. Mtn. | Site cutoff; do not invent enterprise SLAs |
-
-**Pending you**
-
-- [ ] Any minimum or typical library size we can cite? (Default: **no numbers**)
-- [ ] Any named apps we should **not** list in ads?
-- [ ] File Provider / “real macOS API” language: OK for How/technical posts only, or OK on LinkedIn too?
+| Apps that open files from a normal drive can open them from Cove | **Name-drop freely in ads and social** |
+| Named apps OK | Photos, Finder, Premiere, Final Cut, Logic, Capture One, Cursor, and agents you already run |
+| The Mac opens what you ask for; the library can be larger than the laptop disk | No TB / GB guarantees |
+| Mt. Mtn. is the organisation-sized range of the same mount idea | Same click; different scale |
+| Past ~50 TB the room flow points to Mt. Mtn. | Site UX only; do not invent enterprise SLAs in ads |
 
 ---
 
-## 4. Audience (say carefully)
+## 4. Audience & personas (say freely, hit hard)
 
-Desks we may speak to (from site + `docs/growth/icp.md`):
+**Geography:** UK first (British English, Yorkshire craft, London/UK time for schedules). Soft EU/US welcome; do not lead with US culture or spelling.
 
-- Home & family
+Speak to **one person** from `docs/growth/icp.md` per piece. Desks:
+
+- Home & family (wedding-film parent, archive keeper, …)
 - Marketing
 - Photo / video / studio
 - Building with agents
 - Organisations via Mt. Mtn. (enquiries)
 
-Do **not** invent named customers, logos, or “used by X”.
+Do **not** invent logos or “used by [Company]”.
 
-**Pending you**
+### Testimonials
 
-- [ ] Helen / any testimonial: approved name + quote, or strip from week‑1 (`11-linkedin-helen.md`)?
-- [ ] Geography focus for organic: UK/EU first, US soft, or global?
+**Keep** the private-beta family-film proof used in week‑1 (`11-linkedin-helen.md` and equivalents):
+
+> “I put ten years of family videos on Cove and opened them on the MacBook Air. They show up like a drive. They do not fill the laptop.”
+
+Frame as from the private beta / desk proof. Do not invent new named customers without adding them here.
 
 ---
 
-## 5. Do not say (until approved)
+## 5. Do not say
 
-- Public download / “available on the Mac App Store”
+- Public download / Mac App Store availability
 - Specific ship dates for iPhone or public release
-- Unlimited, free forever, or pricing we have not set
+- Seat counts, waitlist size, invite quotas, invented deadlines
+- Pricing, free forever, unlimited
 - Fake metrics (users, TB stored, NPS, “#1”)
-- Competitor bash beyond the careful comparisons already on `/why`
+- Competitor bash beyond careful `/why` comparisons
 - “AI-powered cloud”, revolutionary, game-changing
 - Em dashes in customer-facing copy (use `:` or `|`)
 - Guarantees about sync speed, offline, or legal compliance
@@ -128,15 +139,16 @@ Do **not** invent named customers, logos, or “used by X”.
 | Mt. Mtn. | `/mt` |
 | Journal | off until `site.journalPublic` is true |
 
-UTM skeleton: `utm_source=linkedin|x&utm_medium=organic_social&utm_campaign=founding-beta&utm_content=<slug>`
+UTM skeleton: `utm_source=linkedin|x&utm_medium=organic_social&utm_campaign=founding-beta&utm_content=<slug>`  
+Schedule windows: **Europe/London** first.
 
 ---
 
 ## 7. Sign-off
 
-| Role | Name | Date | Decision |
-| --- | --- | --- | --- |
-| Product / brand | | | draft / approved |
-| Notes | | | |
+| Role | Decision | Date |
+| --- | --- | --- |
+| Product / brand (operator) | approved | 2026-09-30 |
+| Notes | Both beta names OK; no numbers (FOMO vague); keep Helen/beta quote; UK first; File Provider OK on LinkedIn; app name-drops OK; personas hard | |
 
-When approved, change **Status** at the top to `approved` and tell writing skills to treat this file as law alongside `VOICE.md`.
+Writing skills treat this file as law alongside `VOICE.md` and `docs/growth/icp.md`.
