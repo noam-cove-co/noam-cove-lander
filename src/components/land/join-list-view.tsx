@@ -148,7 +148,7 @@ export function JoinListView() {
 
       <footer className="relative border-t border-white/10">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-4 py-8 text-sm text-white/45 sm:px-6">
-          <p>Cove · NOAM Co. · Yorkshire</p>
+          <p>Cove · NOAM Co.</p>
           <Link href="/" className="hover:text-white">
             Main site
           </Link>

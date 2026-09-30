@@ -59,7 +59,7 @@ Target mix (adjust only if assets missing):
 ## UTM pattern
 
 ```
-https://cove.will.me.uk/<path>?utm_source=<linkedin|instagram|x>&utm_medium=social&utm_campaign=<out-of-space|own-drive|join-the-list|stays-light>&utm_content=<creative-id>
+https://getcove.cloud/<path>?utm_source=<linkedin|instagram|x>&utm_medium=social&utm_campaign=<out-of-space|own-drive|join-the-list|stays-light>&utm_content=<creative-id>
 ```
 
 Land paths:

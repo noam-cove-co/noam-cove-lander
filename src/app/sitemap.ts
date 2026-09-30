@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { staysLightSteps } from "@/config/stays-light-funnel";
 import { getAllJournalPosts, isJournalPublic } from "@/lib/journal";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://cove.will.me.uk";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://getcove.cloud";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();

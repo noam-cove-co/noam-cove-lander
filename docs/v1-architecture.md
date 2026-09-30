@@ -226,7 +226,7 @@ cove-control/          # this would be a new repo or service — not the marketi
     cove.db            # SQLite is enough for personal
 ```
 
-Marketing site (`cove.will.me.uk`) stays as-is. Control plane can be `drive.will.me.uk` or a LAN hostname for personal-only.
+Marketing site (`getcove.cloud`) stays as-is. Control plane can be `drive.will.me.uk` or a LAN hostname for personal-only.
 
 ---
 

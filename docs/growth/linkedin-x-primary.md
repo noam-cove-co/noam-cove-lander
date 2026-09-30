@@ -34,7 +34,7 @@ bash tools/install-linkedin-x-skills.sh
 
 | Channel | Volume | Notes |
 | --- | --- | --- |
-| LinkedIn | 3 posts / week | Mix: stays light · look familiar · craft/Yorkshire · desk story |
+| LinkedIn | 3 posts / week | Mix: stays light · look familiar · craft/maker · desk story |
 | X | 5–7 posts / week (or 3 posts + 1 short thread) | Test hooks; promote winners to LinkedIn via `linkedin-repurposer` / `x-repurposer` |
 
 Always: draft → human `approved` → then Publora/Postiz. Never unattended posting.

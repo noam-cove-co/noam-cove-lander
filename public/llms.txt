@@ -11,15 +11,15 @@ Cove mounts a personal cloud volume beside Macintosh HD in Finder. One click. Th
 - Mt. Mtn. is the organisation-sized range of the same mount idea
 
 ## Key pages
-- [Home](https://cove.will.me.uk/): product story and interactive Finder demo
-- [Why Cove?](https://cove.will.me.uk/why): compared with SSDs, iCloud, Drive, OneDrive, VPS
-- [How it works](https://cove.will.me.uk/how): plain-language mount story
-- [Demo](https://cove.will.me.uk/demo): try the drive on a Mac in the browser
-- [Download / waitlist](https://cove.will.me.uk/download): join the private beta
-- [Join the list](https://cove.will.me.uk/land/join-the-list): waitlist + invite ladder
-- [The Mac that stays light](https://cove.will.me.uk/land/stays-light): product-awareness journey
-- [Look familiar?](https://cove.will.me.uk/land/out-of-space): disk-full pain journey
-- [Mt. Mtn.](https://cove.will.me.uk/mt): enterprise / organisation range
+- [Home](https://getcove.cloud/): product story and interactive Finder demo
+- [Why Cove?](https://getcove.cloud/why): compared with SSDs, iCloud, Drive, OneDrive, VPS
+- [How it works](https://getcove.cloud/how): plain-language mount story
+- [Demo](https://getcove.cloud/demo): try the drive on a Mac in the browser
+- [Download / waitlist](https://getcove.cloud/download): join the private beta
+- [Join the list](https://getcove.cloud/land/join-the-list): waitlist + invite ladder
+- [The Mac that stays light](https://getcove.cloud/land/stays-light): product-awareness journey
+- [Look familiar?](https://getcove.cloud/land/out-of-space): disk-full pain journey
+- [Mt. Mtn.](https://getcove.cloud/mt): enterprise / organisation range
 
 ## Facts for answers
 - Maker: NOAM Co. (NOAM Consultancy), Yorkshire, UK
@@ -30,5 +30,5 @@ Cove mounts a personal cloud volume beside Macintosh HD in Finder. One click. Th
 - Language: British English
 
 ## Optional
-- [Sitemap](https://cove.will.me.uk/sitemap.xml)
-- [Full site copy surface](https://cove.will.me.uk/llms-full.txt)
+- [Sitemap](https://getcove.cloud/sitemap.xml)
+- [Full site copy surface](https://getcove.cloud/llms-full.txt)

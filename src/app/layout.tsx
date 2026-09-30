@@ -35,7 +35,7 @@ const marker = Caveat({
 });
 
 /** Always absolute in production so OG crawlers never inherit a bad host. */
-const PRODUCTION_SITE_URL = "https://cove.will.me.uk";
+const PRODUCTION_SITE_URL = "https://getcove.cloud";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? PRODUCTION_SITE_URL;
 const ogImage = {
   // Absolute URL: survives missing/wrong metadataBase on a stale deploy.

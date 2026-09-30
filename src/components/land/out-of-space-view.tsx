@@ -657,7 +657,7 @@ export function OutOfSpaceView() {
             <p className="font-marker text-3xl text-[#3dcea0]">Enough room?</p>
             <h2 className="mt-2 font-serif text-4xl tracking-[-0.03em] sm:text-5xl">Join the private beta.</h2>
             <p className="mt-3 max-w-md text-base text-[#f5f6f8]/70">
-              Your own cloud drive, on your Mac. Crafted by NOAM Co. in Yorkshire.
+              Your own cloud drive, on your Mac. Crafted by NOAM Co.
             </p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row">

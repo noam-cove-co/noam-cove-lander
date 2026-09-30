@@ -1,7 +1,7 @@
 {
   "schema": "cove-meta-copy-v1",
   "campaign": "founding-beta",
-  "destination": "https://cove.will.me.uk/land/join-the-list?utm_source=meta&utm_medium=paid_social&utm_campaign=founding-beta",
+  "destination": "https://getcove.cloud/land/join-the-list?utm_source=meta&utm_medium=paid_social&utm_campaign=founding-beta",
   "cta": "SIGN_UP",
   "language": "en-GB",
   "status": "draft",
@@ -9,7 +9,7 @@
     {
       "id": "body-stays-light",
       "angle": "stays-light",
-      "primary": "Your Mac is full. Your libraries are not going to get smaller.\n\nCove is your own cloud drive. One click, and it shows up in Finder. The files stay in the cloud. The Mac stays light.\n\nPrivate beta from NOAM Co. in Yorkshire.",
+      "primary": "Your Mac is full. Your libraries are not going to get smaller.\n\nCove is your own cloud drive. One click, and it shows up in Finder. The files stay in the cloud. The Mac stays light.\n\nPrivate beta from NOAM Co.",
       "headline_candidates": [
         "The Mac that stays light",
         "Your own cloud drive, on your Mac",
@@ -17,7 +17,7 @@
       ],
       "description_candidates": [
         "Join the private beta waitlist",
-        "Crafted by NOAM Co. in Yorkshire",
+        "Crafted by NOAM Co.",
         "Files stay in the cloud"
       ]
     },
@@ -33,7 +33,7 @@
       "description_candidates": [
         "Private beta for Mac",
         "Waitlist open",
-        "Yorkshire-made"
+        "Made by NOAM Co."
       ]
     },
     {
@@ -78,7 +78,7 @@
       "description_candidates": [
         "Private beta for Mac",
         "Waitlist open",
-        "NOAM Co., Yorkshire"
+        "NOAM Co."
       ]
     }
   ],

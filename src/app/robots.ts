@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { isJournalPublic } from "@/lib/journal";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://cove.will.me.uk";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://getcove.cloud";
 
 export default function robots(): MetadataRoute.Robots {
   const disallow = ["/internal/", "/api/"];

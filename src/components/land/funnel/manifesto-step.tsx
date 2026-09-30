@@ -66,7 +66,7 @@ export function ManifestoStep() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7 }}
           >
-            Private beta · NOAM Co. · Yorkshire
+            Private beta · NOAM Co.
           </motion.p>
         </div>
       </section>

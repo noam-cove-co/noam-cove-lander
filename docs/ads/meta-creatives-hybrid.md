@@ -67,4 +67,4 @@ Follow meta-ad-builder. Research competitor Mac storage ads from the Ad Library
 
 ## British English + claims
 
-Same rules as social: no em dashes in customer-facing copy; claims only from `site.ts` / `campaigns.ts` / approved brand profile. Destination URLs use `https://cove.will.me.uk/land/...` with UTMs.
+Same rules as social: no em dashes in customer-facing copy; claims only from `site.ts` / `campaigns.ts` / approved brand profile. Destination URLs use `https://getcove.cloud/land/...` with UTMs.

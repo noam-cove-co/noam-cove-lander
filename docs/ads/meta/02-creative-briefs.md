@@ -42,7 +42,7 @@ Produce against these briefs with existing PNGs first. When `ARCADS_BASIC_AUTH` 
 ## CB-05 — Maker strip (low weight)
 
 - **Job:** Trust / craft
-- **Line:** Crafted by NOAM Co. in Yorkshire
+- **Line:** Crafted by NOAM Co.
 - **Use:** Remarketing later; light prospecting only
 
 ## Production checklist

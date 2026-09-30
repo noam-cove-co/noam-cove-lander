@@ -30,10 +30,10 @@ Primary landers:
 
 | Role | URL |
 | --- | --- |
-| Product awareness | https://cove.will.me.uk/land/own-drive |
-| Pain / familiarity | https://cove.will.me.uk/land/out-of-space |
-| Multi-step awareness | https://cove.will.me.uk/land/stays-light |
-| Waitlist conversion | https://cove.will.me.uk/land/join-the-list |
+| Product awareness | https://getcove.cloud/land/own-drive |
+| Pain / familiarity | https://getcove.cloud/land/out-of-space |
+| Multi-step awareness | https://getcove.cloud/land/stays-light |
+| Waitlist conversion | https://getcove.cloud/land/join-the-list |
 
 ## Channel roles
 

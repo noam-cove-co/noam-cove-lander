@@ -24,4 +24,4 @@ The Mac app is not a public download. Seats open from the waitlist. An invite la
 
 Cove is your own cloud drive. One click, and it shows up on your Mac. The files stay in the cloud. Crafted by NOAM Co. in Yorkshire.
 
-Media: [hi@noam.co](mailto:hi@noam.co) · [cove.will.me.uk](https://cove.will.me.uk)
+Media: [hi@noam.co](mailto:hi@noam.co) · [getcove.cloud](https://getcove.cloud)

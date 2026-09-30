@@ -17,7 +17,7 @@ export function CraftStep() {
               The house
             </p>
             <h1 className="mt-5 max-w-[12ch] font-serif text-5xl leading-[0.95] tracking-[-0.04em] text-[#f5f6f8] sm:text-6xl">
-              Crafted in Yorkshire.
+              Crafted by NOAM Co.
             </h1>
             <p className="mt-6 max-w-md text-lg leading-relaxed text-[#f5f6f8]/65">
               NOAM Co. A small consultancy. Cove is the product. The studio stays small on purpose.

@@ -637,7 +637,7 @@ export function CreativeFrame({
               {creative.persona ?? "Private beta"}
             </span>
             <span className="font-sans tracking-[0.18em] uppercase" style={{ fontSize: 11, color: dark ? "#3dcea0" : "#0e6b56" }}>
-              Est. Yorkshire
+              Private beta
             </span>
           </div>
 

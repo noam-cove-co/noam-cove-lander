@@ -156,7 +156,7 @@ export const campaigns: CampaignDef[] = [
         tone: "paper",
         headline: "Dads keep the family films here.",
         support: "Cove · a drive that simply shows up",
-        cue: "Yorkshire",
+        cue: "Cove",
       }),
       creative("instagram-portrait", {
         id: "od-ig-always",
@@ -243,7 +243,7 @@ export const campaigns: CampaignDef[] = [
         headline: "One click. Then Finder.",
         support: "Your own cloud drive: the lander, as an ad.",
         cta: "Try on this Mac",
-        cue: "Yorkshire",
+        cue: "Cove",
       }),
     ],
   },
@@ -297,7 +297,7 @@ export const campaigns: CampaignDef[] = [
         headline: "One click onto your Mac.",
         line: "First: the list.",
         support: "Cove private beta",
-        cue: "NOAM Co. · Yorkshire",
+        cue: "NOAM Co.",
       }),
       creative("instagram-story", {
         id: "jl-story-beta",
@@ -355,7 +355,7 @@ export const campaigns: CampaignDef[] = [
         layout: "void-logo",
         tone: "void",
         headline: "The list is the door.",
-        support: "Cove · private beta · Yorkshire",
+        support: "Cove · private beta",
         cue: "noam.co",
       }),
       // Referral leaderboard
@@ -452,7 +452,7 @@ export const campaigns: CampaignDef[] = [
         line: "Cove is the other drive.",
         support: "One click. It shows up in Finder.",
         persona: "At home",
-        cue: "Yorkshire",
+        cue: "Cove",
         cta: "Join the list",
       }),
       creative("facebook-feed", {
@@ -514,7 +514,7 @@ export const campaigns: CampaignDef[] = [
         headline: "Performance is nothing without room.",
         support: "Mount Cove. Keep the campaign, the cut, and the masters off the laptop.",
         persona: "Marketing & post",
-        cue: "NOAM Co. | Yorkshire",
+        cue: "NOAM Co.",
       }),
       creative("poster", {
         id: "oos-poster-ralph",

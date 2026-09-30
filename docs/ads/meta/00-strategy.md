@@ -29,7 +29,7 @@ Do **not** create these via API until Pixel, Page, and budget ceilings are appro
 2. **Look familiar** — storage full / nearly full, wry UK tone.
 3. **Finder mount** — demo of Locations beside Macintosh HD (use existing demo stills; video when ArcAds key present).
 4. **Desk variants** — home / marketing / studio / agents (same product, different words).
-5. **Craft / Yorkshire** — NOAM Co. maker story (lighter weight; brand, not performance primary).
+5. **Craft / maker** — NOAM Co. maker story (lighter weight; brand, not performance primary).
 
 ## Formats to produce first (offline OK)
 

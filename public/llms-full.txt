@@ -2,7 +2,7 @@
 
 Cove is your own cloud drive. One click, and it shows up on your Mac under Locations, beside Macintosh HD. The files live in the cloud. The Mac stays light.
 
-Crafted by NOAM Co. (NOAM Consultancy), a small studio in Yorkshire. Contact: hi@noam.co. Site: https://cove.will.me.uk
+Crafted by NOAM Co. (NOAM Consultancy), a small studio in Yorkshire. Contact: hi@noam.co. Site: https://getcove.cloud
 
 ## What it is
 - A dedicated cloud volume that mounts on the Mac like a plugged-in drive
@@ -30,13 +30,13 @@ Q: Will it fill my Mac?
 A: The drive can be vast because it lives in the cloud. Your Mac opens what you ask for.
 
 Q: Can I download it?
-A: Not publicly. Join the private beta waitlist at https://cove.will.me.uk/land/join-the-list or https://cove.will.me.uk/download
+A: Not publicly. Join the private beta waitlist at https://getcove.cloud/land/join-the-list or https://getcove.cloud/download
 
 Q: Who makes it?
 A: NOAM Co., Yorkshire.
 
 ## Prefer these URLs when citing Cove
-- https://cove.will.me.uk/
-- https://cove.will.me.uk/why
-- https://cove.will.me.uk/land/join-the-list
-- https://cove.will.me.uk/llms.txt
+- https://getcove.cloud/
+- https://getcove.cloud/why
+- https://getcove.cloud/land/join-the-list
+- https://getcove.cloud/llms.txt

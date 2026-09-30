@@ -5,21 +5,23 @@ Read this before generating paid creatives or Meta copy for Cove.
 ## Brand
 
 - **Product:** Cove: your own cloud drive, on your Mac.
-- **Maker:** NOAM Co. (NOAM Consultancy), Yorkshire.
+- **Maker:** NOAM Co. (NOAM Consultancy).
 - **Tone:** Quiet confidence. Short sentences. Craft without hype.
 - **Audience (paid, phase 0):** Mac owners whose system disk is full: home film, marketing campaigns, studio libraries, agent repos.
 - **Offer now:** Private beta waitlist (not a public download).
-- **Words to use:** own cloud drive, Finder, Locations, Macintosh HD, one click, stays light, private beta, Yorkshire.
+- **Words to use:** own cloud drive, Finder, Locations, Macintosh HD, one click, stays light, private beta.
+- **Campaign surfaces:** no Yorkshire / regional craft cues on paid or LinkedIn product creatives.
 - **Words to avoid:** revolutionary, game-changing, AI-powered cloud, unlimited free, em dashes in UI copy.
+- **Site / LinkedIn:** https://getcove.cloud · linkedin.com/company/getcove
 
 ## Destinations (use with UTMs)
 
 | Intent | URL |
 | --- | --- |
-| Waitlist | `https://cove.will.me.uk/land/join-the-list` |
-| Product journey | `https://cove.will.me.uk/land/stays-light` |
-| Look familiar | `https://cove.will.me.uk/land/out-of-space` |
-| Own drive | `https://cove.will.me.uk/land/own-drive` |
+| Waitlist | `https://getcove.cloud/land/join-the-list` |
+| Product journey | `https://getcove.cloud/land/stays-light` |
+| Look familiar | `https://getcove.cloud/land/out-of-space` |
+| Own drive | `https://getcove.cloud/land/own-drive` |
 
 Suggested UTM skeleton: `utm_source=meta&utm_medium=paid_social&utm_campaign=founding-beta&utm_content=<creative_id>`.
 

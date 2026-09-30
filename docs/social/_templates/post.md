@@ -10,7 +10,7 @@ asset_alt: ""
 publish_date: 2026-10-06
 publish_time_local: "09:30"
 timezone: Europe/London
-utm_url: https://cove.will.me.uk/land/stays-light?utm_source=linkedin&utm_medium=social&utm_campaign=stays-light&utm_content=oos-og-rolex
+utm_url: https://getcove.cloud/land/stays-light?utm_source=linkedin&utm_medium=social&utm_campaign=stays-light&utm_content=oos-og-rolex
 ---
 
 # Hook / first line

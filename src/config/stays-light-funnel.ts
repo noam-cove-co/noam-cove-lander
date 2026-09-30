@@ -51,7 +51,7 @@ export const staysLightSteps: StaysLightStep[] = [
     id: "craft",
     label: "Craft",
     path: "/land/stays-light/craft",
-    title: "Crafted in Yorkshire.",
+    title: "Crafted by NOAM Co.",
     description: "NOAM Co. A small consultancy. A private beta that opens from the list.",
     nextLabel: "Reserve a seat",
     og: "/campaign/join-the-list/jl-og-seat.png",

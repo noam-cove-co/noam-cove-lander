@@ -23,4 +23,4 @@ Body.
 Cove is your own cloud drive. One click, and it shows up on your Mac. The files stay in the cloud. Crafted by NOAM Co.
 
 ### Media contact
-hi@noam.co · https://cove.will.me.uk
+hi@noam.co · https://getcove.cloud

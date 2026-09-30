@@ -31,7 +31,7 @@ Cove / NOAM Co. X voice for the founding-beta waitlist era.
 
 ## 4. Links and CTA
 
-- Primary link: https://cove.will.me.uk/land/join-the-list?utm_source=x&utm_medium=organic_social&utm_campaign=founding-beta
+- Primary link: https://getcove.cloud/land/join-the-list?utm_source=x&utm_medium=organic_social&utm_campaign=founding-beta
 - CTA style: soft; often reply with the link rather than stuffing the opener
 
 ## 5. Signature examples

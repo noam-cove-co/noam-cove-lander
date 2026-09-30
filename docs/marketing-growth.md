@@ -2,7 +2,7 @@
 
 ## Production OG status (checked 2026-09-29)
 
-**Broken on live today.** `https://cove.will.me.uk` still emits:
+**Broken on live today.** `https://getcove.cloud` still emits:
 
 ```
 og:image → http://127.0.0.1:4317/opengraph-image?...
@@ -13,11 +13,11 @@ Cause: production is on a **stale deploy** that still had Next’s file-based `o
 
 Also: live PNG is still **1200×630 @1x**; main has **@2x 2400×1260**.
 
-**Fix:** redeploy main to Vercel with `NEXT_PUBLIC_SITE_URL=https://cove.will.me.uk`. After deploy, verify:
+**Fix:** redeploy main to Vercel with `NEXT_PUBLIC_SITE_URL=https://getcove.cloud`. After deploy, verify:
 
 ```bash
-curl -s https://cove.will.me.uk/ | rg 'og:image|twitter:image'
-# expect: https://cove.will.me.uk/campaign/own-drive/od-og-hero-cta.png
+curl -s https://getcove.cloud/ | rg 'og:image|twitter:image'
+# expect: https://getcove.cloud/campaign/own-drive/od-og-hero-cta.png
 ```
 
 Then refresh Facebook Sharing Debugger / LinkedIn Post Inspector / X Card Validator once.
@@ -36,7 +36,7 @@ Shipped / shipping in repo:
 
 Next (human + Search Console):
 
-1. Google Search Console + Bing Webmaster on `cove.will.me.uk`
+1. Google Search Console + Bing Webmaster on `getcove.cloud`
 2. Submit sitemap
 3. One indexable pillar page per intent (already: `/`, `/why`, `/how`, waitlist)
 4. Keep British English; one H1; FAQ schema on `/why` later if useful
@@ -55,8 +55,8 @@ Primary phrases to own:
 
 **llms.txt** (shipped):
 
-- https://cove.will.me.uk/llms.txt — short machine brief  
-- https://cove.will.me.uk/llms-full.txt — Q&A + cite URLs  
+- https://getcove.cloud/llms.txt — short machine brief  
+- https://getcove.cloud/llms-full.txt — Q&A + cite URLs  
 
 AEO habits (answer-engine optimisation):
 
@@ -143,7 +143,7 @@ Claude Ads profile and commands: [`docs/claude-ads.md`](claude-ads.md). Cove set
 ## Immediate checklist
 
 1. Redeploy production from `main`  
-2. Set `NEXT_PUBLIC_SITE_URL=https://cove.will.me.uk` on Vercel  
+2. Set `NEXT_PUBLIC_SITE_URL=https://getcove.cloud` on Vercel  
 3. Confirm OG absolute URL + @2x PNG live  
 4. Submit sitemap in Search Console  
 5. Approve `docs/social/week-1/` posts and schedule  

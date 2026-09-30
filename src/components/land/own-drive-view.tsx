@@ -68,7 +68,7 @@ export function OwnDriveView() {
                 Join the private beta
               </Link>
             </div>
-            <p className="mt-4 text-sm text-muted-foreground">Private beta · Crafted by NOAM Co. in Yorkshire</p>
+            <p className="mt-4 text-sm text-muted-foreground">Private beta · Crafted by NOAM Co.</p>
           </div>
           <div className="relative mx-auto w-full max-w-md">
             <Image

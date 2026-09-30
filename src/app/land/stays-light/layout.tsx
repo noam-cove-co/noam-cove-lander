@@ -7,10 +7,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: "The Mac that stays light.",
     description: "A cloud drive, shown in Finder. The library does not live on the system disk.",
-    url: "https://cove.will.me.uk/land/stays-light",
+    url: "https://getcove.cloud/land/stays-light",
     images: [
       {
-        url: "https://cove.will.me.uk/campaign/out-of-space/oos-og-rolex.png",
+        url: "https://getcove.cloud/campaign/out-of-space/oos-og-rolex.png",
         width: 2400,
         height: 1260,
         type: "image/png",
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "The Mac that stays light.",
-    images: ["https://cove.will.me.uk/campaign/out-of-space/oos-og-rolex.png"],
+    images: ["https://getcove.cloud/campaign/out-of-space/oos-og-rolex.png"],
   },
   robots: { index: true, follow: true },
   other: {

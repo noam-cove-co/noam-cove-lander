@@ -32,5 +32,5 @@ Quiet confidence. A drive that shows up. The Mac stays light.
 - One click. It shows up in Finder.
 - Look familiar?
 - Quiet confidence. Loud libraries.
-- Crafted by NOAM Co. in Yorkshire.
+- Crafted by NOAM Co.
 - Private beta.
