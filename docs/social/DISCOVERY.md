@@ -69,10 +69,13 @@ Branded `#Cove` is optional branding, not a discovery engine until the brand has
 - Posting only from the company page and expecting cold reach
 
 ## Week-1 wiring
-Week-1 LinkedIn and X drafts include:
-- discovery keywords in the caption
-- a closing question (LinkedIn)
-- a **First comment / First reply** block with the UTM link
-- optional 0–2 tags only where noted
+`docs/social/week-1/` is regenerated against this file:
+- discovery keywords in every caption (`discovery_keywords` in front matter)
+- one audience-of-one per post (`audience_of_one`)
+- closing question on every LinkedIn post
+- **First comment / First reply** block with UTM link on LinkedIn + X (no body link)
+- Instagram: link in bio primary + 3–6 niche tags
+- optional 0–2 LinkedIn tags / 0–1 X tag only where noted
+- calendar marks the discovery pattern per slot
 
-Regenerate captions against this file when you rewrite the pack.
+To rewrite again: regenerate all `01`–`12` captions against this file, keep `assets-v2/` paths, keep British English and approved claims.
