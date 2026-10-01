@@ -79,3 +79,5 @@ Branded `#Cove` is optional branding, not a discovery engine until the brand has
 - calendar marks the discovery pattern per slot
 
 To rewrite again: regenerate all `01`–`12` captions against this file, keep `assets-v2/` paths, keep British English and approved claims.
+
+**Reach week lander:** organic LinkedIn/X first-comment links default to `/land/shows-up` (see `docs/social/week-reach-awareness/PLAN.md`).
