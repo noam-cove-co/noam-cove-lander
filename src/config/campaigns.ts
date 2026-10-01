@@ -5,6 +5,7 @@
  * - own-drive: product awareness
  * - join-the-list: waitlist conversion
  * - out-of-space: disk-full pain (Look familiar?) + classic print cuts
+ * - shows-up: immersive one-pager for LinkedIn/X organic reach → waitlist
  *
  * Creatives follow a print-ad grammar: generous air, one line that lands,
  * small Cove lockup | plus product-UI, hero-wash, scrappy, and broadsheet cuts.
@@ -561,6 +562,35 @@ export const campaigns: CampaignDef[] = [
         line: "Then try Cove.",
         support: "Your own cloud drive. One click onto the Mac.",
         cue: "Private beta",
+      }),
+    ],
+  },
+  {
+    id: "shows-up",
+    name: "Shows Up",
+    purpose: "waitlist",
+    landSlug: "shows-up",
+    summary:
+      "Immersive one-pager for organic LinkedIn/X reach: Finder-native product proof plus waitlist. Matches social V2 tone from docs/social/week-1/assets-v2.",
+    defaultUtm: {
+      source: "linkedin",
+      medium: "social",
+      campaign: "shows-up",
+    },
+    creatives: [
+      creative("og", {
+        id: "su-og-light",
+        tone: "paper",
+        headline: "The Mac that stays light.",
+        support: "A cloud drive on your Mac. One click, then Finder.",
+        cue: "Private beta",
+      }),
+      creative("linkedin-og", {
+        id: "su-li-shows",
+        tone: "paper",
+        headline: "A drive that simply shows up.",
+        support: "Cove · Locations, beside Macintosh HD",
+        cue: "Join the list",
       }),
     ],
   },

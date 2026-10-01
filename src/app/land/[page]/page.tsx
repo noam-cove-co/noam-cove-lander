@@ -4,6 +4,7 @@ import { JoinListView } from "@/components/land/join-list-view";
 import { LookFamiliarView } from "@/components/land/look-familiar-view";
 import { OutOfSpaceView } from "@/components/land/out-of-space-view";
 import { OwnDriveView } from "@/components/land/own-drive-view";
+import { ShowsUpView } from "@/components/land/shows-up-view";
 import { campaignById } from "@/config/campaigns";
 
 const pages = {
@@ -36,6 +37,14 @@ const pages = {
       "Classic print-style Cove ads: enough space to do the work, on your Mac. Private beta from NOAM Co.",
     og: "/campaign/out-of-space/oos-og-rolex.png",
     campaignId: "out-of-space",
+  },
+  "shows-up": {
+    View: ShowsUpView,
+    title: "The Mac that stays light",
+    description:
+      "Cove is a cloud drive on your Mac. One click, and it shows up in Finder under Locations. Private beta waitlist.",
+    og: "/land/shows-up/og.png",
+    campaignId: "shows-up",
   },
 } as const;
 

@@ -36,8 +36,8 @@ Cove / NOAM Co. LinkedIn voice for the founding-beta waitlist era.
 
 ## 4. Links and CTA
 
-- Primary link: https://getcove.cloud/land/join-the-list
-- Alternates: /land/stays-light, /land/out-of-space, /journal when public
+- Primary link (organic reach week): https://getcove.cloud/land/shows-up
+- Alternates: /land/join-the-list, /land/stays-light, /land/out-of-space, /journal when public
 - Where it goes: often first comment on LinkedIn; soft CTA in body when native
 - Your CTA style: soft invite to the private beta waitlist
 

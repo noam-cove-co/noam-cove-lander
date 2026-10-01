@@ -18,6 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/land/join-the-list",
     "/land/out-of-space",
     "/land/look-familiar",
+    "/land/shows-up",
   ];
 
   const funnelPaths = staysLightSteps

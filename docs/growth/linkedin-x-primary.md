@@ -42,7 +42,7 @@ Always: draft → human `approved` → then Publora/Postiz. Never unattended pos
 ## Funnel
 
 1. Hook on LI/X (pain or Finder proof)
-2. Land on `/land/stays-light`, `/land/out-of-space`, or `/land/join-the-list` with UTMs (`utm_source=linkedin|x`)
+2. Land on `/land/shows-up` (organic reach one-pager), or `/land/stays-light`, `/land/out-of-space`, `/land/join-the-list` with UTMs (`utm_source=linkedin|x`)
 3. Waitlist + invite ladder
 4. Later: retarget engagers with Meta once Pixel exists
 
