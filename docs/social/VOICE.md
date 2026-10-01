@@ -21,7 +21,11 @@ Quiet confidence. A drive that shows up. The Mac stays light.
 - Fake metrics, fake logos, invented customers
 - Seat counts, waitlist size, pricing, ship dates
 - Promise public download
-- Over-hashtag
+- Over-hashtag (LinkedIn/X: keywords in the sentence beat tag piles)
+
+## Discovery
+Organic reach and waitlist leads: see [`DISCOVERY.md`](DISCOVERY.md).  
+Hashtags are optional labels, not the lever. Prefer keywords, first-comment links, and comment-worthy closers.
 
 ## Channel lengths
 | Channel | Caption budget |
