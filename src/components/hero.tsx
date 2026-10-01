@@ -31,7 +31,7 @@ export function Hero({ variant }: { variant: HeadlineVariant }) {
           </div>
           <div className="order-1 mx-auto w-[min(100%,340px)] lg:order-2 lg:w-full lg:max-w-[460px]">
             <Image
-              src="/brand/cove-icon.png"
+              src="/brand/cove-hero-mark.png"
               alt="A fluffy cloud shaped into a cove"
               width={1024}
               height={1024}

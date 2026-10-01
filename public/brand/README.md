@@ -8,7 +8,8 @@ LinkedIn company: **[linkedin.com/company/getcove](https://www.linkedin.com/comp
 | File | Spec | Notes |
 | --- | --- | --- |
 | [`cove-mark.png`](./cove-mark.png) | 1024×1024 PNG, RGBA | First HD cloud→cove logomark (ring of cloud with water harbour). **Save this locally as the master mark.** |
-| [`cove-icon.png`](./cove-icon.png) | 1024×1024 PNG, RGBA | App / UI icon treatment of the same mark |
+| [`cove-icon.png`](./cove-icon.png) | 1024×1024 PNG, RGBA | App / UI icon treatment of the same mark (squircle + shadow) |
+| [`cove-hero-mark.png`](./cove-hero-mark.png) | 1024×1024 PNG, RGBA | Hero-only cutout: cloud cove on transparent background (no app-icon box or drop shadow). Extracted from `cove-icon.png` via rembg; app icon unchanged elsewhere. |
 
 Absolute path in this repo:
 
