@@ -39,13 +39,14 @@ Waitlist notes are written to `data/waitlist.json` (gitignored) by `POST /api/wa
 
 ## Marketing funnel
 
-Two campaign land pages (bare chrome, Mixpanel + UTM ready):
+Campaign land pages (bare chrome, Mixpanel + UTM ready):
 
 - [`/land/own-drive`](http://127.0.0.1:4317/land/own-drive) — product awareness
 - [`/land/join-the-list`](http://127.0.0.1:4317/land/join-the-list) — waitlist + referral ladder
 - [`/land/out-of-space`](http://127.0.0.1:4317/land/out-of-space) — Look familiar? one-page pain journey (scroll)
 - [`/land/look-familiar`](http://127.0.0.1:4317/land/look-familiar) — classic print-ad mini page
 - [`/land/stays-light`](http://127.0.0.1:4317/land/stays-light) — classy multi-step product funnel (Light → Presence → Libraries → Craft → List)
+- [`/land/shows-up`](http://127.0.0.1:4317/land/shows-up) — immersive one-pager for organic LinkedIn/X → waitlist
 
 Campaign creatives live under [`/internal/campaign`](http://127.0.0.1:4317/internal/campaign) (noindex). PNGs are in `public/campaign/`.
 
@@ -57,11 +58,11 @@ Pass UTMs on any URL (`utm_source`, `utm_medium`, `utm_campaign`, `utm_content`,
 
 `GET /api/waitlist/leaderboard` returns the invite ladder for the land page.
 
-### Analytics
+### Analytics (Mixpanel-ready)
 
-Set `NEXT_PUBLIC_MIXPANEL_TOKEN` to send events to Mixpanel. Without a token, events log to the browser console in development.
+Event names live in `site.analytics.events` (`Land Page Viewed`, `Waitlist Joined`, `Invite Copied`, `Attribution Captured`, …). Land pages fire `AttributionBeacon` (UTMs + land view) and CTAs / waitlist forms call `track(...)`.
 
-Event names live in `site.analytics.events` (`Land Page Viewed`, `Waitlist Joined`, `Invite Copied`, `Attribution Captured`, …).
+Without `NEXT_PUBLIC_MIXPANEL_TOKEN`, events no-op in production (console debug in development only). Set the token on Vercel when you want reports — no code change required.
 
 `NEXT_PUBLIC_SITE_URL` sets the canonical site URL used for metadata. It defaults to `https://getcove.cloud`. **Set this on Vercel production** so OG tags never resolve to localhost. Main OG image is forced absolute: `https://getcove.cloud/campaign/own-drive/od-og-hero-cta.png`.
 
@@ -81,8 +82,8 @@ bash tools/install-linkedin-x-skills.sh
 
 - Bundles: `.cursor/skills/linkedin-marketing`, `.cursor/skills/x-marketing`
 - Agent: [`.cursor/agents/cove-linkedin-x.md`](.cursor/agents/cove-linkedin-x.md)
-- Skill **cove-social-executive**: Social Media Executive + B2B copy (press, blogs, LinkedIn, IG, X) → [`docs/social/`](docs/social/)
-- Skill **cove-week1-social-pack**: writes approval-only post files → [`docs/social/week-1/`](docs/social/week-1/)
+- Skill **cove-social-executive**: Social Media Executive + B2B copy → local `docs/social/` packs (**gitignored drafts**; only `VOICE.md` / `DISCOVERY.md` / templates are tracked)
+- Skill **cove-week1-social-pack**: writes approval-only post files → local `docs/social/week-1/` (gitignored)
 - How to invoke: [`.cursor/agents/README.md`](.cursor/agents/README.md)
 
 ### Paid media (Claude Ads)

@@ -63,5 +63,10 @@ __pycache__/
 **/linkedin-marketing/references/story-bank.md
 **/linkedin-marketing/references/voice-profile.md
 
-# LinkedIn visual render intermediates
-/docs/social/linkedin-week1-visuals/frames/
+# Draft social packs + creatives (local / Cursor only — never ship to GitHub)
+/docs/social/week-1/
+/docs/social/week-reach-awareness/
+/docs/social/founding-beta/
+/docs/social/linkedin-week1-visuals/
+/docs/social/blog/
+/docs/social/press/

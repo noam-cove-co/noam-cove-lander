@@ -5,16 +5,27 @@ Managed by two Cursor project skills (see `.cursor/agents/README.md`):
 1. **cove-social-executive** — Social Media Executive + B2B copywrite manager (posts, press, blogs, calendars)
 2. **cove-week1-social-pack** — regenerates `week-1/` post files from campaign assets only
 
-## Layout
+## Tracked in git
 
 ```
 docs/social/
   VOICE.md
+  DISCOVERY.md
+  README.md
   _templates/          post + press templates
-  week-1/              first approval pack (12 posts + calendar)
-  press/               press releases
-  blog/                long-form drafts
-  b2b/                 (optional) founder notes, sales one-pagers
+```
+
+## Local only (gitignored)
+
+Draft packs, creatives, and press/blog drafts stay on the machine / in Cursor — not on GitHub:
+
+```
+  week-1/              approval pack + assets-v2
+  week-reach-awareness/
+  founding-beta/
+  linkedin-week1-visuals/
+  press/
+  blog/
 ```
 
 ## Status field
